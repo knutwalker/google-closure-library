@@ -18,8 +18,11 @@
 
 goog.provide('goog.result.Result');
 
+<<<<<<< HEAD
 goog.require('goog.debug.Error');
 
+=======
+>>>>>>> newgitrepo
 
 
 /**
@@ -35,11 +38,21 @@ goog.result.Result = function() {};
 /**
  * Attaches handlers to be called when the value of this Result is available.
  *
+<<<<<<< HEAD
  * @param {!function(!goog.result.Result)} handler The function called when
  *     the value is available. The function is passed the Result object as the
  *     only argument.
  */
 goog.result.Result.prototype.wait = function(handler) {};
+=======
+ * @param {!function(this:T, !goog.result.Result)} handler The function called
+ *     when the value is available. The function is passed the Result object as
+ *     the only argument.
+ * @param {T=} opt_scope Optional scope for the handler.
+ * @template T
+ */
+goog.result.Result.prototype.wait = function(handler, opt_scope) {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -98,6 +111,7 @@ goog.result.Result.prototype.isCanceled = function() {};
 /**
  * The value to be passed to the error handlers invoked upon cancellation.
  * @constructor
+<<<<<<< HEAD
  * @param {string=} opt_msg The error message for CancelError.
  * @extends {goog.debug.Error}
  */
@@ -106,3 +120,13 @@ goog.result.Result.CancelError = function(opt_msg) {
   goog.base(this, msg);
 };
 goog.inherits(goog.result.Result.CancelError, goog.debug.Error);
+=======
+ * @extends {Error}
+ */
+goog.result.Result.CancelError = function() {
+  // Note that this does not derive from goog.debug.Error in order to prevent
+  // stack trace capture and reduce the amount of garbage generated during a
+  // cancel() operation.
+};
+goog.inherits(goog.result.Result.CancelError, Error);
+>>>>>>> newgitrepo

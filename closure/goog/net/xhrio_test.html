@@ -29,14 +29,27 @@ See the COPYING file for details.
 </script>
 <script>
 
+<<<<<<< HEAD
 function MockXmlHttp() {}
+=======
+function MockXmlHttp() {
+  /**
+   * The headers for this XmlHttpRequest.
+   * @type {!Object.<string>}
+   */
+  this.headers = {};
+}
+>>>>>>> newgitrepo
 
 MockXmlHttp.prototype.readyState = goog.net.XmlHttp.ReadyState.UNINITIALIZED;
 
 MockXmlHttp.prototype.status = 200;
 
+<<<<<<< HEAD
 MockXmlHttp.prototype.headers = {};
 
+=======
+>>>>>>> newgitrepo
 MockXmlHttp.syncSend = false;
 
 MockXmlHttp.prototype.send = function(opt_data) {
@@ -546,6 +559,40 @@ function testPostSetsContentTypeHeader() {
       goog.net.XhrIo.FORM_CONTENT_TYPE);
 }
 
+<<<<<<< HEAD
+=======
+function testNonPostSetsContentTypeHeader() {
+  var x = new goog.net.XhrIo;
+
+  x.send('url', 'PUT', 'content');
+  headers = lastMockXmlHttp.headers;
+  assertEquals(1, goog.object.getCount(headers));
+  assertEquals(
+      headers[goog.net.XhrIo.CONTENT_TYPE_HEADER],
+      goog.net.XhrIo.FORM_CONTENT_TYPE);
+}
+
+function testContentTypeIsTreatedCaseInsensitively() {
+  var x = new goog.net.XhrIo;
+
+  x.send('url', 'POST', 'content', {'content-type': 'testing'});
+
+  assertObjectEquals(
+      'Headers should not be modified since they already contain a ' +
+      'content type definition',
+      {'content-type': 'testing'},
+      lastMockXmlHttp.headers);
+}
+
+function testIsContentTypeHeader_() {
+  assertTrue(goog.net.XhrIo.isContentTypeHeader_('content-type'));
+  assertTrue(goog.net.XhrIo.isContentTypeHeader_('Content-type'));
+  assertTrue(goog.net.XhrIo.isContentTypeHeader_('CONTENT-TYPE'));
+  assertTrue(goog.net.XhrIo.isContentTypeHeader_('Content-Type'));
+  assertFalse(goog.net.XhrIo.isContentTypeHeader_('Content Type'));
+}
+
+>>>>>>> newgitrepo
 function testPostFormDataDoesNotSetContentTypeHeader() {
   function FakeFormData() {}
 
@@ -557,6 +604,20 @@ function testPostFormDataDoesNotSetContentTypeHeader() {
   assertTrue(goog.object.isEmpty(headers));
 }
 
+<<<<<<< HEAD
+=======
+function testNonPostFormDataDoesNotSetContentTypeHeader() {
+  function FakeFormData() {}
+
+  propertyReplacer.set(goog.global, 'FormData', FakeFormData);
+
+  var x = new goog.net.XhrIo;
+  x.send('url', 'PUT', new FakeFormData());
+  headers = lastMockXmlHttp.headers;
+  assertTrue(goog.object.isEmpty(headers));
+}
+
+>>>>>>> newgitrepo
 function testFactoryInjection() {
   var xhr = new MockXmlHttp();
   var optionsFactoryCalled = 0;

@@ -17,11 +17,14 @@
  * simulates a bidirectional socket over HTTP. It is the basis of the
  * Gmail Chat IM connections to the server.
  *
+<<<<<<< HEAD
  * See http://wiki/Main/BrowserChannel
  * This doesn't yet completely comform to the design document as we've done
  * some renaming and cleanup in the design document that hasn't yet been
  * implemented in the protocol.
  *
+=======
+>>>>>>> newgitrepo
  * Typical usage will look like
  *  var handler = [handler object];
  *  var channel = new BrowserChannel(clientVersion);
@@ -58,13 +61,19 @@ goog.require('goog.json.EvalJsonProcessor');
 goog.require('goog.net.BrowserTestChannel');
 goog.require('goog.net.ChannelDebug');
 goog.require('goog.net.ChannelRequest');
+<<<<<<< HEAD
 goog.require('goog.net.ChannelRequest.Error');
+=======
+>>>>>>> newgitrepo
 goog.require('goog.net.XhrIo');
 goog.require('goog.net.tmpnetwork');
 goog.require('goog.string');
 goog.require('goog.structs');
 goog.require('goog.structs.CircularBuffer');
+<<<<<<< HEAD
 goog.require('goog.userAgent');
+=======
+>>>>>>> newgitrepo
 
 
 
@@ -75,9 +84,18 @@ goog.require('goog.userAgent');
  *        that is sent to the server when connected.
  * @param {Array.<string>=} opt_firstTestResults Previously determined results
  *        of the first browser channel test.
+<<<<<<< HEAD
  * @constructor
  */
   goog.net.BrowserChannel = function(opt_clientVersion, opt_firstTestResults) {
+=======
+ * @param {boolean=} opt_secondTestResults Previously determined results
+ *        of the second browser channel test.
+ * @constructor
+ */
+goog.net.BrowserChannel = function(opt_clientVersion, opt_firstTestResults,
+    opt_secondTestResults) {
+>>>>>>> newgitrepo
   /**
    * The application specific version that is passed to the server.
    * @type {?string}
@@ -130,6 +148,18 @@ goog.require('goog.userAgent');
    * @private
    */
   this.firstTestResults_ = opt_firstTestResults || null;
+<<<<<<< HEAD
+=======
+
+  /**
+   * The results of the second browser channel test. True implies the
+   * connection is buffered, False means unbuffered, null means that
+   * the results are not available.
+   * @private
+   */
+  this.secondTestResults_ = goog.isDefAndNotNull(opt_secondTestResults) ?
+      opt_secondTestResults : null;
+>>>>>>> newgitrepo
 };
 
 
@@ -1814,7 +1844,11 @@ goog.net.BrowserChannel.prototype.onRequestData =
     if (!goog.string.isEmpty(responseText)) {
       var response = this.parser_.parse(responseText);
       goog.asserts.assert(goog.isArray(response));
+<<<<<<< HEAD
       this.onInput_(/** @type {Array} */ (response));
+=======
+      this.onInput_(/** @type {!Array} */ (response));
+>>>>>>> newgitrepo
     }
   }
 };
@@ -2093,11 +2127,18 @@ goog.net.BrowserChannel.prototype.setRetryDelay = function(baseDelayMs,
 
 /**
  * Processes the data returned by the server.
+<<<<<<< HEAD
  * @param {Array} respArray The response array returned by the server.
  * @private
  */
 goog.net.BrowserChannel.prototype.onInput_ = function(respArray) {
   // respArray is an array of arrays
+=======
+ * @param {!Array.<!Array>} respArray The response array returned by the server.
+ * @private
+ */
+goog.net.BrowserChannel.prototype.onInput_ = function(respArray) {
+>>>>>>> newgitrepo
   var batch = this.handler_ && this.handler_.channelHandleMultipleArrays ?
       [] : null;
   for (var i = 0; i < respArray.length; i++) {
@@ -2128,7 +2169,11 @@ goog.net.BrowserChannel.prototype.onInput_ = function(respArray) {
       }
     } else if (this.state_ == goog.net.BrowserChannel.State.OPENED) {
       if (nextArray[0] == 'stop') {
+<<<<<<< HEAD
         if (batch && batch.length) {
+=======
+        if (batch && !goog.array.isEmpty(batch)) {
+>>>>>>> newgitrepo
           this.handler_.channelHandleMultipleArrays(this, batch);
           batch.length = 0;
         }
@@ -2151,7 +2196,11 @@ goog.net.BrowserChannel.prototype.onInput_ = function(respArray) {
       this.backChannelRetryCount_ = 0;
     }
   }
+<<<<<<< HEAD
   if (batch && batch.length) {
+=======
+  if (batch && !goog.array.isEmpty(batch)) {
+>>>>>>> newgitrepo
     this.handler_.channelHandleMultipleArrays(this, batch);
   }
 };
@@ -2296,6 +2345,19 @@ goog.net.BrowserChannel.prototype.getFirstTestResults =
 
 
 /**
+<<<<<<< HEAD
+=======
+ * Gets the results for the second browser channel test
+ * @return {?boolean} The results. True -> buffered connection,
+ *      False -> unbuffered, null -> unknown.
+ */
+goog.net.BrowserChannel.prototype.getSecondTestResults = function() {
+  return this.secondTestResults_;
+};
+
+
+/**
+>>>>>>> newgitrepo
  * Gets the Uri used for the connection that receives data from the server.
  * @param {?string} hostPrefix The host prefix.
  * @param {string} path The path on the host.
@@ -2592,7 +2654,11 @@ goog.net.BrowserChannel.LogSaver.clearBuffer = function() {
 
 
 /**
+<<<<<<< HEAD
  * Interface for the browser channel handler
+=======
+ * Abstract base class for the browser channel handler
+>>>>>>> newgitrepo
  * @constructor
  */
 goog.net.BrowserChannel.Handler = function() {
@@ -2602,7 +2668,11 @@ goog.net.BrowserChannel.Handler = function() {
 /**
  * Callback handler for when a batch of response arrays is received from the
  * server.
+<<<<<<< HEAD
  * @type {Function}
+=======
+ * @type {?function(!goog.net.BrowserChannel, !Array.<!Array>)}
+>>>>>>> newgitrepo
  */
 goog.net.BrowserChannel.Handler.prototype.channelHandleMultipleArrays = null;
 

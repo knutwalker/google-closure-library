@@ -22,7 +22,10 @@ goog.provide('goog.ui.MenuBase');
 goog.require('goog.events.EventHandler');
 goog.require('goog.events.EventType');
 goog.require('goog.events.KeyHandler');
+<<<<<<< HEAD
 goog.require('goog.events.KeyHandler.EventType');
+=======
+>>>>>>> newgitrepo
 goog.require('goog.ui.Popup');
 
 

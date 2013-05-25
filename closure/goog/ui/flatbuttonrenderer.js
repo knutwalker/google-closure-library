@@ -64,11 +64,21 @@ goog.ui.FlatButtonRenderer.CSS_CLASS = goog.getCssName('goog-flat-button');
 goog.ui.FlatButtonRenderer.prototype.createDom = function(button) {
   var classNames = this.getClassNames(button);
   var attributes = {
+<<<<<<< HEAD
     'class': goog.ui.INLINE_BLOCK_CLASSNAME + ' ' + classNames.join(' '),
     'title': button.getTooltip() || ''
   };
   return button.getDomHelper().createDom(
       'div', attributes, button.getContent());
+=======
+    'class': goog.ui.INLINE_BLOCK_CLASSNAME + ' ' + classNames.join(' ')
+  };
+  var element = button.getDomHelper().createDom(
+      'div', attributes, button.getContent());
+  this.setTooltip(element, button.getTooltip());
+  this.setAriaStates(button, element);
+  return element;
+>>>>>>> newgitrepo
 };
 
 

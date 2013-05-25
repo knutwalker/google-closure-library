@@ -29,6 +29,10 @@
 
 
 goog.provide('goog.dom');
+<<<<<<< HEAD
+=======
+goog.provide('goog.dom.Appendable');
+>>>>>>> newgitrepo
 goog.provide('goog.dom.DomHelper');
 goog.provide('goog.dom.NodeType');
 
@@ -47,14 +51,22 @@ goog.require('goog.userAgent');
  * @define {boolean} Whether we know at compile time that the browser is in
  * quirks mode.
  */
+<<<<<<< HEAD
 goog.dom.ASSUME_QUIRKS_MODE = false;
+=======
+goog.define('goog.dom.ASSUME_QUIRKS_MODE', false);
+>>>>>>> newgitrepo
 
 
 /**
  * @define {boolean} Whether we know at compile time that the browser is in
  * standards compliance mode.
  */
+<<<<<<< HEAD
 goog.dom.ASSUME_STANDARDS_MODE = false;
+=======
+goog.define('goog.dom.ASSUME_STANDARDS_MODE', false);
+>>>>>>> newgitrepo
 
 
 /**
@@ -540,6 +552,16 @@ goog.dom.getDocumentScroll = function() {
 goog.dom.getDocumentScroll_ = function(doc) {
   var el = goog.dom.getDocumentScrollElement_(doc);
   var win = goog.dom.getWindow_(doc);
+<<<<<<< HEAD
+=======
+  if (goog.userAgent.IE && goog.userAgent.isVersionOrHigher('10') &&
+      win.pageYOffset != el.scrollTop) {
+    // The keyboard on IE10 touch devices shifts the page using the pageYOffset
+    // without modifying scrollTop. For this case, we want the body scroll
+    // offsets.
+    return new goog.math.Coordinate(el.scrollLeft, el.scrollTop);
+  }
+>>>>>>> newgitrepo
   return new goog.math.Coordinate(win.pageXOffset || el.scrollLeft,
       win.pageYOffset || el.scrollTop);
 };
@@ -1232,7 +1254,19 @@ goog.dom.isWindow = function(obj) {
  */
 goog.dom.getParentElement = function(element) {
   if (goog.dom.BrowserFeature.CAN_USE_PARENT_ELEMENT_PROPERTY) {
+<<<<<<< HEAD
     return element.parentElement;
+=======
+    var isIe9 = goog.userAgent.IE &&
+        goog.userAgent.isVersionOrHigher('9') &&
+        !goog.userAgent.isVersionOrHigher('10');
+    // SVG elements in IE9 can't use the parentElement property.
+    // goog.global['SVGElement'] is not defined in IE9 quirks mode.
+    if (!(isIe9 && goog.global['SVGElement'] &&
+        element instanceof goog.global['SVGElement'])) {
+      return element.parentElement;
+    }
+>>>>>>> newgitrepo
   }
   var parent = element.parentNode;
   return goog.dom.isElement(parent) ? /** @type {!Element} */ (parent) : null;
@@ -1293,7 +1327,11 @@ goog.dom.compareNodeOrder = function(node1, node2) {
   }
 
   // Special case for document nodes on IE 7 and 8.
+<<<<<<< HEAD
   if (goog.userAgent.IE && !goog.userAgent.isDocumentMode(9)) {
+=======
+  if (goog.userAgent.IE && !goog.userAgent.isDocumentModeOrHigher(9)) {
+>>>>>>> newgitrepo
     if (node1.nodeType == goog.dom.NodeType.DOCUMENT) {
       return -1;
     }

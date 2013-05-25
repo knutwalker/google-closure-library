@@ -23,8 +23,15 @@ goog.provide('goog.editor.plugins.Emoticons');
 
 goog.require('goog.dom.TagName');
 goog.require('goog.editor.Plugin');
+<<<<<<< HEAD
 goog.require('goog.functions');
 goog.require('goog.ui.emoji.Emoji');
+=======
+goog.require('goog.editor.range');
+goog.require('goog.functions');
+goog.require('goog.ui.emoji.Emoji');
+goog.require('goog.userAgent');
+>>>>>>> newgitrepo
 
 
 
@@ -79,7 +86,11 @@ goog.editor.plugins.Emoticons.prototype.execCommandInternal = function(
   // IE8 does the right thing with the cursor, and has a js error when we try
   // to place the cursor manually.
   // IE9 loses the cursor when the window is focused, so focus first.
+<<<<<<< HEAD
   if (!goog.userAgent.IE || goog.userAgent.isDocumentMode(9)) {
+=======
+  if (!goog.userAgent.IE || goog.userAgent.isDocumentModeOrHigher(9)) {
+>>>>>>> newgitrepo
     this.getFieldObject().focus();
     goog.editor.range.placeCursorNextTo(img, false);
   }

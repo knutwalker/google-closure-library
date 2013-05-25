@@ -19,7 +19,11 @@
  * @see ../demos/useragent.html
  */
 
+<<<<<<< HEAD
 
+=======
+/** @suppress {extraProvide} */
+>>>>>>> newgitrepo
 goog.provide('goog.userAgent.adobeReader');
 
 goog.require('goog.string');
@@ -29,7 +33,11 @@ goog.require('goog.userAgent');
 (function() {
   var version = '';
   if (goog.userAgent.IE) {
+<<<<<<< HEAD
     var detectOnIe = function (classId) {
+=======
+    var detectOnIe = function(classId) {
+>>>>>>> newgitrepo
       /** @preserveTry */
       try {
         new ActiveXObject(classId);

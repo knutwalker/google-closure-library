@@ -39,7 +39,11 @@
  * re-encoding.
  *
  * Uses features of RFC 3986 for parsing/formatting URIs:
+<<<<<<< HEAD
  *   http://gbiv.com/protocols/uri/rfc/rfc3986.html
+=======
+ *   http://www.ietf.org/rfc/rfc3986.txt
+>>>>>>> newgitrepo
  *
  * @author gboyer@google.com (Garrett Boyer) - The "lightened" design.
  * @author msamuel@google.com (Mike Samuel) - Domain knowledge and regexes.
@@ -127,7 +131,11 @@ goog.uri.utils.buildFromEncodedParts = function(opt_scheme, opt_userInfo,
 /**
  * A regular expression for breaking a URI into its component parts.
  *
+<<<<<<< HEAD
  * {@link http://www.gbiv.com/protocols/uri/rfc/rfc3986.html#RFC2234} says
+=======
+ * {@link http://www.ietf.org/rfc/rfc3986.txt} says in Appendix B
+>>>>>>> newgitrepo
  * As the "first-match-wins" algorithm is identical to the "greedy"
  * disambiguation method used by POSIX regular expressions, it is natural and
  * commonplace to use a regular expression for parsing the potential five
@@ -745,6 +753,7 @@ goog.uri.utils.appendParamsFromMap = function(uri, map) {
  *
  * @param {string} uri The original URI, which may already have query data.
  * @param {string} key The key, which must already be URI encoded.
+<<<<<<< HEAD
  * @param {*} value The value, which will be stringized and encoded (assumed
  *     not already to be encoded).
  * @return {string} The URI with the query parameter added.
@@ -752,6 +761,19 @@ goog.uri.utils.appendParamsFromMap = function(uri, map) {
 goog.uri.utils.appendParam = function(uri, key, value) {
   return goog.uri.utils.appendQueryData_(
       [uri, '&', key, '=', goog.string.urlEncode(value)]);
+=======
+ * @param {*=} opt_value The value, which will be stringized and encoded
+ *     (assumed not already to be encoded).  If omitted, undefined, or null, the
+ *     key will be added as a valueless parameter.
+ * @return {string} The URI with the query parameter added.
+ */
+goog.uri.utils.appendParam = function(uri, key, opt_value) {
+  var paramArr = [uri, '&', key];
+  if (goog.isDefAndNotNull(opt_value)) {
+    paramArr.push('=', goog.string.urlEncode(opt_value));
+  }
+  return goog.uri.utils.appendQueryData_(paramArr);
+>>>>>>> newgitrepo
 };
 
 

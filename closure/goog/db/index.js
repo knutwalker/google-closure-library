@@ -21,6 +21,10 @@
 goog.provide('goog.db.Index');
 
 goog.require('goog.async.Deferred');
+<<<<<<< HEAD
+=======
+goog.require('goog.db.Cursor');
+>>>>>>> newgitrepo
 goog.require('goog.db.Error');
 goog.require('goog.debug');
 
@@ -206,3 +210,42 @@ goog.db.Index.prototype.getAllKeys = function(opt_key) {
       'getting all keys from index ' + this.getName(),
       opt_key);
 };
+<<<<<<< HEAD
+=======
+
+
+/**
+ * Opens a cursor over the specified key range. Returns a cursor object which is
+ * able to iterate over the given range.
+ *
+ * Example usage:
+ *
+ * <code>
+ *  var cursor = index.openCursor(goog.db.Range.bound('a', 'c'));
+ *
+ *  var key = goog.events.listen(
+ *      cursor, goog.db.Cursor.EventType.NEW_DATA,
+ *      function() {
+ *        // Do something with data.
+ *        cursor.next();
+ *      });
+ *
+ *  goog.events.listenOnce(
+ *      cursor, goog.db.Cursor.EventType.COMPLETE,
+ *      function() {
+ *        // Clean up listener, and perform a finishing operation on the data.
+ *        goog.events.unlistenByKey(key);
+ *      });
+ * </code>
+ *
+ * @param {!goog.db.KeyRange=} opt_range The key range. If undefined iterates
+ *     over the whole object store.
+ * @param {!goog.db.Cursor.Direction=} opt_direction The direction. If undefined
+ *     moves in a forward direction with duplicates.
+ * @return {!goog.db.Cursor} The cursor.
+ * @throws {goog.db.Error} If there was a problem opening the cursor.
+ */
+goog.db.Index.prototype.openCursor = function(opt_range, opt_direction) {
+  return goog.db.Cursor.openCursor(this.index_, opt_range, opt_direction);
+};
+>>>>>>> newgitrepo

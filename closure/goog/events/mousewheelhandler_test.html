@@ -195,7 +195,11 @@ See the COPYING file for details.
   }
 
   function runWebKitContinousAndDiscreteEventsTest() {
+<<<<<<< HEAD
     goog.userAgent.isVersion = goog.functions.TRUE;
+=======
+    goog.userAgent.isVersionOrHigher = goog.functions.TRUE;
+>>>>>>> newgitrepo
 
     createHandlerAndListen();
 
@@ -226,7 +230,11 @@ See the COPYING file for details.
         WINDOWS: false
     };
 
+<<<<<<< HEAD
     goog.userAgent.isVersion = goog.functions.FALSE;
+=======
+    goog.userAgent.isVersionOrHigher = goog.functions.FALSE;
+>>>>>>> newgitrepo
 
     createHandlerAndListen();
 

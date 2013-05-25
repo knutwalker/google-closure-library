@@ -15,10 +15,16 @@
 goog.provide('goog.ui.equation.EquationEditorDialog');
 
 goog.require('goog.dom');
+<<<<<<< HEAD
 goog.require('goog.ui.Dialog');
 goog.require('goog.ui.Dialog.ButtonSet');
 goog.require('goog.ui.equation.EquationEditor');
 goog.require('goog.ui.equation.ImageRenderer');
+=======
+goog.require('goog.dom.classes');
+goog.require('goog.ui.Dialog');
+goog.require('goog.ui.equation.EquationEditor');
+>>>>>>> newgitrepo
 goog.require('goog.ui.equation.PaletteManager');
 goog.require('goog.ui.equation.TexEditor');
 
@@ -90,7 +96,12 @@ goog.ui.equation.EquationEditorDialog.prototype.setVisible = function(visible) {
  */
 goog.ui.equation.EquationEditorDialog.prototype.populateContext_ = function() {
   var context = {};
+<<<<<<< HEAD
   context.paletteManager = new goog.ui.equation.PaletteManager();
+=======
+  context.paletteManager = new goog.ui.equation.PaletteManager(
+      this.getDomHelper());
+>>>>>>> newgitrepo
   return context;
 };
 

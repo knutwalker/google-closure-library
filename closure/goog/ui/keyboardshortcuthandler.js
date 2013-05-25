@@ -31,6 +31,10 @@ goog.require('goog.events.EventType');
 goog.require('goog.events.KeyCodes');
 goog.require('goog.events.KeyNames');
 goog.require('goog.object');
+<<<<<<< HEAD
+=======
+goog.require('goog.userAgent');
+>>>>>>> newgitrepo
 
 
 
@@ -615,7 +619,11 @@ goog.ui.KeyboardShortcutHandler.prototype.initializeKeyListener =
   // In this case we capture the keyup (which is fired) and fake as
   // if the user had pressed the key to begin with.
   if (goog.userAgent.MAC &&
+<<<<<<< HEAD
       goog.userAgent.GECKO && goog.userAgent.isVersion('1.8')) {
+=======
+      goog.userAgent.GECKO && goog.userAgent.isVersionOrHigher('1.8')) {
+>>>>>>> newgitrepo
     goog.events.listen(this.keyTarget_, goog.events.EventType.KEYUP,
         this.handleMacGeckoKeyUp_, false, this);
   }
@@ -724,7 +732,11 @@ goog.ui.KeyboardShortcutHandler.prototype.clearKeyListener = function() {
   goog.events.unlisten(this.keyTarget_, goog.events.EventType.KEYDOWN,
       this.handleKeyDown_, false, this);
   if (goog.userAgent.MAC &&
+<<<<<<< HEAD
       goog.userAgent.GECKO && goog.userAgent.isVersion('1.8')) {
+=======
+      goog.userAgent.GECKO && goog.userAgent.isVersionOrHigher('1.8')) {
+>>>>>>> newgitrepo
     goog.events.unlisten(this.keyTarget_, goog.events.EventType.KEYUP,
         this.handleMacGeckoKeyUp_, false, this);
   }

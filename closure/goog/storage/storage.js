@@ -23,7 +23,10 @@ goog.provide('goog.storage.Storage');
 goog.require('goog.json');
 goog.require('goog.json.Serializer');
 goog.require('goog.storage.ErrorCode');
+<<<<<<< HEAD
 goog.require('goog.storage.mechanism.Mechanism');
+=======
+>>>>>>> newgitrepo
 
 
 
@@ -80,7 +83,20 @@ goog.storage.Storage.prototype.set = function(key, value) {
  * @return {*} Deserialized value or undefined if not found.
  */
 goog.storage.Storage.prototype.get = function(key) {
+<<<<<<< HEAD
   var json = this.mechanism.get(key);
+=======
+  var json;
+  try {
+    json = this.mechanism.get(key);
+  } catch (e) {
+    // If, for any reason, the value returned by a mechanism's get method is not
+    // a string, an exception is thrown.  In this case, we must fail gracefully
+    // instead of propagating the exception to clients.  See b/8095488 for
+    // details.
+    return undefined;
+  }
+>>>>>>> newgitrepo
   if (goog.isNull(json)) {
     return undefined;
   }

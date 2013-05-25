@@ -41,7 +41,10 @@
 
 goog.provide('goog.editor.plugins.FirstStrong');
 
+<<<<<<< HEAD
 goog.require('goog.dom');
+=======
+>>>>>>> newgitrepo
 goog.require('goog.dom.NodeType');
 goog.require('goog.dom.TagIterator');
 goog.require('goog.dom.TagName');
@@ -137,7 +140,14 @@ goog.editor.plugins.FirstStrong.prototype.handleKeyPress = function(e) {
   }
   var newInput = goog.i18n.uChar.fromCharCode(e.charCode);
 
+<<<<<<< HEAD
   if (!newInput) {
+=======
+  // IME's may return 0 for the charCode, which is a legitimate, non-Strong
+  // charCode, or they may return an illegal charCode (for which newInput will
+  // be false).
+  if (!newInput || !e.charCode) {
+>>>>>>> newgitrepo
     var browserEvent = e.getBrowserEvent();
     if (browserEvent) {
       if (goog.userAgent.IE && browserEvent['getAttribute']) {
@@ -151,7 +161,11 @@ goog.editor.plugins.FirstStrong.prototype.handleKeyPress = function(e) {
   }
 
   if (!newInput) {
+<<<<<<< HEAD
     return false; // Unrecognized key.
+=======
+    return false;  // Unrecognized key.
+>>>>>>> newgitrepo
   }
 
   var isLtr = goog.i18n.bidi.isLtrChar(newInput);

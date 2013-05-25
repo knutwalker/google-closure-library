@@ -20,7 +20,12 @@
 
 goog.provide('goog.async.AnimationDelay');
 
+<<<<<<< HEAD
 goog.require('goog.async.Delay');
+=======
+goog.require('goog.Disposable');
+goog.require('goog.events');
+>>>>>>> newgitrepo
 goog.require('goog.functions');
 
 
@@ -30,6 +35,11 @@ goog.require('goog.functions');
 // make sense. Subclassing seems like the wrong approach for a variety of
 // reasons. Maybe there should be a common interface?
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> newgitrepo
 /**
  * A delayed callback that pegs to the next animation frame
  * instead of a user configurable timeout. By design, this should have

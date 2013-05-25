@@ -24,10 +24,20 @@ goog.provide('goog.testing.fs.FileEntry');
 
 goog.require('goog.Timer');
 goog.require('goog.array');
+<<<<<<< HEAD
 goog.require('goog.async.Deferred');
 goog.require('goog.fs.DirectoryEntry');
 goog.require('goog.fs.DirectoryEntry.Behavior');
 goog.require('goog.fs.Error');
+=======
+goog.require('goog.asserts');
+goog.require('goog.async.Deferred');
+goog.require('goog.fs.DirectoryEntry');
+goog.require('goog.fs.DirectoryEntryImpl');
+goog.require('goog.fs.Entry');
+goog.require('goog.fs.Error');
+goog.require('goog.fs.FileEntry');
+>>>>>>> newgitrepo
 goog.require('goog.functions');
 goog.require('goog.object');
 goog.require('goog.string');
@@ -44,6 +54,10 @@ goog.require('goog.testing.fs.FileWriter');
  *     containing this entry.
  * @param {string} name The name of this entry.
  * @constructor
+<<<<<<< HEAD
+=======
+ * @implements {goog.fs.Entry}
+>>>>>>> newgitrepo
  */
 goog.testing.fs.Entry = function(fs, parent, name) {
   /**
@@ -75,6 +89,7 @@ goog.testing.fs.Entry = function(fs, parent, name) {
 goog.testing.fs.Entry.prototype.deleted = false;
 
 
+<<<<<<< HEAD
 /**
  * @see {goog.fs.Entry#isFile}
  * @return {boolean}
@@ -93,15 +108,30 @@ goog.testing.fs.Entry.prototype.isDirectory = goog.abstractMethod;
  * @see {goog.fs.Entry#getName}
  * @return {string}
  */
+=======
+/** @override */
+goog.testing.fs.Entry.prototype.isFile = goog.abstractMethod;
+
+
+/** @override */
+goog.testing.fs.Entry.prototype.isDirectory = goog.abstractMethod;
+
+
+/** @override */
+>>>>>>> newgitrepo
 goog.testing.fs.Entry.prototype.getName = function() {
   return this.name_;
 };
 
 
+<<<<<<< HEAD
 /**
  * @see {goog.fs.Entry#getFullPath}
  * @return {string}
  */
+=======
+/** @override */
+>>>>>>> newgitrepo
 goog.testing.fs.Entry.prototype.getFullPath = function() {
   if (this.getName() == '' || this.parent.getName() == '') {
     // The root directory has an empty name
@@ -113,14 +143,20 @@ goog.testing.fs.Entry.prototype.getFullPath = function() {
 
 
 /**
+<<<<<<< HEAD
  * @see {goog.fs.Entry#getFileSystem}
  * @return {!goog.testing.fs.FileSystem}
+=======
+ * @return {!goog.testing.fs.FileSystem}
+ * @override
+>>>>>>> newgitrepo
  */
 goog.testing.fs.Entry.prototype.getFileSystem = function() {
   return this.fs_;
 };
 
 
+<<<<<<< HEAD
 /**
  * @see {goog.fs.Entry#getLastModified}
  * @return {!goog.async.Deferred}
@@ -141,6 +177,17 @@ goog.testing.fs.Entry.prototype.getMetadata = goog.abstractMethod;
  * @param {string=} opt_newName
  * @return {!goog.async.Deferred}
  */
+=======
+/** @override */
+goog.testing.fs.Entry.prototype.getLastModified = goog.abstractMethod;
+
+
+/** @override */
+goog.testing.fs.Entry.prototype.getMetadata = goog.abstractMethod;
+
+
+/** @override */
+>>>>>>> newgitrepo
 goog.testing.fs.Entry.prototype.moveTo = function(parent, opt_newName) {
   var msg = 'moving ' + this.getFullPath() + ' into ' + parent.getFullPath() +
       (opt_newName ? ', renaming to ' + opt_newName : '');
@@ -154,6 +201,7 @@ goog.testing.fs.Entry.prototype.moveTo = function(parent, opt_newName) {
 };
 
 
+<<<<<<< HEAD
 /**
  * @see {goog.fs.Entry#copyTo}
  * @param {!goog.testing.fs.DirectoryEntry} parent
@@ -161,6 +209,11 @@ goog.testing.fs.Entry.prototype.moveTo = function(parent, opt_newName) {
  * @return {!goog.async.Deferred}
  */
 goog.testing.fs.Entry.prototype.copyTo = function(parent, opt_newName) {
+=======
+/** @override */
+goog.testing.fs.Entry.prototype.copyTo = function(parent, opt_newName) {
+  goog.asserts.assert(parent instanceof goog.testing.fs.DirectoryEntry);
+>>>>>>> newgitrepo
   var msg = 'copying ' + this.getFullPath() + ' into ' + parent.getFullPath() +
       (opt_newName ? ', renaming to ' + opt_newName : '');
   return this.checkNotDeleted(msg).addCallback(function() {
@@ -181,19 +234,35 @@ goog.testing.fs.Entry.prototype.copyTo = function(parent, opt_newName) {
 goog.testing.fs.Entry.prototype.clone = goog.abstractMethod;
 
 
+<<<<<<< HEAD
 /**
  * @see {goog.fs.Entry#toUrl}
  * @return {string}
  */
+=======
+/** @override */
+>>>>>>> newgitrepo
 goog.testing.fs.Entry.prototype.toUrl = function(opt_mimetype) {
   return 'fakefilesystem:' + this.getFullPath();
 };
 
 
+<<<<<<< HEAD
 /**
  * @see {goog.fs.Entry#remove}
  * @return {!goog.async.Deferred}
  */
+=======
+/** @override */
+goog.testing.fs.Entry.prototype.toUri = goog.testing.fs.Entry.prototype.toUrl;
+
+
+/** @override */
+goog.testing.fs.Entry.prototype.wrapEntry = goog.abstractMethod;
+
+
+/** @override */
+>>>>>>> newgitrepo
 goog.testing.fs.Entry.prototype.remove = function() {
   var msg = 'removing ' + this.getFullPath();
   return this.checkNotDeleted(msg).addCallback(function() {
@@ -205,10 +274,14 @@ goog.testing.fs.Entry.prototype.remove = function() {
 };
 
 
+<<<<<<< HEAD
 /**
  * @see {goog.fs.Entry#getParent}
  * @return {!goog.async.Deferred}
  */
+=======
+/** @override */
+>>>>>>> newgitrepo
 goog.testing.fs.Entry.prototype.getParent = function() {
   var msg = 'getting parent of ' + this.getFullPath();
   return this.checkNotDeleted(msg).
@@ -253,6 +326,10 @@ goog.testing.fs.Entry.prototype.checkNotDeleted = function(action) {
  *     entry objects.
  * @constructor
  * @extends {goog.testing.fs.Entry}
+<<<<<<< HEAD
+=======
+ * @implements {goog.fs.DirectoryEntry}
+>>>>>>> newgitrepo
  */
 goog.testing.fs.DirectoryEntry = function(fs, parent, name, children) {
   goog.base(this, fs, parent || this, name);
@@ -337,12 +414,16 @@ goog.testing.fs.DirectoryEntry.prototype.remove = function() {
 };
 
 
+<<<<<<< HEAD
 /**
  * @see {goog.fs.DirectoryEntry#getFile}
  * @param {string} path
  * @param {goog.fs.DirectoryEntry.Behavior=} opt_behavior
  * @return {!goog.async.Deferred}
  */
+=======
+/** @override */
+>>>>>>> newgitrepo
 goog.testing.fs.DirectoryEntry.prototype.getFile = function(
     path, opt_behavior) {
   var msg = 'loading file ' + path + ' from ' + this.getFullPath();
@@ -357,12 +438,16 @@ goog.testing.fs.DirectoryEntry.prototype.getFile = function(
 };
 
 
+<<<<<<< HEAD
 /**
  * @see {goog.fs.DirectoryEntry#getDirectory}
  * @param {string} path
  * @param {goog.fs.DirectoryEntry.Behavior=} opt_behavior
  * @return {!goog.async.Deferred}
  */
+=======
+/** @override */
+>>>>>>> newgitrepo
 goog.testing.fs.DirectoryEntry.prototype.getDirectory = function(
     path, opt_behavior) {
   var msg = 'loading directory ' + path + ' from ' + this.getFullPath();
@@ -522,10 +607,14 @@ goog.testing.fs.DirectoryEntry.prototype.hasChild = function(name) {
 };
 
 
+<<<<<<< HEAD
 /**
  * @see {goog.fs.DirectoryEntry.removeRecursively}
  * @return {!goog.async.Deferred}
  */
+=======
+/** @override */
+>>>>>>> newgitrepo
 goog.testing.fs.DirectoryEntry.prototype.removeRecursively = function() {
   var msg = 'removing ' + this.getFullPath() + ' recursively';
   return this.checkNotDeleted(msg).addCallback(function() {
@@ -540,10 +629,14 @@ goog.testing.fs.DirectoryEntry.prototype.removeRecursively = function() {
 };
 
 
+<<<<<<< HEAD
 /**
  * @see {goog.fs.DirectoryEntry#listDirectory}
  * @return {!goog.async.Deferred}
  */
+=======
+/** @override */
+>>>>>>> newgitrepo
 goog.testing.fs.DirectoryEntry.prototype.listDirectory = function() {
   var msg = 'listing ' + this.getFullPath();
   return this.checkNotDeleted(msg).addCallback(function() {
@@ -552,6 +645,7 @@ goog.testing.fs.DirectoryEntry.prototype.listDirectory = function() {
 };
 
 
+<<<<<<< HEAD
 /**
  * @see {goog.fs.DirectoryEntry#createPath}
  * @return {!goog.async.Deferred}
@@ -559,6 +653,12 @@ goog.testing.fs.DirectoryEntry.prototype.listDirectory = function() {
 goog.testing.fs.DirectoryEntry.prototype.createPath =
     // This isn't really type-safe.
     /** @type {!Function} */ (goog.fs.DirectoryEntry.prototype.createPath);
+=======
+/** @override */
+goog.testing.fs.DirectoryEntry.prototype.createPath =
+    // This isn't really type-safe.
+    /** @type {!Function} */ (goog.fs.DirectoryEntryImpl.prototype.createPath);
+>>>>>>> newgitrepo
 
 
 
@@ -572,6 +672,10 @@ goog.testing.fs.DirectoryEntry.prototype.createPath =
  * @param {string} data The data initially contained in the file.
  * @constructor
  * @extends {goog.testing.fs.Entry}
+<<<<<<< HEAD
+=======
+ * @implements {goog.fs.FileEntry}
+>>>>>>> newgitrepo
  */
 goog.testing.fs.FileEntry = function(fs, parent, name, data) {
   goog.base(this, fs, parent, name);
@@ -632,10 +736,14 @@ goog.testing.fs.FileEntry.prototype.getMetadata = function() {
 };
 
 
+<<<<<<< HEAD
 /**
  * @see {goog.fs.FileEntry#createWriter}
  * @return {!goog.async.Deferred}
  */
+=======
+/** @override */
+>>>>>>> newgitrepo
 goog.testing.fs.FileEntry.prototype.createWriter = function() {
   var d = new goog.async.Deferred();
   goog.Timer.callOnce(
@@ -644,10 +752,14 @@ goog.testing.fs.FileEntry.prototype.createWriter = function() {
 };
 
 
+<<<<<<< HEAD
 /**
  * @see {goog.fs.FileEntry#file}
  * @return {!goog.async.Deferred}
  */
+=======
+/** @override */
+>>>>>>> newgitrepo
 goog.testing.fs.FileEntry.prototype.file = function() {
   var msg = 'getting file for ' + this.getFullPath();
   return this.checkNotDeleted(msg).addCallback(function() {

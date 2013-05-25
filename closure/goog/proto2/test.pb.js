@@ -19,10 +19,17 @@
  */
 
 goog.provide('proto2.TestAllTypes');
+<<<<<<< HEAD
 goog.provide('proto2.TestAllTypes.NestedMessage');
 goog.provide('proto2.TestAllTypes.OptionalGroup');
 goog.provide('proto2.TestAllTypes.RepeatedGroup');
 goog.provide('proto2.TestAllTypes.NestedEnum');
+=======
+goog.provide('proto2.TestAllTypes.NestedEnum');
+goog.provide('proto2.TestAllTypes.NestedMessage');
+goog.provide('proto2.TestAllTypes.OptionalGroup');
+goog.provide('proto2.TestAllTypes.RepeatedGroup');
+>>>>>>> newgitrepo
 
 goog.require('goog.proto2.Message');
 

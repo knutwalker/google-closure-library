@@ -8,12 +8,18 @@
 <title>Closure Unit Tests - goog.async.DeferredList</title>
 <script src="../../../../../closure/goog/base.js"></script>
 <script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> newgitrepo
 goog.require('goog.array');
 goog.require('goog.async.Deferred');
 goog.require('goog.async.DeferredList');
 goog.require('goog.testing.jsunit');
+<<<<<<< HEAD
 
+=======
+>>>>>>> newgitrepo
 </script>
 </head>
 <body>
@@ -23,6 +29,13 @@ var Deferred = goog.async.Deferred;
 var DeferredList = goog.async.DeferredList;
 
 
+<<<<<<< HEAD
+=======
+// Re-throw (after a timeout) any errors not handled in an errback.
+Deferred.STRICT_ERRORS = true;
+
+
+>>>>>>> newgitrepo
 /**
  * A list of unhandled errors.
  * @type {Array.<Error>}
@@ -178,14 +191,31 @@ function testFireOnFirstErrback() {
     assertEquals('A', res);
 
     // Return a non-error value to break out of the errback path.
+<<<<<<< HEAD
     return true;
   });
 
+=======
+    return null;
+  });
+>>>>>>> newgitrepo
   addCatchAll(dl);
 
   b.callback('B');
   a.errback('A');
 
+<<<<<<< HEAD
+=======
+  assertTrue(c.hasFired());
+  c.addErrback(function(res) {
+    assertTrue(
+        'The DeferredList errback should have canceled all pending inputs.',
+        res instanceof Deferred.CanceledError);
+    return null;
+  });
+  addCatchAll(c);
+
+>>>>>>> newgitrepo
   // Shouldn't cause any more callbacks on the DeferredList.
   c.callback('C');
 }
@@ -199,7 +229,11 @@ function testNoConsumeErrors() {
 
   a.addErrback(function(res) {
     count++;
+<<<<<<< HEAD
     return true;
+=======
+    return null;
+>>>>>>> newgitrepo
   });
 
   addCatchAll(a, dl);
@@ -301,7 +335,11 @@ function testGatherResultsFailure() {
   });
   dl.addErrback(function() {
     firedErrback = true;
+<<<<<<< HEAD
     return true;
+=======
+    return null;
+>>>>>>> newgitrepo
   });
 
   addCatchAll(dl);
@@ -316,6 +354,7 @@ function testGatherResultsFailure() {
 
 
 function testGatherResults_cancelCancelsChildren() {
+<<<<<<< HEAD
   var cancelled = [];
   var a = new Deferred(function() {
     cancelled.push('a');
@@ -325,6 +364,17 @@ function testGatherResults_cancelCancelsChildren() {
   });
   var c = new Deferred(function() {
     cancelled.push('c');
+=======
+  var canceled = [];
+  var a = new Deferred(function() {
+    canceled.push('a');
+  });
+  var b = new Deferred(function() {
+    canceled.push('b');
+  });
+  var c = new Deferred(function() {
+    canceled.push('c');
+>>>>>>> newgitrepo
   });
 
   var dl = new DeferredList([a, b, c]);
@@ -336,7 +386,11 @@ function testGatherResults_cancelCancelsChildren() {
   });
   dl.addErrback(function() {
     firedErrback = true;
+<<<<<<< HEAD
     return true;
+=======
+    return null;
+>>>>>>> newgitrepo
   });
 
   addCatchAll(dl);
@@ -346,11 +400,16 @@ function testGatherResults_cancelCancelsChildren() {
 
   assertTrue('Errback should be called', firedErrback);
   assertFalse('Callback should not be called', firedCallback);
+<<<<<<< HEAD
   assertArrayEquals(['a', 'c'], cancelled);
+=======
+  assertArrayEquals(['a', 'c'], canceled);
+>>>>>>> newgitrepo
 }
 
 
 function testErrorCancelsPendingChildrenWhenFireOnFirstError() {
+<<<<<<< HEAD
   var cancelled = [];
   var a = new Deferred(function() {
     cancelled.push('a');
@@ -360,6 +419,17 @@ function testErrorCancelsPendingChildrenWhenFireOnFirstError() {
   });
   var c = new Deferred(function() {
     cancelled.push('c');
+=======
+  var canceled = [];
+  var a = new Deferred(function() {
+    canceled.push('a');
+  });
+  var b = new Deferred(function() {
+    canceled.push('b');
+  });
+  var c = new Deferred(function() {
+    canceled.push('c');
+>>>>>>> newgitrepo
   });
 
   var dl = new DeferredList([a, b, c], false, true);
@@ -371,7 +441,11 @@ function testErrorCancelsPendingChildrenWhenFireOnFirstError() {
   });
   dl.addErrback(function() {
     firedErrback = true;
+<<<<<<< HEAD
     return true;
+=======
+    return null;
+>>>>>>> newgitrepo
   });
 
   addCatchAll(dl);
@@ -381,12 +455,18 @@ function testErrorCancelsPendingChildrenWhenFireOnFirstError() {
 
   assertTrue('Errback should be called', firedErrback);
   assertFalse('Callback should not be called', firedCallback);
+<<<<<<< HEAD
   assertArrayEquals('Only C should be cancelled since A and B finished.',
       ['c'], cancelled);
+=======
+  assertArrayEquals('Only C should be canceled since A and B fired.',
+      ['c'], canceled);
+>>>>>>> newgitrepo
 }
 
 
 function testErrorDoesNotCancelPendingChildrenForVanillaLists() {
+<<<<<<< HEAD
   var cancelled = [];
   var a = new Deferred(function() {
     cancelled.push('a');
@@ -396,6 +476,17 @@ function testErrorDoesNotCancelPendingChildrenForVanillaLists() {
   });
   var c = new Deferred(function() {
     cancelled.push('c');
+=======
+  var canceled = [];
+  var a = new Deferred(function() {
+    canceled.push('a');
+  });
+  var b = new Deferred(function() {
+    canceled.push('b');
+  });
+  var c = new Deferred(function() {
+    canceled.push('c');
+>>>>>>> newgitrepo
   });
 
   var dl = new DeferredList([a, b, c]);
@@ -407,7 +498,11 @@ function testErrorDoesNotCancelPendingChildrenForVanillaLists() {
   });
   dl.addErrback(function() {
     firedErrback = true;
+<<<<<<< HEAD
     return true;
+=======
+    return null;
+>>>>>>> newgitrepo
   });
 
   addCatchAll(dl);
@@ -418,7 +513,79 @@ function testErrorDoesNotCancelPendingChildrenForVanillaLists() {
 
   assertFalse('Errback should not be called', firedErrback);
   assertTrue('Callback should be called', firedCallback);
+<<<<<<< HEAD
   assertArrayEquals('No cancellations', [], cancelled);
+=======
+  assertArrayEquals('No cancellations', [], canceled);
+}
+
+
+function testInputDeferredsStillUsable() {
+  var increment = function(res) {
+    return res + 1;
+  };
+  var incrementErrback = function(res) {
+    throw res + 1;
+  };
+
+  var aComplete = false;
+  var bComplete = false;
+  var hadListCallback = false;
+
+  var a = new Deferred().addCallback(increment);
+  var b = new Deferred().addErrback(incrementErrback);
+  var c = new Deferred();
+
+  var dl = new DeferredList([a, b, c]);
+
+  a.callback(0);
+  a.addCallback(increment);
+  a.addCallback(function(res) {
+    aComplete = true;
+    assertEquals(
+        'The "a" Deferred should have had two increment callbacks.',
+        2, res);
+  });
+  assertTrue('The "a" deferred should complete before the list.', aComplete);
+
+  b.errback(0);
+  b.addErrback(incrementErrback);
+  b.addErrback(function(res) {
+    bComplete = true;
+    assertEquals(
+        'The "b" Deferred should have had two increment errbacks.',
+        2, res);
+  });
+  assertTrue('The "b" deferred should complete before the list.', bComplete);
+
+  assertFalse('The list should not fire until every input has.', dl.hasFired());
+  c.callback();
+  assertTrue(dl.hasFired());
+
+  assertFalse(hadListCallback);
+  dl.addCallback(function(results) {
+    hadListCallback = true;
+
+    var aResult = results[0];
+    var bResult = results[1];
+    var cResult = results[2];
+
+    assertTrue(aResult[0]);
+    assertEquals(
+        'Should see the result from before the second callback was added.',
+        1, aResult[1]);
+
+    assertFalse(bResult[0]);
+    assertEquals(
+        'Should see the result from before the second errback was added.',
+        1, aResult[1]);
+
+    assertTrue(cResult[0]);
+  });
+  assertTrue(hadListCallback);
+
+  addCatchAll(dl);
+>>>>>>> newgitrepo
 }
 
 </script>

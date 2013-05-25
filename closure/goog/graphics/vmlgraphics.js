@@ -24,6 +24,7 @@ goog.provide('goog.graphics.VmlGraphics');
 
 
 goog.require('goog.array');
+<<<<<<< HEAD
 goog.require('goog.dom');
 goog.require('goog.events.EventHandler');
 goog.require('goog.events.EventType');
@@ -32,12 +33,25 @@ goog.require('goog.graphics.Font');
 goog.require('goog.graphics.LinearGradient');
 goog.require('goog.graphics.SolidFill');
 goog.require('goog.graphics.Stroke');
+=======
+goog.require('goog.events');
+goog.require('goog.events.EventHandler');
+goog.require('goog.events.EventType');
+goog.require('goog.graphics.AbstractGraphics');
+goog.require('goog.graphics.LinearGradient');
+goog.require('goog.graphics.Path');
+goog.require('goog.graphics.SolidFill');
+>>>>>>> newgitrepo
 goog.require('goog.graphics.VmlEllipseElement');
 goog.require('goog.graphics.VmlGroupElement');
 goog.require('goog.graphics.VmlImageElement');
 goog.require('goog.graphics.VmlPathElement');
 goog.require('goog.graphics.VmlRectElement');
 goog.require('goog.graphics.VmlTextElement');
+<<<<<<< HEAD
+=======
+goog.require('goog.math');
+>>>>>>> newgitrepo
 goog.require('goog.math.Size');
 goog.require('goog.string');
 goog.require('goog.style');
@@ -58,6 +72,12 @@ goog.require('goog.style');
  *     document we want to render in.
  * @constructor
  * @extends {goog.graphics.AbstractGraphics}
+<<<<<<< HEAD
+=======
+ * @deprecated goog.graphics is deprecated. It existed to abstract over browser
+ *     differences before the canvas tag was widely supported.  See
+ *     http://en.wikipedia.org/wiki/Canvas_element for details.
+>>>>>>> newgitrepo
  */
 goog.graphics.VmlGraphics = function(width, height,
                                      opt_coordWidth, opt_coordHeight,
@@ -790,6 +810,10 @@ goog.graphics.VmlGraphics.prototype.drawPath = function(path, stroke, fill,
  *
  * @param {goog.graphics.Path} path The logical path.
  * @return {string} The VML path representation.
+<<<<<<< HEAD
+=======
+ * @suppress {deprecated} goog.graphics is deprecated.
+>>>>>>> newgitrepo
  */
 goog.graphics.VmlGraphics.getVmlPath = function(path) {
   var list = [];

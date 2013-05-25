@@ -233,7 +233,12 @@ goog.net.jsloader.loadAndVerify = function(uri, verificationObjName, options) {
   var sendDeferred = goog.net.jsloader.load(uri, options);
 
   // Create a deferred object wrapping the send result.
+<<<<<<< HEAD
   var deferred = new goog.async.Deferred(sendDeferred.cancel);
+=======
+  var deferred = new goog.async.Deferred(
+      goog.bind(sendDeferred.cancel, sendDeferred));
+>>>>>>> newgitrepo
 
   // Call user back with object that was set by the script.
   sendDeferred.addCallback(function() {

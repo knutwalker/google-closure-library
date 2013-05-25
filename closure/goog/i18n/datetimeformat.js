@@ -24,7 +24,10 @@ goog.provide('goog.i18n.DateTimeFormat');
 goog.provide('goog.i18n.DateTimeFormat.Format');
 
 goog.require('goog.asserts');
+<<<<<<< HEAD
 goog.require('goog.date.DateLike');
+=======
+>>>>>>> newgitrepo
 goog.require('goog.i18n.DateTimeSymbols');
 goog.require('goog.i18n.TimeZone');
 goog.require('goog.string');
@@ -249,8 +252,16 @@ goog.i18n.DateTimeFormat.prototype.applyStandardPattern_ =
   } else if (formatType < 8) {
     pattern = goog.i18n.DateTimeSymbols.TIMEFORMATS[formatType - 4];
   } else if (formatType < 12) {
+<<<<<<< HEAD
     pattern = goog.i18n.DateTimeSymbols.DATEFORMATS[formatType - 8] +
               ' ' + goog.i18n.DateTimeSymbols.TIMEFORMATS[formatType - 8];
+=======
+    pattern = goog.i18n.DateTimeSymbols.DATETIMEFORMATS[formatType - 8];
+    pattern = pattern.replace('{1}',
+        goog.i18n.DateTimeSymbols.DATEFORMATS[formatType - 8]);
+    pattern = pattern.replace('{0}',
+        goog.i18n.DateTimeSymbols.TIMEFORMATS[formatType - 8]);
+>>>>>>> newgitrepo
   } else {
     this.applyStandardPattern_(goog.i18n.DateTimeFormat.Format.MEDIUM_DATETIME);
     return;

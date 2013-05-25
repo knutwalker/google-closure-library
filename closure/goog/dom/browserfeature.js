@@ -33,7 +33,11 @@ goog.dom.BrowserFeature = {
    * created. False in Internet Explorer prior to version 9.
    */
   CAN_ADD_NAME_OR_TYPE_ATTRIBUTES: !goog.userAgent.IE ||
+<<<<<<< HEAD
       goog.userAgent.isDocumentMode(9),
+=======
+      goog.userAgent.isDocumentModeOrHigher(9),
+>>>>>>> newgitrepo
 
   /**
    * Whether we can use element.children to access an element's Element
@@ -41,14 +45,24 @@ goog.dom.BrowserFeature = {
    * nodes in the collection.)
    */
   CAN_USE_CHILDREN_ATTRIBUTE: !goog.userAgent.GECKO && !goog.userAgent.IE ||
+<<<<<<< HEAD
       goog.userAgent.IE && goog.userAgent.isDocumentMode(9) ||
       goog.userAgent.GECKO && goog.userAgent.isVersion('1.9.1'),
+=======
+      goog.userAgent.IE && goog.userAgent.isDocumentModeOrHigher(9) ||
+      goog.userAgent.GECKO && goog.userAgent.isVersionOrHigher('1.9.1'),
+>>>>>>> newgitrepo
 
   /**
    * Opera, Safari 3, and Internet Explorer 9 all support innerText but they
    * include text nodes in script and style tags. Not document-mode-dependent.
    */
+<<<<<<< HEAD
   CAN_USE_INNER_TEXT: goog.userAgent.IE && !goog.userAgent.isVersion('9'),
+=======
+  CAN_USE_INNER_TEXT: (
+      goog.userAgent.IE && !goog.userAgent.isVersionOrHigher('9')),
+>>>>>>> newgitrepo
 
   /**
    * MSIE, Opera, and Safari>=4 support element.parentElement to access an

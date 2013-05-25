@@ -74,13 +74,28 @@ function testConstant() {
   assertEquals(undefined, goog.functions.constant()());
 }
 
+<<<<<<< HEAD
 function testThrow() {
+=======
+function testError() {
+>>>>>>> newgitrepo
   var f = goog.functions.error('x');
   var e = assertThrows(
       'A function created by goog.functions.error must throw an error', f);
   assertEquals('x', e.message);
 }
 
+<<<<<<< HEAD
+=======
+function testFail() {
+  var obj = {};
+  var f = goog.functions.fail(obj);
+  var e = assertThrows(
+      'A function created by goog.functions.raise must throw its input', f);
+  assertEquals(obj, e);
+}
+
+>>>>>>> newgitrepo
 function testCompose() {
   var add2 = function(x) {
     return x + 2;

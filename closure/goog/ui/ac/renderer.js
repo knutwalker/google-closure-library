@@ -24,6 +24,10 @@ goog.provide('goog.ui.ac.Renderer.CustomRenderer');
 goog.require('goog.a11y.aria');
 goog.require('goog.a11y.aria.Role');
 goog.require('goog.a11y.aria.State');
+<<<<<<< HEAD
+=======
+goog.require('goog.array');
+>>>>>>> newgitrepo
 goog.require('goog.dispose');
 goog.require('goog.dom');
 goog.require('goog.dom.classes');
@@ -32,7 +36,10 @@ goog.require('goog.events.EventTarget');
 goog.require('goog.events.EventType');
 goog.require('goog.fx.dom.FadeInAndShow');
 goog.require('goog.fx.dom.FadeOutAndHide');
+<<<<<<< HEAD
 goog.require('goog.iter');
+=======
+>>>>>>> newgitrepo
 goog.require('goog.positioning');
 goog.require('goog.positioning.Corner');
 goog.require('goog.positioning.Overflow');
@@ -422,7 +429,11 @@ goog.ui.ac.Renderer.prototype.dismiss = function() {
           this.menuFadeDuration_);
       this.animation_.play();
     } else {
+<<<<<<< HEAD
       goog.style.showElement(this.element_, false);
+=======
+      goog.style.setElementShown(this.element_, false);
+>>>>>>> newgitrepo
     }
   }
 };
@@ -453,7 +464,11 @@ goog.ui.ac.Renderer.prototype.show = function() {
           this.menuFadeDuration_);
       this.animation_.play();
     } else {
+<<<<<<< HEAD
       goog.style.showElement(this.element_, true);
+=======
+      goog.style.setElementShown(this.element_, true);
+>>>>>>> newgitrepo
     }
   }
 };
@@ -475,8 +490,15 @@ goog.ui.ac.Renderer.prototype.hiliteRow = function(index) {
   var rowDiv = index >= 0 && index < this.rowDivs_.length ?
       this.rowDivs_[index] : undefined;
 
+<<<<<<< HEAD
   var evtObj = {type: goog.ui.ac.AutoComplete.EventType.ROW_HILITE,
     rowNode: rowDiv};
+=======
+  var evtObj = /** @lends {goog.events.Event.prototype} */ ({
+    type: goog.ui.ac.AutoComplete.EventType.ROW_HILITE,
+    rowNode: rowDiv
+  });
+>>>>>>> newgitrepo
   if (this.dispatchEvent(evtObj)) {
     this.hiliteNone();
     this.hilitedRow_ = index;
@@ -591,7 +613,11 @@ goog.ui.ac.Renderer.prototype.redraw = function() {
     this.customRenderer_.render(this, this.element_, this.rows_, this.token_);
   } else {
     var curRow = null;
+<<<<<<< HEAD
     goog.iter.forEach(this.rows_, function(row) {
+=======
+    goog.array.forEach(this.rows_, function(row) {
+>>>>>>> newgitrepo
       row = this.renderRowHtml(row, this.token_);
       if (this.topAlign_) {
         // Aligned with top of target = best match at bottom

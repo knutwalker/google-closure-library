@@ -371,7 +371,11 @@ goog.fx.Animation.prototype.destroy = function() {
 };
 
 
+<<<<<<< HEAD
 /** @inheritDoc */
+=======
+/** @override */
+>>>>>>> newgitrepo
 goog.fx.Animation.prototype.onAnimationFrame = function(now) {
   this.cycle(now);
 };

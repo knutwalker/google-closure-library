@@ -122,6 +122,17 @@ See the COPYING file for details.
           goog.color.parse(newNodes[1].style.backgroundColor).hex);
     }
 
+<<<<<<< HEAD
+=======
+    function testSetColorsWithLabels() {
+      emptyPalette.setColors(['#00f', '#FFFFFF', 'black'], ['blue', 'white']);
+      var nodes = emptyPalette.getContent();
+      assertEquals('blue', nodes[0].title);
+      assertEquals('white', nodes[1].title);
+      assertEquals('black', nodes[2].title);
+    }
+
+>>>>>>> newgitrepo
     function testRender() {
       samplePalette.render(document.getElementById('sandbox'));
 
@@ -135,10 +146,13 @@ See the COPYING file for details.
       var table = elem.firstChild;
       assertEquals('TABLE', table.tagName);
       assertEquals('goog-palette-table', table.className);
+<<<<<<< HEAD
 
       // TODO(attila):  Each ColorPalette creates 12 listeners (13 on IE)!
       assertEquals(goog.userAgent.IE ? 13 : 12,
           goog.events.getTotalListenerCount());
+=======
+>>>>>>> newgitrepo
     }
 
     function testGetSelectedColor() {

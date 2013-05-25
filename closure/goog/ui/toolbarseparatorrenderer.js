@@ -44,7 +44,11 @@ goog.addSingletonGetter(goog.ui.ToolbarSeparatorRenderer);
  * @type {string}
  */
 goog.ui.ToolbarSeparatorRenderer.CSS_CLASS =
+<<<<<<< HEAD
   goog.getCssName('goog-toolbar-separator');
+=======
+    goog.getCssName('goog-toolbar-separator');
+>>>>>>> newgitrepo
 
 
 /**

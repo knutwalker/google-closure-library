@@ -76,7 +76,11 @@ See the COPYING file for details.
    */
   function setUpTestOk(imageUrl) {
     mockField.focus().$times(1);
+<<<<<<< HEAD
     var tempImage = goog.dom.$dom(goog.dom.TagName.IMG, {src: imageUrl});
+=======
+    var tempImage = goog.dom.createDom(goog.dom.TagName.IMG, {src: imageUrl});
+>>>>>>> newgitrepo
     var fullImageUrl = tempImage.src;
     var createdNodeMatcher = new goog.testing.mockmatchers.ArgumentMatcher(
           function(arg) {
@@ -106,9 +110,15 @@ See the COPYING file for details.
     mockField.dispatchBeforeChange().$times(1);
     mockCtrl.$replayAll();
 
+<<<<<<< HEAD
     plugin = new goog.editor.plugins.EquationEditorPlugin(domHelper);
     plugin.registerFieldObject(mockField);
     var dialog = plugin.createDialog();
+=======
+    plugin = new goog.editor.plugins.EquationEditorPlugin();
+    plugin.registerFieldObject(mockField);
+    var dialog = plugin.createDialog(domHelper);
+>>>>>>> newgitrepo
     // Mock of execCommand + clicking OK without actually opening the dialog.
     dialog.dispatchEvent(
         new goog.ui.editor.EquationEditorOkEvent(IMG_URL));

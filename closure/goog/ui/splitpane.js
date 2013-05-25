@@ -106,7 +106,16 @@ goog.ui.SplitPane.EventType = {
   /**
    * Dispatched after handle drag end.
    */
+<<<<<<< HEAD
   HANDLE_DRAG_END: 'handle_drag_end'
+=======
+  HANDLE_DRAG_END: 'handle_drag_end',
+
+  /**
+   * Dispatched after handle snap (double-click splitter).
+   */
+  HANDLE_SNAP: 'handle_snap'
+>>>>>>> newgitrepo
 };
 
 
@@ -742,6 +751,12 @@ goog.ui.SplitPane.prototype.snapIt_ = function() {
     }
     this.setFirstComponentSize(snapSize);
   }
+<<<<<<< HEAD
+=======
+
+  // Fire a SNAP event.
+  this.dispatchEvent(goog.ui.SplitPane.EventType.HANDLE_SNAP);
+>>>>>>> newgitrepo
 };
 
 
@@ -757,7 +772,11 @@ goog.ui.SplitPane.prototype.handleDragStart_ = function(e) {
     // Create the overlay.
     var cssStyles = 'position: relative';
 
+<<<<<<< HEAD
     if (goog.userAgent.IE) {
+=======
+    if (goog.userAgent.IE && !goog.userAgent.isVersionOrHigher('10')) {
+>>>>>>> newgitrepo
       // IE doesn't look at this div unless it has a background, so we'll
       // put one on, but make it opaque.
       cssStyles += ';background-color: #000;filter: Alpha(Opacity=0)';

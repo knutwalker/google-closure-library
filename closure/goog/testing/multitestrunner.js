@@ -32,7 +32,10 @@ goog.require('goog.functions');
 goog.require('goog.string');
 goog.require('goog.ui.Component');
 goog.require('goog.ui.ServerChart');
+<<<<<<< HEAD
 goog.require('goog.ui.ServerChart.ChartType');
+=======
+>>>>>>> newgitrepo
 goog.require('goog.ui.TableSorter');
 
 
@@ -911,8 +914,13 @@ goog.testing.MultiTestRunner.prototype.drawRunTimePie_ = function() {
   pie.setMaxValue(totalTime);
   pie.addDataSet([runTime, loadTime], 'ff9900');
   pie.setXLabels([
+<<<<<<< HEAD
       'Test execution (' + runTime + 'ms)',
       'Loading (' + loadTime + 'ms)']);
+=======
+    'Test execution (' + runTime + 'ms)',
+    'Loading (' + loadTime + 'ms)']);
+>>>>>>> newgitrepo
   pie.render(this.statsEl_);
 };
 
@@ -997,7 +1005,11 @@ goog.testing.MultiTestRunner.prototype.writeCurrentSummary_ = function() {
  * @private
  */
 goog.testing.MultiTestRunner.prototype.drawProgressSegment_ =
+<<<<<<< HEAD
       function(title, success) {
+=======
+    function(title, success) {
+>>>>>>> newgitrepo
   var part = this.progressRow_.cells[this.resultCount_ - 1];
   part.title = title + ' : ' + (success ? 'SUCCESS' : 'FAILURE');
   part.style.backgroundColor = success ? '#090' : '#900';

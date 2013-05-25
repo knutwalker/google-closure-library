@@ -35,16 +35,26 @@ goog.require('goog.dom');
 goog.require('goog.events.EventType');
 goog.require('goog.events.KeyCodes');
 goog.require('goog.events.KeyHandler');
+<<<<<<< HEAD
 goog.require('goog.events.KeyHandler.EventType');
 goog.require('goog.style');
 goog.require('goog.ui.Component');
 goog.require('goog.ui.Component.Error');
 goog.require('goog.ui.Component.EventType');
 goog.require('goog.ui.Component.State');
+=======
+goog.require('goog.object');
+goog.require('goog.style');
+goog.require('goog.ui.Component');
+>>>>>>> newgitrepo
 goog.require('goog.ui.ContainerRenderer');
 goog.require('goog.ui.Control');
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Base class for containers.  Extends {@link goog.ui.Component} by adding
  * the following:
@@ -521,12 +531,24 @@ goog.ui.Container.prototype.handleHighlightItem = function(e) {
       }
     }
   }
+<<<<<<< HEAD
   var element = this.getElement();
   goog.asserts.assert(element,
       'The DOM element for the container cannot be null.');
   goog.a11y.aria.setState(element,
       goog.a11y.aria.State.ACTIVEDESCENDANT,
       e.target.getElement().id);
+=======
+
+  var element = this.getElement();
+  goog.asserts.assert(element,
+      'The DOM element for the container cannot be null.');
+  if (e.target.getElement() != null) {
+    goog.a11y.aria.setState(element,
+        goog.a11y.aria.State.ACTIVEDESCENDANT,
+        e.target.getElement().id);
+  }
+>>>>>>> newgitrepo
 };
 
 
@@ -542,9 +564,15 @@ goog.ui.Container.prototype.handleUnHighlightItem = function(e) {
   var element = this.getElement();
   goog.asserts.assert(element,
       'The DOM element for the container cannot be null.');
+<<<<<<< HEAD
   goog.a11y.aria.setState(element,
       goog.a11y.aria.State.ACTIVEDESCENDANT,
       '');
+=======
+  // Setting certain ARIA attributes to empty strings is problematic.
+  // Just remove the attribute instead.
+  goog.a11y.aria.removeState(element, goog.a11y.aria.State.ACTIVEDESCENDANT);
+>>>>>>> newgitrepo
 };
 
 
@@ -1005,7 +1033,11 @@ goog.ui.Container.prototype.setVisible = function(visible, opt_force) {
 
     var elem = this.getElement();
     if (elem) {
+<<<<<<< HEAD
       goog.style.showElement(elem, visible);
+=======
+      goog.style.setElementShown(elem, visible);
+>>>>>>> newgitrepo
       if (this.isFocusable()) {
         // Enable keyboard access only for enabled & visible containers.
         this.renderer_.enableTabIndex(this.getKeyEventTarget(),

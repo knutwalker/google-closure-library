@@ -31,7 +31,11 @@ goog.provide('goog.i18n.bidi');
  *
  * {@see goog.i18n.bidi.IS_RTL}
  */
+<<<<<<< HEAD
 goog.i18n.bidi.FORCE_RTL = false;
+=======
+goog.define('goog.i18n.bidi.FORCE_RTL', false);
+>>>>>>> newgitrepo
 
 
 /**

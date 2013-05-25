@@ -23,6 +23,10 @@ goog.provide('goog.tweak');
 goog.provide('goog.tweak.ConfigParams');
 
 goog.require('goog.asserts');
+<<<<<<< HEAD
+=======
+goog.require('goog.tweak.BaseSetting');
+>>>>>>> newgitrepo
 goog.require('goog.tweak.BooleanGroup');
 goog.require('goog.tweak.BooleanInGroupSetting');
 goog.require('goog.tweak.BooleanSetting');
@@ -91,6 +95,7 @@ goog.tweak.ConfigParams;
 
 
 /**
+<<<<<<< HEAD
  * Silences warning about properties on ConfigParams never being set when
  * running JsLibTest.
  * @return {goog.tweak.ConfigParams} Dummy return.
@@ -109,6 +114,8 @@ goog.tweak.configParamsNeverCompilerWarningWorkAround_ = function() {
 
 
 /**
+=======
+>>>>>>> newgitrepo
  * Applies all extra configuration parameters in configParams.
  * @param {!goog.tweak.BaseEntry} entry The entry to apply them to.
  * @param {!goog.tweak.ConfigParams} configParams Extra configuration

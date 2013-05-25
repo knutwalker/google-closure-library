@@ -95,7 +95,11 @@ goog.provide('goog.ui.media.Media');
 goog.provide('goog.ui.media.MediaRenderer');
 
 goog.require('goog.style');
+<<<<<<< HEAD
 goog.require('goog.ui.Component.State');
+=======
+goog.require('goog.ui.Component');
+>>>>>>> newgitrepo
 goog.require('goog.ui.Control');
 goog.require('goog.ui.ControlRenderer');
 
@@ -195,7 +199,10 @@ goog.inherits(goog.ui.media.MediaRenderer, goog.ui.ControlRenderer);
  *
  * @param {goog.ui.Control} control The control instance.
  * @return {Element} The DOM structure that represents control.
+<<<<<<< HEAD
  * @suppress {visibility} Calling protected control.setElementInternal().
+=======
+>>>>>>> newgitrepo
  * @override
  */
 goog.ui.media.MediaRenderer.prototype.createDom = function(control) {

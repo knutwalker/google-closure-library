@@ -35,6 +35,11 @@
  * almost all locales thus won't be included here.
  */
 
+<<<<<<< HEAD
+=======
+/* File generated from CLDR ver. 23.0 */
+
+>>>>>>> newgitrepo
 goog.provide('goog.i18n.DateTimePatterns');
 
 goog.provide('goog.i18n.DateTimePatterns_af');
@@ -42,6 +47,10 @@ goog.provide('goog.i18n.DateTimePatterns_am');
 goog.provide('goog.i18n.DateTimePatterns_ar');
 goog.provide('goog.i18n.DateTimePatterns_bg');
 goog.provide('goog.i18n.DateTimePatterns_bn');
+<<<<<<< HEAD
+=======
+goog.provide('goog.i18n.DateTimePatterns_br');
+>>>>>>> newgitrepo
 goog.provide('goog.i18n.DateTimePatterns_ca');
 goog.provide('goog.i18n.DateTimePatterns_chr');
 goog.provide('goog.i18n.DateTimePatterns_cs');
@@ -61,6 +70,10 @@ goog.provide('goog.i18n.DateTimePatterns_en_US');
 goog.provide('goog.i18n.DateTimePatterns_en_ZA');
 goog.provide('goog.i18n.DateTimePatterns_es');
 goog.provide('goog.i18n.DateTimePatterns_es_419');
+<<<<<<< HEAD
+=======
+goog.provide('goog.i18n.DateTimePatterns_es_ES');
+>>>>>>> newgitrepo
 goog.provide('goog.i18n.DateTimePatterns_et');
 goog.provide('goog.i18n.DateTimePatterns_eu');
 goog.provide('goog.i18n.DateTimePatterns_fa');
@@ -92,13 +105,23 @@ goog.provide('goog.i18n.DateTimePatterns_mo');
 goog.provide('goog.i18n.DateTimePatterns_mr');
 goog.provide('goog.i18n.DateTimePatterns_ms');
 goog.provide('goog.i18n.DateTimePatterns_mt');
+<<<<<<< HEAD
+=======
+goog.provide('goog.i18n.DateTimePatterns_nb');
+>>>>>>> newgitrepo
 goog.provide('goog.i18n.DateTimePatterns_nl');
 goog.provide('goog.i18n.DateTimePatterns_no');
 goog.provide('goog.i18n.DateTimePatterns_or');
 goog.provide('goog.i18n.DateTimePatterns_pl');
+<<<<<<< HEAD
 goog.provide('goog.i18n.DateTimePatterns_pt_BR');
 goog.provide('goog.i18n.DateTimePatterns_pt_PT');
 goog.provide('goog.i18n.DateTimePatterns_pt');
+=======
+goog.provide('goog.i18n.DateTimePatterns_pt');
+goog.provide('goog.i18n.DateTimePatterns_pt_BR');
+goog.provide('goog.i18n.DateTimePatterns_pt_PT');
+>>>>>>> newgitrepo
 goog.provide('goog.i18n.DateTimePatterns_ro');
 goog.provide('goog.i18n.DateTimePatterns_ru');
 goog.provide('goog.i18n.DateTimePatterns_sk');
@@ -115,10 +138,17 @@ goog.provide('goog.i18n.DateTimePatterns_tr');
 goog.provide('goog.i18n.DateTimePatterns_uk');
 goog.provide('goog.i18n.DateTimePatterns_ur');
 goog.provide('goog.i18n.DateTimePatterns_vi');
+<<<<<<< HEAD
 goog.provide('goog.i18n.DateTimePatterns_zh_TW');
 goog.provide('goog.i18n.DateTimePatterns_zh_CN');
 goog.provide('goog.i18n.DateTimePatterns_zh_HK');
 goog.provide('goog.i18n.DateTimePatterns_zh');
+=======
+goog.provide('goog.i18n.DateTimePatterns_zh');
+goog.provide('goog.i18n.DateTimePatterns_zh_CN');
+goog.provide('goog.i18n.DateTimePatterns_zh_HK');
+goog.provide('goog.i18n.DateTimePatterns_zh_TW');
+>>>>>>> newgitrepo
 goog.provide('goog.i18n.DateTimePatterns_zu');
 
 
@@ -130,9 +160,16 @@ goog.i18n.DateTimePatterns_af = {
   YEAR_MONTH_ABBR: 'MMM y',
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'MMM d',
+<<<<<<< HEAD
   MONTH_DAY_FULL: 'MMMM dd',
   MONTH_DAY_SHORT: 'M/d',
   MONTH_DAY_MEDIUM: 'MMMM d',
+=======
+  MONTH_DAY_FULL: 'dd MMMM',
+  MONTH_DAY_SHORT: 'M/d',
+  MONTH_DAY_MEDIUM: 'MMMM d',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, MMM d',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -148,6 +185,10 @@ goog.i18n.DateTimePatterns_am = {
   MONTH_DAY_FULL: 'MMMM dd',
   MONTH_DAY_SHORT: 'M/d',
   MONTH_DAY_MEDIUM: 'MMMM d',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, MMM d',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -161,8 +202,14 @@ goog.i18n.DateTimePatterns_ar = {
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'd‏/M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  MONTH_DAY_SHORT: 'd/‏M',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE، d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -171,13 +218,23 @@ goog.i18n.DateTimePatterns_ar = {
  * Extended set of localized date/time patterns for locale bg.
  */
 goog.i18n.DateTimePatterns_bg = {
+<<<<<<< HEAD
   YEAR_FULL: 'y',
   YEAR_MONTH_ABBR: 'MMM y \'г\'.',
   YEAR_MONTH_FULL: 'MMMM yyyy \'г\'.',
+=======
+  YEAR_FULL: 'yyyy \'г\'.',
+  YEAR_MONTH_ABBR: 'MMM y \'г\'.',
+  YEAR_MONTH_FULL: 'MMMM yyyy',
+>>>>>>> newgitrepo
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'd.M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'd MMM, EEE',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -191,8 +248,30 @@ goog.i18n.DateTimePatterns_bn = {
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'd-M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  MONTH_DAY_SHORT: 'd/M',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d MMM',
+  DAY_ABBR: 'd'
+};
+
+
+/**
+ * Extended set of localized date/time patterns for locale br.
+ */
+goog.i18n.DateTimePatterns_br = {
+  YEAR_FULL: 'yyyy',
+  YEAR_MONTH_ABBR: 'y MMM',
+  YEAR_MONTH_FULL: 'yyyy MMMM',
+  MONTH_DAY_ABBR: 'MMM d',
+  MONTH_DAY_FULL: 'MMMM dd',
+  MONTH_DAY_SHORT: 'MM-dd',
+  MONTH_DAY_MEDIUM: 'MMMM d',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'MMM d, EEE',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -203,11 +282,19 @@ goog.i18n.DateTimePatterns_bn = {
 goog.i18n.DateTimePatterns_ca = {
   YEAR_FULL: 'yyyy',
   YEAR_MONTH_ABBR: 'LLL y',
+<<<<<<< HEAD
   YEAR_MONTH_FULL: 'LLLL yyyy',
+=======
+  YEAR_MONTH_FULL: 'LLLL \'de\' yyyy',
+>>>>>>> newgitrepo
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -223,6 +310,10 @@ goog.i18n.DateTimePatterns_chr = {
   MONTH_DAY_FULL: 'MMMM dd',
   MONTH_DAY_SHORT: 'M/d',
   MONTH_DAY_MEDIUM: 'MMMM d',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'MMM d, EEE',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -231,6 +322,7 @@ goog.i18n.DateTimePatterns_chr = {
  * Extended set of localized date/time patterns for locale cs.
  */
 goog.i18n.DateTimePatterns_cs = {
+<<<<<<< HEAD
   YEAR_FULL: 'y',
   YEAR_MONTH_ABBR: 'LLL y',
   YEAR_MONTH_FULL: 'LLLL yyyy',
@@ -238,6 +330,16 @@ goog.i18n.DateTimePatterns_cs = {
   MONTH_DAY_FULL: 'dd. MMMM',
   MONTH_DAY_SHORT: 'd.M',
   MONTH_DAY_MEDIUM: 'd. MMMM',
+=======
+  YEAR_FULL: 'yyyy',
+  YEAR_MONTH_ABBR: 'LLLL y',
+  YEAR_MONTH_FULL: 'LLLL yyyy',
+  MONTH_DAY_ABBR: 'd. M.',
+  MONTH_DAY_FULL: 'dd. M.',
+  MONTH_DAY_SHORT: 'd. M.',
+  MONTH_DAY_MEDIUM: 'd. M.',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d. M.',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd.'
 };
 
@@ -253,6 +355,10 @@ goog.i18n.DateTimePatterns_cy = {
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -261,13 +367,21 @@ goog.i18n.DateTimePatterns_cy = {
  * Extended set of localized date/time patterns for locale da.
  */
 goog.i18n.DateTimePatterns_da = {
+<<<<<<< HEAD
   YEAR_FULL: 'y',
+=======
+  YEAR_FULL: 'yyyy',
+>>>>>>> newgitrepo
   YEAR_MONTH_ABBR: 'MMM y',
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd. MMM',
   MONTH_DAY_FULL: 'dd. MMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd. MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d. MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd.'
 };
 
@@ -276,13 +390,21 @@ goog.i18n.DateTimePatterns_da = {
  * Extended set of localized date/time patterns for locale de.
  */
 goog.i18n.DateTimePatterns_de = {
+<<<<<<< HEAD
   YEAR_FULL: 'y',
+=======
+  YEAR_FULL: 'yyyy',
+>>>>>>> newgitrepo
   YEAR_MONTH_ABBR: 'MMM y',
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd. MMM',
   MONTH_DAY_FULL: 'dd. MMMM',
   MONTH_DAY_SHORT: 'd.M.',
   MONTH_DAY_MEDIUM: 'd. MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d. MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -291,13 +413,21 @@ goog.i18n.DateTimePatterns_de = {
  * Extended set of localized date/time patterns for locale de_AT.
  */
 goog.i18n.DateTimePatterns_de_AT = {
+<<<<<<< HEAD
   YEAR_FULL: 'y',
+=======
+  YEAR_FULL: 'yyyy',
+>>>>>>> newgitrepo
   YEAR_MONTH_ABBR: 'MMM y',
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd. MMM',
   MONTH_DAY_FULL: 'dd. MMMM',
   MONTH_DAY_SHORT: 'd.M.',
   MONTH_DAY_MEDIUM: 'd. MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d. MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -306,13 +436,21 @@ goog.i18n.DateTimePatterns_de_AT = {
  * Extended set of localized date/time patterns for locale de_CH.
  */
 goog.i18n.DateTimePatterns_de_CH = {
+<<<<<<< HEAD
   YEAR_FULL: 'y',
+=======
+  YEAR_FULL: 'yyyy',
+>>>>>>> newgitrepo
   YEAR_MONTH_ABBR: 'MMM y',
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd. MMM',
   MONTH_DAY_FULL: 'dd. MMMM',
   MONTH_DAY_SHORT: 'd.M.',
   MONTH_DAY_MEDIUM: 'd. MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d. MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -321,13 +459,21 @@ goog.i18n.DateTimePatterns_de_CH = {
  * Extended set of localized date/time patterns for locale el.
  */
 goog.i18n.DateTimePatterns_el = {
+<<<<<<< HEAD
   YEAR_FULL: 'y',
+=======
+  YEAR_FULL: 'yyyy',
+>>>>>>> newgitrepo
   YEAR_MONTH_ABBR: 'LLL y',
   YEAR_MONTH_FULL: 'LLLL yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -343,6 +489,10 @@ goog.i18n.DateTimePatterns_en = {
   MONTH_DAY_FULL: 'MMMM dd',
   MONTH_DAY_SHORT: 'M/d',
   MONTH_DAY_MEDIUM: 'MMMM d',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, MMM d',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -353,11 +503,20 @@ goog.i18n.DateTimePatterns_en = {
 goog.i18n.DateTimePatterns_en_AU = {
   YEAR_FULL: 'yyyy',
   YEAR_MONTH_ABBR: 'MMM y',
+<<<<<<< HEAD
   YEAR_MONTH_FULL: 'MMMM y',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  YEAR_MONTH_FULL: 'MMMM yyyy',
+  MONTH_DAY_ABBR: 'd MMM',
+  MONTH_DAY_FULL: 'dd MMMM',
+  MONTH_DAY_SHORT: 'dd/MM',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -371,8 +530,14 @@ goog.i18n.DateTimePatterns_en_GB = {
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  MONTH_DAY_SHORT: 'dd/MM',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -383,11 +548,19 @@ goog.i18n.DateTimePatterns_en_GB = {
 goog.i18n.DateTimePatterns_en_IE = {
   YEAR_FULL: 'yyyy',
   YEAR_MONTH_ABBR: 'MMM y',
+<<<<<<< HEAD
   YEAR_MONTH_FULL: 'MMMM y',
+=======
+  YEAR_MONTH_FULL: 'MMMM yyyy',
+>>>>>>> newgitrepo
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -401,8 +574,14 @@ goog.i18n.DateTimePatterns_en_IN = {
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'M/d',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  MONTH_DAY_SHORT: 'dd/MM',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -416,8 +595,14 @@ goog.i18n.DateTimePatterns_en_SG = {
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  MONTH_DAY_SHORT: 'dd/MM',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -433,6 +618,10 @@ goog.i18n.DateTimePatterns_en_US = {
   MONTH_DAY_FULL: 'MMMM dd',
   MONTH_DAY_SHORT: 'M/d',
   MONTH_DAY_MEDIUM: 'MMMM d',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, MMM d',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -448,6 +637,10 @@ goog.i18n.DateTimePatterns_en_ZA = {
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'MM/dd',
   MONTH_DAY_MEDIUM: 'dd MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE dd MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -458,11 +651,20 @@ goog.i18n.DateTimePatterns_en_ZA = {
 goog.i18n.DateTimePatterns_es = {
   YEAR_FULL: 'yyyy',
   YEAR_MONTH_ABBR: 'MMM y',
+<<<<<<< HEAD
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd \'de\' MMM',
   MONTH_DAY_FULL: 'dd \'de\' MMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd \'de\' MMMM',
+=======
+  YEAR_MONTH_FULL: 'MMMM \'de\' yyyy',
+  MONTH_DAY_ABBR: 'd MMM',
+  MONTH_DAY_FULL: 'dd \'de\' MMMM',
+  MONTH_DAY_SHORT: 'd/M',
+  MONTH_DAY_MEDIUM: 'd \'de\' MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -473,11 +675,36 @@ goog.i18n.DateTimePatterns_es = {
 goog.i18n.DateTimePatterns_es_419 = {
   YEAR_FULL: 'yyyy',
   YEAR_MONTH_ABBR: 'MMM y',
+<<<<<<< HEAD
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd \'de\' MMM',
   MONTH_DAY_FULL: 'dd \'de\' MMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd \'de\' MMMM',
+=======
+  YEAR_MONTH_FULL: 'MMMM \'de\' yyyy',
+  MONTH_DAY_ABBR: 'd MMM',
+  MONTH_DAY_FULL: 'dd \'de\' MMMM',
+  MONTH_DAY_SHORT: 'd/M',
+  MONTH_DAY_MEDIUM: 'd \'de\' MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d MMM',
+  DAY_ABBR: 'd'
+};
+
+
+/**
+ * Extended set of localized date/time patterns for locale es_ES.
+ */
+goog.i18n.DateTimePatterns_es_ES = {
+  YEAR_FULL: 'yyyy',
+  YEAR_MONTH_ABBR: 'MMM y',
+  YEAR_MONTH_FULL: 'MMMM \'de\' yyyy',
+  MONTH_DAY_ABBR: 'd MMM',
+  MONTH_DAY_FULL: 'dd \'de\' MMMM',
+  MONTH_DAY_SHORT: 'd/M',
+  MONTH_DAY_MEDIUM: 'd \'de\' MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -493,6 +720,10 @@ goog.i18n.DateTimePatterns_et = {
   MONTH_DAY_FULL: 'dd. MMMM',
   MONTH_DAY_SHORT: 'd.M',
   MONTH_DAY_MEDIUM: 'd. MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d. MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -508,6 +739,10 @@ goog.i18n.DateTimePatterns_eu = {
   MONTH_DAY_FULL: 'MMMM dd',
   MONTH_DAY_SHORT: 'M/d',
   MONTH_DAY_MEDIUM: 'MMMM d',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, MMM d',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -516,13 +751,23 @@ goog.i18n.DateTimePatterns_eu = {
  * Extended set of localized date/time patterns for locale fa.
  */
 goog.i18n.DateTimePatterns_fa = {
+<<<<<<< HEAD
   YEAR_FULL: 'yyyy',
   YEAR_MONTH_ABBR: 'MMM y',
   YEAR_MONTH_FULL: 'MMMM yyyy',
+=======
+  YEAR_FULL: 'y G',
+  YEAR_MONTH_ABBR: 'MMM y G',
+  YEAR_MONTH_FULL: 'MMMM y G',
+>>>>>>> newgitrepo
   MONTH_DAY_ABBR: 'd LLL',
   MONTH_DAY_FULL: 'dd LLLL',
   MONTH_DAY_SHORT: 'M/d',
   MONTH_DAY_MEDIUM: 'd LLLL',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d LLL',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -538,6 +783,10 @@ goog.i18n.DateTimePatterns_fi = {
   MONTH_DAY_FULL: 'dd. MMMM',
   MONTH_DAY_SHORT: 'd.M.',
   MONTH_DAY_MEDIUM: 'd. MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'ccc d. MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -547,12 +796,21 @@ goog.i18n.DateTimePatterns_fi = {
  */
 goog.i18n.DateTimePatterns_fil = {
   YEAR_FULL: 'yyyy',
+<<<<<<< HEAD
   YEAR_MONTH_ABBR: 'y MMM',
   YEAR_MONTH_FULL: 'yyyy MMMM',
+=======
+  YEAR_MONTH_ABBR: 'MMM y',
+  YEAR_MONTH_FULL: 'MMMM yyyy',
+>>>>>>> newgitrepo
   MONTH_DAY_ABBR: 'MMM d',
   MONTH_DAY_FULL: 'MMMM dd',
   MONTH_DAY_SHORT: 'M-d',
   MONTH_DAY_MEDIUM: 'MMMM d',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE MMM d',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -568,6 +826,10 @@ goog.i18n.DateTimePatterns_fr = {
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -583,6 +845,10 @@ goog.i18n.DateTimePatterns_fr_CA = {
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'M-d',
   MONTH_DAY_MEDIUM: 'd MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -596,8 +862,14 @@ goog.i18n.DateTimePatterns_gl = {
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  MONTH_DAY_SHORT: 'd-M',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -606,13 +878,21 @@ goog.i18n.DateTimePatterns_gl = {
  * Extended set of localized date/time patterns for locale gsw.
  */
 goog.i18n.DateTimePatterns_gsw = {
+<<<<<<< HEAD
   YEAR_FULL: 'y',
+=======
+  YEAR_FULL: 'yyyy',
+>>>>>>> newgitrepo
   YEAR_MONTH_ABBR: 'MMM y',
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd. MMM',
   MONTH_DAY_FULL: 'dd. MMMM',
   MONTH_DAY_SHORT: 'd.M.',
   MONTH_DAY_MEDIUM: 'd. MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d. MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -626,8 +906,14 @@ goog.i18n.DateTimePatterns_gu = {
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'd-M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  MONTH_DAY_SHORT: 'd/M',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -641,8 +927,14 @@ goog.i18n.DateTimePatterns_haw = {
   YEAR_MONTH_FULL: 'yyyy MMMM',
   MONTH_DAY_ABBR: 'MMM d',
   MONTH_DAY_FULL: 'MMMM dd',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'M-d',
   MONTH_DAY_MEDIUM: 'MMMM d',
+=======
+  MONTH_DAY_SHORT: 'MM-dd',
+  MONTH_DAY_MEDIUM: 'MMMM d',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'MMM d, EEE',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -651,13 +943,21 @@ goog.i18n.DateTimePatterns_haw = {
  * Extended set of localized date/time patterns for locale he.
  */
 goog.i18n.DateTimePatterns_he = {
+<<<<<<< HEAD
   YEAR_FULL: 'y',
+=======
+  YEAR_FULL: 'yyyy',
+>>>>>>> newgitrepo
   YEAR_MONTH_ABBR: 'MMM y',
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd בMMM',
   MONTH_DAY_FULL: 'dd בMMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd בMMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d בMMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -671,8 +971,14 @@ goog.i18n.DateTimePatterns_hi = {
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'd-M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  MONTH_DAY_SHORT: 'd/M',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -688,6 +994,10 @@ goog.i18n.DateTimePatterns_hr = {
   MONTH_DAY_FULL: 'dd. MMMM',
   MONTH_DAY_SHORT: 'd. M.',
   MONTH_DAY_MEDIUM: 'd. MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d. MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd.'
 };
 
@@ -701,8 +1011,14 @@ goog.i18n.DateTimePatterns_hu = {
   YEAR_MONTH_FULL: 'yyyy. MMMM',
   MONTH_DAY_ABBR: 'MMM d.',
   MONTH_DAY_FULL: 'MMMM dd.',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'M.d.',
   MONTH_DAY_MEDIUM: 'MMMM d.',
+=======
+  MONTH_DAY_SHORT: 'M. d.',
+  MONTH_DAY_MEDIUM: 'MMMM d.',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'MMM d., EEE',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -718,6 +1034,10 @@ goog.i18n.DateTimePatterns_id = {
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -733,6 +1053,10 @@ goog.i18n.DateTimePatterns_in = {
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -748,6 +1072,10 @@ goog.i18n.DateTimePatterns_is = {
   MONTH_DAY_FULL: 'dd. MMMM',
   MONTH_DAY_SHORT: 'd.M',
   MONTH_DAY_MEDIUM: 'd. MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d. MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -763,6 +1091,10 @@ goog.i18n.DateTimePatterns_it = {
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -771,13 +1103,21 @@ goog.i18n.DateTimePatterns_it = {
  * Extended set of localized date/time patterns for locale iw.
  */
 goog.i18n.DateTimePatterns_iw = {
+<<<<<<< HEAD
   YEAR_FULL: 'y',
+=======
+  YEAR_FULL: 'yyyy',
+>>>>>>> newgitrepo
   YEAR_MONTH_ABBR: 'MMM y',
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd בMMM',
   MONTH_DAY_FULL: 'dd בMMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd בMMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d בMMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -786,13 +1126,21 @@ goog.i18n.DateTimePatterns_iw = {
  * Extended set of localized date/time patterns for locale ja.
  */
 goog.i18n.DateTimePatterns_ja = {
+<<<<<<< HEAD
   YEAR_FULL: 'y年',
+=======
+  YEAR_FULL: 'yyyy年',
+>>>>>>> newgitrepo
   YEAR_MONTH_ABBR: 'y年M月',
   YEAR_MONTH_FULL: 'yyyy年M月',
   MONTH_DAY_ABBR: 'M月d日',
   MONTH_DAY_FULL: 'M月dd日',
   MONTH_DAY_SHORT: 'M/d',
   MONTH_DAY_MEDIUM: 'M月d日',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'M月d日(EEE)',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd日'
 };
 
@@ -806,8 +1154,14 @@ goog.i18n.DateTimePatterns_kn = {
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'd-M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  MONTH_DAY_SHORT: 'd/M',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -821,8 +1175,14 @@ goog.i18n.DateTimePatterns_ko = {
   YEAR_MONTH_FULL: 'yyyy년 MMMM',
   MONTH_DAY_ABBR: 'MMM d일',
   MONTH_DAY_FULL: 'MMMM dd일',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'M. d',
   MONTH_DAY_MEDIUM: 'MMMM d일',
+=======
+  MONTH_DAY_SHORT: 'M. d.',
+  MONTH_DAY_MEDIUM: 'MMMM d일',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'MMM d일 (EEE)',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd일'
 };
 
@@ -838,6 +1198,10 @@ goog.i18n.DateTimePatterns_ln = {
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -847,12 +1211,22 @@ goog.i18n.DateTimePatterns_ln = {
  */
 goog.i18n.DateTimePatterns_lt = {
   YEAR_FULL: 'yyyy',
+<<<<<<< HEAD
   YEAR_MONTH_ABBR: 'y MMM',
   YEAR_MONTH_FULL: 'yyyy MMMM',
   MONTH_DAY_ABBR: 'MMM-d',
   MONTH_DAY_FULL: 'MMMM-dd',
   MONTH_DAY_SHORT: 'M.d',
   MONTH_DAY_MEDIUM: 'MMMM-d',
+=======
+  YEAR_MONTH_ABBR: 'MMM, y',
+  YEAR_MONTH_FULL: 'MMMM, yyyy',
+  MONTH_DAY_ABBR: 'MMM d',
+  MONTH_DAY_FULL: 'MMMM-dd',
+  MONTH_DAY_SHORT: 'MM-d',
+  MONTH_DAY_MEDIUM: 'MMMM d',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'MMM d, EEE',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -861,13 +1235,22 @@ goog.i18n.DateTimePatterns_lt = {
  * Extended set of localized date/time patterns for locale lv.
  */
 goog.i18n.DateTimePatterns_lv = {
+<<<<<<< HEAD
   YEAR_FULL: 'y. \'g\'.',
   YEAR_MONTH_ABBR: 'yyyy. \'g\'. MMM',
+=======
+  YEAR_FULL: 'yyyy. \'g\'.',
+  YEAR_MONTH_ABBR: 'y. \'g\'. MMM',
+>>>>>>> newgitrepo
   YEAR_MONTH_FULL: 'yyyy. \'g\'. MMMM',
   MONTH_DAY_ABBR: 'd. MMM',
   MONTH_DAY_FULL: 'dd. MMMM',
   MONTH_DAY_SHORT: 'dd.MM.',
   MONTH_DAY_MEDIUM: 'd. MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d. MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -881,8 +1264,14 @@ goog.i18n.DateTimePatterns_ml = {
   YEAR_MONTH_FULL: 'yyyy MMMM',
   MONTH_DAY_ABBR: 'MMM d',
   MONTH_DAY_FULL: 'MMMM dd',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'd-M',
   MONTH_DAY_MEDIUM: 'MMMM d',
+=======
+  MONTH_DAY_SHORT: 'd/M',
+  MONTH_DAY_MEDIUM: 'MMMM d',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'MMM d, EEE',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -896,8 +1285,14 @@ goog.i18n.DateTimePatterns_mo = {
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'd.M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  MONTH_DAY_SHORT: 'dd.MM',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -911,8 +1306,14 @@ goog.i18n.DateTimePatterns_mr = {
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'd-M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  MONTH_DAY_SHORT: 'd/M',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -928,6 +1329,10 @@ goog.i18n.DateTimePatterns_ms = {
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'd-M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -941,13 +1346,38 @@ goog.i18n.DateTimePatterns_mt = {
   YEAR_MONTH_FULL: 'yyyy MMMM',
   MONTH_DAY_ABBR: 'MMM d',
   MONTH_DAY_FULL: 'MMMM dd',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'M-d',
   MONTH_DAY_MEDIUM: 'MMMM d',
+=======
+  MONTH_DAY_SHORT: 'MM-dd',
+  MONTH_DAY_MEDIUM: 'MMMM d',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'MMM d, EEE',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
 
 /**
+<<<<<<< HEAD
+=======
+ * Extended set of localized date/time patterns for locale nb.
+ */
+goog.i18n.DateTimePatterns_nb = {
+  YEAR_FULL: 'yyyy',
+  YEAR_MONTH_ABBR: 'MMM y',
+  YEAR_MONTH_FULL: 'MMMM yyyy',
+  MONTH_DAY_ABBR: 'd. MMM',
+  MONTH_DAY_FULL: 'dd. MMMM',
+  MONTH_DAY_SHORT: 'd.M.',
+  MONTH_DAY_MEDIUM: 'd. MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d. MMM',
+  DAY_ABBR: 'd.'
+};
+
+
+/**
+>>>>>>> newgitrepo
  * Extended set of localized date/time patterns for locale nl.
  */
 goog.i18n.DateTimePatterns_nl = {
@@ -958,6 +1388,10 @@ goog.i18n.DateTimePatterns_nl = {
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'd-M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -973,6 +1407,10 @@ goog.i18n.DateTimePatterns_no = {
   MONTH_DAY_FULL: 'dd. MMMM',
   MONTH_DAY_SHORT: 'd.M.',
   MONTH_DAY_MEDIUM: 'd. MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d. MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd.'
 };
 
@@ -982,12 +1420,21 @@ goog.i18n.DateTimePatterns_no = {
  */
 goog.i18n.DateTimePatterns_or = {
   YEAR_FULL: 'yyyy',
+<<<<<<< HEAD
   YEAR_MONTH_ABBR: 'MMM y',
   YEAR_MONTH_FULL: 'MMMM y',
+=======
+  YEAR_MONTH_ABBR: 'y MMM',
+  YEAR_MONTH_FULL: 'MMMM yyyy',
+>>>>>>> newgitrepo
   MONTH_DAY_ABBR: 'MMM d',
   MONTH_DAY_FULL: 'MMMM dd',
   MONTH_DAY_SHORT: 'd-M',
   MONTH_DAY_MEDIUM: 'MMMM d',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'MMM d, EEE',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -1001,16 +1448,28 @@ goog.i18n.DateTimePatterns_pl = {
   YEAR_MONTH_FULL: 'LLLL yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'd.M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  MONTH_DAY_SHORT: 'd.MM',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
 
 /**
+<<<<<<< HEAD
  * Extended set of localized date/time patterns for locale pt_BR.
  */
 goog.i18n.DateTimePatterns_pt_BR = {
+=======
+ * Extended set of localized date/time patterns for locale pt.
+ */
+goog.i18n.DateTimePatterns_pt = {
+>>>>>>> newgitrepo
   YEAR_FULL: 'yyyy',
   YEAR_MONTH_ABBR: 'MMM \'de\' y',
   YEAR_MONTH_FULL: 'MMMM \'de\' yyyy',
@@ -1018,11 +1477,16 @@ goog.i18n.DateTimePatterns_pt_BR = {
   MONTH_DAY_FULL: 'dd \'de\' MMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd \'de\' MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d \'de\' MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
 
 /**
+<<<<<<< HEAD
  * Extended set of localized date/time patterns for locale pt_PT.
  */
 goog.i18n.DateTimePatterns_pt_PT = {
@@ -1033,11 +1497,25 @@ goog.i18n.DateTimePatterns_pt_PT = {
   MONTH_DAY_FULL: 'dd/MM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd/MM',
+=======
+ * Extended set of localized date/time patterns for locale pt_BR.
+ */
+goog.i18n.DateTimePatterns_pt_BR = {
+  YEAR_FULL: 'yyyy',
+  YEAR_MONTH_ABBR: 'MMM \'de\' y',
+  YEAR_MONTH_FULL: 'MMMM \'de\' yyyy',
+  MONTH_DAY_ABBR: 'd \'de\' MMM',
+  MONTH_DAY_FULL: 'dd \'de\' MMMM',
+  MONTH_DAY_SHORT: 'd/M',
+  MONTH_DAY_MEDIUM: 'd \'de\' MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d \'de\' MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
 
 /**
+<<<<<<< HEAD
  * Extended set of localized date/time patterns for locale pt.
  */
 goog.i18n.DateTimePatterns_pt = {
@@ -1048,6 +1526,19 @@ goog.i18n.DateTimePatterns_pt = {
   MONTH_DAY_FULL: 'dd \'de\' MMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd \'de\' MMMM',
+=======
+ * Extended set of localized date/time patterns for locale pt_PT.
+ */
+goog.i18n.DateTimePatterns_pt_PT = {
+  YEAR_FULL: 'yyyy',
+  YEAR_MONTH_ABBR: 'MM/y',
+  YEAR_MONTH_FULL: 'MMMM \'de\' yyyy',
+  MONTH_DAY_ABBR: 'd/MM',
+  MONTH_DAY_FULL: 'dd \'de\' MMMM',
+  MONTH_DAY_SHORT: 'd/M',
+  MONTH_DAY_MEDIUM: 'd \'de\' MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d/MM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -1061,8 +1552,14 @@ goog.i18n.DateTimePatterns_ro = {
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'd.M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  MONTH_DAY_SHORT: 'dd.MM',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -1071,13 +1568,23 @@ goog.i18n.DateTimePatterns_ro = {
  * Extended set of localized date/time patterns for locale ru.
  */
 goog.i18n.DateTimePatterns_ru = {
+<<<<<<< HEAD
   YEAR_FULL: 'y',
+=======
+  YEAR_FULL: 'yyyy',
+>>>>>>> newgitrepo
   YEAR_MONTH_ABBR: 'LLL y',
   YEAR_MONTH_FULL: 'LLLL yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'd.M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  MONTH_DAY_SHORT: 'dd.MM',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'ccc, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -1089,10 +1596,18 @@ goog.i18n.DateTimePatterns_sk = {
   YEAR_FULL: 'yyyy',
   YEAR_MONTH_ABBR: 'LLL y',
   YEAR_MONTH_FULL: 'LLLL yyyy',
+<<<<<<< HEAD
   MONTH_DAY_ABBR: 'd. MMM',
   MONTH_DAY_FULL: 'dd. MMMM',
   MONTH_DAY_SHORT: 'd.M.',
   MONTH_DAY_MEDIUM: 'd. MMMM',
+=======
+  MONTH_DAY_ABBR: 'd. MMM.',
+  MONTH_DAY_FULL: 'dd. MMMM',
+  MONTH_DAY_SHORT: 'd.M.',
+  MONTH_DAY_MEDIUM: 'd. MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d. MMM.',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd.'
 };
 
@@ -1108,6 +1623,10 @@ goog.i18n.DateTimePatterns_sl = {
   MONTH_DAY_FULL: 'dd. MMMM',
   MONTH_DAY_SHORT: 'd. M.',
   MONTH_DAY_MEDIUM: 'd. MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d. MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -1123,6 +1642,10 @@ goog.i18n.DateTimePatterns_sq = {
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'M-d',
   MONTH_DAY_MEDIUM: 'd MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -1131,6 +1654,7 @@ goog.i18n.DateTimePatterns_sq = {
  * Extended set of localized date/time patterns for locale sr.
  */
 goog.i18n.DateTimePatterns_sr = {
+<<<<<<< HEAD
   YEAR_FULL: 'y.',
   YEAR_MONTH_ABBR: 'MMM. y',
   YEAR_MONTH_FULL: 'MMMM. yyyy',
@@ -1138,6 +1662,16 @@ goog.i18n.DateTimePatterns_sr = {
   MONTH_DAY_FULL: 'MMMM dd.',
   MONTH_DAY_SHORT: 'M-d',
   MONTH_DAY_MEDIUM: 'MMMM d.',
+=======
+  YEAR_FULL: 'yyyy.',
+  YEAR_MONTH_ABBR: 'MMM y.',
+  YEAR_MONTH_FULL: 'MMMM yyyy.',
+  MONTH_DAY_ABBR: 'd. MMM',
+  MONTH_DAY_FULL: 'dd. MMMM',
+  MONTH_DAY_SHORT: 'd/M',
+  MONTH_DAY_MEDIUM: 'd. MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d. MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -1149,10 +1683,18 @@ goog.i18n.DateTimePatterns_sv = {
   YEAR_FULL: 'yyyy',
   YEAR_MONTH_ABBR: 'MMM y',
   YEAR_MONTH_FULL: 'MMMM yyyy',
+<<<<<<< HEAD
   MONTH_DAY_ABBR: 'd:\'e\' MMM',
   MONTH_DAY_FULL: 'dd:\'e\' MMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd:\'e\' MMMM',
+=======
+  MONTH_DAY_ABBR: 'd MMM',
+  MONTH_DAY_FULL: 'dd:\'e\' MMMM',
+  MONTH_DAY_SHORT: 'd/M',
+  MONTH_DAY_MEDIUM: 'd:\'e\' MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -1164,10 +1706,18 @@ goog.i18n.DateTimePatterns_sw = {
   YEAR_FULL: 'yyyy',
   YEAR_MONTH_ABBR: 'MMM y',
   YEAR_MONTH_FULL: 'MMMM yyyy',
+<<<<<<< HEAD
   MONTH_DAY_ABBR: 'MMM d',
   MONTH_DAY_FULL: 'MMMM dd',
   MONTH_DAY_SHORT: 'M/d',
   MONTH_DAY_MEDIUM: 'MMMM d',
+=======
+  MONTH_DAY_ABBR: 'd MMM',
+  MONTH_DAY_FULL: 'dd MMMM',
+  MONTH_DAY_SHORT: 'd-M',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -1181,8 +1731,14 @@ goog.i18n.DateTimePatterns_ta = {
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'd-M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  MONTH_DAY_SHORT: 'd/M',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -1196,8 +1752,14 @@ goog.i18n.DateTimePatterns_te = {
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'd-M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  MONTH_DAY_SHORT: 'd/M',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -1206,13 +1768,23 @@ goog.i18n.DateTimePatterns_te = {
  * Extended set of localized date/time patterns for locale th.
  */
 goog.i18n.DateTimePatterns_th = {
+<<<<<<< HEAD
   YEAR_FULL: 'G yyyy',
   YEAR_MONTH_ABBR: 'MMM y',
   YEAR_MONTH_FULL: 'MMMM yyyy',
+=======
+  YEAR_FULL: 'G y',
+  YEAR_MONTH_ABBR: 'MMM y',
+  YEAR_MONTH_FULL: 'MMMM y',
+>>>>>>> newgitrepo
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'd/M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -1222,12 +1794,21 @@ goog.i18n.DateTimePatterns_th = {
  */
 goog.i18n.DateTimePatterns_tl = {
   YEAR_FULL: 'yyyy',
+<<<<<<< HEAD
   YEAR_MONTH_ABBR: 'y MMM',
   YEAR_MONTH_FULL: 'yyyy MMMM',
+=======
+  YEAR_MONTH_ABBR: 'MMM y',
+  YEAR_MONTH_FULL: 'MMMM yyyy',
+>>>>>>> newgitrepo
   MONTH_DAY_ABBR: 'MMM d',
   MONTH_DAY_FULL: 'MMMM dd',
   MONTH_DAY_SHORT: 'M-d',
   MONTH_DAY_MEDIUM: 'MMMM d',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE MMM d',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -1236,6 +1817,7 @@ goog.i18n.DateTimePatterns_tl = {
  * Extended set of localized date/time patterns for locale tr.
  */
 goog.i18n.DateTimePatterns_tr = {
+<<<<<<< HEAD
   YEAR_FULL: 'y',
   YEAR_MONTH_ABBR: 'MMM y',
   YEAR_MONTH_FULL: 'MMMM yyyy',
@@ -1243,6 +1825,16 @@ goog.i18n.DateTimePatterns_tr = {
   MONTH_DAY_FULL: 'dd MMMM',
   MONTH_DAY_SHORT: 'dd/MM',
   MONTH_DAY_MEDIUM: 'dd MMMM',
+=======
+  YEAR_FULL: 'yyyy',
+  YEAR_MONTH_ABBR: 'MMM y',
+  YEAR_MONTH_FULL: 'MMMM yyyy',
+  MONTH_DAY_ABBR: 'd MMMM',
+  MONTH_DAY_FULL: 'dd MMMM',
+  MONTH_DAY_SHORT: 'dd/MM',
+  MONTH_DAY_MEDIUM: 'dd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'd MMMM EEE',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -1256,8 +1848,14 @@ goog.i18n.DateTimePatterns_uk = {
   YEAR_MONTH_FULL: 'LLLL yyyy',
   MONTH_DAY_ABBR: 'd MMM',
   MONTH_DAY_FULL: 'dd MMMM',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'd.M',
   MONTH_DAY_MEDIUM: 'd MMMM',
+=======
+  MONTH_DAY_SHORT: 'dd.MM',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -1267,12 +1865,22 @@ goog.i18n.DateTimePatterns_uk = {
  */
 goog.i18n.DateTimePatterns_ur = {
   YEAR_FULL: 'yyyy',
+<<<<<<< HEAD
   YEAR_MONTH_ABBR: 'y MMM',
   YEAR_MONTH_FULL: 'yyyy MMMM',
   MONTH_DAY_ABBR: 'MMM d',
   MONTH_DAY_FULL: 'MMMM dd',
   MONTH_DAY_SHORT: 'M-d',
   MONTH_DAY_MEDIUM: 'MMMM d',
+=======
+  YEAR_MONTH_ABBR: 'MMM y',
+  YEAR_MONTH_FULL: 'MMMM yyyy',
+  MONTH_DAY_ABBR: 'd MMM',
+  MONTH_DAY_FULL: 'dd MMMM',
+  MONTH_DAY_SHORT: 'd/M',
+  MONTH_DAY_MEDIUM: 'd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE، d MMM',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -1281,6 +1889,7 @@ goog.i18n.DateTimePatterns_ur = {
  * Extended set of localized date/time patterns for locale vi.
  */
 goog.i18n.DateTimePatterns_vi = {
+<<<<<<< HEAD
   YEAR_FULL: 'y',
   YEAR_MONTH_ABBR: 'MMM y',
   YEAR_MONTH_FULL: 'MMMM yyyy',
@@ -1289,20 +1898,42 @@ goog.i18n.DateTimePatterns_vi = {
   MONTH_DAY_SHORT: 'd-M',
   MONTH_DAY_MEDIUM: 'd MMMM',
   DAY_ABBR: '\'Ngày\' d'
+=======
+  YEAR_FULL: '\'Năm\' yyyy',
+  YEAR_MONTH_ABBR: 'MMM y',
+  YEAR_MONTH_FULL: 'MMMM yyyy',
+  MONTH_DAY_ABBR: 'dd MMM',
+  MONTH_DAY_FULL: 'dd MMMM',
+  MONTH_DAY_SHORT: 'dd-M',
+  MONTH_DAY_MEDIUM: 'dd MMMM',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, dd MMM',
+  DAY_ABBR: '\'Ngày\' dd'
+>>>>>>> newgitrepo
 };
 
 
 /**
+<<<<<<< HEAD
  * Extended set of localized date/time patterns for locale zh_TW.
  */
 goog.i18n.DateTimePatterns_zh_TW = {
   YEAR_FULL: 'y年',
+=======
+ * Extended set of localized date/time patterns for locale zh.
+ */
+goog.i18n.DateTimePatterns_zh = {
+  YEAR_FULL: 'yyyy年',
+>>>>>>> newgitrepo
   YEAR_MONTH_ABBR: 'y年M月',
   YEAR_MONTH_FULL: 'yyyy年M月',
   MONTH_DAY_ABBR: 'M月d日',
   MONTH_DAY_FULL: 'M月dd日',
   MONTH_DAY_SHORT: 'M/d',
   MONTH_DAY_MEDIUM: 'M月d日',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'M月d日EEE',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd日'
 };
 
@@ -1311,13 +1942,23 @@ goog.i18n.DateTimePatterns_zh_TW = {
  * Extended set of localized date/time patterns for locale zh_CN.
  */
 goog.i18n.DateTimePatterns_zh_CN = {
+<<<<<<< HEAD
   YEAR_FULL: 'y年',
+=======
+  YEAR_FULL: 'yyyy年',
+>>>>>>> newgitrepo
   YEAR_MONTH_ABBR: 'y年M月',
   YEAR_MONTH_FULL: 'yyyy年M月',
   MONTH_DAY_ABBR: 'M月d日',
   MONTH_DAY_FULL: 'M月dd日',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'M-d',
   MONTH_DAY_MEDIUM: 'M月d日',
+=======
+  MONTH_DAY_SHORT: 'M/d',
+  MONTH_DAY_MEDIUM: 'M月d日',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'M月d日EEE',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd日'
 };
 
@@ -1326,28 +1967,51 @@ goog.i18n.DateTimePatterns_zh_CN = {
  * Extended set of localized date/time patterns for locale zh_HK.
  */
 goog.i18n.DateTimePatterns_zh_HK = {
+<<<<<<< HEAD
   YEAR_FULL: 'y年',
+=======
+  YEAR_FULL: 'yyyy年',
+>>>>>>> newgitrepo
   YEAR_MONTH_ABBR: 'y年M月',
   YEAR_MONTH_FULL: 'yyyy年M月',
   MONTH_DAY_ABBR: 'M月d日',
   MONTH_DAY_FULL: 'M月dd日',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'M-d',
   MONTH_DAY_MEDIUM: 'M月d日',
+=======
+  MONTH_DAY_SHORT: 'd/M',
+  MONTH_DAY_MEDIUM: 'M月d日',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'M月d日EEE',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd日'
 };
 
 
 /**
+<<<<<<< HEAD
  * Extended set of localized date/time patterns for locale zh.
  */
 goog.i18n.DateTimePatterns_zh = {
   YEAR_FULL: 'y年',
+=======
+ * Extended set of localized date/time patterns for locale zh_TW.
+ */
+goog.i18n.DateTimePatterns_zh_TW = {
+  YEAR_FULL: 'yyyy年',
+>>>>>>> newgitrepo
   YEAR_MONTH_ABBR: 'y年M月',
   YEAR_MONTH_FULL: 'yyyy年M月',
   MONTH_DAY_ABBR: 'M月d日',
   MONTH_DAY_FULL: 'M月dd日',
+<<<<<<< HEAD
   MONTH_DAY_SHORT: 'M-d',
   MONTH_DAY_MEDIUM: 'M月d日',
+=======
+  MONTH_DAY_SHORT: 'M/d',
+  MONTH_DAY_MEDIUM: 'M月d日',
+  WEEKDAY_MONTH_DAY_MEDIUM: 'M月d日EEE',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd日'
 };
 
@@ -1356,13 +2020,21 @@ goog.i18n.DateTimePatterns_zh = {
  * Extended set of localized date/time patterns for locale zu.
  */
 goog.i18n.DateTimePatterns_zu = {
+<<<<<<< HEAD
   YEAR_FULL: 'yyyy',
+=======
+  YEAR_FULL: 'YYYY',
+>>>>>>> newgitrepo
   YEAR_MONTH_ABBR: 'MMM y',
   YEAR_MONTH_FULL: 'MMMM yyyy',
   MONTH_DAY_ABBR: 'MMM d',
   MONTH_DAY_FULL: 'MMMM dd',
   MONTH_DAY_SHORT: 'M/d',
   MONTH_DAY_MEDIUM: 'MMMM d',
+<<<<<<< HEAD
+=======
+  WEEKDAY_MONTH_DAY_MEDIUM: 'EEE, MMM d',
+>>>>>>> newgitrepo
   DAY_ABBR: 'd'
 };
 
@@ -1392,6 +2064,13 @@ if (goog.LOCALE == 'bn') {
   goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_bn;
 }
 
+<<<<<<< HEAD
+=======
+if (goog.LOCALE == 'br') {
+  goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_br;
+}
+
+>>>>>>> newgitrepo
 if (goog.LOCALE == 'ca') {
   goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_ca;
 }
@@ -1468,6 +2147,13 @@ if (goog.LOCALE == 'es_419' || goog.LOCALE == 'es-419') {
   goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_es_419;
 }
 
+<<<<<<< HEAD
+=======
+if (goog.LOCALE == 'es_ES' || goog.LOCALE == 'es-ES') {
+  goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_es_ES;
+}
+
+>>>>>>> newgitrepo
 if (goog.LOCALE == 'et') {
   goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_et;
 }
@@ -1592,6 +2278,13 @@ if (goog.LOCALE == 'mt') {
   goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_mt;
 }
 
+<<<<<<< HEAD
+=======
+if (goog.LOCALE == 'nb') {
+  goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_nb;
+}
+
+>>>>>>> newgitrepo
 if (goog.LOCALE == 'nl') {
   goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_nl;
 }
@@ -1608,6 +2301,13 @@ if (goog.LOCALE == 'pl') {
   goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_pl;
 }
 
+<<<<<<< HEAD
+=======
+if (goog.LOCALE == 'pt') {
+  goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_pt;
+}
+
+>>>>>>> newgitrepo
 if (goog.LOCALE == 'pt_BR' || goog.LOCALE == 'pt-BR') {
   goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_pt_BR;
 }
@@ -1616,10 +2316,13 @@ if (goog.LOCALE == 'pt_PT' || goog.LOCALE == 'pt-PT') {
   goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_pt_PT;
 }
 
+<<<<<<< HEAD
 if (goog.LOCALE == 'pt') {
   goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_pt;
 }
 
+=======
+>>>>>>> newgitrepo
 if (goog.LOCALE == 'ro') {
   goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_ro;
 }
@@ -1684,8 +2387,13 @@ if (goog.LOCALE == 'vi') {
   goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_vi;
 }
 
+<<<<<<< HEAD
 if (goog.LOCALE == 'zh_TW' || goog.LOCALE == 'zh-TW') {
   goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_zh_TW;
+=======
+if (goog.LOCALE == 'zh') {
+  goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_zh;
+>>>>>>> newgitrepo
 }
 
 if (goog.LOCALE == 'zh_CN' || goog.LOCALE == 'zh-CN') {
@@ -1696,8 +2404,13 @@ if (goog.LOCALE == 'zh_HK' || goog.LOCALE == 'zh-HK') {
   goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_zh_HK;
 }
 
+<<<<<<< HEAD
 if (goog.LOCALE == 'zh') {
   goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_zh;
+=======
+if (goog.LOCALE == 'zh_TW' || goog.LOCALE == 'zh-TW') {
+  goog.i18n.DateTimePatterns = goog.i18n.DateTimePatterns_zh_TW;
+>>>>>>> newgitrepo
 }
 
 if (goog.LOCALE == 'zu') {

@@ -113,7 +113,11 @@ goog.ui.SubMenuRenderer.prototype.decorate = function(control, element) {
     var childMenuEl = childMenuEls[0];
     // Hide the menu element before attaching it to the document body; see
     // bug 1089244.
+<<<<<<< HEAD
     goog.style.showElement(childMenuEl, false);
+=======
+    goog.style.setElementShown(childMenuEl, false);
+>>>>>>> newgitrepo
     subMenu.getDomHelper().getDocument().body.appendChild(childMenuEl);
     childMenu.decorate(childMenuEl);
     subMenu.setMenu(childMenu, true);

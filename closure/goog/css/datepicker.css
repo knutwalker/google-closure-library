@@ -115,7 +115,11 @@ td.goog-date-picker-none-cont {
 }
 
 .goog-date-picker-month {
+<<<<<<< HEAD
   width: 12ex;
+=======
+  width: 11ex;
+>>>>>>> newgitrepo
 }
 
 .goog-date-picker-year {

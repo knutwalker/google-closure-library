@@ -59,7 +59,11 @@ function testResultCancelResolution() {
   assertEquals(1, cancelCallback.getCallCount());
   var call = cancelCallback.popLastCall();
   assertTrue(call.getArgument(0) instanceof
+<<<<<<< HEAD
              goog.async.Deferred.CancelledError);
+=======
+             goog.async.Deferred.CanceledError);
+>>>>>>> newgitrepo
 }
 
 function testAddCallbackOnResolvedResult() {

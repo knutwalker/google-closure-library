@@ -19,6 +19,10 @@
 
 goog.provide('goog.testing.fs.FileSystem');
 
+<<<<<<< HEAD
+=======
+goog.require('goog.fs.FileSystem');
+>>>>>>> newgitrepo
 goog.require('goog.testing.fs.DirectoryEntry');
 
 
@@ -28,6 +32,10 @@ goog.require('goog.testing.fs.DirectoryEntry');
  *
  * @param {string=} opt_name The name of the filesystem.
  * @constructor
+<<<<<<< HEAD
+=======
+ * @implements {goog.fs.FileSystem}
+>>>>>>> newgitrepo
  */
 goog.testing.fs.FileSystem = function(opt_name) {
   /**
@@ -46,17 +54,25 @@ goog.testing.fs.FileSystem = function(opt_name) {
 };
 
 
+<<<<<<< HEAD
 /**
  * @see {goog.fs.FileSystem#getName}
  * @return {string}
  */
+=======
+/** @override */
+>>>>>>> newgitrepo
 goog.testing.fs.FileSystem.prototype.getName = function() {
   return this.name_;
 };
 
 
 /**
+<<<<<<< HEAD
  * @see {goog.fs.FileSystem#getRoot}
+=======
+ * @override
+>>>>>>> newgitrepo
  * @return {!goog.testing.fs.DirectoryEntry}
  */
 goog.testing.fs.FileSystem.prototype.getRoot = function() {

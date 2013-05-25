@@ -30,12 +30,26 @@ goog.require('goog.ui.equation.SymbolPalette');
 /**
  * Constructs the palette manager that manages all the palettes in Equation
  * Editor.
+<<<<<<< HEAD
  * @constructor
  * @extends {goog.events.EventTarget}
  */
 goog.ui.equation.PaletteManager = function() {
   goog.events.EventTarget.call(this);
 
+=======
+ * @param {!goog.dom.DomHelper} domHelper The DOM helper to be used for
+ *     document interaction.
+ * @constructor
+ * @extends {goog.events.EventTarget}
+ */
+goog.ui.equation.PaletteManager = function(domHelper) {
+  goog.events.EventTarget.call(this);
+
+  /** @private {!goog.dom.DomHelper} */
+  this.domHelper_ = domHelper;
+
+>>>>>>> newgitrepo
   /**
    * The map of palette type and instance pair.
    * @type {Object.<string, goog.ui.equation.Palette>}
@@ -182,6 +196,17 @@ goog.ui.equation.PaletteManager.prototype.handleDeactivation_ = function() {
 };
 
 
+<<<<<<< HEAD
+=======
+/**
+ * @return {!goog.dom.DomHelper} This object's DOM helper.
+ */
+goog.ui.equation.PaletteManager.prototype.getDomHelper = function() {
+  return this.domHelper_;
+};
+
+
+>>>>>>> newgitrepo
 /** @override */
 goog.ui.equation.PaletteManager.prototype.disposeInternal = function() {
   goog.base(this, 'disposeInternal');

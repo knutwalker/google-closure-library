@@ -16,6 +16,7 @@
  * @fileoverview Shared unit tests for styles.
  */
 
+<<<<<<< HEAD
 goog.provide('goog.style_test');
 
 goog.require('goog.color');
@@ -27,16 +28,42 @@ goog.require('goog.style');
 goog.require('goog.styleScrollbarTester');
 goog.require('goog.testing.ExpectedFailures');
 goog.require('goog.testing.PropertyReplacer');
+=======
+/** @suppress {extraProvide} */
+goog.provide('goog.style_test');
+
+goog.require('goog.array');
+goog.require('goog.color');
+goog.require('goog.dom');
+goog.require('goog.events.BrowserEvent');
+goog.require('goog.math.Box');
+goog.require('goog.math.Coordinate');
+goog.require('goog.math.Rect');
+goog.require('goog.math.Size');
+goog.require('goog.object');
+goog.require('goog.string');
+goog.require('goog.style');
+goog.require('goog.testing.ExpectedFailures');
+goog.require('goog.testing.PropertyReplacer');
+goog.require('goog.testing.asserts');
+>>>>>>> newgitrepo
 goog.require('goog.testing.jsunit');
 goog.require('goog.userAgent');
 goog.require('goog.userAgent.product');
 goog.require('goog.userAgent.product.isVersion');
+<<<<<<< HEAD
 goog.require('goog.testing.asserts');
+=======
+>>>>>>> newgitrepo
 goog.setTestOnly('goog.style_test');
 
 // IE before version 6 will always be border box in compat mode.
 var isBorderBox = goog.dom.isCss1CompatMode() ?
+<<<<<<< HEAD
     (goog.userAgent.IE && !goog.userAgent.isVersion('6')) :
+=======
+    (goog.userAgent.IE && !goog.userAgent.isVersionOrHigher('6')) :
+>>>>>>> newgitrepo
     true;
 var EPSILON = 2;
 var expectedFailures = new goog.testing.ExpectedFailures();
@@ -130,7 +157,11 @@ function testGetStyleMsFilter() {
   // Element with -ms-filter style set.
   var e = goog.dom.getElement('msFilter');
 
+<<<<<<< HEAD
   if (goog.userAgent.IE && goog.userAgent.isDocumentMode(8)) {
+=======
+  if (goog.userAgent.IE && goog.userAgent.isDocumentModeOrHigher(8)) {
+>>>>>>> newgitrepo
     // Only IE8 supports -ms-filter and returns it as value for the "filter"
     // property. When in compatibility mode, -ms-filter is not supported
     // and IE8 behaves as IE7 so the other case will apply.
@@ -286,7 +317,11 @@ function testSetPosition() {
   assertEquals('0px', el.style.top);
 
 
+<<<<<<< HEAD
   goog.style.setPosition(el, new goog.math.Coordinate(20,40));
+=======
+  goog.style.setPosition(el, new goog.math.Coordinate(20, 40));
+>>>>>>> newgitrepo
   assertEquals('20px', el.style.left);
   assertEquals('40px', el.style.top);
 }
@@ -336,21 +371,37 @@ function testGetClientPositionOfOffscreenElement() {
     // The following tests do not work in Gecko 1.8 and below, due to an
     // obscure off-by-one bug in goog.style.getPageOffset.  Same for IE.
     if (!goog.userAgent.IE &&
+<<<<<<< HEAD
         !(goog.userAgent.GECKO && !goog.userAgent.isVersion('1.9'))) {
       window.scroll(1, 1);
       var pos = goog.style.getClientPosition(div);
       assertEquals(1999, pos.x);
       assertEquals(1999, pos.y);
+=======
+        !(goog.userAgent.GECKO && !goog.userAgent.isVersionOrHigher('1.9'))) {
+      window.scroll(1, 1);
+      var pos = goog.style.getClientPosition(div);
+      assertEquals(1999, pos.x);
+      assertRoughlyEquals(1999, pos.y, 0.5);
+>>>>>>> newgitrepo
 
       window.scroll(2, 2);
       pos = goog.style.getClientPosition(div);
       assertEquals(1998, pos.x);
+<<<<<<< HEAD
       assertEquals(1998, pos.y);
+=======
+      assertRoughlyEquals(1998, pos.y, 0.5);
+>>>>>>> newgitrepo
 
       window.scroll(100, 100);
       pos = goog.style.getClientPosition(div);
       assertEquals(1900, pos.x);
+<<<<<<< HEAD
       assertEquals(1900, pos.y);
+=======
+      assertRoughlyEquals(1900, pos.y, 0.5);
+>>>>>>> newgitrepo
     }
   }
   finally {
@@ -421,6 +472,7 @@ function testGetPageOffsetNestedElements() {
   div.appendChild(innerDiv);
   document.body.appendChild(div);
   var pos = goog.style.getPageOffset(innerDiv);
+<<<<<<< HEAD
   assertEquals(140, pos.x);
   assertEquals(240, pos.y);
 }
@@ -428,6 +480,15 @@ function testGetPageOffsetNestedElements() {
 function testGetPageOffsetWithBodyPadding() {
   document.body.style.margin = '40px'
   document.body.style.padding = '60px'
+=======
+  assertRoughlyEquals(140, pos.x, 0.1);
+  assertRoughlyEquals(240, pos.y, 0.1);
+}
+
+function testGetPageOffsetWithBodyPadding() {
+  document.body.style.margin = '40px';
+  document.body.style.padding = '60px';
+>>>>>>> newgitrepo
   document.body.style.borderWidth = '70px';
   try {
     var div = goog.dom.createDom('DIV');
@@ -440,8 +501,13 @@ function testGetPageOffsetWithBodyPadding() {
     div.style.borderWidth = '3px';
     document.body.appendChild(div);
     var pos = goog.style.getPageOffset(div);
+<<<<<<< HEAD
     assertEquals(101, pos.x);
     assertEquals(201, pos.y);
+=======
+    assertRoughlyEquals(101, pos.x, 0.1);
+    assertRoughlyEquals(201, pos.y, 0.1);
+>>>>>>> newgitrepo
   }
   finally {
     document.body.removeChild(div);
@@ -467,6 +533,7 @@ function testGetPageOffsetWithDocumentElementPadding() {
     document.body.appendChild(div);
     var pos = goog.style.getPageOffset(div);
     // FF3 (but not beyond) gets confused by document margins.
+<<<<<<< HEAD
     if (goog.userAgent.GECKO && goog.userAgent.isVersion('1.9') &&
         !goog.userAgent.isVersion('1.9.1')) {
       assertEquals(141, pos.x);
@@ -474,6 +541,15 @@ function testGetPageOffsetWithDocumentElementPadding() {
     } else {
       assertEquals(101, pos.x);
       assertEquals(201, pos.y);
+=======
+    if (goog.userAgent.GECKO && goog.userAgent.isVersionOrHigher('1.9') &&
+        !goog.userAgent.isVersionOrHigher('1.9.1')) {
+      assertEquals(141, pos.x);
+      assertEquals(241, pos.y);
+    } else {
+      assertRoughlyEquals(101, pos.x, 0.1);
+      assertRoughlyEquals(201, pos.y, 0.1);
+>>>>>>> newgitrepo
     }
   }
   finally {
@@ -499,21 +575,37 @@ function testGetPageOffsetElementOffscreen() {
     // The following tests do not work in Gecko 1.8 and below, due to an
     // obscure off-by-one bug in goog.style.getPageOffset.  Same for IE.
     if (!(goog.userAgent.IE) &&
+<<<<<<< HEAD
         !(goog.userAgent.GECKO && !goog.userAgent.isVersion('1.9'))) {
       window.scroll(1, 1);
       pos = goog.style.getPageOffset(div);
       assertEquals(10000, pos.x);
       assertEquals(20000, pos.y);
+=======
+        !(goog.userAgent.GECKO && !goog.userAgent.isVersionOrHigher('1.9'))) {
+      window.scroll(1, 1);
+      pos = goog.style.getPageOffset(div);
+      assertEquals(10000, pos.x);
+      assertRoughlyEquals(20000, pos.y, 0.5);
+>>>>>>> newgitrepo
 
       window.scroll(1000, 2000);
       pos = goog.style.getPageOffset(div);
       assertEquals(10000, pos.x);
+<<<<<<< HEAD
       assertEquals(20000, pos.y);
+=======
+      assertRoughlyEquals(20000, pos.y, 1);
+>>>>>>> newgitrepo
 
       window.scroll(10000, 20000);
       pos = goog.style.getPageOffset(div);
       assertEquals(10000, pos.x);
+<<<<<<< HEAD
       assertEquals(20000, pos.y);
+=======
+      assertRoughlyEquals(20000, pos.y, 1);
+>>>>>>> newgitrepo
     }
   }
   // Undo changes.
@@ -526,7 +618,11 @@ function testGetPageOffsetElementOffscreen() {
 function testGetPageOffsetFixedPositionElements() {
   // Skip these tests in certain browsers.
   // position:fixed is not supported in IE before version 7
+<<<<<<< HEAD
   if (!goog.userAgent.IE || !goog.userAgent.isVersion('6')) {
+=======
+  if (!goog.userAgent.IE || !goog.userAgent.isVersionOrHigher('6')) {
+>>>>>>> newgitrepo
     // Test with a position fixed element
     var div = goog.dom.createDom('DIV');
     div.style.position = 'fixed';
@@ -564,16 +660,29 @@ function testGetPositionTolerantToNoDocumentElementBorder() {
     document.body.appendChild(div);
 
     // Test all major positioning methods.
+<<<<<<< HEAD
     // Temporarily disabled for IE8 - IE8 returns dimensions multiplied by 100
     expectedFailures.expectFailureFor(isIE8() && !goog.dom.isCss1CompatMode());
+=======
+    // Disabled for IE8 and below - IE8 returns dimensions multiplied by 100.
+    expectedFailures.expectFailureFor(
+        goog.userAgent.IE && !goog.userAgent.isVersionOrHigher(9));
+>>>>>>> newgitrepo
     try {
       // Test all major positioning methods.
       var pos = goog.style.getClientPosition(div);
       assertEquals(100, pos.x);
+<<<<<<< HEAD
       assertEquals(200, pos.y);
       var offset = goog.style.getPageOffset(div);
       assertEquals(100, offset.x);
       assertEquals(200, offset.y);
+=======
+      assertRoughlyEquals(200, pos.y, .1);
+      var offset = goog.style.getPageOffset(div);
+      assertEquals(100, offset.x);
+      assertRoughlyEquals(200, offset.y, .1);
+>>>>>>> newgitrepo
     } catch (e) {
       expectedFailures.handleException(e);
     }
@@ -609,7 +718,11 @@ function testSetSize() {
   assertEquals('0px', el.style.width);
   assertEquals('0px', el.style.height);
 
+<<<<<<< HEAD
   goog.style.setSize(el, new goog.math.Size(20,40));
+=======
+  goog.style.setSize(el, new goog.math.Size(20, 40));
+>>>>>>> newgitrepo
   assertEquals('20px', el.style.width);
   assertEquals('40px', el.style.height);
 }
@@ -716,16 +829,26 @@ function testGetSize() {
 
 function testGetSizeSvgElements() {
   var svgEl = document.createElementNS &&
+<<<<<<< HEAD
        document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   if (!svgEl || svgEl.getAttribute('transform') == '' ||
       (goog.userAgent.WEBKIT && !goog.userAgent.isVersion(534.8))) {
+=======
+      document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  if (!svgEl || svgEl.getAttribute('transform') == '' ||
+      (goog.userAgent.WEBKIT && !goog.userAgent.isVersionOrHigher(534.8))) {
+>>>>>>> newgitrepo
     // SVG not supported, or getBoundingClientRect not supported on SVG
     // elements.
     return;
   }
 
   document.body.appendChild(svgEl);
+<<<<<<< HEAD
   el = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+=======
+  var el = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+>>>>>>> newgitrepo
   el.setAttribute('x', 10);
   el.setAttribute('y', 10);
   el.setAttribute('width', 32);
@@ -734,7 +857,11 @@ function testGetSizeSvgElements() {
 
   svgEl.appendChild(el);
 
+<<<<<<< HEAD
   dims = goog.style.getSize(el);
+=======
+  var dims = goog.style.getSize(el);
+>>>>>>> newgitrepo
   assertEquals(32, dims.width);
   assertRoughlyEquals(21, dims.height, 0.01);
 
@@ -857,7 +984,11 @@ function testIsRightToLeft() {
 }
 
 function testPosWithAbsoluteAndScroll() {
+<<<<<<< HEAD
   var el = $('pos-scroll-abs')
+=======
+  var el = $('pos-scroll-abs');
+>>>>>>> newgitrepo
   var el1 = $('pos-scroll-abs-1');
   var el2 = $('pos-scroll-abs-2');
 
@@ -867,7 +998,11 @@ function testPosWithAbsoluteAndScroll() {
   assertEquals(200, pos.x);
   // Don't bother with IE in quirks mode
   if (!goog.userAgent.IE || document.compatMode == 'CSS1Compat') {
+<<<<<<< HEAD
     assertEquals(300, pos.y);
+=======
+    assertRoughlyEquals(300, pos.y, .1);
+>>>>>>> newgitrepo
   }
 }
 
@@ -875,7 +1010,11 @@ function testPosWithAbsoluteAndWindowScroll() {
   window.scrollBy(0, 200);
   var el = $('abs-upper-left');
   var pos = goog.style.getPageOffset(el);
+<<<<<<< HEAD
   assertEquals('Top should be about 0', 0, pos.y);
+=======
+  assertRoughlyEquals('Top should be about 0', 0, pos.y, 0.1);
+>>>>>>> newgitrepo
 }
 
 function testGetBorderBoxSize() {
@@ -996,7 +1135,11 @@ function testSetBorderBoxSize() {
   } else if (goog.userAgent.WEBKIT) {
     assertEquals('border-box', el.style.WebkitBoxSizing);
   } else if (goog.userAgent.OPERA ||
+<<<<<<< HEAD
       goog.userAgent.IE && goog.userAgent.isDocumentMode(8)) {
+=======
+      goog.userAgent.IE && goog.userAgent.isDocumentModeOrHigher(8)) {
+>>>>>>> newgitrepo
     assertEquals('border-box', el.style.boxSizing);
   }
 
@@ -1007,7 +1150,11 @@ function testSetBorderBoxSize() {
   // a content box of size 0.
   // NOTE(nicksantos): I'm not really sure why IE7 is special here.
   var isIeLt8Quirks = goog.userAgent.IE &&
+<<<<<<< HEAD
       !goog.userAgent.isDocumentMode(8) &&
+=======
+      !goog.userAgent.isDocumentModeOrHigher(8) &&
+>>>>>>> newgitrepo
       !goog.dom.isCss1CompatMode();
   assertEquals(20, el.offsetWidth);
   assertEquals(isIeLt8Quirks ? 39 : 20, el.offsetHeight);
@@ -1054,7 +1201,11 @@ function testSetContentBoxSize() {
   } else if (goog.userAgent.WEBKIT) {
     assertEquals('content-box', el.style.WebkitBoxSizing);
   } else if (goog.userAgent.OPERA ||
+<<<<<<< HEAD
       goog.userAgent.IE && goog.userAgent.isDocumentMode(8)) {
+=======
+      goog.userAgent.IE && goog.userAgent.isDocumentModeOrHigher(8)) {
+>>>>>>> newgitrepo
     assertEquals('content-box', el.style.boxSizing);
   }
 
@@ -1063,7 +1214,11 @@ function testSetContentBoxSize() {
 
   // NOTE(nicksantos): I'm not really sure why IE7 is special here.
   var isIeLt8Quirks = goog.userAgent.IE &&
+<<<<<<< HEAD
       !goog.userAgent.isDocumentMode('8') &&
+=======
+      !goog.userAgent.isDocumentModeOrHigher('8') &&
+>>>>>>> newgitrepo
       !goog.dom.isCss1CompatMode();
   assertEquals(20, el.offsetWidth);
   assertEquals(isIeLt8Quirks ? 39 : 20, el.offsetHeight);
@@ -1400,10 +1555,17 @@ function testSetFloat() {
 function testIsElementShown() {
   var el = $('testEl');
 
+<<<<<<< HEAD
   goog.style.showElement(el, false);
   assertFalse(goog.style.isElementShown(el));
 
   goog.style.showElement(el, true);
+=======
+  goog.style.setElementShown(el, false);
+  assertFalse(goog.style.isElementShown(el));
+
+  goog.style.setElementShown(el, true);
+>>>>>>> newgitrepo
   assertTrue(goog.style.isElementShown(el));
 }
 
@@ -1448,7 +1610,11 @@ function testGetOpacity() {
 
   var el4 = {
     style: {}
+<<<<<<< HEAD
   }
+=======
+  };
+>>>>>>> newgitrepo
 
   assertEquals('', goog.style.getOpacity(el4));
   assertEquals('', goog.style.getOpacity($('test-opacity')));
@@ -1563,6 +1729,10 @@ function testFramedPageOffset() {
       goog.style.getFramedPageOffset(testElement3, iframeWindow2));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Asserts that the coordinate is approximately equal to the given
  * x and y coordinates, give or take delta.
@@ -1592,7 +1762,11 @@ function testTranslateRectForAnotherFrame() {
   rect = new goog.math.Rect(1, 2, 3, 4);
   goog.style.translateRectForAnotherFrame(rect, iframeDom, thisDom);
   assertEquals(1 + 100, rect.left);
+<<<<<<< HEAD
   assertEquals(2 + 150, rect.top);
+=======
+  assertRoughlyEquals(2 + 150, rect.top, .1);
+>>>>>>> newgitrepo
   assertEquals(3, rect.width);
   assertEquals(4, rect.height);
 
@@ -1600,7 +1774,11 @@ function testTranslateRectForAnotherFrame() {
   rect = new goog.math.Rect(1, 2, 3, 4);
   goog.style.translateRectForAnotherFrame(rect, iframeDom, thisDom);
   assertEquals(1 + 100 - 11, rect.left);
+<<<<<<< HEAD
   assertEquals(2 + 150 - 13, rect.top);
+=======
+  assertRoughlyEquals(2 + 150 - 13, rect.top, .1);
+>>>>>>> newgitrepo
   assertEquals(3, rect.width);
   assertEquals(4, rect.height);
 
@@ -1613,7 +1791,11 @@ function testTranslateRectForAnotherFrame() {
   rect = new goog.math.Rect(1, 2, 3, 4);
   goog.style.translateRectForAnotherFrame(rect, iframeDom, thisDom);
   assertEquals(1 + 100, rect.left);
+<<<<<<< HEAD
   assertEquals(2 + 350, rect.top);
+=======
+  assertRoughlyEquals(2 + 350, rect.top, .1);
+>>>>>>> newgitrepo
   assertEquals(3, rect.width);
   assertEquals(4, rect.height);
 
@@ -1621,10 +1803,17 @@ function testTranslateRectForAnotherFrame() {
   rect = new goog.math.Rect(1, 2, 3, 4);
   goog.style.translateRectForAnotherFrame(rect, iframeDom, thisDom);
   assertEquals(1 + 100 - 11, rect.left);
+<<<<<<< HEAD
   assertEquals(2 + 350 - 13, rect.top);
   assertEquals(3, rect.width);
   assertEquals(4, rect.height);
 };
+=======
+  assertRoughlyEquals(2 + 350 - 13, rect.top, .1);
+  assertEquals(3, rect.width);
+  assertEquals(4, rect.height);
+}
+>>>>>>> newgitrepo
 
 function testGetVisibleRectForElement() {
   var container = goog.dom.getElement('test-visible');
@@ -1665,7 +1854,11 @@ function testGetVisibleRectForElement() {
   assertEquals(winScroll.y + winSize.height, visible.bottom);
 
   // Move the container element to outside of the viewpoert.
+<<<<<<< HEAD
   goog.style.setPosition(container, 8, winScroll.y + winSize.height);
+=======
+  goog.style.setPosition(container, 8, winScroll.y + winSize.height * 2);
+>>>>>>> newgitrepo
   visible = goog.style.getVisibleRectForElement(el);
   assertNull(visible);
 
@@ -1683,7 +1876,11 @@ function testGetVisibleRectForElement() {
   assertEquals(iframeViewportSize.height, visible.bottom);
   assertEquals(0, visible.left);
   assertEquals(iframeViewportSize.width, visible.right);
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> newgitrepo
 
 function testGetVisibleRectForElementWithBodyScrolled() {
   var container = goog.dom.getElement('test-visible2');
@@ -1744,7 +1941,11 @@ function testGetVisibleRectForElementWithBodyScrolled() {
 function testGetVisibleRectForElementWithNestedAreaAndNonOffsetAncestor() {
   // IE7 quirks mode somehow consider container2 below as offset parent
   // of the element, which is incorrect.
+<<<<<<< HEAD
   if (goog.userAgent.IE && !goog.userAgent.isDocumentMode(8) &&
+=======
+  if (goog.userAgent.IE && !goog.userAgent.isDocumentModeOrHigher(8) &&
+>>>>>>> newgitrepo
       !goog.dom.isCss1CompatMode()) {
     return;
   }
@@ -1887,7 +2088,11 @@ function testGetVisibleRectForElementInsideNestedScrollableArea() {
 
 function testGeckoMacOrX11RoundPosition() {
   if ((goog.userAgent.MAC || goog.userAgent.X11) && goog.userAgent.GECKO &&
+<<<<<<< HEAD
       goog.userAgent.isVersion('1.9')) {
+=======
+      goog.userAgent.isVersionOrHigher('1.9')) {
+>>>>>>> newgitrepo
 
     var pos = new goog.math.Coordinate(1.5, 1.4);
     var el = document.createElement('div');
@@ -1927,7 +2132,11 @@ function testScrollIntoContainerViewQuirks() {
   goog.style.scrollIntoContainerView(goog.dom.getElement('item3'), container);
   assertEquals('show item3 with increased height', 59, container.scrollTop);
   goog.style.scrollIntoContainerView(goog.dom.getElement('item3'), container,
+<<<<<<< HEAD
                                                          true);
+=======
+      true);
+>>>>>>> newgitrepo
   assertEquals('center item3 with increased height', 87, container.scrollTop);
   goog.dom.getElement('item3').style.height = '';
 
@@ -1992,6 +2201,13 @@ function testOverflowOffsetParent() {
 }
 
 function testGetViewportPageOffset() {
+<<<<<<< HEAD
+=======
+  expectedFailures.expectFailureFor(
+      goog.userAgent.IE && !goog.userAgent.isVersionOrHigher(9),
+      'Test has been flaky for ie8-winxp image. Disabling.');
+
+>>>>>>> newgitrepo
   var testViewport = goog.dom.getElement('test-viewport');
   testViewport.style.height = '5000px';
   testViewport.style.width = '5000px';
@@ -2024,11 +2240,20 @@ function testGetsTranslation() {
   var expectedTranslation = new goog.math.Coordinate(20, 30);
 
   expectedFailures.run(function() {
+<<<<<<< HEAD
     assertObjectEquals(new goog.math.Coordinate(30, 40), position);
+=======
+    assertEquals(30, position.x);
+    assertRoughlyEquals(40, position.y, .1);
+>>>>>>> newgitrepo
     assertObjectEquals(expectedTranslation, translation);
   });
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Return whether a given user agent has been detected.
  * @param {number} agent Value in UserAgents.
@@ -2048,6 +2273,10 @@ function getUserAgentDetected_(agent) {
   return null;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Rerun the initialization code to set all of the goog.userAgent constants.
  */
@@ -2071,6 +2300,10 @@ function reinitializeUserAgent() {
   goog.userAgent.VERSION = goog.userAgent.determineVersion_();
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test browser detection for a user agent configuration.
  * @param {Array.<number>} expectedAgents Array of expected userAgents.
@@ -2094,6 +2327,10 @@ function assertUserAgent(expectedAgents, uaString, opt_product, opt_vendor) {
   }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the proper vendor style name for a CSS property
  * with a vendor prefix for Webkit.
@@ -2110,6 +2347,10 @@ function testGetVendorStyleNameWebkit() {
       goog.style.getVendorStyleName_(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the proper vendor style name for a CSS property
  * when it exists without a vendor prefix for Webkit.
@@ -2128,6 +2369,10 @@ function testGetVendorStyleNameWebkitNoPrefix() {
       goog.style.getVendorStyleName_(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the proper vendor style name for a CSS property
  * with a vendor prefix for Gecko.
@@ -2144,6 +2389,10 @@ function testGetVendorStyleNameGecko() {
       goog.style.getVendorStyleName_(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the proper vendor style name for a CSS property
  * when it exists without a vendor prefix for Gecko.
@@ -2162,6 +2411,10 @@ function testGetVendorStyleNameGeckoNoPrefix() {
       goog.style.getVendorStyleName_(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the proper vendor style name for a CSS property
  * with a vendor prefix for IE.
@@ -2178,6 +2431,10 @@ function testGetVendorStyleNameIE() {
       goog.style.getVendorStyleName_(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the proper vendor style name for a CSS property
  * when it exists without a vendor prefix for IE.
@@ -2196,6 +2453,10 @@ function testGetVendorStyleNameIENoPrefix() {
       goog.style.getVendorStyleName_(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the proper vendor style name for a CSS property
  * with a vendor prefix for Opera.
@@ -2212,6 +2473,10 @@ function testGetVendorStyleNameOpera() {
       goog.style.getVendorStyleName_(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the proper vendor style name for a CSS property
  * when it exists without a vendor prefix for Opera.
@@ -2230,6 +2495,10 @@ function testGetVendorStyleNameOperaNoPrefix() {
       goog.style.getVendorStyleName_(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the proper vendor style name for a CSS property
  * with a vendor prefix for Webkit.
@@ -2246,6 +2515,10 @@ function testGetVendorJsStyleNameWebkit() {
       goog.style.getVendorJsStyleName_(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the proper vendor style name for a CSS property
  * when it exists without a vendor prefix for Webkit.
@@ -2264,6 +2537,10 @@ function testGetVendorJsStyleNameWebkitNoPrefix() {
       goog.style.getVendorJsStyleName_(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the proper vendor style name for a CSS property
  * with a vendor prefix for Gecko.
@@ -2280,6 +2557,10 @@ function testGetVendorJsStyleNameGecko() {
       goog.style.getVendorJsStyleName_(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the proper vendor style name for a CSS property
  * when it exists without a vendor prefix for Gecko.
@@ -2298,6 +2579,10 @@ function testGetVendorJsStyleNameGeckoNoPrefix() {
       goog.style.getVendorJsStyleName_(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the proper vendor style name for a CSS property
  * with a vendor prefix for IE.
@@ -2314,6 +2599,10 @@ function testGetVendorJsStyleNameIE() {
       goog.style.getVendorJsStyleName_(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the proper vendor style name for a CSS property
  * when it exists without a vendor prefix for IE.
@@ -2332,6 +2621,10 @@ function testGetVendorJsStyleNameIENoPrefix() {
       goog.style.getVendorJsStyleName_(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the proper vendor style name for a CSS property
  * with a vendor prefix for Opera.
@@ -2348,6 +2641,10 @@ function testGetVendorJsStyleNameOpera() {
       goog.style.getVendorJsStyleName_(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the proper vendor style name for a CSS property
  * when it exists without a vendor prefix for Opera.
@@ -2366,6 +2663,10 @@ function testGetVendorJsStyleNameOperaNoPrefix() {
       goog.style.getVendorJsStyleName_(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the setting a style name for a CSS property
  * with a vendor prefix for Webkit.
@@ -2383,6 +2684,10 @@ function testSetVendorStyleWebkit() {
   assertEquals(styleValue, mockElement.style.WebkitTransform);
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the setting a style name for a CSS property
  * with a vendor prefix for Mozilla.
@@ -2400,6 +2705,10 @@ function testSetVendorStyleGecko() {
   assertEquals(styleValue, mockElement.style.MozTransform);
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the setting a style name for a CSS property
  * with a vendor prefix for IE.
@@ -2417,6 +2726,10 @@ function testSetVendorStyleIE() {
   assertEquals(styleValue, mockElement.style.msTransform);
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the setting a style name for a CSS property
  * with a vendor prefix for Opera.
@@ -2434,6 +2747,10 @@ function testSetVendorStyleOpera() {
   assertEquals(styleValue, mockElement.style.OTransform);
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the getting a style name for a CSS property
  * with a vendor prefix for Webkit.
@@ -2451,6 +2768,10 @@ function testGetVendorStyleWebkit() {
   assertEquals(styleValue, goog.style.getStyle(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the getting a style name for a CSS property
  * with a vendor prefix for Mozilla.
@@ -2468,6 +2789,10 @@ function testGetVendorStyleGecko() {
   assertEquals(styleValue, goog.style.getStyle(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the getting a style name for a CSS property
  * with a vendor prefix for IE.
@@ -2485,6 +2810,10 @@ function testGetVendorStyleIE() {
   assertEquals(styleValue, goog.style.getStyle(mockElement, 'transform'));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Test for the getting a style name for a CSS property
  * with a vendor prefix for Opera.
@@ -2501,8 +2830,11 @@ function testGetVendorStyleOpera() {
   goog.style.setStyle(mockElement, 'transform', styleValue);
   assertEquals(styleValue, goog.style.getStyle(mockElement, 'transform'));
 }
+<<<<<<< HEAD
 
 function isIE8() {
   return goog.userAgent.IE && goog.userAgent.isDocumentMode(8) &&
       !goog.userAgent.isDocumentMode(9);
 }
+=======
+>>>>>>> newgitrepo

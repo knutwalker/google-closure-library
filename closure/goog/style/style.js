@@ -24,7 +24,13 @@ goog.provide('goog.style');
 
 
 goog.require('goog.array');
+<<<<<<< HEAD
 goog.require('goog.dom');
+=======
+goog.require('goog.asserts');
+goog.require('goog.dom');
+goog.require('goog.dom.NodeType');
+>>>>>>> newgitrepo
 goog.require('goog.dom.vendor');
 goog.require('goog.math.Box');
 goog.require('goog.math.Coordinate');
@@ -36,6 +42,16 @@ goog.require('goog.userAgent');
 
 
 /**
+<<<<<<< HEAD
+=======
+ * @define {boolean} Whether we know at compile time that
+ *     getBoundingClientRect() is present and bug-free on the browser.
+ */
+goog.define('goog.style.GET_BOUNDING_CLIENT_RECT_ALWAYS_EXISTS', false);
+
+
+/**
+>>>>>>> newgitrepo
  * Sets a style value on an element.
  *
  * This function is not indended to patch issues in the browser's style
@@ -310,7 +326,11 @@ goog.style.setPosition = function(el, arg1, opt_arg2) {
   var x, y;
   var buggyGeckoSubPixelPos = goog.userAgent.GECKO &&
       (goog.userAgent.MAC || goog.userAgent.X11) &&
+<<<<<<< HEAD
       goog.userAgent.isVersion('1.9');
+=======
+      goog.userAgent.isVersionOrHigher('1.9');
+>>>>>>> newgitrepo
 
   if (arg1 instanceof goog.math.Coordinate) {
     x = arg1.x;
@@ -354,7 +374,11 @@ goog.style.getClientViewportElement = function(opt_node) {
   }
 
   // In old IE versions the document.body represented the viewport
+<<<<<<< HEAD
   if (goog.userAgent.IE && !goog.userAgent.isDocumentMode(9) &&
+=======
+  if (goog.userAgent.IE && !goog.userAgent.isDocumentModeOrHigher(9) &&
+>>>>>>> newgitrepo
       !goog.dom.getDomHelper(doc).isCss1CompatMode()) {
     return doc.body;
   }
@@ -432,7 +456,11 @@ goog.style.getOffsetParent = function(element) {
   // element.offsetParent does the right thing in IE7 and below.  In other
   // browsers it only includes elements with position absolute, relative or
   // fixed, not elements with overflow set to auto or scroll.
+<<<<<<< HEAD
   if (goog.userAgent.IE && !goog.userAgent.isDocumentMode(8)) {
+=======
+  if (goog.userAgent.IE && !goog.userAgent.isDocumentModeOrHigher(8)) {
+>>>>>>> newgitrepo
     return element.offsetParent;
   }
 
@@ -592,7 +620,11 @@ goog.style.scrollIntoContainerView = function(element, container, opt_center) {
 goog.style.getClientLeftTop = function(el) {
   // NOTE(eae): Gecko prior to 1.9 doesn't support clientTop/Left, see
   // https://bugzilla.mozilla.org/show_bug.cgi?id=111207
+<<<<<<< HEAD
   if (goog.userAgent.GECKO && !goog.userAgent.isVersion('1.9')) {
+=======
+  if (goog.userAgent.GECKO && !goog.userAgent.isVersionOrHigher('1.9')) {
+>>>>>>> newgitrepo
     var left = parseFloat(goog.style.getComputedStyle(el, 'borderLeftWidth'));
     if (goog.style.isRightToLeft(el)) {
       var scrollbarWidth = el.offsetWidth - el.clientWidth - left -
@@ -627,7 +659,13 @@ goog.style.getPageOffset = function(el) {
   // position. When invoked for an element with position absolute and a negative
   // position though it can be off by one. Therefor the recursive implementation
   // is used in those (relatively rare) cases.
+<<<<<<< HEAD
   var BUGGY_GECKO_BOX_OBJECT = goog.userAgent.GECKO && doc.getBoxObjectFor &&
+=======
+  var BUGGY_GECKO_BOX_OBJECT =
+      !goog.style.GET_BOUNDING_CLIENT_RECT_ALWAYS_EXISTS &&
+      goog.userAgent.GECKO && doc.getBoxObjectFor &&
+>>>>>>> newgitrepo
       !el.getBoundingClientRect && positionStyle == 'absolute' &&
       (box = doc.getBoxObjectFor(el)) && (box.screenX < 0 || box.screenY < 0);
 
@@ -647,7 +685,12 @@ goog.style.getPageOffset = function(el) {
   }
 
   // IE, Gecko 1.9+, and most modern WebKit.
+<<<<<<< HEAD
   if (el.getBoundingClientRect) {
+=======
+  if (goog.style.GET_BOUNDING_CLIENT_RECT_ALWAYS_EXISTS ||
+      el.getBoundingClientRect) {
+>>>>>>> newgitrepo
     box = goog.style.getBoundingClientRect_(el);
     // Must add the scroll coordinates in to get the absolute page offset
     // of element since getBoundingClientRect returns relative coordinates to
@@ -761,7 +804,12 @@ goog.style.getFramedPageOffset = function(el, relativeWin) {
     // the outer window.
     var offset = currentWin == relativeWin ?
         goog.style.getPageOffset(currentEl) :
+<<<<<<< HEAD
         goog.style.getClientPosition(currentEl);
+=======
+        goog.style.getClientPositionForElement_(
+            goog.asserts.assert(currentEl));
+>>>>>>> newgitrepo
 
     position.x += offset.x;
     position.y += offset.y;
@@ -821,10 +869,47 @@ goog.style.getRelativePosition = function(a, b) {
 /**
  * Returns the position of the event or the element's border box relative to
  * the client viewport.
+<<<<<<< HEAD
+=======
+ * @param {!Element} el Element whose position to get.
+ * @return {!goog.math.Coordinate} The position.
+ * @private
+ */
+goog.style.getClientPositionForElement_ = function(el) {
+  var pos;
+  if (goog.style.GET_BOUNDING_CLIENT_RECT_ALWAYS_EXISTS ||
+      el.getBoundingClientRect) {
+    // IE, Gecko 1.9+, and most modern WebKit
+    var box = goog.style.getBoundingClientRect_(el);
+    pos = new goog.math.Coordinate(box.left, box.top);
+  } else {
+    var scrollCoord = goog.dom.getDomHelper(el).getDocumentScroll();
+    var pageCoord = goog.style.getPageOffset(el);
+    pos = new goog.math.Coordinate(
+        pageCoord.x - scrollCoord.x,
+        pageCoord.y - scrollCoord.y);
+  }
+
+  // Gecko below version 12 doesn't add CSS translation to the client position
+  // (using either getBoundingClientRect or getBoxOffsetFor) so we need to do
+  // so manually.
+  if (goog.userAgent.GECKO && !goog.userAgent.isVersionOrHigher(12)) {
+    return goog.math.Coordinate.sum(pos, goog.style.getCssTranslation(el));
+  } else {
+    return pos;
+  }
+};
+
+
+/**
+ * Returns the position of the event or the element's border box relative to
+ * the client viewport.
+>>>>>>> newgitrepo
  * @param {Element|Event|goog.events.Event} el Element or a mouse / touch event.
  * @return {!goog.math.Coordinate} The position.
  */
 goog.style.getClientPosition = function(el) {
+<<<<<<< HEAD
   var pos = new goog.math.Coordinate;
   if (el.nodeType == goog.dom.NodeType.ELEMENT) {
     el = /** @type {!Element} */ (el);
@@ -842,6 +927,12 @@ goog.style.getClientPosition = function(el) {
     if (goog.userAgent.GECKO && !goog.userAgent.isVersion(12)) {
       pos = goog.math.Coordinate.sum(pos, goog.style.getCssTranslation(el));
     }
+=======
+  goog.asserts.assert(el);
+  if (el.nodeType == goog.dom.NodeType.ELEMENT) {
+    return goog.style.getClientPositionForElement_(
+        /** @type {!Element} */ (el));
+>>>>>>> newgitrepo
   } else {
     var isAbstractedEvent = goog.isFunction(el.getBrowserEvent);
     var targetEvent = el;
@@ -852,11 +943,18 @@ goog.style.getClientPosition = function(el) {
       targetEvent = el.getBrowserEvent().targetTouches[0];
     }
 
+<<<<<<< HEAD
     pos.x = targetEvent.clientX;
     pos.y = targetEvent.clientY;
   }
 
   return pos;
+=======
+    return new goog.math.Coordinate(
+        targetEvent.clientX,
+        targetEvent.clientY);
+  }
+>>>>>>> newgitrepo
 };
 
 
@@ -1117,7 +1215,11 @@ goog.style.setTransparentBackgroundImage = function(el, src) {
   // It is safe to use the style.filter in IE only. In Safari 'filter' is in
   // style object but access to style.filter causes it to throw an exception.
   // Note: IE8 supports images with an alpha channel.
+<<<<<<< HEAD
   if (goog.userAgent.IE && !goog.userAgent.isVersion('8')) {
+=======
+  if (goog.userAgent.IE && !goog.userAgent.isVersionOrHigher('8')) {
+>>>>>>> newgitrepo
     // See TODO in setOpacity.
     style.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(' +
         'src="' + src + '", sizingMethod="crop")';
@@ -1165,25 +1267,69 @@ goog.style.clearTransparentBackgroundImage = function(el) {
  * stylesheet.
  * @param {Element} el Element to show or hide.
  * @param {*} display True to render the element in its default style,
+<<<<<<< HEAD
  * false to disable rendering the element.
  */
 goog.style.showElement = function(el, display) {
   el.style.display = display ? '' : 'none';
+=======
+ *     false to disable rendering the element.
+ * @deprecated Use goog.style.setElementShown instead.
+ */
+goog.style.showElement = function(el, display) {
+  goog.style.setElementShown(el, display);
+};
+
+
+/**
+ * Shows or hides an element from the page. Hiding the element is done by
+ * setting the display property to "none", removing the element from the
+ * rendering hierarchy so it takes up no space. To show the element, the default
+ * inherited display property is restored (defined either in stylesheets or by
+ * the browser's default style rules).
+ *
+ * Caveat 1: if the inherited display property for the element is set to "none"
+ * by the stylesheets, that is the property that will be restored by a call to
+ * setElementShown(), effectively toggling the display between "none" and
+ * "none".
+ *
+ * Caveat 2: if the element display style is set inline (by setting either
+ * element.style.display or a style attribute in the HTML), a call to
+ * setElementShown will clear that setting and defer to the inherited style in
+ * the stylesheet.
+ * @param {Element} el Element to show or hide.
+ * @param {*} isShown True to render the element in its default style,
+ *     false to disable rendering the element.
+ */
+goog.style.setElementShown = function(el, isShown) {
+  el.style.display = isShown ? '' : 'none';
+>>>>>>> newgitrepo
 };
 
 
 /**
  * Test whether the given element has been shown or hidden via a call to
+<<<<<<< HEAD
  * {@link #showElement}.
  *
  * Note this is strictly a companion method for a call
  * to {@link #showElement} and the same caveats apply; in particular, this
+=======
+ * {@link #setElementShown}.
+ *
+ * Note this is strictly a companion method for a call
+ * to {@link #setElementShown} and the same caveats apply; in particular, this
+>>>>>>> newgitrepo
  * method does not guarantee that the return value will be consistent with
  * whether or not the element is actually visible.
  *
  * @param {Element} el The element to test.
  * @return {boolean} Whether the element has been shown.
+<<<<<<< HEAD
  * @see #showElement
+=======
+ * @see #setElementShown
+>>>>>>> newgitrepo
  */
 goog.style.isElementShown = function(el) {
   return el.style.display != 'none';
@@ -1273,7 +1419,11 @@ goog.style.setStyles = function(element, stylesString) {
  */
 goog.style.setPreWrap = function(el) {
   var style = el.style;
+<<<<<<< HEAD
   if (goog.userAgent.IE && !goog.userAgent.isVersion('8')) {
+=======
+  if (goog.userAgent.IE && !goog.userAgent.isVersionOrHigher('8')) {
+>>>>>>> newgitrepo
     style.whiteSpace = 'pre';
     style.wordWrap = 'break-word';
   } else if (goog.userAgent.GECKO) {
@@ -1296,7 +1446,11 @@ goog.style.setInlineBlock = function(el) {
   // Without position:relative, weirdness ensues.  Just accept it and move on.
   style.position = 'relative';
 
+<<<<<<< HEAD
   if (goog.userAgent.IE && !goog.userAgent.isVersion('8')) {
+=======
+  if (goog.userAgent.IE && !goog.userAgent.isVersionOrHigher('8')) {
+>>>>>>> newgitrepo
     // IE8 supports inline-block so fall through to the else
     // Zoom:1 forces hasLayout, display:inline gives inline behavior.
     style.zoom = '1';
@@ -1304,7 +1458,11 @@ goog.style.setInlineBlock = function(el) {
   } else if (goog.userAgent.GECKO) {
     // Pre-Firefox 3, Gecko doesn't support inline-block, but -moz-inline-box
     // is close enough.
+<<<<<<< HEAD
     style.display = goog.userAgent.isVersion('1.9a') ? 'inline-block' :
+=======
+    style.display = goog.userAgent.isVersionOrHigher('1.9a') ? 'inline-block' :
+>>>>>>> newgitrepo
         '-moz-inline-box';
   } else {
     // Opera, Webkit, and Safari seem to do OK with the standard inline-block
@@ -1414,7 +1572,11 @@ goog.style.setBorderBoxSize = function(element, size) {
   var isCss1CompatMode = goog.dom.getDomHelper(doc).isCss1CompatMode();
 
   if (goog.userAgent.IE &&
+<<<<<<< HEAD
       (!isCss1CompatMode || !goog.userAgent.isVersion('8'))) {
+=======
+      (!isCss1CompatMode || !goog.userAgent.isVersionOrHigher('8'))) {
+>>>>>>> newgitrepo
     var style = element.style;
     if (isCss1CompatMode) {
       var paddingBox = goog.style.getPaddingBox(element);
@@ -1477,7 +1639,11 @@ goog.style.setContentBoxSize = function(element, size) {
   var doc = goog.dom.getOwnerDocument(element);
   var isCss1CompatMode = goog.dom.getDomHelper(doc).isCss1CompatMode();
   if (goog.userAgent.IE &&
+<<<<<<< HEAD
       (!isCss1CompatMode || !goog.userAgent.isVersion('8'))) {
+=======
+      (!isCss1CompatMode || !goog.userAgent.isVersionOrHigher('8'))) {
+>>>>>>> newgitrepo
     var style = element.style;
     if (isCss1CompatMode) {
       style.pixelWidth = size.width;

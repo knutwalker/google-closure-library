@@ -20,7 +20,10 @@ See the COPYING file for details.
 </script>
 <link rel="stylesheet" href="../css/button.css">
 <style>
+<<<<<<< HEAD
 
+=======
+>>>>>>> newgitrepo
 table {
   border: 1px solid black;
   width: 100%;
@@ -52,7 +55,10 @@ table {
   color: yellow;
   background-color: blue;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> newgitrepo
 </style>
 </head>
 <body>
@@ -66,14 +72,20 @@ table {
           <div class="spacer">
             This content does not float.
           </div>
+<<<<<<< HEAD
 
           <div id="floater1">
+=======
+          <div id="floater1">
+            This floater is constrainted within a container and has a top offset of 50px.
+>>>>>>> newgitrepo
           </div>
         </td>
         <td id="right-cell">
           <div class="spacer">
             This content does not float.
           </div>
+<<<<<<< HEAD
 
           <div id="floater2container">
           </div>
@@ -81,6 +93,14 @@ table {
         </td>
       </tr>
     </table>
+=======
+          <div id="floater2container">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <div style="height:1500px"></div>
+>>>>>>> newgitrepo
     <p>This is the bottom of the page.</p>
   </form>
 
@@ -90,9 +110,18 @@ table {
     var scrollfloater1 = new goog.ui.ScrollFloater();
     var button1 = new goog.ui.ToggleButton("Enable Floater 1");
     button1.render(goog.dom.getElement('floater1'));
+<<<<<<< HEAD
     scrollfloater1.decorate(goog.dom.getElement('floater1'));
 
     var scrollfloater2 = new goog.ui.ScrollFloater();
+=======
+    scrollfloater1.setViewportTopOffset(50);
+    scrollfloater1.setContainerElement(goog.dom.getElement('floater1').parentElement);
+    scrollfloater1.decorate(goog.dom.getElement('floater1'));
+
+    var scrollfloater2 = new goog.ui.ScrollFloater();
+
+>>>>>>> newgitrepo
     var button2 = new goog.ui.ToggleButton("Enable Floater 2");
     scrollfloater2.addChild(button2, true);
     scrollfloater2.render(goog.dom.getElement('floater2container'));
@@ -104,14 +133,23 @@ table {
                          });
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> newgitrepo
     button1.setState(goog.ui.Component.State.CHECKED, true);
     button2.setState(goog.ui.Component.State.CHECKED, true);
     setupClickHandler(button1, scrollfloater1);
     setupClickHandler(button2, scrollfloater2);
+<<<<<<< HEAD
 
   </script>
 
 </body>
 </html>
 
+=======
+  </script>
+</body>
+</html>
+>>>>>>> newgitrepo

@@ -25,46 +25,74 @@ goog.require('goog.userAgent');
 /**
  * @define {boolean} Whether the code is running on the Firefox web browser.
  */
+<<<<<<< HEAD
 goog.userAgent.product.ASSUME_FIREFOX = false;
+=======
+goog.define('goog.userAgent.product.ASSUME_FIREFOX', false);
+>>>>>>> newgitrepo
 
 
 /**
  * @define {boolean} Whether the code is running on the Camino web browser.
  */
+<<<<<<< HEAD
 goog.userAgent.product.ASSUME_CAMINO = false;
+=======
+goog.define('goog.userAgent.product.ASSUME_CAMINO', false);
+>>>>>>> newgitrepo
 
 
 /**
  * @define {boolean} Whether we know at compile-time that the product is an
  *     iPhone.
  */
+<<<<<<< HEAD
 goog.userAgent.product.ASSUME_IPHONE = false;
+=======
+goog.define('goog.userAgent.product.ASSUME_IPHONE', false);
+>>>>>>> newgitrepo
 
 
 /**
  * @define {boolean} Whether we know at compile-time that the product is an
  *     iPad.
  */
+<<<<<<< HEAD
 goog.userAgent.product.ASSUME_IPAD = false;
+=======
+goog.define('goog.userAgent.product.ASSUME_IPAD', false);
+>>>>>>> newgitrepo
 
 
 /**
  * @define {boolean} Whether we know at compile-time that the product is an
  *     Android phone.
  */
+<<<<<<< HEAD
 goog.userAgent.product.ASSUME_ANDROID = false;
+=======
+goog.define('goog.userAgent.product.ASSUME_ANDROID', false);
+>>>>>>> newgitrepo
 
 
 /**
  * @define {boolean} Whether the code is running on the Chrome web browser.
  */
+<<<<<<< HEAD
 goog.userAgent.product.ASSUME_CHROME = false;
+=======
+goog.define('goog.userAgent.product.ASSUME_CHROME', false);
+>>>>>>> newgitrepo
 
 
 /**
  * @define {boolean} Whether the code is running on the Safari web browser.
  */
+<<<<<<< HEAD
 goog.userAgent.product.ASSUME_SAFARI = false;
+=======
+goog.define('goog.userAgent.product.ASSUME_SAFARI', false);
+>>>>>>> newgitrepo
 
 
 /**

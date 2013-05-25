@@ -24,12 +24,20 @@ goog.require('goog.dom.TagName');
 goog.require('goog.events.Event');
 goog.require('goog.string');
 goog.require('goog.ui.editor.AbstractDialog');
+<<<<<<< HEAD
 goog.require('goog.ui.editor.AbstractDialog.Builder');
 goog.require('goog.ui.editor.AbstractDialog.EventType');
+=======
+>>>>>>> newgitrepo
 
 
 // *** Public interface ***************************************************** //
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> newgitrepo
 /**
  * Creates a dialog to let the user enter a customized hello world message.
  * @param {goog.dom.DomHelper} domHelper DomHelper to be used to create the
@@ -46,6 +54,11 @@ goog.inherits(goog.demos.editor.HelloWorldDialog,
 
 // *** Event **************************************************************** //
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> newgitrepo
 /**
  * OK event object for the hello world dialog.
  * @param {string} message Customized hello world message chosen by the user.
@@ -57,6 +70,10 @@ goog.demos.editor.HelloWorldDialog.OkEvent = function(message) {
 };
 goog.inherits(goog.demos.editor.HelloWorldDialog.OkEvent, goog.events.Event);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Event type.
  * @type {goog.ui.editor.AbstractDialog.EventType}
@@ -65,6 +82,10 @@ goog.inherits(goog.demos.editor.HelloWorldDialog.OkEvent, goog.events.Event);
 goog.demos.editor.HelloWorldDialog.OkEvent.prototype.type =
     goog.ui.editor.AbstractDialog.EventType.OK;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Customized hello world message chosen by the user.
  * @type {string}
@@ -74,6 +95,10 @@ goog.demos.editor.HelloWorldDialog.OkEvent.prototype.message;
 
 // *** Protected interface ************************************************** //
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /** @override */
 goog.demos.editor.HelloWorldDialog.prototype.createDialogControl = function() {
   var builder = new goog.ui.editor.AbstractDialog.Builder(this);
@@ -84,6 +109,10 @@ goog.demos.editor.HelloWorldDialog.prototype.createDialogControl = function() {
   return builder.build();
 };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Creates and returns the event object to be used when dispatching the OK
  * event to listeners, or returns null to prevent the dialog from closing.
@@ -111,6 +140,10 @@ goog.demos.editor.HelloWorldDialog.prototype.createOkEvent = function(e) {
 
 // *** Private implementation *********************************************** //
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Input element where the user will type their hello world message.
  * @type {Element}
@@ -137,6 +170,10 @@ goog.demos.editor.HelloWorldDialog.prototype.createContent_ = function() {
                             [MSG_HELLO_WORLD_DIALOG_PROMPT, this.input_]);
 };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Returns the hello world message currently typed into the dialog's input.
  * @return {?string} The hello world message currently typed into the dialog's

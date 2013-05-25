@@ -156,7 +156,11 @@ function testObjectSerialize_recursion() {
 
 function testObjectSerializeWithHasOwnProperty() {
   var object = {'hasOwnProperty': null};
+<<<<<<< HEAD
   if (goog.userAgent.IE && !goog.userAgent.isVersion('9')) {
+=======
+  if (goog.userAgent.IE && !goog.userAgent.isVersionOrHigher('9')) {
+>>>>>>> newgitrepo
     assertEquals('{}', goog.json.serialize(object));
   } else {
     assertEquals('{"hasOwnProperty":null}', goog.json.serialize(object));

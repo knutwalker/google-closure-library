@@ -14,6 +14,7 @@
 
 
 /**
+<<<<<<< HEAD
  * @fileoverview Tests for goog.ui.MockActivityMonitorTest
  * @author nnaze@google.com (Nathan Naze)
  */
@@ -25,6 +26,21 @@ goog.require('goog.testing.recordFunction');
 goog.require('goog.ui.MockActivityMonitor');
 goog.require('goog.ui.ActivityMonitor');
 goog.require('goog.functions');
+=======
+ * @fileoverview Tests for goog.ui.MockActivityMonitorTest.
+ * @author nnaze@google.com (Nathan Naze)
+ */
+
+/** @suppress {extraProvide} */
+goog.provide('goog.ui.MockActivityMonitorTest');
+
+goog.require('goog.events');
+goog.require('goog.functions');
+goog.require('goog.testing.jsunit');
+goog.require('goog.testing.recordFunction');
+goog.require('goog.ui.ActivityMonitor');
+goog.require('goog.ui.MockActivityMonitor');
+>>>>>>> newgitrepo
 
 goog.setTestOnly('goog.ui.MockActivityMonitorTest');
 

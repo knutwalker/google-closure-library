@@ -47,11 +47,22 @@ goog.require('goog.userAgent');
 /**
  * Basic object for detecting whether the online state changes.
  * @constructor
+<<<<<<< HEAD
  * @extends {goog.net.NetworkStatusMonitor}
+=======
+ * @extends {goog.events.EventTarget}
+ * @implements {goog.net.NetworkStatusMonitor}
+>>>>>>> newgitrepo
  */
 goog.events.OnlineHandler = function() {
   goog.base(this);
 
+<<<<<<< HEAD
+=======
+  /**
+   * @private {goog.events.EventHandler}
+   */
+>>>>>>> newgitrepo
   this.eventHandler_ = new goog.events.EventHandler(this);
 
   // Some browsers do not support navigator.onLine and therefore we don't
@@ -74,12 +85,20 @@ goog.events.OnlineHandler = function() {
     this.timer_.start();
   }
 };
+<<<<<<< HEAD
 goog.inherits(goog.events.OnlineHandler, goog.net.NetworkStatusMonitor);
+=======
+goog.inherits(goog.events.OnlineHandler, goog.events.EventTarget);
+>>>>>>> newgitrepo
 
 
 /**
  * Enum for the events dispatched by the OnlineHandler.
  * @enum {string}
+<<<<<<< HEAD
+=======
+ * @deprecated Use goog.net.NetworkStatusMonitor.EventType instead.
+>>>>>>> newgitrepo
  */
 goog.events.OnlineHandler.EventType = goog.net.NetworkStatusMonitor.EventType;
 
@@ -109,6 +128,7 @@ goog.events.OnlineHandler.prototype.online_;
 goog.events.OnlineHandler.prototype.timer_;
 
 
+<<<<<<< HEAD
 /**
  * Event handler to simplify event listening.
  * @type {goog.events.EventHandler}
@@ -117,6 +137,8 @@ goog.events.OnlineHandler.prototype.timer_;
 goog.events.OnlineHandler.prototype.eventHandler_;
 
 
+=======
+>>>>>>> newgitrepo
 /** @override */
 goog.events.OnlineHandler.prototype.isOnline = function() {
   return goog.events.BrowserFeature.HAS_NAVIGATOR_ONLINE_PROPERTY ?
@@ -155,11 +177,20 @@ goog.events.OnlineHandler.prototype.handleChange_ = function(e) {
 
 /** @override */
 goog.events.OnlineHandler.prototype.disposeInternal = function() {
+<<<<<<< HEAD
   goog.events.OnlineHandler.superClass_.disposeInternal.call(this);
   this.eventHandler_.dispose();
   delete this.eventHandler_;
   if (this.timer_) {
     this.timer_.dispose();
     delete this.timer_;
+=======
+  goog.base(this, 'disposeInternal');
+  this.eventHandler_.dispose();
+  this.eventHandler_ = null;
+  if (this.timer_) {
+    this.timer_.dispose();
+    this.timer_ = null;
+>>>>>>> newgitrepo
   }
 };

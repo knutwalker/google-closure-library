@@ -24,12 +24,21 @@ goog.provide('goog.ui.editor.ToolbarFactory');
 
 goog.require('goog.array');
 goog.require('goog.dom');
+<<<<<<< HEAD
 goog.require('goog.string');
 goog.require('goog.string.Unicode');
 goog.require('goog.style');
 goog.require('goog.ui.Component.State');
 goog.require('goog.ui.Container.Orientation');
 goog.require('goog.ui.ControlContent');
+=======
+goog.require('goog.dom.TagName');
+goog.require('goog.string');
+goog.require('goog.string.Unicode');
+goog.require('goog.style');
+goog.require('goog.ui.Component');
+goog.require('goog.ui.Container');
+>>>>>>> newgitrepo
 goog.require('goog.ui.Option');
 goog.require('goog.ui.Toolbar');
 goog.require('goog.ui.ToolbarButton');
@@ -431,7 +440,11 @@ goog.ui.editor.ToolbarFactory.createContent_ = function(caption, opt_classNames,
     opt_domHelper) {
   // FF2 doesn't like empty DIVs, especially when rendered right-to-left.
   if ((!caption || caption == '') && goog.userAgent.GECKO &&
+<<<<<<< HEAD
       !goog.userAgent.isVersion('1.9a')) {
+=======
+      !goog.userAgent.isVersionOrHigher('1.9a')) {
+>>>>>>> newgitrepo
     caption = goog.string.Unicode.NBSP;
   }
   return (opt_domHelper || goog.dom.getDomHelper()).createDom(

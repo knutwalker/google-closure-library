@@ -36,6 +36,12 @@ goog.require('goog.math');
  * the {@code transform} method.
  *
  * @constructor
+<<<<<<< HEAD
+=======
+ * @deprecated goog.graphics is deprecated. It existed to abstract over browser
+ *     differences before the canvas tag was widely supported.  See
+ *     http://en.wikipedia.org/wiki/Canvas_element for details.
+>>>>>>> newgitrepo
  */
 goog.graphics.Path = function() {
   /**
@@ -103,6 +109,10 @@ goog.graphics.Path.Segment = {
  * The number of points for each segment type.
  * @type {!Array.<number>}
  * @private
+<<<<<<< HEAD
+=======
+ * @suppress {deprecated} goog.graphics.Path is deprecated.
+>>>>>>> newgitrepo
  */
 goog.graphics.Path.segmentArgCounts_ = (function() {
   var counts = [];
@@ -430,6 +440,10 @@ goog.graphics.Path.prototype.isSimple = function() {
  * A map from segment type to the path function to call to simplify a path.
  * @type {!Object}
  * @private
+<<<<<<< HEAD
+=======
+ * @suppress {deprecated} goog.graphics.Path is deprecated.
+>>>>>>> newgitrepo
  */
 goog.graphics.Path.simplifySegmentMap_ = (function() {
   var map = {};
@@ -451,6 +465,10 @@ goog.graphics.Path.simplifySegmentMap_ = (function() {
  *
  * @param {!goog.graphics.Path} src The path to simplify.
  * @return {!goog.graphics.Path} A new simplified path.
+<<<<<<< HEAD
+=======
+ * @suppress {deprecated} goog.graphics is deprecated.
+>>>>>>> newgitrepo
  */
 goog.graphics.Path.createSimplifiedPath = function(src) {
   if (src.isSimple()) {

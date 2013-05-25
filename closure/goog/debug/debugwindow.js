@@ -44,6 +44,7 @@ goog.require('goog.userAgent');
 goog.debug.DebugWindow = function(opt_identifier, opt_prefix) {
   /**
    * Identifier for this logging class
+<<<<<<< HEAD
    * @type {string}
    * @protected
    * @suppress {underscore}
@@ -69,28 +70,61 @@ goog.debug.DebugWindow = function(opt_identifier, opt_prefix) {
    * Buffer for saving the last 1000 messages
    * @type {goog.structs.CircularBuffer}
    * @private
+=======
+   * @protected {string}
+   */
+  this.identifier = opt_identifier || '';
+
+  /**
+   * Array used to buffer log output
+   * @protected {!Array}
+   */
+  this.outputBuffer = [];
+
+  /**
+   * Optional prefix to be prepended to error strings
+   * @private {string}
+   */
+  this.prefix_ = opt_prefix || '';
+
+  /**
+   * Buffer for saving the last 1000 messages
+   * @private {!goog.structs.CircularBuffer}
+>>>>>>> newgitrepo
    */
   this.savedMessages_ =
       new goog.structs.CircularBuffer(goog.debug.DebugWindow.MAX_SAVED);
 
   /**
    * Save the publish handler so it can be removed
+<<<<<<< HEAD
    * @type {Function}
    * @private
+=======
+   * @private {!Function}
+>>>>>>> newgitrepo
    */
   this.publishHandler_ = goog.bind(this.addLogRecord, this);
 
   /**
    * Formatter for formatted output
+<<<<<<< HEAD
    * @type {goog.debug.Formatter}
    * @private
+=======
+   * @private {goog.debug.Formatter}
+>>>>>>> newgitrepo
    */
   this.formatter_ = new goog.debug.HtmlFormatter(this.prefix_);
 
   /**
    * Loggers that we shouldn't output
+<<<<<<< HEAD
    * @type {Object}
    * @private
+=======
+   * @private {!Object}
+>>>>>>> newgitrepo
    */
   this.filteredLoggers_ = {};
 
@@ -102,10 +136,16 @@ goog.debug.DebugWindow = function(opt_identifier, opt_prefix) {
    * to keep its window open. When it's disabled, it can still be capturing log
    * output if, but it won't try to write them to the DebugWindow window until
    * it's enabled.
+<<<<<<< HEAD
    * @type {boolean}
    * @private
    */
   this.enabled_ = goog.debug.DebugWindow.isEnabled(this.identifier_);
+=======
+   * @private {boolean}
+   */
+  this.enabled_ = goog.debug.DebugWindow.isEnabled(this.identifier);
+>>>>>>> newgitrepo
 
   // timer to save the DebugWindow's window position in a cookie
   goog.global.setInterval(goog.bind(this.saveWindowPositionSize_, this), 7500);
@@ -186,11 +226,17 @@ goog.debug.DebugWindow.prototype.bufferTimeout_ = null;
 
 /**
  * Timestamp for the last time the log was written to.
+<<<<<<< HEAD
  * @type {number}
  * @protected
  * @suppress {underscore}
  */
 goog.debug.DebugWindow.prototype.lastCall_ = goog.now();
+=======
+ * @protected {number}
+ */
+goog.debug.DebugWindow.prototype.lastCall = goog.now();
+>>>>>>> newgitrepo
 
 
 /**
@@ -322,9 +368,14 @@ goog.debug.DebugWindow.prototype.hasActiveWindow = function() {
 /**
  * Clears the contents of the debug window
  * @protected
+<<<<<<< HEAD
  * @suppress {underscore}
  */
 goog.debug.DebugWindow.prototype.clear_ = function() {
+=======
+ */
+goog.debug.DebugWindow.prototype.clear = function() {
+>>>>>>> newgitrepo
   this.savedMessages_.clear();
   if (this.hasActiveWindow()) {
     this.writeInitialDocument();
@@ -375,10 +426,17 @@ goog.debug.DebugWindow.prototype.write_ = function(html) {
  * @private
  */
 goog.debug.DebugWindow.prototype.writeToLog_ = function(html) {
+<<<<<<< HEAD
   this.outputBuffer_.push(html);
   goog.global.clearTimeout(this.bufferTimeout_);
 
   if (goog.now() - this.lastCall_ > 750) {
+=======
+  this.outputBuffer.push(html);
+  goog.global.clearTimeout(this.bufferTimeout_);
+
+  if (goog.now() - this.lastCall > 750) {
+>>>>>>> newgitrepo
     this.writeBufferToLog();
   } else {
     this.bufferTimeout_ =
@@ -392,14 +450,23 @@ goog.debug.DebugWindow.prototype.writeToLog_ = function(html) {
  * @protected
  */
 goog.debug.DebugWindow.prototype.writeBufferToLog = function() {
+<<<<<<< HEAD
   this.lastCall_ = goog.now();
+=======
+  this.lastCall = goog.now();
+>>>>>>> newgitrepo
   if (this.hasActiveWindow()) {
     var body = this.win_.document.body;
     var scroll = body &&
         body.scrollHeight - (body.scrollTop + body.clientHeight) <= 100;
 
+<<<<<<< HEAD
     this.win_.document.write(this.outputBuffer_.join(''));
     this.outputBuffer_.length = 0;
+=======
+    this.win_.document.write(this.outputBuffer.join(''));
+    this.outputBuffer.length = 0;
+>>>>>>> newgitrepo
 
     if (scroll) {
       this.win_.scrollTo(0, 1000000);
@@ -411,9 +478,14 @@ goog.debug.DebugWindow.prototype.writeBufferToLog = function() {
 /**
  * Writes all saved messages to the DebugWindow.
  * @protected
+<<<<<<< HEAD
  * @suppress {underscore}
  */
 goog.debug.DebugWindow.prototype.writeSavedMessages_ = function() {
+=======
+ */
+goog.debug.DebugWindow.prototype.writeSavedMessages = function() {
+>>>>>>> newgitrepo
   var messages = this.savedMessages_.getValues();
   for (var i = 0; i < messages.length; i++) {
     this.writeToLog_(messages[i]);
@@ -466,7 +538,11 @@ goog.debug.DebugWindow.prototype.openWindow_ = function() {
  */
 goog.debug.DebugWindow.prototype.getWindowName_ = function() {
   return goog.userAgent.IE ?
+<<<<<<< HEAD
       this.identifier_.replace(/[\s\-\.\,]/g, '_') : this.identifier_;
+=======
+      this.identifier.replace(/[\s\-\.\,]/g, '_') : this.identifier;
+>>>>>>> newgitrepo
 };
 
 
@@ -499,10 +575,17 @@ goog.debug.DebugWindow.prototype.writeInitialDocument = function() {
   var html = '<style>' + this.getStyleRules() + '</style>' +
              '<hr><div class="dbg-ev" style="text-align:center">' +
              this.welcomeMessage + '<br><small>Logger: ' +
+<<<<<<< HEAD
              this.identifier_ + '</small></div><hr>';
 
   this.writeToLog_(html);
   this.writeSavedMessages_();
+=======
+             this.identifier + '</small></div><hr>';
+
+  this.writeToLog_(html);
+  this.writeSavedMessages();
+>>>>>>> newgitrepo
 };
 
 
@@ -514,7 +597,11 @@ goog.debug.DebugWindow.prototype.writeInitialDocument = function() {
  * @private
  */
 goog.debug.DebugWindow.prototype.setCookie_ = function(key, value) {
+<<<<<<< HEAD
   var fullKey = goog.debug.DebugWindow.getCookieKey_(this.identifier_, key);
+=======
+  var fullKey = goog.debug.DebugWindow.getCookieKey_(this.identifier, key);
+>>>>>>> newgitrepo
   document.cookie = fullKey + '=' + encodeURIComponent(value) +
       ';path=/;expires=' +
       (new Date(goog.now() + goog.debug.DebugWindow.COOKIE_TIME)).toUTCString();
@@ -530,7 +617,11 @@ goog.debug.DebugWindow.prototype.setCookie_ = function(key, value) {
  */
 goog.debug.DebugWindow.prototype.getCookie_ = function(key, opt_default) {
   return goog.debug.DebugWindow.getCookieValue_(
+<<<<<<< HEAD
       this.identifier_, key, opt_default);
+=======
+      this.identifier, key, opt_default);
+>>>>>>> newgitrepo
 };
 
 
@@ -624,7 +715,11 @@ goog.debug.DebugWindow.prototype.removeFilter = function(loggerName) {
  */
 goog.debug.DebugWindow.prototype.resetBufferWithNewSize = function(size) {
   if (size > 0 && size < 50000) {
+<<<<<<< HEAD
     this.clear_();
+=======
+    this.clear();
+>>>>>>> newgitrepo
     this.savedMessages_ = new goog.structs.CircularBuffer(size);
   }
 };

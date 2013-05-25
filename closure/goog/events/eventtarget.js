@@ -23,6 +23,11 @@
 goog.provide('goog.events.EventTarget');
 
 goog.require('goog.Disposable');
+<<<<<<< HEAD
+=======
+goog.require('goog.array');
+goog.require('goog.asserts');
+>>>>>>> newgitrepo
 goog.require('goog.events');
 goog.require('goog.events.Event');
 goog.require('goog.events.Listenable');
@@ -82,6 +87,7 @@ goog.require('goog.object');
 goog.events.EventTarget = function() {
   goog.Disposable.call(this);
 
+<<<<<<< HEAD
   if (goog.events.Listenable.USE_LISTENABLE_INTERFACE) {
     /**
      * Maps of event type to an array of listeners.
@@ -125,6 +131,35 @@ if (goog.events.Listenable.USE_LISTENABLE_INTERFACE) {
  * @private
  */
 goog.events.EventTarget.prototype.customEvent_ = true;
+=======
+  /**
+   * Maps of event type to an array of listeners.
+   *
+   * @type {Object.<string, !Array.<!goog.events.Listener>>}
+   * @private
+   */
+  this.eventTargetListeners_ = {};
+
+  /**
+   * The object to use for event.target. Useful when mixing in an
+   * EventTarget to another object.
+   * @type {!Object}
+   * @private
+   */
+  this.actualEventTarget_ = this;
+};
+goog.inherits(goog.events.EventTarget, goog.Disposable);
+goog.events.Listenable.addImplementation(goog.events.EventTarget);
+
+
+/**
+ * An artificial cap on the number of ancestors you can have. This is mainly
+ * for loop detection.
+ * @const {number}
+ * @private
+ */
+goog.events.EventTarget.MAX_ANCESTORS_ = 1000;
+>>>>>>> newgitrepo
 
 
 /**
@@ -164,6 +199,11 @@ goog.events.EventTarget.prototype.setParentEventTarget = function(parent) {
  *
  * Supported for legacy but use goog.events.listen(src, type, handler) instead.
  *
+<<<<<<< HEAD
+=======
+ * TODO(user): Deprecate this.
+ *
+>>>>>>> newgitrepo
  * @param {string} type The type of the event to listen for.
  * @param {Function|Object} handler The function to handle the event. The
  *     handler can also be an object that implements the handleEvent method
@@ -184,6 +224,12 @@ goog.events.EventTarget.prototype.addEventListener = function(
  * Removes an event listener from the event target. The handler must be the
  * same object as the one added. If the handler has not been added then
  * nothing is done.
+<<<<<<< HEAD
+=======
+ *
+ * TODO(user): Deprecate this.
+ *
+>>>>>>> newgitrepo
  * @param {string} type The type of the event to listen for.
  * @param {Function|Object} handler The function to handle the event. The
  *     handler can also be an object that implements the handleEvent method
@@ -202,6 +248,7 @@ goog.events.EventTarget.prototype.removeEventListener = function(
 
 /** @override */
 goog.events.EventTarget.prototype.dispatchEvent = function(e) {
+<<<<<<< HEAD
   if (goog.events.Listenable.USE_LISTENABLE_INTERFACE) {
     if (this.reallyDisposed_) {
       return true;
@@ -220,6 +267,24 @@ goog.events.EventTarget.prototype.dispatchEvent = function(e) {
   } else {
     return goog.events.dispatchEvent(this, e);
   }
+=======
+  this.assertInitialized_();
+
+  var ancestorsTree, ancestor = this.getParentEventTarget();
+  if (ancestor) {
+    ancestorsTree = [];
+    var ancestorCount = 1;
+    for (; ancestor; ancestor = ancestor.getParentEventTarget()) {
+      ancestorsTree.push(ancestor);
+      goog.asserts.assert(
+          (++ancestorCount < goog.events.EventTarget.MAX_ANCESTORS_),
+          'infinite loop');
+    }
+  }
+
+  return goog.events.EventTarget.dispatchEventInternal_(
+      this.actualEventTarget_, e, ancestorsTree);
+>>>>>>> newgitrepo
 };
 
 
@@ -239,6 +304,7 @@ goog.events.EventTarget.prototype.dispatchEvent = function(e) {
 goog.events.EventTarget.prototype.disposeInternal = function() {
   goog.events.EventTarget.superClass_.disposeInternal.call(this);
 
+<<<<<<< HEAD
   if (goog.events.Listenable.USE_LISTENABLE_INTERFACE) {
     this.removeAllListeners();
     this.reallyDisposed_ = true;
@@ -246,11 +312,28 @@ goog.events.EventTarget.prototype.disposeInternal = function() {
     goog.events.removeAll(this);
   }
 
+=======
+  this.removeAllListeners();
+>>>>>>> newgitrepo
   this.parentEventTarget_ = null;
 };
 
 
+<<<<<<< HEAD
 if (goog.events.Listenable.USE_LISTENABLE_INTERFACE) {
+=======
+/**
+ * Asserts that the event target instance is initialized properly.
+ * @private
+ */
+goog.events.EventTarget.prototype.assertInitialized_ = function() {
+  goog.asserts.assert(
+      this.eventTargetListeners_,
+      'Event target is not initialized. Did you call superclass ' +
+      '(goog.events.EventTarget) constructor?');
+};
+
+>>>>>>> newgitrepo
 
 /** @override */
 goog.events.EventTarget.prototype.listen = function(
@@ -290,8 +373,12 @@ goog.events.EventTarget.prototype.listenOnce = function(
  */
 goog.events.EventTarget.prototype.listenInternal_ = function(
     type, listener, callOnce, opt_useCapture, opt_listenerScope) {
+<<<<<<< HEAD
   goog.asserts.assert(
       !this.reallyDisposed_, 'Can not listen on disposed object.');
+=======
+  this.assertInitialized_();
+>>>>>>> newgitrepo
 
   var listenerArray = this.eventTargetListeners_[type] ||
       (this.eventTargetListeners_[type] = []);
@@ -309,8 +396,12 @@ goog.events.EventTarget.prototype.listenInternal_ = function(
     return listenerObj;
   }
 
+<<<<<<< HEAD
   listenerObj = new goog.events.Listener();
   listenerObj.init(
+=======
+  listenerObj = new goog.events.Listener(
+>>>>>>> newgitrepo
       listener, null, this, type, !!opt_useCapture, opt_listenerScope);
   listenerObj.callOnce = callOnce;
   listenerArray.push(listenerObj);
@@ -377,10 +468,13 @@ goog.events.EventTarget.prototype.removeAllListeners = function(
 /** @override */
 goog.events.EventTarget.prototype.fireListeners = function(
     type, capture, eventObject) {
+<<<<<<< HEAD
   goog.asserts.assert(
       !this.reallyDisposed_,
       'Can not fire listeners after dispose() completed.');
 
+=======
+>>>>>>> newgitrepo
   if (!(type in this.eventTargetListeners_)) {
     return true;
   }
@@ -391,12 +485,22 @@ goog.events.EventTarget.prototype.fireListeners = function(
     var listener = listenerArray[i];
     // We might not have a listener if the listener was removed.
     if (listener && !listener.removed && listener.capture == capture) {
+<<<<<<< HEAD
       // TODO(user): This logic probably should be in the Listener
       // object instead.
       if (listener.callOnce) {
         this.unlistenByKey(listener);
       }
       rv = listener.handleEvent(eventObject) !== false && rv;
+=======
+      var listenerFn = listener.listener;
+      var listenerHandler = listener.handler || listener.src;
+
+      if (listener.callOnce) {
+        this.unlistenByKey(listener);
+      }
+      rv = listenerFn.call(listenerHandler, eventObject) !== false && rv;
+>>>>>>> newgitrepo
     }
   }
 
@@ -476,7 +580,11 @@ goog.events.EventTarget.prototype.setTargetForTesting = function(target) {
  *     tree of the target, in reverse order from the closest ancestor
  *     to the root event target. May be null if the target has no ancestor.
  * @return {boolean} If anyone called preventDefault on the event object (or
+<<<<<<< HEAD
  *     if any of the listeners returns false this will also return false.
+=======
+ *     if any of the listeners returns false) this will also return false.
+>>>>>>> newgitrepo
  * @private
  */
 goog.events.EventTarget.dispatchEventInternal_ = function(
@@ -550,5 +658,8 @@ goog.events.EventTarget.findListenerIndex_ = function(
   }
   return -1;
 };
+<<<<<<< HEAD
 
 }  // if (goog.events.Listenable.USE_LISTENABLE_INTERFACE)
+=======
+>>>>>>> newgitrepo

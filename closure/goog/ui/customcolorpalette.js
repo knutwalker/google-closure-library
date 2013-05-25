@@ -22,7 +22,13 @@ goog.provide('goog.ui.CustomColorPalette');
 
 goog.require('goog.color');
 goog.require('goog.dom');
+<<<<<<< HEAD
 goog.require('goog.ui.ColorPalette');
+=======
+goog.require('goog.dom.classes');
+goog.require('goog.ui.ColorPalette');
+goog.require('goog.ui.Component');
+>>>>>>> newgitrepo
 
 
 
@@ -58,9 +64,15 @@ goog.ui.CustomColorPalette.prototype.createColorNodes = function() {
 
   var nl = goog.base(this, 'createColorNodes');
   nl.push(goog.dom.createDom('div', {
+<<<<<<< HEAD
       'class': goog.getCssName('goog-palette-customcolor'),
       'title': MSG_CLOSURE_CUSTOM_COLOR_BUTTON
       }, '+'));
+=======
+    'class': goog.getCssName('goog-palette-customcolor'),
+    'title': MSG_CLOSURE_CUSTOM_COLOR_BUTTON
+  }, '+'));
+>>>>>>> newgitrepo
   return nl;
 };
 
@@ -74,7 +86,11 @@ goog.ui.CustomColorPalette.prototype.performActionInternal = function(e) {
   var item = /** @type {Element} */ (this.getHighlightedItem());
   if (item) {
     if (goog.dom.classes.has(
+<<<<<<< HEAD
             item, goog.getCssName('goog-palette-customcolor'))) {
+=======
+        item, goog.getCssName('goog-palette-customcolor'))) {
+>>>>>>> newgitrepo
       // User activated the special "add custom color" swatch.
       this.promptForCustomColor();
     } else {

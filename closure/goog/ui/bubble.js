@@ -24,13 +24,18 @@
 goog.provide('goog.ui.Bubble');
 
 goog.require('goog.Timer');
+<<<<<<< HEAD
 goog.require('goog.dom');
 goog.require('goog.events');
 goog.require('goog.events.Event');
+=======
+goog.require('goog.events');
+>>>>>>> newgitrepo
 goog.require('goog.events.EventType');
 goog.require('goog.math.Box');
 goog.require('goog.positioning');
 goog.require('goog.positioning.AbsolutePosition');
+<<<<<<< HEAD
 goog.require('goog.positioning.AbstractPosition');
 goog.require('goog.positioning.AnchoredPosition');
 goog.require('goog.positioning.Corner');
@@ -38,6 +43,14 @@ goog.require('goog.style');
 goog.require('goog.ui.Component');
 goog.require('goog.ui.Popup');
 goog.require('goog.ui.Popup.AnchoredPosition');
+=======
+goog.require('goog.positioning.AnchoredPosition');
+goog.require('goog.positioning.Corner');
+goog.require('goog.positioning.CornerBit');
+goog.require('goog.style');
+goog.require('goog.ui.Component');
+goog.require('goog.ui.Popup');
+>>>>>>> newgitrepo
 
 
 
@@ -261,7 +274,11 @@ goog.ui.Bubble.prototype.configureElement_ = function() {
   }
   var closeButton = this.getDomHelper().getElement(this.closeButtonId_);
   this.listener_ = goog.events.listen(closeButton,
+<<<<<<< HEAD
         goog.events.EventType.CLICK, this.hideBubble_, false, this);
+=======
+      goog.events.EventType.CLICK, this.hideBubble_, false, this);
+>>>>>>> newgitrepo
 
   if (this.timeout_) {
     this.timerId_ = goog.Timer.callOnce(this.hideBubble_, this.timeout_, this);
@@ -428,7 +445,11 @@ goog.ui.Bubble.prototype.computeHtmlForCorner_ = function(corner) {
       '<tr>' +
       '<td class="' + this.config_.cssBubbleLeft + '">' +
       '<td class="' + this.config_.cssBubbleFont + '"' +
+<<<<<<< HEAD
       ' style="padding:0 4;background:white">' + message +
+=======
+      ' style="padding:0 4px;background:white">' + message +
+>>>>>>> newgitrepo
       '<td id="' + this.closeButtonId_ + '"' +
       ' class="' + this.config_.cssCloseButton + '"/>' +
       '<td class="' + this.config_.cssBubbleRight + '">' +

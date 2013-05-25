@@ -66,7 +66,11 @@ goog.labs.observe.ObservableSet = function() {
 goog.labs.observe.ObservableSet.prototype.addObserver = function(observer) {
   // Check whether the observer already exists.
   if (goog.array.find(this.observers_, goog.partial(
+<<<<<<< HEAD
           goog.labs.observe.Observer.equals, observer))) {
+=======
+      goog.labs.observe.Observer.equals, observer))) {
+>>>>>>> newgitrepo
     return false;
   }
 

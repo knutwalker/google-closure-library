@@ -103,7 +103,11 @@ goog.ui.PopupDatePicker.prototype.enterDocument = function() {
     var el = this.getElement();
     // Make it initially invisible
     el.style.visibility = 'hidden';
+<<<<<<< HEAD
     goog.style.showElement(el, false);
+=======
+    goog.style.setElementShown(el, false);
+>>>>>>> newgitrepo
     this.datePicker_.decorate(el);
   }
   this.getHandler().listen(this.datePicker_, goog.ui.DatePicker.Events.CHANGE,

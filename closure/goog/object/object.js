@@ -74,7 +74,11 @@ goog.object.filter = function(obj, f, opt_obj) {
  *     and should return something. The result will be inserted
  *     into a new object.
  * @param {T=} opt_obj This is used as the 'this' object within f.
+<<<<<<< HEAD
  * @return {!Object.<T,R>} a new object with the results from f.
+=======
+ * @return {!Object.<K,R>} a new object with the results from f.
+>>>>>>> newgitrepo
  * @template T,K,V,R
  */
 goog.object.map = function(obj, f, opt_obj) {
@@ -411,7 +415,11 @@ goog.object.get = function(obj, key, opt_val) {
  *
  * @param {Object.<K,V>} obj The object to which to add the key-value pair.
  * @param {string} key The key to add.
+<<<<<<< HEAD
  * @param {K} value The value to add.
+=======
+ * @param {V} value The value to add.
+>>>>>>> newgitrepo
  * @template K,V
  */
 goog.object.set = function(obj, key, value) {

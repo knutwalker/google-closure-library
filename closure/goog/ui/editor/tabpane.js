@@ -146,7 +146,11 @@ goog.ui.editor.TabPane.prototype.addTab = function(id, caption, tooltip,
 
   content.id = id + '-tab';
   this.tabContent_.appendChild(content);
+<<<<<<< HEAD
   goog.style.showElement(content, false);
+=======
+  goog.style.setElementShown(content, false);
+>>>>>>> newgitrepo
 };
 
 
@@ -183,10 +187,17 @@ goog.ui.editor.TabPane.prototype.handleTabSelect_ = function(e) {
 
   // Show the tab content.
   if (this.visibleContent_) {
+<<<<<<< HEAD
     goog.style.showElement(this.visibleContent_, false);
   }
   this.visibleContent_ = this.dom_.getElement(tab.getId() + '-tab');
   goog.style.showElement(this.visibleContent_, true);
+=======
+    goog.style.setElementShown(this.visibleContent_, false);
+  }
+  this.visibleContent_ = this.dom_.getElement(tab.getId() + '-tab');
+  goog.style.setElementShown(this.visibleContent_, true);
+>>>>>>> newgitrepo
 
   // Select the appropriate radio button (and deselect the current one).
   if (this.selectedRadio_) {

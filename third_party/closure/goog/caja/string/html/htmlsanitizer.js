@@ -390,7 +390,11 @@ goog.string.html.HtmlSanitizer.Attributes = {
 
 
 /**
+<<<<<<< HEAD
  * @inheritDoc
+=======
+ * @override
+>>>>>>> newgitrepo
  */
 goog.string.html.HtmlSanitizer.prototype.startTag =
     function(tagName, attribs) {
@@ -428,7 +432,11 @@ goog.string.html.HtmlSanitizer.prototype.startTag =
 
 
 /**
+<<<<<<< HEAD
  * @inheritDoc
+=======
+ * @override
+>>>>>>> newgitrepo
  */
 goog.string.html.HtmlSanitizer.prototype.endTag = function(tagName) {
   if (this.ignoring_) {
@@ -477,7 +485,11 @@ goog.string.html.HtmlSanitizer.prototype.endTag = function(tagName) {
 
 
 /**
+<<<<<<< HEAD
  * @inheritDoc
+=======
+ * @override
+>>>>>>> newgitrepo
  */
 goog.string.html.HtmlSanitizer.prototype.pcdata = function(text) {
   if (!this.ignoring_) {
@@ -487,7 +499,11 @@ goog.string.html.HtmlSanitizer.prototype.pcdata = function(text) {
 
 
 /**
+<<<<<<< HEAD
  * @inheritDoc
+=======
+ * @override
+>>>>>>> newgitrepo
  */
 goog.string.html.HtmlSanitizer.prototype.rcdata = function(text) {
   if (!this.ignoring_) {
@@ -497,7 +513,11 @@ goog.string.html.HtmlSanitizer.prototype.rcdata = function(text) {
 
 
 /**
+<<<<<<< HEAD
  * @inheritDoc
+=======
+ * @override
+>>>>>>> newgitrepo
  */
 goog.string.html.HtmlSanitizer.prototype.cdata = function(text) {
   if (!this.ignoring_) {
@@ -507,7 +527,11 @@ goog.string.html.HtmlSanitizer.prototype.cdata = function(text) {
 
 
 /**
+<<<<<<< HEAD
  * @inheritDoc
+=======
+ * @override
+>>>>>>> newgitrepo
  */
 goog.string.html.HtmlSanitizer.prototype.startDoc = function() {
   this.stack_ = [];
@@ -516,7 +540,11 @@ goog.string.html.HtmlSanitizer.prototype.startDoc = function() {
 
 
 /**
+<<<<<<< HEAD
  * @inheritDoc
+=======
+ * @override
+>>>>>>> newgitrepo
  */
 goog.string.html.HtmlSanitizer.prototype.endDoc = function() {
   for (var i = this.stack_.length; --i >= 0;) {

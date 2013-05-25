@@ -96,6 +96,17 @@ def _GetOptionsParser():
                     help='Additional flags to pass to the Closure compiler. '
                     'To pass multiple flags, --compiler_flags has to be '
                     'specified multiple times.')
+<<<<<<< HEAD
+=======
+  parser.add_option('-j',
+                    '--jvm_flags',
+                    dest='jvm_flags',
+                    default=[],
+                    action='append',
+                    help='Additional flags to pass to the JVM compiler. '
+                    'To pass multiple flags, --jvm_flags has to be '
+                    'specified multiple times.')
+>>>>>>> newgitrepo
   parser.add_option('--output_file',
                     dest='output_file',
                     action='store',
@@ -235,6 +246,7 @@ def main():
                     '"compiled"')
       sys.exit(2)
 
+<<<<<<< HEAD
     compiled_source = jscompiler.Compile(
         options.compiler_jar,
         [js_source.GetPath() for js_source in deps],
@@ -246,6 +258,17 @@ def main():
     else:
       logging.info('JavaScript compilation succeeded.')
       out.write(compiled_source)
+=======
+    # Will throw an error if the compilation fails.
+    compiled_source = jscompiler.Compile(
+        options.compiler_jar,
+        [js_source.GetPath() for js_source in deps],
+        jvm_flags=options.jvm_flags,
+        compiler_flags=options.compiler_flags)
+
+    logging.info('JavaScript compilation succeeded.')
+    out.write(compiled_source)
+>>>>>>> newgitrepo
 
   else:
     logging.error('Invalid value for --output flag.')

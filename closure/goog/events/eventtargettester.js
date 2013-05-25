@@ -23,6 +23,11 @@ goog.setTestOnly('goog.events.eventTargetTester.KeyType');
 goog.provide('goog.events.eventTargetTester.UnlistenReturnType');
 goog.setTestOnly('goog.events.eventTargetTester.UnlistenReturnType');
 
+<<<<<<< HEAD
+=======
+goog.require('goog.array');
+goog.require('goog.events');
+>>>>>>> newgitrepo
 goog.require('goog.events.Event');
 goog.require('goog.events.EventTarget');
 goog.require('goog.testing.asserts');
@@ -65,12 +70,21 @@ goog.require('goog.testing.recordFunction');
  *     Whether we should check return value from
  *     unlisten call. If unlisten does not return a value, this should
  *     be set to false.
+<<<<<<< HEAD
+=======
+ * @param {boolean} objectListenerSupported Whether listener of type
+ *     Object is supported.
+>>>>>>> newgitrepo
  */
 goog.events.eventTargetTester.setUp = function(
     listenFn, unlistenFn, unlistenByKeyFn, listenOnceFn,
     dispatchEventFn, removeAllFn,
     getListenersFn, getListenerFn, hasListenerFn,
+<<<<<<< HEAD
     listenKeyType, unlistenFnReturnType) {
+=======
+    listenKeyType, unlistenFnReturnType, objectListenerSupported) {
+>>>>>>> newgitrepo
   listen = listenFn;
   unlisten = unlistenFn;
   unlistenByKey = unlistenByKeyFn;
@@ -82,6 +96,10 @@ goog.events.eventTargetTester.setUp = function(
   hasListener = hasListenerFn;
   keyType = listenKeyType;
   unlistenReturnType = unlistenFnReturnType;
+<<<<<<< HEAD
+=======
+  objectTypeListenerSupported = objectListenerSupported;
+>>>>>>> newgitrepo
 
   listeners = [];
   for (var i = 0; i < goog.events.eventTargetTester.MAX_; i++) {
@@ -179,7 +197,11 @@ var EventType = {
 
 var listen, unlisten, unlistenByKey, listenOnce, dispatchEvent;
 var removeAll, getListeners, getListener, hasListener;
+<<<<<<< HEAD
 var keyType, unlistenReturnType;
+=======
+var keyType, unlistenReturnType, objectTypeListenerSupported;
+>>>>>>> newgitrepo
 var eventTargets, listeners;
 
 
@@ -673,6 +695,13 @@ function testStopPropagationAtCapture() {
 
 
 function testHandleEvent() {
+<<<<<<< HEAD
+=======
+  if (!objectTypeListenerSupported) {
+    return;
+  }
+
+>>>>>>> newgitrepo
   var obj = {};
   obj.handleEvent = goog.testing.recordFunction();
 
@@ -1004,3 +1033,19 @@ function testFiringEventBeforeDisposeInternalWorks() {
     goog.dispose(t);
   }
 }
+<<<<<<< HEAD
+=======
+
+
+function testLoopDetection() {
+  var target = new goog.events.EventTarget();
+  target.setParentEventTarget(target);
+
+  try {
+    target.dispatchEvent('string');
+    fail('expected error');
+  } catch (e) {
+    assertContains('infinite', e.message);
+  }
+}
+>>>>>>> newgitrepo

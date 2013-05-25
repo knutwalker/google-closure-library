@@ -44,7 +44,10 @@ goog.locale.countries = [
   'AI',
   'AL',
   'AM',
+<<<<<<< HEAD
   'AN',
+=======
+>>>>>>> newgitrepo
   'AO',
   'AQ',
   'AR',
@@ -67,6 +70,10 @@ goog.locale.countries = [
   'BM',
   'BN',
   'BO',
+<<<<<<< HEAD
+=======
+  'BQ',
+>>>>>>> newgitrepo
   'BR',
   'BS',
   'BT',
@@ -89,6 +96,10 @@ goog.locale.countries = [
   'CR',
   'CU',
   'CV',
+<<<<<<< HEAD
+=======
+  'CW',
+>>>>>>> newgitrepo
   'CX',
   'CY',
   'CZ',
@@ -243,8 +254,15 @@ goog.locale.countries = [
   'SN',
   'SO',
   'SR',
+<<<<<<< HEAD
   'ST',
   'SV',
+=======
+  'SS',
+  'ST',
+  'SV',
+  'SX',
+>>>>>>> newgitrepo
   'SY',
   'SZ',
   'TC',

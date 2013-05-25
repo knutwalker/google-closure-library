@@ -28,31 +28,48 @@ goog.require('goog.string');
 /**
  * @define {boolean} Whether we know at compile-time that the browser is IE.
  */
+<<<<<<< HEAD
 goog.userAgent.ASSUME_IE = false;
+=======
+goog.define('goog.userAgent.ASSUME_IE', false);
+>>>>>>> newgitrepo
 
 
 /**
  * @define {boolean} Whether we know at compile-time that the browser is GECKO.
  */
+<<<<<<< HEAD
 goog.userAgent.ASSUME_GECKO = false;
+=======
+goog.define('goog.userAgent.ASSUME_GECKO', false);
+>>>>>>> newgitrepo
 
 
 /**
  * @define {boolean} Whether we know at compile-time that the browser is WEBKIT.
  */
+<<<<<<< HEAD
 goog.userAgent.ASSUME_WEBKIT = false;
+=======
+goog.define('goog.userAgent.ASSUME_WEBKIT', false);
+>>>>>>> newgitrepo
 
 
 /**
  * @define {boolean} Whether we know at compile-time that the browser is a
  *     mobile device running WebKit e.g. iPhone or Android.
  */
+<<<<<<< HEAD
 goog.userAgent.ASSUME_MOBILE_WEBKIT = false;
+=======
+goog.define('goog.userAgent.ASSUME_MOBILE_WEBKIT', false);
+>>>>>>> newgitrepo
 
 
 /**
  * @define {boolean} Whether we know at compile-time that the browser is OPERA.
  */
+<<<<<<< HEAD
 goog.userAgent.ASSUME_OPERA = false;
 
 
@@ -61,6 +78,17 @@ goog.userAgent.ASSUME_OPERA = false;
  *     return true for any version.
  */
 goog.userAgent.ASSUME_ANY_VERSION = false;
+=======
+goog.define('goog.userAgent.ASSUME_OPERA', false);
+
+
+/**
+ * @define {boolean} Whether the
+ *     {@code goog.userAgent.isVersionOrHigher}
+ *     function will return true for any version.
+ */
+goog.define('goog.userAgent.ASSUME_ANY_VERSION', false);
+>>>>>>> newgitrepo
 
 
 /**
@@ -248,46 +276,74 @@ goog.userAgent.PLATFORM = goog.userAgent.determinePlatform_();
  * @define {boolean} Whether the user agent is running on a Macintosh operating
  *     system.
  */
+<<<<<<< HEAD
 goog.userAgent.ASSUME_MAC = false;
+=======
+goog.define('goog.userAgent.ASSUME_MAC', false);
+>>>>>>> newgitrepo
 
 
 /**
  * @define {boolean} Whether the user agent is running on a Windows operating
  *     system.
  */
+<<<<<<< HEAD
 goog.userAgent.ASSUME_WINDOWS = false;
+=======
+goog.define('goog.userAgent.ASSUME_WINDOWS', false);
+>>>>>>> newgitrepo
 
 
 /**
  * @define {boolean} Whether the user agent is running on a Linux operating
  *     system.
  */
+<<<<<<< HEAD
 goog.userAgent.ASSUME_LINUX = false;
+=======
+goog.define('goog.userAgent.ASSUME_LINUX', false);
+>>>>>>> newgitrepo
 
 
 /**
  * @define {boolean} Whether the user agent is running on a X11 windowing
  *     system.
  */
+<<<<<<< HEAD
 goog.userAgent.ASSUME_X11 = false;
+=======
+goog.define('goog.userAgent.ASSUME_X11', false);
+>>>>>>> newgitrepo
 
 
 /**
  * @define {boolean} Whether the user agent is running on Android.
  */
+<<<<<<< HEAD
 goog.userAgent.ASSUME_ANDROID = false;
+=======
+goog.define('goog.userAgent.ASSUME_ANDROID', false);
+>>>>>>> newgitrepo
 
 
 /**
  * @define {boolean} Whether the user agent is running on an iPhone.
  */
+<<<<<<< HEAD
 goog.userAgent.ASSUME_IPHONE = false;
+=======
+goog.define('goog.userAgent.ASSUME_IPHONE', false);
+>>>>>>> newgitrepo
 
 
 /**
  * @define {boolean} Whether the user agent is running on an iPad.
  */
+<<<<<<< HEAD
 goog.userAgent.ASSUME_IPAD = false;
+=======
+goog.define('goog.userAgent.ASSUME_IPAD', false);
+>>>>>>> newgitrepo
 
 
 /**
@@ -511,6 +567,7 @@ goog.userAgent.compare = function(v1, v2) {
 
 
 /**
+<<<<<<< HEAD
  * Cache for {@link goog.userAgent.isVersion}. Calls to compareVersions are
  * surprisingly expensive and as a browsers version number is unlikely to change
  * during a session we cache the results.
@@ -518,6 +575,15 @@ goog.userAgent.compare = function(v1, v2) {
  * @private
  */
 goog.userAgent.isVersionCache_ = {};
+=======
+ * Cache for {@link goog.userAgent.isVersionOrHigher}.
+ * Calls to compareVersions are surprisingly expensive and, as a browser's
+ * version number is unlikely to change during a session, we cache the results.
+ * @const
+ * @private
+ */
+goog.userAgent.isVersionOrHigherCache_ = {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -534,15 +600,35 @@ goog.userAgent.isVersionCache_ = {};
  * @return {boolean} Whether the user agent version is higher or the same as
  *     the given version.
  */
+<<<<<<< HEAD
 goog.userAgent.isVersion = function(version) {
   return goog.userAgent.ASSUME_ANY_VERSION ||
       goog.userAgent.isVersionCache_[version] ||
       (goog.userAgent.isVersionCache_[version] =
+=======
+goog.userAgent.isVersionOrHigher = function(version) {
+  return goog.userAgent.ASSUME_ANY_VERSION ||
+      goog.userAgent.isVersionOrHigherCache_[version] ||
+      (goog.userAgent.isVersionOrHigherCache_[version] =
+>>>>>>> newgitrepo
           goog.string.compareVersions(goog.userAgent.VERSION, version) >= 0);
 };
 
 
 /**
+<<<<<<< HEAD
+=======
+ * Deprecated alias to {@code goog.userAgent.isVersionOrHigher}.
+ * @param {string|number} version The version to check.
+ * @return {boolean} Whether the user agent version is higher or the same as
+ *     the given version.
+ * @deprecated Use goog.userAgent.isVersionOrHigher().
+ */
+goog.userAgent.isVersion = goog.userAgent.isVersionOrHigher;
+
+
+/**
+>>>>>>> newgitrepo
  * Whether the IE effective document mode is higher or the same as the given
  * document mode version.
  * NOTE: Only for IE, return false for another browser.
@@ -551,12 +637,28 @@ goog.userAgent.isVersion = function(version) {
  * @return {boolean} Whether the IE effective document mode is higher or the
  *     same as the given version.
  */
+<<<<<<< HEAD
 goog.userAgent.isDocumentMode = function(documentMode) {
+=======
+goog.userAgent.isDocumentModeOrHigher = function(documentMode) {
+>>>>>>> newgitrepo
   return goog.userAgent.IE && goog.userAgent.DOCUMENT_MODE >= documentMode;
 };
 
 
 /**
+<<<<<<< HEAD
+=======
+ * Deprecated alias to {@code goog.userAgent.isDocumentModeOrHigher}.
+ * @param {number} version The version to check.
+ * @return {boolean} Whether the IE effective document mode is higher or the
+ *      same as the given version.
+ */
+goog.userAgent.isDocumentMode = goog.userAgent.isDocumentModeOrHigher;
+
+
+/**
+>>>>>>> newgitrepo
  * For IE version < 7, documentMode is undefined, so attempt to use the
  * CSS1Compat property to see if we are in standards mode. If we are in
  * standards mode, treat the browser version as the document mode. Otherwise,

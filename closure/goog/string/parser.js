@@ -20,6 +20,10 @@
 goog.provide('goog.string.Parser');
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * An interface for parsing strings into objects.
  * @interface

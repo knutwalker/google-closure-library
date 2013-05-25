@@ -46,12 +46,22 @@ goog.provide('goog.ui.media.FlashObject.Wmodes');
 
 goog.require('goog.asserts');
 goog.require('goog.debug.Logger');
+<<<<<<< HEAD
 goog.require('goog.events.EventHandler');
+=======
+goog.require('goog.events.Event');
+goog.require('goog.events.EventHandler');
+goog.require('goog.events.EventType');
+goog.require('goog.object');
+>>>>>>> newgitrepo
 goog.require('goog.string');
 goog.require('goog.structs.Map');
 goog.require('goog.style');
 goog.require('goog.ui.Component');
+<<<<<<< HEAD
 goog.require('goog.ui.Component.Error');
+=======
+>>>>>>> newgitrepo
 goog.require('goog.userAgent');
 goog.require('goog.userAgent.flash');
 
@@ -192,6 +202,7 @@ goog.ui.media.FlashObject.FLASH_CSS_CLASS =
  */
 goog.ui.media.FlashObject.IE_HTML_ =
     '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"' +
+<<<<<<< HEAD
            ' id="%s"' +
            ' name="%s"' +
            ' class="%s"' +
@@ -204,6 +215,20 @@ goog.ui.media.FlashObject.IE_HTML_ =
       '<param name="allowFullScreen" value="true"/>' +
       '<param name="SeamlessTabbing" value="false"/>' +
       '%s' +
+=======
+    ' id="%s"' +
+    ' name="%s"' +
+    ' class="%s"' +
+    '>' +
+    '<param name="movie" value="%s"/>' +
+    '<param name="quality" value="high"/>' +
+    '<param name="FlashVars" value="%s"/>' +
+    '<param name="bgcolor" value="%s"/>' +
+    '<param name="AllowScriptAccess" value="%s"/>' +
+    '<param name="allowFullScreen" value="true"/>' +
+    '<param name="SeamlessTabbing" value="false"/>' +
+    '%s' +
+>>>>>>> newgitrepo
     '</object>';
 
 
@@ -224,6 +249,7 @@ goog.ui.media.FlashObject.IE_WMODE_PARAMS_ = '<param name="wmode" value="%s"/>';
  */
 goog.ui.media.FlashObject.FF_HTML_ =
     '<embed quality="high"' +
+<<<<<<< HEAD
           ' id="%s"' +
           ' name="%s"' +
           ' class="%s"' +
@@ -236,6 +262,20 @@ goog.ui.media.FlashObject.FF_HTML_ =
           ' type="application/x-shockwave-flash"' +
           ' pluginspage="http://www.macromedia.com/go/getflashplayer"' +
           ' %s>' +
+=======
+    ' id="%s"' +
+    ' name="%s"' +
+    ' class="%s"' +
+    ' src="%s"' +
+    ' FlashVars="%s"' +
+    ' bgcolor="%s"' +
+    ' AllowScriptAccess="%s"' +
+    ' allowFullScreen="true"' +
+    ' SeamlessTabbing="false"' +
+    ' type="application/x-shockwave-flash"' +
+    ' pluginspage="http://www.macromedia.com/go/getflashplayer"' +
+    ' %s>' +
+>>>>>>> newgitrepo
     '</embed>';
 
 

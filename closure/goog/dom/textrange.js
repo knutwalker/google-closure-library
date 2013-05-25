@@ -381,7 +381,11 @@ goog.dom.TextRange.prototype.containsRange = function(otherRange,
  * @return {boolean} Whether the given node is in the given document.
  */
 goog.dom.TextRange.isAttachedNode = function(node) {
+<<<<<<< HEAD
   if (goog.userAgent.IE && !goog.userAgent.isDocumentMode(9)) {
+=======
+  if (goog.userAgent.IE && !goog.userAgent.isDocumentModeOrHigher(9)) {
+>>>>>>> newgitrepo
     var returnValue = false;
     /** @preserveTry */
     try {
@@ -407,7 +411,11 @@ goog.dom.TextRange.prototype.isRangeInDocument = function() {
           goog.dom.TextRange.isAttachedNode(this.startNode_)) &&
          (!this.endNode_ ||
           goog.dom.TextRange.isAttachedNode(this.endNode_)) &&
+<<<<<<< HEAD
          (!(goog.userAgent.IE && !goog.userAgent.isDocumentMode(9)) ||
+=======
+         (!(goog.userAgent.IE && !goog.userAgent.isDocumentModeOrHigher(9)) ||
+>>>>>>> newgitrepo
           this.getBrowserRangeWrapper_().isRangeInDocument());
 };
 

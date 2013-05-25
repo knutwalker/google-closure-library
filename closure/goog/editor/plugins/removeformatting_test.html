@@ -53,6 +53,7 @@ ignored by the tests.
   var testHelper;
 
   var WEBKIT_BEFORE_CHROME_8 = goog.userAgent.WEBKIT &&
+<<<<<<< HEAD
       !goog.userAgent.isVersion('534.10');
 
   var WEBKIT_AFTER_CHROME_16 = goog.userAgent.WEBKIT &&
@@ -60,6 +61,15 @@ ignored by the tests.
 
   var WEBKIT_AFTER_CHROME_21 = goog.userAgent.WEBKIT &&
       goog.userAgent.isVersion('537.1');
+=======
+      !goog.userAgent.isVersionOrHigher('534.10');
+
+  var WEBKIT_AFTER_CHROME_16 = goog.userAgent.WEBKIT &&
+      goog.userAgent.isVersionOrHigher('535.7');
+
+  var WEBKIT_AFTER_CHROME_21 = goog.userAgent.WEBKIT &&
+      goog.userAgent.isVersionOrHigher('537.1');
+>>>>>>> newgitrepo
 
   // On Chrome 16, execCommand('insertImage') inserts a garbage BR
   // after the image that we insert. We use this command to paste HTML

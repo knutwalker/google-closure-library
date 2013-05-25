@@ -103,11 +103,44 @@ function tearDown() {
 }
 
 /**
+<<<<<<< HEAD
  * Open the menu and click on the menu item inside.
+=======
+ * Check if the aria-haspopup property is set correctly.
+ */
+function checkHasPopUp() {
+  menuButton.enterDocument();
+  assertFalse('Menu button must have aria-haspopup attribute set to false',
+      goog.a11y.aria.getState(menuButton.getElement(),
+      goog.a11y.aria.State.HASPOPUP));
+  var menu = new goog.ui.Menu();
+  menu.createDom();
+  menuButton.setMenu(menu);
+  assertTrue('Menu button must have aria-haspopup attribute set to true',
+      goog.a11y.aria.getState(menuButton.getElement(),
+      goog.a11y.aria.State.HASPOPUP));
+  menuButton.setMenu(null);
+  assertFale('Menu button must have aria-haspopup attribute set to false',
+      goog.a11y.aria.getState(menuButton.getElement(),
+      goog.a11y.aria.State.HASPOPUP));
+}
+
+/**
+ * Open the menu and click on the menu item inside.
+ * Check if the aria-haspopup property is set correctly.
+>>>>>>> newgitrepo
  */
 function testBasicButtonBehavior() {
   var node = goog.dom.getElement('demoMenuButton');
   menuButton.decorate(node);
+<<<<<<< HEAD
+=======
+
+  assertEquals('Menu button must have aria-haspopup attribute set to true',
+      'true', goog.a11y.aria.getState(menuButton.getElement(),
+      goog.a11y.aria.State.HASPOPUP));
+
+>>>>>>> newgitrepo
   goog.testing.events.fireClickSequence(node);
 
   assertTrue('Menu must open after click', menuButton.isOpen());
@@ -118,7 +151,11 @@ function testBasicButtonBehavior() {
     goog.ui.Component.EventType.ACTION,
     function(e) {
       menuItemClicked++;
+<<<<<<< HEAD
       lastMenuItemClicked = e.target
+=======
+      lastMenuItemClicked = e.target;
+>>>>>>> newgitrepo
     });
 
   var menuItem2 = goog.dom.getElement('menuItem2');
@@ -153,6 +190,19 @@ function testHighlightItemBehavior() {
 }
 
 /**
+<<<<<<< HEAD
+=======
+ * Make sure the menu opens when enter is pressed.
+ */
+function testEnterOpensMenu() {
+  var node = goog.dom.getElement('demoMenuButton');
+  menuButton.decorate(node);
+  menuButton.handleKeyEvent(new MyFakeEvent(goog.events.KeyCodes.ENTER));
+  assertTrue('Menu must open after enter', menuButton.isOpen());
+}
+
+/**
+>>>>>>> newgitrepo
  * Open the menu and click on the menu item inside after exiting and entering
  * the document once, to test proper setup/teardown behavior of MenuButton.
  */

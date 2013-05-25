@@ -41,6 +41,12 @@ goog.require('goog.graphics.Fill');
  * @param {?number=} opt_opacity2 End opacity of the gradient.
  * @constructor
  * @extends {goog.graphics.Fill}
+<<<<<<< HEAD
+=======
+ * @deprecated goog.graphics is deprecated. It existed to abstract over browser
+ *     differences before the canvas tag was widely supported.  See
+ *     http://en.wikipedia.org/wiki/Canvas_element for details.
+>>>>>>> newgitrepo
  */
 goog.graphics.LinearGradient =
     function(x1, y1, x2, y2, color1, color2, opt_opacity1, opt_opacity2) {
@@ -140,7 +146,11 @@ goog.graphics.LinearGradient.prototype.getY2 = function() {
 
 
 /**
+<<<<<<< HEAD
  * @return {string} The start color of the gradient.
+=======
+ * @override
+>>>>>>> newgitrepo
  */
 goog.graphics.LinearGradient.prototype.getColor1 = function() {
   return this.color1_;
@@ -148,7 +158,11 @@ goog.graphics.LinearGradient.prototype.getColor1 = function() {
 
 
 /**
+<<<<<<< HEAD
  * @return {string} The end color of the gradient.
+=======
+ * @override
+>>>>>>> newgitrepo
  */
 goog.graphics.LinearGradient.prototype.getColor2 = function() {
   return this.color2_;

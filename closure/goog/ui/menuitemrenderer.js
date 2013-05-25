@@ -152,7 +152,11 @@ goog.ui.MenuItemRenderer.prototype.decorate = function(item, element) {
         this.createContent(element.childNodes, item.getDomHelper()));
   }
   if (goog.dom.classes.has(element, goog.getCssName('goog-option'))) {
+<<<<<<< HEAD
     item.setCheckable(true);
+=======
+    (/** @type {goog.ui.MenuItem} */ (item)).setCheckable(true);
+>>>>>>> newgitrepo
     this.setCheckable(item, element, true);
   }
   return goog.ui.MenuItemRenderer.superClass_.decorate.call(this, item,
@@ -317,7 +321,12 @@ goog.ui.MenuItemRenderer.prototype.getClassForState = function(state) {
           goog.ui.MenuItemRenderer.CompositeCssClassIndex_.HOVER);
     case goog.ui.Component.State.CHECKED:
     case goog.ui.Component.State.SELECTED:
+<<<<<<< HEAD
     // We use 'goog-option-selected' as the class, for backwards compatibility.
+=======
+      // We use 'goog-option-selected' as the class, for backwards
+      // compatibility.
+>>>>>>> newgitrepo
       return goog.getCssName('goog-option-selected');
     default:
       return goog.ui.MenuItemRenderer.superClass_.getClassForState.call(this,

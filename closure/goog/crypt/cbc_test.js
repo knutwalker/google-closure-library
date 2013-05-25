@@ -18,11 +18,20 @@
  * @author nnaze@google.com (Nathan Naze)
  */
 
+<<<<<<< HEAD
 goog.provide('goog.crypt.CbcTest');
 
 goog.require('goog.crypt.Aes');
 goog.require('goog.crypt.Cbc');
 goog.require('goog.crypt');
+=======
+/** @suppress {extraProvide} */
+goog.provide('goog.crypt.CbcTest');
+
+goog.require('goog.crypt');
+goog.require('goog.crypt.Aes');
+goog.require('goog.crypt.Cbc');
+>>>>>>> newgitrepo
 goog.require('goog.testing.jsunit');
 
 goog.setTestOnly('goog.crypt.CbcTest');

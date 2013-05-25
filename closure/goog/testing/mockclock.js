@@ -151,6 +151,10 @@ goog.testing.MockClock.prototype.install = function() {
     var r = this.replacer_ = new goog.testing.PropertyReplacer();
     r.set(goog.global, 'setTimeout', goog.bind(this.setTimeout_, this));
     r.set(goog.global, 'setInterval', goog.bind(this.setInterval_, this));
+<<<<<<< HEAD
+=======
+    r.set(goog.global, 'setImmediate', goog.bind(this.setImmediate_, this));
+>>>>>>> newgitrepo
     r.set(goog.global, 'clearTimeout', goog.bind(this.clearTimeout_, this));
     r.set(goog.global, 'clearInterval', goog.bind(this.clearInterval_, this));
 
@@ -457,6 +461,22 @@ goog.testing.MockClock.prototype.requestAnimationFrame_ = function(funcToCall) {
 
 
 /**
+<<<<<<< HEAD
+=======
+ * Schedules a function to be called immediately after the current JS
+ * execution.
+ * Mock implementation for setImmediate.
+ * @param {Function} funcToCall The function to call.
+ * @return {number} The number of timeouts created.
+ * @private
+ */
+goog.testing.MockClock.prototype.setImmediate_ = function(funcToCall) {
+  return this.setTimeout_(funcToCall, 0);
+};
+
+
+/**
+>>>>>>> newgitrepo
  * Clears a timeout.
  * Mock implementation for clearTimeout.
  * @param {number} timeoutKey The timeout key to clear.

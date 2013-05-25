@@ -223,7 +223,11 @@ function setUp() {
 }
 
 function tearDown() {
+<<<<<<< HEAD
   goog.events.removeAll();
+=======
+  goog.events.removeAllNativeListeners();
+>>>>>>> newgitrepo
   oneThumbSlider.dispose();
   twoThumbSlider.dispose();
   oneThumbSliderRtl.dispose();
@@ -713,6 +717,20 @@ function testMouseClickWithMoveToPointEnabled() {
   assertEquals(oneThumbSlider.getValue(), initialValue);
 }
 
+<<<<<<< HEAD
+=======
+function testNonIntegerStepSize() {
+  var stepSize = 0.02;
+  oneThumbSlider.setStep(stepSize);
+  oneThumbSlider.setMinimum(-1);
+  oneThumbSlider.setMaximum(1);
+  oneThumbSlider.setValue(0.7);
+  assertRoughlyEquals(0.7, oneThumbSlider.getValue(), 0.000001);
+  oneThumbSlider.setValue(0.3);
+  assertRoughlyEquals(0.3, oneThumbSlider.getValue(), 0.000001);
+}
+
+>>>>>>> newgitrepo
 /**
  * Tests getThumbCoordinateForValue method.
  */

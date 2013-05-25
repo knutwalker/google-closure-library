@@ -81,7 +81,11 @@ goog.object.forEach(['text', 'password', 'textarea'], function(id) {
 });
 
 goog.events.listen(window, 'unload', function() {
+<<<<<<< HEAD
   goog.events.removeAll();
+=======
+  goog.events.removeAllNativeListeners();
+>>>>>>> newgitrepo
 });
 </script>
 </body>

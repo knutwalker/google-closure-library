@@ -29,7 +29,10 @@ goog.provide('goog.debug.FancyWindow');
 goog.require('goog.debug.DebugWindow');
 goog.require('goog.debug.LogManager');
 goog.require('goog.debug.Logger');
+<<<<<<< HEAD
 goog.require('goog.debug.Logger.Level');
+=======
+>>>>>>> newgitrepo
 goog.require('goog.dom.DomHelper');
 goog.require('goog.object');
 goog.require('goog.string');
@@ -75,7 +78,11 @@ goog.debug.FancyWindow.LOCAL_STORE_PREFIX = 'fancywindow.sel.';
 
 /** @override */
 goog.debug.FancyWindow.prototype.writeBufferToLog = function() {
+<<<<<<< HEAD
   this.lastCall_ = goog.now();
+=======
+  this.lastCall = goog.now();
+>>>>>>> newgitrepo
   if (this.hasActiveWindow()) {
     var logel = this.dh_.getElement('log');
 
@@ -83,12 +90,21 @@ goog.debug.FancyWindow.prototype.writeBufferToLog = function() {
     var scroll =
         logel.scrollHeight - (logel.scrollTop + logel.offsetHeight) <= 100;
 
+<<<<<<< HEAD
     for (var i = 0; i < this.outputBuffer_.length; i++) {
       var div = this.dh_.createDom('div', 'logmsg');
       div.innerHTML = this.outputBuffer_[i];
       logel.appendChild(div);
     }
     this.outputBuffer_.length = 0;
+=======
+    for (var i = 0; i < this.outputBuffer.length; i++) {
+      var div = this.dh_.createDom('div', 'logmsg');
+      div.innerHTML = this.outputBuffer[i];
+      logel.appendChild(div);
+    }
+    this.outputBuffer.length = 0;
+>>>>>>> newgitrepo
     this.resizeStuff_();
 
     if (scroll) {
@@ -121,11 +137,19 @@ goog.debug.FancyWindow.prototype.writeInitialDocument = function() {
   this.dh_.getElement('closebutton').onclick =
       goog.bind(this.closeOptions_, this);
   this.dh_.getElement('clearbutton').onclick =
+<<<<<<< HEAD
       goog.bind(this.clear_, this);
   this.dh_.getElement('exitbutton').onclick =
       goog.bind(this.exit_, this);
 
   this.writeSavedMessages_();
+=======
+      goog.bind(this.clear, this);
+  this.dh_.getElement('exitbutton').onclick =
+      goog.bind(this.exit_, this);
+
+  this.writeSavedMessages();
+>>>>>>> newgitrepo
 };
 
 
@@ -265,12 +289,20 @@ goog.debug.FancyWindow.prototype.getHtml_ = function() {
   return '' +
       '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"' +
       '"http://www.w3.org/TR/html4/loose.dtd">' +
+<<<<<<< HEAD
       '<html><head><title>Logging: ' + this.identifier_ + '</title>' +
+=======
+      '<html><head><title>Logging: ' + this.identifier + '</title>' +
+>>>>>>> newgitrepo
       '<style>' + this.getStyleRules() + '</style>' +
       '</head><body>' +
       '<div id="log" style="overflow:auto"></div>' +
       '<div id="head">' +
+<<<<<<< HEAD
       '<p><b>Logging: ' + this.identifier_ + '</b></p><p>' +
+=======
+      '<p><b>Logging: ' + this.identifier + '</b></p><p>' +
+>>>>>>> newgitrepo
       this.welcomeMessage + '</p>' +
       '<span id="clearbutton">clear</span>' +
       '<span id="exitbutton">exit</span>' +

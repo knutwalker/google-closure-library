@@ -73,7 +73,11 @@ goog.Disposable.MonitoringMode = {
  *     performance and memory usage. If switched off, the monitoring code
  *     compiles down to 0 bytes.
  */
+<<<<<<< HEAD
 goog.Disposable.MONITORING_MODE = 0;
+=======
+goog.define('goog.Disposable.MONITORING_MODE', 0);
+>>>>>>> newgitrepo
 
 
 /**

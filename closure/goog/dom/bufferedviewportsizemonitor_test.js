@@ -13,7 +13,11 @@
 // limitations under the License.
 
 /**
+<<<<<<< HEAD
  * @fileoverview Tests for goog.dom.BufferedViewportSizeMonitor
+=======
+ * @fileoverview Tests for goog.dom.BufferedViewportSizeMonitor.
+>>>>>>> newgitrepo
  *
  */
 

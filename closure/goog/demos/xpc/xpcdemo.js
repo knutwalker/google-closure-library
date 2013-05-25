@@ -24,6 +24,10 @@ goog.require('goog.dom');
 goog.require('goog.events');
 goog.require('goog.events.EventType');
 goog.require('goog.json');
+<<<<<<< HEAD
+=======
+goog.require('goog.net.xpc.CfgFields');
+>>>>>>> newgitrepo
 goog.require('goog.net.xpc.CrossPageChannel');
 
 
@@ -194,6 +198,10 @@ xpcdemo.ping = function() {
   xpcdemo.channel.send('ping', goog.now() + '');
 };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * The handler function for incoming pings (messages sent to the service
  * called 'ping');
@@ -258,7 +266,11 @@ xpcdemo.stopMousemoveForwarding = function() {
  */
 xpcdemo.mouseEventHandler_ = function(e) {
   xpcdemo.channel.send('events',
+<<<<<<< HEAD
                    [e.type, e.clientX, e.clientY, goog.now()].join(','));
+=======
+      [e.type, e.clientX, e.clientY, goog.now()].join(','));
+>>>>>>> newgitrepo
 };
 
 

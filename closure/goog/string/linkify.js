@@ -115,11 +115,20 @@ goog.string.linkify.findFirstEmail = function(text) {
 
 
 /**
+<<<<<<< HEAD
+=======
+ * If one of these characters is at the end of a url, it will be considered as a
+ * puncutation and not part of the url.
+>>>>>>> newgitrepo
  * @type {string}
  * @const
  * @private
  */
+<<<<<<< HEAD
 goog.string.linkify.ENDING_PUNCTUATION_CHARS_ = ':;,\\.?\\[\\]';
+=======
+goog.string.linkify.ENDING_PUNCTUATION_CHARS_ = ':;,\\.?>\\]\\)!';
+>>>>>>> newgitrepo
 
 
 /**
@@ -133,12 +142,22 @@ goog.string.linkify.ENDS_WITH_PUNCTUATION_RE_ =
 
 
 /**
+<<<<<<< HEAD
+=======
+ * Set of characters to be put into a regex character set ("[...]"), used to
+ * match against a url hostname and everything after it. It includes
+ * "#-@", which represents the characters "#$%&'()*+,-./0123456789:;<=>?@".
+>>>>>>> newgitrepo
  * @type {string}
  * @const
  * @private
  */
 goog.string.linkify.ACCEPTABLE_URL_CHARS_ =
+<<<<<<< HEAD
     goog.string.linkify.ENDING_PUNCTUATION_CHARS_ + '\\w/~%&=+#-@!';
+=======
+    goog.string.linkify.ENDING_PUNCTUATION_CHARS_ + '\\w~#-@!\\[\\]';
+>>>>>>> newgitrepo
 
 
 /**
@@ -159,7 +178,11 @@ goog.string.linkify.RECOGNIZED_PROTOCOLS_ = ['https?', 'ftp'];
  * @private
  */
 goog.string.linkify.PROTOCOL_START_ =
+<<<<<<< HEAD
     '(' + goog.string.linkify.RECOGNIZED_PROTOCOLS_.join('|') + ')://+';
+=======
+    '(' + goog.string.linkify.RECOGNIZED_PROTOCOLS_.join('|') + ')://';
+>>>>>>> newgitrepo
 
 
 /**

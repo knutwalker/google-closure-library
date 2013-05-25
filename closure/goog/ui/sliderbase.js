@@ -856,9 +856,21 @@ goog.ui.SliderBase.prototype.setThumbPosition_ = function(thumb, position) {
     // rounded sum of position and extent is not equal to the sum of the
     // position and extent rounded individually. If this happens, we simply
     // ignore the update to prevent inconsistent moves of the extent thumb.
+<<<<<<< HEAD
     if (this.rangeModel.roundToStepWithMin(position) +
             this.rangeModel.roundToStepWithMin(newExtent) ==
         this.rangeModel.roundToStepWithMin(position + newExtent)) {
+=======
+    // TODO(user): This no-op needs to be fixed. We should never ignore an
+    // update, and instead remove logic where we rely on round(position) +
+    // round(extent) = round(position + extent).
+    var roundedPosition = this.rangeModel.roundToStepWithMin(position);
+    var roundedNewExtent = this.rangeModel.roundToStepWithMin(newExtent);
+    var roundedSum = this.rangeModel.roundToStepWithMin(position + newExtent);
+    var roundedValuesAreConsistent = goog.math.nearlyEquals(
+        roundedPosition + roundedNewExtent, roundedSum);
+    if (roundedValuesAreConsistent) {
+>>>>>>> newgitrepo
       // Atomically update the position and extent.
       this.setValueAndExtent(position, newExtent);
       intermediateExtent = null;
@@ -1469,7 +1481,11 @@ goog.ui.SliderBase.prototype.setExtent = function(extent) {
  * @param {boolean} visible Whether to show the slider.
  */
 goog.ui.SliderBase.prototype.setVisible = function(visible) {
+<<<<<<< HEAD
   goog.style.showElement(this.getElement(), visible);
+=======
+  goog.style.setElementShown(this.getElement(), visible);
+>>>>>>> newgitrepo
   if (visible) {
     this.updateUi_();
   }

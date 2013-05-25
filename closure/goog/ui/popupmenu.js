@@ -380,7 +380,11 @@ goog.ui.PopupMenu.prototype.showWithPosition = function(position,
     this.getElement().style.visibility = 'hidden';
   }
 
+<<<<<<< HEAD
   goog.style.showElement(this.getElement(), true);
+=======
+  goog.style.setElementShown(this.getElement(), true);
+>>>>>>> newgitrepo
   position.reposition(this.getElement(), menuCorner, opt_margin);
 
   if (!isVisible) {

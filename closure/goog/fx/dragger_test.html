@@ -68,7 +68,11 @@ function setUp() {
 function tearDown() {
   goog.dom.getElement('sandbox').innerHTML = '';
   goog.dom.getElement('sandbox_rtl').innerHTML = '';
+<<<<<<< HEAD
   goog.events.removeAll();
+=======
+  goog.events.removeAllNativeListeners();
+>>>>>>> newgitrepo
 }
 
 function testStartDrag() {
@@ -311,7 +315,11 @@ function testIeDragStartCancelling() {
 /** @bug 1680770 */
 function testOnWindowMouseOut() {
   // Test older Gecko browsers - FireFox 2.
+<<<<<<< HEAD
   if (goog.userAgent.GECKO && !goog.userAgent.isVersion('1.9a')) {
+=======
+  if (goog.userAgent.GECKO && !goog.userAgent.isVersionOrHigher('1.9a')) {
+>>>>>>> newgitrepo
     var dragger = new goog.fx.Dragger(target);
 
     var dragCanceled = false;

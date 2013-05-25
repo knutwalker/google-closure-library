@@ -16,6 +16,13 @@
 /**
  * @fileoverview Component for generating chart PNGs using Google Chart Server.
  *
+<<<<<<< HEAD
+=======
+ * @deprecated Google Chart Images service (the server-side component of this
+ *     class) has been deprecated. See
+ *     https://developers.google.com/chart/ for alternatives.
+ *
+>>>>>>> newgitrepo
  * @see ../demos/serverchart.html
  */
 
@@ -55,6 +62,12 @@ goog.require('goog.ui.Component');
  *     different than goog.ui.ServerChart.CHART_SERVER_SCHEME_INDEPENDENT_URI.
  * @constructor
  * @extends {goog.ui.Component}
+<<<<<<< HEAD
+=======
+ *
+ * @deprecated Google Chart Server has been deprecated. See
+ *     https://developers.google.com/chart/image/ for details.
+>>>>>>> newgitrepo
  */
 goog.ui.ServerChart = function(type, opt_width, opt_height, opt_domHelper,
     opt_uri) {
@@ -309,8 +322,13 @@ goog.ui.ServerChart.prototype.createDom = function() {
   var size = this.getSize();
   this.setElementInternal(this.getDomHelper().createDom(
       'img', {'src': this.getUri(),
+<<<<<<< HEAD
       'class': goog.getCssName('goog-serverchart-image'),
       'width': size[0], 'height': size[1]}));
+=======
+        'class': goog.getCssName('goog-serverchart-image'),
+        'width': size[0], 'height': size[1]}));
+>>>>>>> newgitrepo
 };
 
 
@@ -1428,11 +1446,16 @@ goog.ui.ServerChart.prototype.getMultiAxisRange = function(opt_axisNumber) {
  * @param {goog.ui.ServerChart.AxisDisplayType=} opt_axisDisplay The axis
  *     line and ticks.
  */
+<<<<<<< HEAD
 goog.ui.ServerChart.prototype.setMultiAxisLabelStyle = function(axisNumber,
                                                                 color,
                                                                 opt_fontSize,
                                                                 opt_alignment,
                                                              opt_axisDisplay) {
+=======
+goog.ui.ServerChart.prototype.setMultiAxisLabelStyle = function(
+    axisNumber, color, opt_fontSize, opt_alignment, opt_axisDisplay) {
+>>>>>>> newgitrepo
   var style = [color];
   if (goog.isDef(opt_fontSize) || goog.isDef(opt_alignment)) {
     style.push(opt_fontSize || '');
@@ -1560,8 +1583,13 @@ goog.ui.ServerChart.prototype.computeDataString_ = function() {
     ok = this.computeDataStringForEncoding_(
         goog.ui.ServerChart.EncodingType.EXTENDED);
     if (!ok) {
+<<<<<<< HEAD
         ok = this.computeDataStringForEncoding_(
             goog.ui.ServerChart.EncodingType.SIMPLE);
+=======
+      ok = this.computeDataStringForEncoding_(
+          goog.ui.ServerChart.EncodingType.SIMPLE);
+>>>>>>> newgitrepo
     }
   }
   if (!ok) {

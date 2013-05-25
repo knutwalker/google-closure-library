@@ -147,7 +147,11 @@ goog.ui.GaugeTheme.prototype.getNeedleFill = function(cx, cy, r) {
  * @return {string} The color to use.
  */
 goog.ui.GaugeTheme.prototype.getTitleColor = function() {
+<<<<<<< HEAD
     return '#333333';
+=======
+  return '#333333';
+>>>>>>> newgitrepo
 };
 
 
@@ -156,7 +160,11 @@ goog.ui.GaugeTheme.prototype.getTitleColor = function() {
  * @return {string} The color to use.
  */
 goog.ui.GaugeTheme.prototype.getValueColor = function() {
+<<<<<<< HEAD
     return 'black';
+=======
+  return 'black';
+>>>>>>> newgitrepo
 };
 
 
@@ -165,5 +173,9 @@ goog.ui.GaugeTheme.prototype.getValueColor = function() {
  * @return {string} The color to use.
  */
 goog.ui.GaugeTheme.prototype.getTickLabelColor = function() {
+<<<<<<< HEAD
     return '#333333';
+=======
+  return '#333333';
+>>>>>>> newgitrepo
 };

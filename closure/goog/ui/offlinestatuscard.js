@@ -29,7 +29,10 @@ goog.require('goog.gears.StatusType');
 goog.require('goog.structs.Map');
 goog.require('goog.style');
 goog.require('goog.ui.Component');
+<<<<<<< HEAD
 goog.require('goog.ui.Component.EventType');
+=======
+>>>>>>> newgitrepo
 goog.require('goog.ui.ProgressBar');
 
 
@@ -344,7 +347,11 @@ goog.ui.OfflineStatusCard.prototype.update = function() {
     // Configure the message element.
     var message = this.getAdditionalMessage(status);
     var messageEl = this.messageEl_;
+<<<<<<< HEAD
     goog.style.showElement(messageEl, message);
+=======
+    goog.style.setElementShown(messageEl, message);
+>>>>>>> newgitrepo
     if (message) {
       dom.setTextContent(messageEl, message);
     }
@@ -406,7 +413,11 @@ goog.ui.OfflineStatusCard.prototype.createLinkNode_ = function(
   // A text node is needed here in order for links to wrap.
   dom.appendChild(actionEl, dom.createTextNode(' '));
   this.actionMap_.set(goog.getUid(a), action.eventType);
+<<<<<<< HEAD
   goog.style.showElement(a, true);
+=======
+  goog.style.setElementShown(a, true);
+>>>>>>> newgitrepo
   dom.setTextContent(a, action.message);
 };
 
@@ -418,7 +429,11 @@ goog.ui.OfflineStatusCard.prototype.createLinkNode_ = function(
 goog.ui.OfflineStatusCard.prototype.configureProgressElement =
     function(status) {
   var showProgress = this.shouldShowProgressBar(status);
+<<<<<<< HEAD
   goog.style.showElement(this.progressEl_, showProgress);
+=======
+  goog.style.setElementShown(this.progressEl_, showProgress);
+>>>>>>> newgitrepo
   if (showProgress) {
     this.updateProgressStatus();
   }

@@ -27,9 +27,15 @@ goog.require('goog.dom');
 goog.require('goog.dom.NodeType');
 goog.require('goog.events');
 goog.require('goog.events.EventType');
+<<<<<<< HEAD
 goog.require('goog.string.StringBuffer');
 goog.require('goog.ui.AbstractSpellChecker');
 goog.require('goog.ui.AbstractSpellChecker.AsyncResult');
+=======
+goog.require('goog.spell.SpellCheck');
+goog.require('goog.string.StringBuffer');
+goog.require('goog.ui.AbstractSpellChecker');
+>>>>>>> newgitrepo
 
 
 
@@ -180,9 +186,15 @@ goog.ui.RichTextSpellChecker.prototype.check = function() {
   this.preChargeDictionary_(this.rootNode_, this.dictionaryPreScanSize_);
   this.unblockReadyEvents();
 
+<<<<<<< HEAD
   goog.events.listen(this.handler_, goog.spell.SpellCheck.EventType.READY,
                      this.onDictionaryCharged_, true, this);
   this.handler_.processPending();
+=======
+  goog.events.listen(this.spellCheck, goog.spell.SpellCheck.EventType.READY,
+                     this.onDictionaryCharged_, true, this);
+  this.spellCheck.processPending();
+>>>>>>> newgitrepo
 };
 
 
@@ -225,7 +237,11 @@ goog.ui.RichTextSpellChecker.prototype.preChargeDictionary_ = function(node,
  */
 goog.ui.RichTextSpellChecker.prototype.onDictionaryCharged_ = function(e) {
   e.stopPropagation();
+<<<<<<< HEAD
   goog.events.unlisten(this.handler_, goog.spell.SpellCheck.EventType.READY,
+=======
+  goog.events.unlisten(this.spellCheck, goog.spell.SpellCheck.EventType.READY,
+>>>>>>> newgitrepo
                        this.onDictionaryCharged_, true, this);
 
   // Now actually do the spell checking.
@@ -268,7 +284,11 @@ goog.ui.RichTextSpellChecker.prototype.continueAsync_ = function() {
  */
 goog.ui.RichTextSpellChecker.prototype.finishCheck_ = function() {
   delete this.currentNode_;
+<<<<<<< HEAD
   this.handler_.processPending();
+=======
+  this.spellCheck.processPending();
+>>>>>>> newgitrepo
 
   if (!this.isVisible()) {
     goog.events.listen(this.rootNode_, goog.events.EventType.CLICK,
@@ -443,7 +463,11 @@ goog.ui.RichTextSpellChecker.prototype.processNode_ = function(node) {
  */
 goog.ui.RichTextSpellChecker.prototype.processWord = function(node, word,
                                                               status) {
+<<<<<<< HEAD
   node.parentNode.insertBefore(this.createWordElement_(word, status), node);
+=======
+  node.parentNode.insertBefore(this.createWordElement(word, status), node);
+>>>>>>> newgitrepo
   this.elementsInserted_++;
 };
 
@@ -469,6 +493,7 @@ goog.ui.RichTextSpellChecker.prototype.processRange = function(node, text) {
 };
 
 
+<<<<<<< HEAD
 /**
  * @override
  * @suppress {accessControls}
@@ -479,6 +504,15 @@ goog.ui.RichTextSpellChecker.prototype.createWordElement_ = function(word,
   var el = /** @type {HTMLSpanElement} */ (this.editorDom_.createDom('span',
       parameters, word));
   this.registerWordElement_(word, el);
+=======
+/** @override */
+goog.ui.RichTextSpellChecker.prototype.createWordElement = function(
+    word, status) {
+  var parameters = this.getElementProperties(status);
+  var el = /** @type {HTMLSpanElement} */ (this.editorDom_.createDom('span',
+      parameters, word));
+  this.registerWordElement(word, el);
+>>>>>>> newgitrepo
   return el;
 };
 
@@ -610,7 +644,11 @@ goog.ui.RichTextSpellChecker.prototype.getElementProperties =
 goog.ui.RichTextSpellChecker.prototype.onWordClick_ = function(event) {
   var target = /** @type {Element} */ (event.target);
   if (event.target.className == this.wordClassName &&
+<<<<<<< HEAD
       this.handler_.checkWord(goog.dom.getTextContent(target)) ==
+=======
+      this.spellCheck.checkWord(goog.dom.getTextContent(target)) ==
+>>>>>>> newgitrepo
       goog.spell.SpellCheck.WordStatus.INVALID) {
 
     this.showSuggestionsMenu(target, event);

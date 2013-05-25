@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 goog.require('goog.dom');
 goog.require('goog.dom.query');
 goog.require('goog.testing.asserts');  // assertThrows
 
+=======
+>>>>>>> newgitrepo
 goog.setTestOnly('query_test');
 
 function testBasicSelectors() {
@@ -127,8 +130,13 @@ function testEmptyPseudoSelector() {
   assertQuery(1, 'h3 :not(:empty)');
 }
 
+<<<<<<< HEAD
 function testIdsWithColons(){
   assertQuery(1, "#silly\\:id\\:\\:with\\:colons");
+=======
+function testIdsWithColons() {
+  assertQuery(1, '#silly\\:id\\:\\:with\\:colons');
+>>>>>>> newgitrepo
 }
 
 function testOrder() {

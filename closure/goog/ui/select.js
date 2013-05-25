@@ -57,7 +57,10 @@ goog.require('goog.ui.registry');
 goog.ui.Select = function(caption, opt_menu, opt_renderer, opt_domHelper) {
   goog.ui.MenuButton.call(this, caption, opt_menu, opt_renderer, opt_domHelper);
   this.setDefaultCaption(caption);
+<<<<<<< HEAD
   this.setPreferredAriaRole(goog.a11y.aria.Role.LISTBOX);
+=======
+>>>>>>> newgitrepo
 };
 goog.inherits(goog.ui.Select, goog.ui.MenuButton);
 
@@ -83,12 +86,15 @@ goog.ui.Select.prototype.enterDocument = function() {
   goog.ui.Select.superClass_.enterDocument.call(this);
   this.updateCaption();
   this.listenToSelectionModelEvents_();
+<<<<<<< HEAD
   var selectElement = this.getElement();
   goog.asserts.assert(selectElement,
       'The select DOM element cannot be null.');
   // Need to set HASPOPUP to false since it's set to true in the parent class.
   goog.a11y.aria.setState(selectElement, goog.a11y.aria.State.HASPOPUP,
       'false');
+=======
+>>>>>>> newgitrepo
 };
 
 

@@ -31,13 +31,29 @@ goog.require('goog.string');
  * @return {string} path The final component of a pathname, i.e. everything
  *     after the final slash.
  */
+<<<<<<< HEAD
 goog.string.path.basename = function(path) {
+=======
+goog.string.path.baseName = function(path) {
+>>>>>>> newgitrepo
   var i = path.lastIndexOf('/') + 1;
   return path.slice(i);
 };
 
 
 /**
+<<<<<<< HEAD
+=======
+ * Alias to goog.string.path.baseName.
+ * @param {string} path A pathname.
+ * @return {string} path The final component of a pathname.
+ * @deprecated Use goog.string.path.baseName.
+ */
+goog.string.path.basename = goog.string.path.baseName;
+
+
+/**
+>>>>>>> newgitrepo
  * Returns the directory component of a pathname.
  * See http://docs.python.org/library/os.path.html#os.path.dirname
  * @param {string} path A pathname.
@@ -63,9 +79,15 @@ goog.string.path.dirname = function(path) {
 goog.string.path.extension = function(path) {
   var separator = '.';
   // Combining all adjacent periods in the basename to a single period.
+<<<<<<< HEAD
   var basename = goog.string.path.basename(path).replace(/\.+/g, separator);
   var separatorIndex = basename.lastIndexOf(separator);
   return separatorIndex <= 0 ? '' : basename.substr(separatorIndex + 1);
+=======
+  var baseName = goog.string.path.baseName(path).replace(/\.+/g, separator);
+  var separatorIndex = baseName.lastIndexOf(separator);
+  return separatorIndex <= 0 ? '' : baseName.substr(separatorIndex + 1);
+>>>>>>> newgitrepo
 };
 
 
@@ -83,7 +105,11 @@ goog.string.path.join = function(var_args) {
     var arg = arguments[i];
     if (goog.string.startsWith(arg, '/')) {
       path = arg;
+<<<<<<< HEAD
     } else if (path == '' || goog.string.endsWith(arg, '/')) {
+=======
+    } else if (path == '' || goog.string.endsWith(path, '/')) {
+>>>>>>> newgitrepo
       path += arg;
     } else {
       path += '/' + arg;
@@ -145,7 +171,11 @@ goog.string.path.normalizePath = function(path) {
 
 
 /**
+<<<<<<< HEAD
  * Splits a pathname into "dirname" and "basename" components, where "basename"
+=======
+ * Splits a pathname into "dirname" and "baseName" components, where "baseName"
+>>>>>>> newgitrepo
  * is everything after the final slash. Either part may return an empty string.
  * See http://docs.python.org/library/os.path.html#os.path.split
  * @param {string} path A pathname.
@@ -153,7 +183,11 @@ goog.string.path.normalizePath = function(path) {
  */
 goog.string.path.split = function(path) {
   var head = goog.string.path.dirname(path);
+<<<<<<< HEAD
   var tail = goog.string.path.basename(path);
+=======
+  var tail = goog.string.path.baseName(path);
+>>>>>>> newgitrepo
   return [head, tail];
 };
 

@@ -42,23 +42,50 @@ See the COPYING file for details.
   function testScrollFloaterEvents() {
     var scrollFloater = new goog.ui.ScrollFloater();
     var floater = goog.dom.getElement('floater');
+<<<<<<< HEAD
+=======
+    scrollFloater.setContainerElement(goog.dom.getElement('container'));
+>>>>>>> newgitrepo
     scrollFloater.decorate(floater);
 
     var floatWasCalled = false;
     var callRecorder = function() { floatWasCalled = true; };
     goog.events.listen(
         scrollFloater, goog.ui.ScrollFloater.EventType.FLOAT, callRecorder);
+<<<<<<< HEAD
     scrollFloater.startFloating_();
     assertTrue('FLOAT event was called', floatWasCalled);
     assertTrue('Should be floating', scrollFloater.isFloating());
+=======
+    scrollFloater.float_();
+    assertTrue('FLOAT event was called', floatWasCalled);
+    assertTrue('Should be floating', scrollFloater.isFloating());
+    assertFalse('Should not be pinned', scrollFloater.isPinned());
+>>>>>>> newgitrepo
 
     var dockWasCalled = false;
     callRecorder = function() { dockWasCalled = true; };
     goog.events.listen(
         scrollFloater, goog.ui.ScrollFloater.EventType.DOCK, callRecorder);
+<<<<<<< HEAD
     scrollFloater.stopFloating_();
     assertTrue('DOCK event was called', dockWasCalled);
     assertFalse('Should not be floating', scrollFloater.isFloating());
+=======
+    scrollFloater.dock_();
+    assertTrue('DOCK event was called', dockWasCalled);
+    assertFalse('Should not be floating', scrollFloater.isFloating());
+    assertFalse('Should not be pinned', scrollFloater.isPinned());
+
+    var pinWasCalled = false;
+    callRecorder = function() { pinWasCalled = true; };
+    goog.events.listen(
+        scrollFloater, goog.ui.ScrollFloater.EventType.PIN, callRecorder);
+    scrollFloater.pin_();
+    assertTrue('PIN event was called', pinWasCalled);
+    assertFalse('Should not be floating', scrollFloater.isFloating());
+    assertTrue('Should be pinned', scrollFloater.isPinned());
+>>>>>>> newgitrepo
 
     scrollFloater.dispose();
   }
@@ -74,6 +101,7 @@ See the COPYING file for details.
     // Have eventCanceller handle the FLOAT event and verify cancellation.
     goog.events.listen(
         scrollFloater, goog.ui.ScrollFloater.EventType.FLOAT, eventCanceller);
+<<<<<<< HEAD
     scrollFloater.startFloating_();
     assertFalse('Should not be floating', scrollFloater.isFloating());
 
@@ -81,11 +109,30 @@ See the COPYING file for details.
     goog.events.unlisten(
         scrollFloater, goog.ui.ScrollFloater.EventType.FLOAT, eventCanceller);
     scrollFloater.startFloating_();
+=======
+    scrollFloater.float_();
+    assertFalse('Should not be floating', scrollFloater.isFloating());
+
+    // Have eventCanceller handle the PIN event and verify cancellation.
+    goog.events.listen(
+        scrollFloater, goog.ui.ScrollFloater.EventType.PIN, eventCanceller);
+    scrollFloater.dock_();
+    assertFalse('Should not be pinned', scrollFloater.isPinned());
+
+    // Detach eventCanceller and enable floating.
+    goog.events.unlisten(
+        scrollFloater, goog.ui.ScrollFloater.EventType.FLOAT, eventCanceller);
+    scrollFloater.float_();
+>>>>>>> newgitrepo
 
     // Have eventCanceller handle the DOCK event and verify cancellation.
     goog.events.listen(
         scrollFloater, goog.ui.ScrollFloater.EventType.DOCK, eventCanceller);
+<<<<<<< HEAD
     scrollFloater.stopFloating_();
+=======
+    scrollFloater.dock_();
+>>>>>>> newgitrepo
     assertTrue('Should still be floating', scrollFloater.isFloating());
 
     scrollFloater.dispose();
@@ -105,7 +152,11 @@ See the COPYING file for details.
     goog.style.setStyle(scrollFloater.getElement(), 'font-size', '10px');
     goog.events.listen(
         scrollFloater, goog.ui.ScrollFloater.EventType.FLOAT, updateStyle);
+<<<<<<< HEAD
     scrollFloater.startFloating_();
+=======
+    scrollFloater.float_();
+>>>>>>> newgitrepo
 
     // Ensure event handler got called and updated the font size.
     assertEquals('Font size should be 20px',
@@ -116,8 +167,15 @@ See the COPYING file for details.
 
 </script>
 
+<<<<<<< HEAD
 <div id="floater">
 Content to be scroll-floated.
+=======
+<div id="container">
+  <div id="floater">
+  Content to be scroll-floated.
+  </div>
+>>>>>>> newgitrepo
 </div>
 
 </body>

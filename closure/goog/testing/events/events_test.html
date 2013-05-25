@@ -15,6 +15,7 @@ See the COPYING file for details.
   <title>Closure Unit Tests - goog.testing.events</title>
   <script src="../../base.js"></script>
   <script>
+<<<<<<< HEAD
     goog.require('goog.events.Listenable');
   </script>
   <script>
@@ -25,6 +26,11 @@ See the COPYING file for details.
   <script>
     goog.require('goog.array');
     goog.require('goog.dom');
+=======
+    goog.require('goog.array');
+    goog.require('goog.dom');
+    goog.require('goog.events.Listenable');
+>>>>>>> newgitrepo
     goog.require('goog.math.Coordinate');
     goog.require('goog.string');
     goog.require('goog.testing.PropertyReplacer');
@@ -57,10 +63,15 @@ See the COPYING file for details.
   var eventCount;
 
   function setUp() {
+<<<<<<< HEAD
     goog.events.Listenable.USE_LISTENABLE_INTERFACE = ORIGINAL_FLAG_VALUE;
 
     stubs.reset();
     goog.events.removeAll();
+=======
+    stubs.reset();
+    goog.events.removeAllNativeListeners();
+>>>>>>> newgitrepo
     root.innerHTML = '';
     firedEventTypes = [];
     firedEventCoordinates = [];
@@ -351,7 +362,11 @@ See the COPYING file for details.
   function testKeySequenceWithEscapeKey() {
     assertTrue(goog.testing.events.fireKeySequence(
         root, goog.events.KeyCodes.ESC));
+<<<<<<< HEAD
     if (goog.userAgent.WEBKIT && goog.userAgent.isVersion('525')) {
+=======
+    if (goog.userAgent.WEBKIT && goog.userAgent.isVersionOrHigher('525')) {
+>>>>>>> newgitrepo
       assertEventTypes(['keydown', 'keyup']);
     } else {
       assertEventTypes(['keydown', 'keypress', 'keyup']);
@@ -564,9 +579,13 @@ See the COPYING file for details.
     }, eventCount);
   }
 
+<<<<<<< HEAD
   function testMixinListenable(opt_legacy) {
     goog.events.Listenable.USE_LISTENABLE_INTERFACE = !opt_legacy;
 
+=======
+  function testMixinListenable() {
+>>>>>>> newgitrepo
     var obj = {};
     obj.doFoo = goog.testing.recordFunction();
 
@@ -591,9 +610,12 @@ See the COPYING file for details.
     assertEquals(1, handler.getCallCount());
   }
 
+<<<<<<< HEAD
   function testMixinListenableLegacy() {
     testMixinListenable(true);
   }
+=======
+>>>>>>> newgitrepo
   /**
    * Assert that the list of events given was fired, in that order.
    */

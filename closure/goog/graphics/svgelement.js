@@ -47,6 +47,12 @@ goog.require('goog.graphics.TextElement');
  *     this element.
  * @constructor
  * @extends {goog.graphics.GroupElement}
+<<<<<<< HEAD
+=======
+ * @deprecated goog.graphics is deprecated. It existed to abstract over browser
+ *     differences before the canvas tag was widely supported.  See
+ *     http://en.wikipedia.org/wiki/Canvas_element for details.
+>>>>>>> newgitrepo
  */
 goog.graphics.SvgGroupElement = function(element, graphics) {
   goog.graphics.GroupElement.call(this, element, graphics);
@@ -189,7 +195,12 @@ goog.inherits(goog.graphics.SvgPathElement, goog.graphics.PathElement);
  */
 goog.graphics.SvgPathElement.prototype.setPath = function(path) {
   this.getGraphics().setElementAttributes(this.getElement(),
+<<<<<<< HEAD
       {'d': goog.graphics.SvgGraphics.getSvgPath(path)});
+=======
+      {'d': /** @suppress {missingRequire} */
+            goog.graphics.SvgGraphics.getSvgPath(path)});
+>>>>>>> newgitrepo
 };
 
 

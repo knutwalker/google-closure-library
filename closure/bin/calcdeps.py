@@ -274,9 +274,16 @@ def FindClosureBasePath(paths):
       is_base = False
 
       # Sanity check that this is the Closure base file.  Check that this
+<<<<<<< HEAD
       # is where goog is defined.
       for line in f:
         if line.startswith('var goog = goog || {};'):
+=======
+      # is where goog is defined.  This is determined by the @provideGoog
+      # flag.
+      for line in f:
+        if '@provideGoog' in line:
+>>>>>>> newgitrepo
           is_base = True
           break
 
@@ -485,7 +492,11 @@ def main():
                     action='append',
                     help='The inputs to calculate dependencies for. Valid '
                     'values can be files, directories, or namespaces '
+<<<<<<< HEAD
                     '(ns:goog.net.XhrLite).  Only relevant to "list" and '
+=======
+                    '(ns:goog.net.XhrIo).  Only relevant to "list" and '
+>>>>>>> newgitrepo
                     '"script" output.')
   parser.add_option('-p',
                     '--path',

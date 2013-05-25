@@ -12,8 +12,16 @@ See the COPYING file for details.
 <script src="../base.js"></script>
 <script>
   goog.require('goog.debug.DivConsole');
+<<<<<<< HEAD
   goog.require('goog.net.IframeIo');
   goog.require('goog.testing.jsunit');
+=======
+  goog.require('goog.events.EventType');
+  goog.require('goog.net.IframeIo');
+  goog.require('goog.testing.events');
+  goog.require('goog.testing.jsunit');
+  goog.require('goog.userAgent');
+>>>>>>> newgitrepo
 </script>
 <style>
   
@@ -368,6 +376,34 @@ function testAddFormInputs() {
   }
 }
 
+<<<<<<< HEAD
+=======
+function testNotIgnoringResponse() {
+  // This test can't run in IE because we can't forge the check for
+  // iframe.readyState = 'complete'.
+  if (goog.userAgent.IE) {
+    return;
+  }
+  var iframeIo = new goog.net.IframeIo();
+  iframeIo.send("javascript:''");
+  // Simulate the frame finishing loading.
+  goog.testing.events.fireBrowserEvent(new goog.testing.events.Event(
+      goog.events.EventType.LOAD, iframeIo.getRequestIframe()));
+  assertTrue(iframeIo.isComplete());
+}
+
+function testIgnoreResponse() {
+  var iframeIo = new goog.net.IframeIo();
+  iframeIo.setIgnoreResponse(true);
+  iframeIo.send("javascript:''");
+  // Simulate the frame finishing loading.
+  goog.testing.events.fireBrowserEvent(new goog.testing.events.Event(
+      goog.events.EventType.LOAD, iframeIo.getRequestIframe()));
+  // Although the request is complete, the IframeIo isn't paying attention.
+  assertFalse(iframeIo.isComplete());
+}
+
+>>>>>>> newgitrepo
 </script>
 
 </body>

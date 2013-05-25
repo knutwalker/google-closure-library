@@ -25,9 +25,17 @@ goog.require('goog.dom');
 goog.require('goog.dom.Range');
 goog.require('goog.editor.BrowserFeature');
 goog.require('goog.editor.node');
+<<<<<<< HEAD
 goog.require('goog.testing.dom');
 
 
+=======
+goog.require('goog.editor.plugins.AbstractBubblePlugin');
+goog.require('goog.testing.dom');
+
+
+
+>>>>>>> newgitrepo
 /**
  * Create a new test controller.
  * @param {Element} root The root editable element.

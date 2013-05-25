@@ -13,7 +13,11 @@ See the COPYING file for details.
 <script>
   goog.require('goog.events');
   goog.require('goog.debug.Console');
+<<<<<<< HEAD
   goog.require('goog.net.XhrLite');
+=======
+  goog.require('goog.net.XhrIo');
+>>>>>>> newgitrepo
   goog.require('goog.net.IframeIo');
   goog.require('goog.testing.AsyncTestCase');
   goog.require('goog.testing.jsunit');
@@ -78,14 +82,22 @@ See the COPYING file for details.
     testCase.onIframeData = function(e) {
       this.log('Data received  : ' + e.data);
       this.resultCount++;
+<<<<<<< HEAD
       goog.net.XhrLite.send(fileName, goog.bind(this.onXhrData, this));
+=======
+      goog.net.XhrIo.send(fileName, goog.bind(this.onXhrData, this));
+>>>>>>> newgitrepo
     };
 
     /** Handles the iframe becoming ready. */
     testCase.onIframeReady = function(e) {
       this.log('Iframe ready');
       var me = this;
+<<<<<<< HEAD
       goog.net.XhrLite.send(fileName, goog.bind(this.onXhrData, this));
+=======
+      goog.net.XhrIo.send(fileName, goog.bind(this.onXhrData, this));
+>>>>>>> newgitrepo
     };
 
     /** Handles the response from an Xhr request. */

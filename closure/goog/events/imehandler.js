@@ -49,7 +49,10 @@ goog.require('goog.events.EventTarget');
 goog.require('goog.events.EventType');
 goog.require('goog.events.KeyCodes');
 goog.require('goog.userAgent');
+<<<<<<< HEAD
 goog.require('goog.userAgent.product');
+=======
+>>>>>>> newgitrepo
 
 
 
@@ -143,7 +146,11 @@ goog.inherits(goog.events.ImeHandler.Event, goog.events.Event);
  */
 goog.events.ImeHandler.USES_COMPOSITION_EVENTS =
     goog.userAgent.GECKO ||
+<<<<<<< HEAD
     (goog.userAgent.WEBKIT && goog.userAgent.isVersion(532));
+=======
+    (goog.userAgent.WEBKIT && goog.userAgent.isVersionOrHigher(532));
+>>>>>>> newgitrepo
 
 
 /**

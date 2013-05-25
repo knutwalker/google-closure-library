@@ -15,9 +15,15 @@
 goog.provide('goog.ui.editor.EquationEditorDialog');
 
 goog.require('goog.editor.Command');
+<<<<<<< HEAD
 goog.require('goog.ui.editor.AbstractDialog');
 goog.require('goog.ui.editor.EquationEditorOkEvent');
 goog.require('goog.ui.equation.ChangeEvent');
+=======
+goog.require('goog.ui.Dialog');
+goog.require('goog.ui.editor.AbstractDialog');
+goog.require('goog.ui.editor.EquationEditorOkEvent');
+>>>>>>> newgitrepo
 goog.require('goog.ui.equation.TexEditor');
 
 
@@ -36,7 +42,11 @@ goog.ui.editor.EquationEditorDialog = function(context, domHelper,
     equation, helpUrl) {
   goog.ui.editor.AbstractDialog.call(this, domHelper);
   this.equationEditor_ =
+<<<<<<< HEAD
       new goog.ui.equation.TexEditor(context, helpUrl);
+=======
+      new goog.ui.equation.TexEditor(context, helpUrl, domHelper);
+>>>>>>> newgitrepo
   this.equationEditor_.render();
   this.equationEditor_.setEquation(equation);
   this.equationEditor_.addEventListener(goog.editor.Command.EQUATION,

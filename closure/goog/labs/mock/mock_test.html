@@ -11,7 +11,14 @@ See the COPYING file for details.
 <script src="../../base.js"></script>
 <script>
 
+<<<<<<< HEAD
 goog.require('goog.labs.mock');
+=======
+goog.require('goog.events.Event');
+goog.require('goog.events.EventTarget');
+goog.require('goog.labs.mock');
+goog.require('goog.string');
+>>>>>>> newgitrepo
 goog.require('goog.testing.jsunit');
 goog.require('goog.labs.testing.AnythingMatcher');
 goog.require('goog.labs.testing.GreaterThanMatcher');
@@ -25,6 +32,11 @@ goog.require('goog.labs.testing.LessThanMatcher');
 var ParentClass = function() {};
 ParentClass.prototype.method1 = function() {};
 ParentClass.prototype.x = 1;
+<<<<<<< HEAD
+=======
+ParentClass.prototype.val = 0;
+ParentClass.prototype.incrementVal = function() { this.val++; };
+>>>>>>> newgitrepo
 
 var ChildClass = function() {};
 goog.inherits(ChildClass, ParentClass);
@@ -32,49 +44,97 @@ ChildClass.prototype.method2 = function() {};
 ChildClass.prototype.y = 2;
 
 function testParentClass() {
+<<<<<<< HEAD
   var parentMock = goog.labs.mock(ParentClass);
+=======
+  var parentMock = goog.labs.mock.mock(ParentClass);
+>>>>>>> newgitrepo
 
   assertNotUndefined(parentMock.method1);
   assertUndefined(parentMock.method1());
   assertUndefined(parentMock.method2);
+<<<<<<< HEAD
   assertUndefined(parentMock.x);
   assertUndefined(parentMock.y);
 }
 
 function testChildClass() {
   var childMock = goog.labs.mock(ChildClass);
+=======
+  assertNotUndefined(parentMock.x);
+  assertUndefined(parentMock.y);
+  assertTrue('Mock should be an instance of the mocked class.',
+      parentMock instanceof ParentClass);
+}
+
+function testChildClass() {
+  var childMock = goog.labs.mock.mock(ChildClass);
+>>>>>>> newgitrepo
 
   assertNotUndefined(childMock.method1);
   assertUndefined(childMock.method1());
   assertNotUndefined(childMock.method2);
   assertUndefined(childMock.method2());
+<<<<<<< HEAD
   assertUndefined(childMock.x);
   assertUndefined(childMock.y);
 }
 
 function testParentClassInstance() {
   var parentMock = goog.labs.mock(new ParentClass());
+=======
+  assertNotUndefined(childMock.x);
+  assertNotUndefined(childMock.y);
+  assertTrue('Mock should be an instance of the mocked class.',
+      childMock instanceof ChildClass);
+}
+
+function testParentClassInstance() {
+  var parentMock = goog.labs.mock.mock(new ParentClass());
+>>>>>>> newgitrepo
 
   assertNotUndefined(parentMock.method1);
   assertUndefined(parentMock.method1());
   assertUndefined(parentMock.method2);
+<<<<<<< HEAD
   assertUndefined(parentMock.x);
   assertUndefined(parentMock.y);
 }
 
 function testChildClassInstance() {
   var childMock = goog.labs.mock(new ChildClass());
+=======
+  assertNotUndefined(parentMock.x);
+  assertUndefined(parentMock.y);
+  assertTrue('Mock should be an instance of the mocked class.',
+      parentMock instanceof ParentClass);
+}
+
+function testChildClassInstance() {
+  var childMock = goog.labs.mock.mock(new ChildClass());
+>>>>>>> newgitrepo
 
   assertNotUndefined(childMock.method1);
   assertUndefined(childMock.method1());
   assertNotUndefined(childMock.method2);
   assertUndefined(childMock.method2());
+<<<<<<< HEAD
   assertUndefined(childMock.x);
   assertUndefined(childMock.y);
 }
 
 function testNonEnumerableProperties() {
   var mockObject = goog.labs.mock({});
+=======
+  assertNotUndefined(childMock.x);
+  assertNotUndefined(childMock.y);
+  assertTrue('Mock should be an instance of the mocked class.',
+      childMock instanceof ParentClass);
+}
+
+function testNonEnumerableProperties() {
+  var mockObject = goog.labs.mock.mock({});
+>>>>>>> newgitrepo
   assertNotUndefined(mockObject.toString);
   goog.labs.mock.when(mockObject).toString().then(function() {
     return 'toString';
@@ -95,7 +155,11 @@ function testBasicStubbing() {
     }
   };
 
+<<<<<<< HEAD
   var mockObj = goog.labs.mock(obj);
+=======
+  var mockObj = goog.labs.mock.mock(obj);
+>>>>>>> newgitrepo
   goog.labs.mock.when(mockObj).method1(2).then(function(i) {return i;});
 
   assertEquals(4, obj.method1(2));
@@ -117,7 +181,11 @@ function testBasicStubbing() {
 function testMockFunctions() {
   function x(i) { return i; }
 
+<<<<<<< HEAD
   var mockedFunc = goog.labs.mockFunction(x);
+=======
+  var mockedFunc = goog.labs.mock.mockFunction(x);
+>>>>>>> newgitrepo
   goog.labs.mock.when(mockedFunc)(100).thenReturn(10);
   goog.labs.mock.when(mockedFunc)(50).thenReturn(25);
 
@@ -148,6 +216,44 @@ function testSpying() {
   goog.labs.mock.verify(spyObj).method2(4);
 }
 
+<<<<<<< HEAD
+=======
+function testSpyParentClassInstance() {
+  var parent = new ParentClass();
+  var parentMock = goog.labs.mock.spy(parent);
+
+  assertNotUndefined(parentMock.method1);
+  assertUndefined(parentMock.method1());
+  assertUndefined(parentMock.method2);
+  assertNotUndefined(parentMock.x);
+  assertUndefined(parentMock.y);
+  assertTrue('Mock should be an instance of the mocked class.',
+      parentMock instanceof ParentClass);
+  var incrementedOrigVal = parent.val + 1;
+  parentMock.incrementVal();
+  assertEquals('Changes in the spied object should reflect in the spy.',
+      incrementedOrigVal, parentMock.val);
+}
+
+function testSpyChildClassInstance() {
+  var child = new ChildClass();
+  var childMock = goog.labs.mock.spy(child);
+
+  assertNotUndefined(childMock.method1);
+  assertUndefined(childMock.method1());
+  assertNotUndefined(childMock.method2);
+  assertUndefined(childMock.method2());
+  assertNotUndefined(childMock.x);
+  assertNotUndefined(childMock.y);
+  assertTrue('Mock should be an instance of the mocked class.',
+      childMock instanceof ParentClass);
+  var incrementedOrigVal = child.val + 1;
+  childMock.incrementVal();
+  assertEquals('Changes in the spied object should reflect in the spy.',
+      incrementedOrigVal, childMock.val);
+}
+
+>>>>>>> newgitrepo
 function testVerifyForObjects() {
   var obj = {
     method1: function(i) {
@@ -158,7 +264,11 @@ function testVerifyForObjects() {
     }
   };
 
+<<<<<<< HEAD
   var mockObj = goog.labs.mock(obj);
+=======
+  var mockObj = goog.labs.mock.mock(obj);
+>>>>>>> newgitrepo
   goog.labs.mock.when(mockObj).method1(2).thenReturn(5);
 
   assertEquals(5, mockObj.method1(2));
@@ -168,10 +278,18 @@ function testVerifyForObjects() {
 }
 
 function testVerifyForFunctions() {
+<<<<<<< HEAD
   function func(i) {
     return i;
   }
   var mockFunc = goog.labs.mockFunction(func);
+=======
+  var func = function(i) {
+    return i;
+  };
+
+  var mockFunc = goog.labs.mock.mockFunction(func);
+>>>>>>> newgitrepo
   goog.labs.mock.when(mockFunc)(2).thenReturn(55);
   assertEquals(55, mockFunc(2));
   goog.labs.mock.verify(mockFunc)(2);
@@ -181,6 +299,79 @@ function testVerifyForFunctions() {
   assertTrue(e instanceof goog.labs.mock.VerificationError);
 }
 
+<<<<<<< HEAD
+=======
+/**
+* When a function invocation verification fails, it should show the failed
+* expectation call, as well as the recorded calls to the same method.
+*/
+function testVerificationErrorMessages() {
+  var mock = goog.labs.mock.mock({
+    method : function(i) {
+      return i;
+    }
+  });
+
+  // Failure when there are no recorded calls.
+  var e = assertThrows(function() { goog.labs.mock.verify(mock).method(4); });
+  assertTrue(e instanceof goog.labs.mock.VerificationError);
+  var expected = '\nExpected: method(4)\n' +
+      'Recorded: No recorded calls';
+  assertEquals(expected, e.message);
+
+
+  // Failure when there are recorded calls with ints and functions
+  // as arguments.
+  var callback = function() {};
+  var callbackId = goog.getUid(callback);
+
+  mock.method(1);
+  mock.method(2);
+  mock.method(callback);
+
+  e = assertThrows(function() { goog.labs.mock.verify(mock).method(3); });
+  assertTrue(e instanceof goog.labs.mock.VerificationError);
+
+  expected = '\nExpected: method(3)\n' +
+      'Recorded: method(1),\n' +
+      '          method(2),\n' +
+      '          method(<function #anonymous' + callbackId + '>)';
+  assertEquals(expected, e.message);
+
+  // With mockFunctions
+  var mockCallback = goog.labs.mock.mockFunction(callback);
+  e = assertThrows(function() { goog.labs.mock.verify(mockCallback)(5);});
+  expected = '\nExpected: #mockFor<#anonymous' + callbackId + '>(5)\n' +
+      'Recorded: No recorded calls';
+
+  mockCallback(8);
+  goog.labs.mock.verify(mockCallback)(8);
+  assertEquals(expected, e.message);
+}
+
+/**
+* Asserts that the given string contains a list of others strings
+* in the given order.
+*/
+function assertContainsInOrder(str, var_args) {
+  var expected = goog.array.splice(arguments, 1);
+  var indices = goog.array.map(expected, function(val) {
+    return str.indexOf(val);
+  });
+
+  for (var i = 0; i < expected.length; i++) {
+    var msg = 'Missing "' + expected[i] + '" from "' + str + '"';
+    assertTrue(msg, indices[i] != -1);
+
+    if (i > 0) {
+      msg = '"' + expected[i - 1] + '" should come before "' + expected[i] +
+          '" in "' + str + '"';
+      assertTrue(msg, indices[i] > indices[i - 1]);
+    }
+  }
+};
+
+>>>>>>> newgitrepo
 function testMatchers() {
   var obj = {
     method1: function(i) {
@@ -191,7 +382,11 @@ function testMatchers() {
     }
   };
 
+<<<<<<< HEAD
   var mockObj = goog.labs.mock(obj);
+=======
+  var mockObj = goog.labs.mock.mock(obj);
+>>>>>>> newgitrepo
 
   goog.labs.mock.when(mockObj).method1(greaterThan(4)).thenReturn(100);
   goog.labs.mock.when(mockObj).method1(lessThan(4)).thenReturn(40);
@@ -220,7 +415,11 @@ function testMatcherVerify() {
   assertTrue(e instanceof goog.labs.mock.VerificationError);
 
   // Using mocks
+<<<<<<< HEAD
   var mockObj = goog.labs.mock(obj);
+=======
+  var mockObj = goog.labs.mock.mock(obj);
+>>>>>>> newgitrepo
 
   mockObj.method(8);
 
@@ -235,7 +434,11 @@ function testMatcherVerifyColission() {
       return 2 * i;
     }
   };
+<<<<<<< HEAD
   var mockObj = goog.labs.mock(obj);
+=======
+  var mockObj = goog.labs.mock.mock(obj);
+>>>>>>> newgitrepo
 
   goog.labs.mock.when(mockObj).method(5).thenReturn(100);
   assertNotEquals(100, mockObj.method(greaterThan(2)));
@@ -247,7 +450,11 @@ function testMatcherVerifyColissionBetweenMatchers() {
       return 2 * i;
     }
   };
+<<<<<<< HEAD
   var mockObj = goog.labs.mock(obj);
+=======
+  var mockObj = goog.labs.mock.mock(obj);
+>>>>>>> newgitrepo
 
   goog.labs.mock.when(mockObj).method(anything()).thenReturn(100);
 
@@ -260,12 +467,45 @@ function testVerifyForUnmockedMethods() {
   var Task = function() {};
   Task.prototype.run = function() {};
 
+<<<<<<< HEAD
   var mockTask = goog.labs.mock(Task);
+=======
+  var mockTask = goog.labs.mock.mock(Task);
+>>>>>>> newgitrepo
   mockTask.run();
 
   goog.labs.mock.verify(mockTask).run();
 }
 
+<<<<<<< HEAD
+=======
+function testFormatMethodCall() {
+  var formatMethodCall = goog.labs.mock.formatMethodCall_;
+  assertEquals('alert()', formatMethodCall('alert'));
+  assertEquals('sum(2, 4)', formatMethodCall('sum', [2, 4]));
+  assertEquals('sum("2", "4")', formatMethodCall('sum', ['2', '4']));
+  assertEquals('call(<function unicorn>)',
+    formatMethodCall('call', [function unicorn() {}]));
+
+  assertEquals('call({"x":1,"y":{"hello":"world"}})',
+    formatMethodCall('call', [{x: 1, y: {hello: 'world'}}]));
+};
+
+function testGetFunctionName() {
+  var f1 = function() {};
+  var f2 = function() {};
+  var named = function myName() {};
+
+  assert(
+    goog.string.startsWith(goog.labs.mock.getFunctionName_(f1), '#anonymous'));
+  assert(
+    goog.string.startsWith(goog.labs.mock.getFunctionName_(f2), '#anonymous'));
+  assertNotEquals(
+    goog.labs.mock.getFunctionName_(f1), goog.labs.mock.getFunctionName_(f2));
+  assertEquals('myName', goog.labs.mock.getFunctionName_(named));
+};
+
+>>>>>>> newgitrepo
 </script>
 </body>
 </html>

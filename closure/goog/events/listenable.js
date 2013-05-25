@@ -14,15 +14,21 @@
 
 /**
  * @fileoverview An interface for a listenable JavaScript object.
+<<<<<<< HEAD
  *
  * WARNING(chrishenry): DO NOT USE! SUPPORT NOT FULLY IMPLEMENTED.
+=======
+>>>>>>> newgitrepo
  */
 
 goog.provide('goog.events.Listenable');
 goog.provide('goog.events.ListenableKey');
 
+<<<<<<< HEAD
 goog.require('goog.events.EventLike');
 
+=======
+>>>>>>> newgitrepo
 
 
 /**
@@ -33,6 +39,7 @@ goog.events.Listenable = function() {};
 
 
 /**
+<<<<<<< HEAD
  * Whether to use the new listenable interface and mechanism in
  * goog.events and goog.events.EventTarget.
  *
@@ -44,6 +51,8 @@ goog.events.Listenable.USE_LISTENABLE_INTERFACE = false;
 
 
 /**
+=======
+>>>>>>> newgitrepo
  * An expando property to indicate that an object implements
  * goog.events.Listenable.
  *
@@ -51,9 +60,15 @@ goog.events.Listenable.USE_LISTENABLE_INTERFACE = false;
  *
  * @type {string}
  * @const
+<<<<<<< HEAD
  * @private
  */
 goog.events.Listenable.IMPLEMENTED_BY_PROP_ = '__closure_listenable';
+=======
+ */
+goog.events.Listenable.IMPLEMENTED_BY_PROP =
+    'closure_listenable_' + ((Math.random() * 1e6) | 0);
+>>>>>>> newgitrepo
 
 
 /**
@@ -64,7 +79,11 @@ goog.events.Listenable.IMPLEMENTED_BY_PROP_ = '__closure_listenable';
  *     class must have already implemented the interface.
  */
 goog.events.Listenable.addImplementation = function(cls) {
+<<<<<<< HEAD
   cls.prototype[goog.events.Listenable.IMPLEMENTED_BY_PROP_] = true;
+=======
+  cls.prototype[goog.events.Listenable.IMPLEMENTED_BY_PROP] = true;
+>>>>>>> newgitrepo
 };
 
 
@@ -75,7 +94,11 @@ goog.events.Listenable.addImplementation = function(cls) {
  *     addImplementation.
  */
 goog.events.Listenable.isImplementedBy = function(obj) {
+<<<<<<< HEAD
   return !!(obj && obj[goog.events.Listenable.IMPLEMENTED_BY_PROP_]);
+=======
+  return !!(obj && obj[goog.events.Listenable.IMPLEMENTED_BY_PROP]);
+>>>>>>> newgitrepo
 };
 
 
@@ -163,7 +186,11 @@ goog.events.Listenable.prototype.unlistenByKey;
  *
  * @param {goog.events.EventLike} e Event object.
  * @return {boolean} If anyone called preventDefault on the event object (or
+<<<<<<< HEAD
  *     if any of the listeners returns false this will also return false.
+=======
+ *     if any of the listeners returns false) this will also return false.
+>>>>>>> newgitrepo
  */
 goog.events.Listenable.prototype.dispatchEvent;
 
@@ -218,7 +245,11 @@ goog.events.Listenable.prototype.getListeners;
  *
  * @param {string} type The name of the event without the 'on' prefix.
  * @param {!Function} listener The listener function to get.
+<<<<<<< HEAD
  * @param {boolean=} capture Whether the listener is a capturing listener.
+=======
+ * @param {boolean} capture Whether the listener is a capturing listener.
+>>>>>>> newgitrepo
  * @param {Object=} opt_listenerScope Object in whose scope to call the
  *     listener.
  * @return {goog.events.ListenableKey} the found listener or null if not found.
@@ -226,7 +257,10 @@ goog.events.Listenable.prototype.getListeners;
 goog.events.Listenable.prototype.getListener;
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> newgitrepo
 /**
  * Whether there is any active listeners matching the specified
  * signature. If either the type or capture parameters are

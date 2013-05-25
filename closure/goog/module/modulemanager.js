@@ -505,6 +505,10 @@ goog.module.ModuleManager.prototype.loadModulesOrEnqueueIfNotLoadedOrLoading_ =
   for (var i = 0; i < uniqueIds.length; i++) {
     var id = uniqueIds[i];
     var moduleInfo = this.getModuleInfo(id);
+<<<<<<< HEAD
+=======
+    goog.asserts.assertObject(moduleInfo, 'Unknown module: ' + id);
+>>>>>>> newgitrepo
     var d = new goog.async.Deferred();
     deferredMap[id] = d;
     if (moduleInfo.isLoaded()) {

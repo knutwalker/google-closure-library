@@ -85,7 +85,11 @@ Author:  attila@google.com (Attila Bodis)
       // WebKit on Mac doesn't support tabIndex for arbitrary DOM elements
       // until version 527 or later.
       expectedFailures.expectFailureFor(goog.userAgent.WEBKIT &&
+<<<<<<< HEAD
           goog.userAgent.MAC && !goog.userAgent.isVersion('527'));
+=======
+          goog.userAgent.MAC && !goog.userAgent.isVersionOrHigher('527'));
+>>>>>>> newgitrepo
       try {
         renderer.enableTabIndex(container, true);
         assertTrue('Container must have a tab index',

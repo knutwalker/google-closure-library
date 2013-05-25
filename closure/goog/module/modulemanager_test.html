@@ -345,6 +345,18 @@ See the COPYING file for details.
     assertNull(error);
   }
 
+<<<<<<< HEAD
+=======
+  function testLoadUnknown() {
+    var mm = getModuleManager({'a': [], 'b': [], 'c': []});
+    mm.setLoader(createSuccessfulNonBatchLoader(mm));
+    var e = assertThrows(function() {
+      mm.load('DoesNotExist');
+    });
+    assertEquals('Assertion failed: Unknown module: DoesNotExist', e.message);
+  }
+
+>>>>>>> newgitrepo
   /**
    * Tests loading multiple modules by requesting a Deferred object.
    */

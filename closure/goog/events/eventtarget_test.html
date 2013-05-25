@@ -12,11 +12,14 @@ See the COPYING file for details.
 <script src="../base.js"></script>
 <script>
   goog.require('goog.events.Listenable');
+<<<<<<< HEAD
 </script>
 <script>
 goog.events.Listenable.USE_LISTENABLE_INTERFACE = true;
 </script>
 <script>
+=======
+>>>>>>> newgitrepo
   goog.require('goog.events.eventTargetTester');
   goog.require('goog.events.eventTargetTester.KeyType');
   goog.require('goog.events.eventTargetTester.UnlistenReturnType');
@@ -59,7 +62,11 @@ function setUp() {
       listenOnceFn, dispatchEventFn,
       removeAllFn, getListenersFn, getListenerFn, hasListenerFn,
       goog.events.eventTargetTester.KeyType.NUMBER,
+<<<<<<< HEAD
       goog.events.eventTargetTester.UnlistenReturnType.BOOLEAN);
+=======
+      goog.events.eventTargetTester.UnlistenReturnType.BOOLEAN, false);
+>>>>>>> newgitrepo
 }
 
 function tearDown() {

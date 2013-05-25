@@ -20,16 +20,28 @@ See the COPYING file for details.
 
 function testCircularBuffer() {
   var buff = new goog.structs.CircularBuffer(2);
+<<<<<<< HEAD
   buff.add('first');
   assertEquals(1, buff.getCount());
   assertEquals('first', buff.get(0));
   assertEquals('first', buff.getLast());
   buff.add('second');
+=======
+  assertUndefined(buff.add('first'));
+  assertEquals(1, buff.getCount());
+  assertEquals('first', buff.get(0));
+  assertEquals('first', buff.getLast());
+  assertUndefined(buff.add('second'));
+>>>>>>> newgitrepo
   assertEquals(2, buff.getCount());
   assertEquals('first', buff.get(0));
   assertEquals('second', buff.get(1));
   assertEquals('second', buff.getLast());
+<<<<<<< HEAD
   buff.add('third');
+=======
+  assertEquals('first', buff.add('third'));
+>>>>>>> newgitrepo
   assertEquals(2, buff.getCount());
   assertEquals('second', buff.get(0));
   assertEquals('third', buff.get(1));
@@ -39,13 +51,21 @@ function testCircularBuffer() {
 function testIsEmpty() {
   var buff = new goog.structs.CircularBuffer(2);
   assertTrue('initially empty', buff.isEmpty());
+<<<<<<< HEAD
   buff.add('first');
+=======
+  assertUndefined(buff.add('first'));
+>>>>>>> newgitrepo
   assertFalse('not empty after add empty', buff.isEmpty());
 }
 
 function testClear() {
   var buff = new goog.structs.CircularBuffer(2);
+<<<<<<< HEAD
   buff.add('first');
+=======
+  assertUndefined(buff.add('first'));
+>>>>>>> newgitrepo
   buff.clear();
   assertTrue('should be empty after clear', buff.isEmpty());
 
@@ -53,33 +73,56 @@ function testClear() {
 
 function testGetValues() {
   var buff = new goog.structs.CircularBuffer(2);
+<<<<<<< HEAD
   buff.add('first');
   buff.add('second');
+=======
+  assertUndefined(buff.add('first'));
+  assertUndefined(buff.add('second'));
+>>>>>>> newgitrepo
   assertEquals('firstsecond', buff.getValues().join(''));
 }
 
 function testGetNewestVtalues() {
   var buff = new goog.structs.CircularBuffer(5);
+<<<<<<< HEAD
   buff.add('first');
   buff.add('second');
   buff.add('third');
   buff.add('fourth');
   buff.add('fifth');
+=======
+  assertUndefined(buff.add('first'));
+  assertUndefined(buff.add('second'));
+  assertUndefined(buff.add('third'));
+  assertUndefined(buff.add('fourth'));
+  assertUndefined(buff.add('fifth'));
+>>>>>>> newgitrepo
   assertEquals('fourthfifth', buff.getNewestValues(2).join(''));
 }
 
 
 function testGetKeys() {
   var buff = new goog.structs.CircularBuffer(2);
+<<<<<<< HEAD
   buff.add('first');
   buff.add('second');
+=======
+  assertUndefined(buff.add('first'));
+  assertUndefined(buff.add('second'));
+>>>>>>> newgitrepo
   assertEquals('01', buff.getKeys().join(''));
 }
 
 function testContainsValue() {
   var buff = new goog.structs.CircularBuffer(2);
+<<<<<<< HEAD
   buff.add('first');
   buff.add('second');
+=======
+  assertUndefined(buff.add('first'));
+  assertUndefined(buff.add('second'));
+>>>>>>> newgitrepo
   assertTrue(buff.containsValue('first'));
   assertTrue(buff.containsValue('second'));
   assertFalse(buff.containsValue('third'));
@@ -87,9 +130,15 @@ function testContainsValue() {
 
 function testContainsKey() {
   var buff = new goog.structs.CircularBuffer(3);
+<<<<<<< HEAD
   buff.add('first');
   buff.add('second');
   buff.add('third');
+=======
+  assertUndefined(buff.add('first'));
+  assertUndefined(buff.add('second'));
+  assertUndefined(buff.add('third'));
+>>>>>>> newgitrepo
   assertTrue(buff.containsKey(0));
   assertTrue(buff.containsKey('0'));
   assertTrue(buff.containsKey(1));

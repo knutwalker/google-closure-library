@@ -85,6 +85,10 @@ goog.events.EventType = {
   // Misc
   BEFOREUNLOAD: 'beforeunload',
   CONTEXTMENU: 'contextmenu',
+<<<<<<< HEAD
+=======
+  DOMCONTENTLOADED: 'DOMContentLoaded',
+>>>>>>> newgitrepo
   ERROR: 'error',
   HELP: 'help',
   LOAD: 'load',

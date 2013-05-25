@@ -18,6 +18,10 @@
  */
 goog.provide('goog.net.MultiIframeLoadMonitor');
 
+<<<<<<< HEAD
+=======
+goog.require('goog.events');
+>>>>>>> newgitrepo
 goog.require('goog.net.IframeLoadMonitor');
 
 
@@ -52,7 +56,11 @@ goog.net.MultiIframeLoadMonitor = function(iframes, callback, opt_hasContent) {
 
   for (var i = 0; i < iframes.length; i++) {
     var iframeLoadMonitor = new goog.net.IframeLoadMonitor(
+<<<<<<< HEAD
       iframes[i], opt_hasContent);
+=======
+        iframes[i], opt_hasContent);
+>>>>>>> newgitrepo
     if (iframeLoadMonitor.isLoaded()) {
       // Already loaded - don't need to wait
       iframeLoadMonitor.dispose();
@@ -62,7 +70,11 @@ goog.net.MultiIframeLoadMonitor = function(iframes, callback, opt_hasContent) {
       // required.
       this.pendingIframeLoadMonitors_.push(iframeLoadMonitor);
       goog.events.listen(
+<<<<<<< HEAD
         iframeLoadMonitor, goog.net.IframeLoadMonitor.LOAD_EVENT, this);
+=======
+          iframeLoadMonitor, goog.net.IframeLoadMonitor.LOAD_EVENT, this);
+>>>>>>> newgitrepo
     }
   }
   if (!this.pendingIframeLoadMonitors_.length) {

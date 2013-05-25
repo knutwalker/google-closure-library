@@ -32,42 +32,72 @@ goog.events.BrowserFeature = {
    * Whether the button attribute of the event is W3C compliant.  False in
    * Internet Explorer prior to version 9; document-version dependent.
    */
+<<<<<<< HEAD
   HAS_W3C_BUTTON: !goog.userAgent.IE || goog.userAgent.isDocumentMode(9),
+=======
+  HAS_W3C_BUTTON: !goog.userAgent.IE ||
+      goog.userAgent.isDocumentModeOrHigher(9),
+>>>>>>> newgitrepo
 
   /**
    * Whether the browser supports full W3C event model.
    */
+<<<<<<< HEAD
   HAS_W3C_EVENT_SUPPORT: !goog.userAgent.IE || goog.userAgent.isDocumentMode(9),
+=======
+  HAS_W3C_EVENT_SUPPORT: !goog.userAgent.IE ||
+      goog.userAgent.isDocumentModeOrHigher(9),
+>>>>>>> newgitrepo
 
   /**
    * To prevent default in IE7-8 for certain keydown events we need set the
    * keyCode to -1.
    */
   SET_KEY_CODE_TO_PREVENT_DEFAULT: goog.userAgent.IE &&
+<<<<<<< HEAD
       !goog.userAgent.isVersion('9'),
+=======
+      !goog.userAgent.isVersionOrHigher('9'),
+>>>>>>> newgitrepo
 
   /**
    * Whether the {@code navigator.onLine} property is supported.
    */
   HAS_NAVIGATOR_ONLINE_PROPERTY: !goog.userAgent.WEBKIT ||
+<<<<<<< HEAD
       goog.userAgent.isVersion('528'),
+=======
+      goog.userAgent.isVersionOrHigher('528'),
+>>>>>>> newgitrepo
 
   /**
    * Whether HTML5 network online/offline events are supported.
    */
   HAS_HTML5_NETWORK_EVENT_SUPPORT:
+<<<<<<< HEAD
       goog.userAgent.GECKO && goog.userAgent.isVersion('1.9b') ||
       goog.userAgent.IE && goog.userAgent.isVersion('8') ||
       goog.userAgent.OPERA && goog.userAgent.isVersion('9.5') ||
       goog.userAgent.WEBKIT && goog.userAgent.isVersion('528'),
+=======
+      goog.userAgent.GECKO && goog.userAgent.isVersionOrHigher('1.9b') ||
+      goog.userAgent.IE && goog.userAgent.isVersionOrHigher('8') ||
+      goog.userAgent.OPERA && goog.userAgent.isVersionOrHigher('9.5') ||
+      goog.userAgent.WEBKIT && goog.userAgent.isVersionOrHigher('528'),
+>>>>>>> newgitrepo
 
   /**
    * Whether HTML5 network events fire on document.body, or otherwise the
    * window.
    */
   HTML5_NETWORK_EVENTS_FIRE_ON_BODY:
+<<<<<<< HEAD
       goog.userAgent.GECKO && !goog.userAgent.isVersion('8') ||
       goog.userAgent.IE && !goog.userAgent.isVersion('9'),
+=======
+      goog.userAgent.GECKO && !goog.userAgent.isVersionOrHigher('8') ||
+      goog.userAgent.IE && !goog.userAgent.isVersionOrHigher('9'),
+>>>>>>> newgitrepo
 
   /**
    * Whether touch is enabled in the browser.

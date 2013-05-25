@@ -279,7 +279,11 @@ goog.events.KeyHandler.keyIdentifier_ = {
  * @private
  */
 goog.events.KeyHandler.USES_KEYDOWN_ = goog.userAgent.IE ||
+<<<<<<< HEAD
     goog.userAgent.WEBKIT && goog.userAgent.isVersion('525');
+=======
+    goog.userAgent.WEBKIT && goog.userAgent.isVersionOrHigher('525');
+>>>>>>> newgitrepo
 
 
 /**

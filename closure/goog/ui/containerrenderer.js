@@ -21,6 +21,7 @@
 goog.provide('goog.ui.ContainerRenderer');
 
 goog.require('goog.a11y.aria');
+<<<<<<< HEAD
 goog.require('goog.asserts');
 goog.require('goog.array');
 goog.require('goog.dom');
@@ -28,6 +29,14 @@ goog.require('goog.dom.classes');
 goog.require('goog.string');
 goog.require('goog.style');
 goog.require('goog.ui.Separator');
+=======
+goog.require('goog.array');
+goog.require('goog.asserts');
+goog.require('goog.dom.NodeType');
+goog.require('goog.dom.classes');
+goog.require('goog.string');
+goog.require('goog.style');
+>>>>>>> newgitrepo
 goog.require('goog.ui.registry');
 goog.require('goog.userAgent');
 
@@ -234,7 +243,10 @@ goog.ui.ContainerRenderer.prototype.setStateFromClassName = function(container,
  *     discovered.
  * @param {Element} element Element whose children are to be decorated.
  * @param {Element=} opt_firstChild the first child to be decorated.
+<<<<<<< HEAD
  * @suppress {visibility} setElementInternal
+=======
+>>>>>>> newgitrepo
  */
 goog.ui.ContainerRenderer.prototype.decorateChildren = function(container,
     element, opt_firstChild) {

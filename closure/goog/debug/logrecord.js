@@ -101,7 +101,11 @@ goog.debug.LogRecord.prototype.exceptionText_ = null;
 /**
  * @define {boolean} Whether to enable log sequence numbers.
  */
+<<<<<<< HEAD
 goog.debug.LogRecord.ENABLE_SEQUENCE_NUMBERS = true;
+=======
+goog.define('goog.debug.LogRecord.ENABLE_SEQUENCE_NUMBERS', true);
+>>>>>>> newgitrepo
 
 
 /**

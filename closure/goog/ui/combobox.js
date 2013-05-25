@@ -24,7 +24,11 @@ goog.provide('goog.ui.ComboBoxItem');
 
 goog.require('goog.Timer');
 goog.require('goog.debug.Logger');
+<<<<<<< HEAD
 goog.require('goog.dom.classes');
+=======
+goog.require('goog.dom.classlist');
+>>>>>>> newgitrepo
 goog.require('goog.events');
 goog.require('goog.events.InputHandler');
 goog.require('goog.events.KeyCodes');
@@ -226,7 +230,11 @@ goog.ui.ComboBox.prototype.createDom = function() {
 goog.ui.ComboBox.prototype.setEnabled = function(enabled) {
   this.enabled_ = enabled;
   this.labelInput_.setEnabled(enabled);
+<<<<<<< HEAD
   goog.dom.classes.enable(this.getElement(),
+=======
+  goog.dom.classlist.enable(this.getElement(),
+>>>>>>> newgitrepo
       goog.getCssName('goog-combobox-disabled'), !enabled);
 };
 
@@ -591,7 +599,11 @@ goog.ui.ComboBox.prototype.positionMenu = function() {
  */
 goog.ui.ComboBox.prototype.showMenu_ = function() {
   this.menu_.setVisible(true);
+<<<<<<< HEAD
   goog.dom.classes.add(this.getElement(),
+=======
+  goog.dom.classlist.add(this.getElement(),
+>>>>>>> newgitrepo
       goog.getCssName('goog-combobox-active'));
 };
 
@@ -602,7 +614,11 @@ goog.ui.ComboBox.prototype.showMenu_ = function() {
  */
 goog.ui.ComboBox.prototype.hideMenu_ = function() {
   this.menu_.setVisible(false);
+<<<<<<< HEAD
   goog.dom.classes.remove(this.getElement(),
+=======
+  goog.dom.classlist.remove(this.getElement(),
+>>>>>>> newgitrepo
       goog.getCssName('goog-combobox-active'));
 };
 

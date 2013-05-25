@@ -25,11 +25,20 @@ goog.require('goog.dom.TagName');
 goog.require('goog.editor.plugins.AbstractDialogPlugin');
 goog.require('goog.editor.range');
 goog.require('goog.functions');
+<<<<<<< HEAD
 goog.require('goog.ui.editor.AbstractDialog.EventType');
+=======
+goog.require('goog.ui.editor.AbstractDialog');
+>>>>>>> newgitrepo
 
 
 // *** Public interface ***************************************************** //
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> newgitrepo
 /**
  * A plugin that opens the hello world dialog.
  * @constructor
@@ -42,6 +51,10 @@ goog.demos.editor.HelloWorldDialogPlugin = function() {
 goog.inherits(goog.demos.editor.HelloWorldDialogPlugin,
               goog.editor.plugins.AbstractDialogPlugin);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Commands implemented by this plugin.
  * @enum {string}
@@ -50,6 +63,10 @@ goog.demos.editor.HelloWorldDialogPlugin.Command = {
   HELLO_WORLD_DIALOG: 'helloWorldDialog'
 };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /** @override */
 goog.demos.editor.HelloWorldDialogPlugin.prototype.getTrogClassId =
     goog.functions.constant('HelloWorldDialog');
@@ -57,6 +74,10 @@ goog.demos.editor.HelloWorldDialogPlugin.prototype.getTrogClassId =
 
 // *** Protected interface ************************************************** //
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Creates a new instance of the dialog and registers for the relevant events.
  * @param {goog.dom.DomHelper} dialogDomHelper The dom helper to be used to
@@ -78,6 +99,10 @@ goog.demos.editor.HelloWorldDialogPlugin.prototype.createDialog = function(
 
 // *** Private implementation *********************************************** //
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Handles the OK event from the dialog by inserting the hello world message
  * into the field.

@@ -36,17 +36,29 @@ goog.require('goog.vec.Vec3');
  */
 goog.vec.Ray = function(opt_origin, opt_dir) {
   /**
+<<<<<<< HEAD
    * @type {goog.vec.Vec3.Number}
    */
   this.origin = goog.vec.Vec3.createNumber();
+=======
+   * @type {goog.vec.Vec3.Float64}
+   */
+  this.origin = goog.vec.Vec3.createFloat64();
+>>>>>>> newgitrepo
   if (opt_origin) {
     goog.vec.Vec3.setFromArray(this.origin, opt_origin);
   }
 
   /**
+<<<<<<< HEAD
    * @type {goog.vec.Vec3.Number}
    */
   this.dir = goog.vec.Vec3.createNumber();
+=======
+   * @type {goog.vec.Vec3.Float64}
+   */
+  this.dir = goog.vec.Vec3.createFloat64();
+>>>>>>> newgitrepo
   if (opt_dir) {
     goog.vec.Vec3.setFromArray(this.dir, opt_dir);
   }

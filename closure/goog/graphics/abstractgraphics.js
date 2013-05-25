@@ -21,6 +21,10 @@
 
 goog.provide('goog.graphics.AbstractGraphics');
 
+<<<<<<< HEAD
+=======
+goog.require('goog.dom');
+>>>>>>> newgitrepo
 goog.require('goog.graphics.Path');
 goog.require('goog.math.Coordinate');
 goog.require('goog.math.Size');

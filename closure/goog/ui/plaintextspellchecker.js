@@ -30,11 +30,18 @@ goog.require('goog.events.EventHandler');
 goog.require('goog.events.EventType');
 goog.require('goog.events.KeyCodes');
 goog.require('goog.events.KeyHandler');
+<<<<<<< HEAD
 goog.require('goog.events.KeyHandler.EventType');
 goog.require('goog.style');
 goog.require('goog.ui.AbstractSpellChecker');
 goog.require('goog.ui.AbstractSpellChecker.AsyncResult');
 goog.require('goog.ui.Component.EventType');
+=======
+goog.require('goog.spell.SpellCheck');
+goog.require('goog.style');
+goog.require('goog.ui.AbstractSpellChecker');
+goog.require('goog.ui.Component');
+>>>>>>> newgitrepo
 goog.require('goog.userAgent');
 
 
@@ -91,7 +98,11 @@ goog.ui.PlainTextSpellChecker.prototype.invalidWordClassName =
  * @type {string}
  */
 goog.ui.PlainTextSpellChecker.prototype.correctedWordClassName =
+<<<<<<< HEAD
   goog.getCssName('goog-spellcheck-correctedword');
+=======
+    goog.getCssName('goog-spellcheck-correctedword');
+>>>>>>> newgitrepo
 
 
 /**
@@ -206,7 +217,11 @@ goog.ui.PlainTextSpellChecker.prototype.check = function() {
   if (this.getElement().parentNode != this.overlay_.parentNode) {
     this.getElement().parentNode.appendChild(this.overlay_);
   }
+<<<<<<< HEAD
   goog.style.showElement(this.overlay_, false);
+=======
+  goog.style.setElementShown(this.overlay_, false);
+>>>>>>> newgitrepo
 
   this.preChargeDictionary_(text);
 };
@@ -219,8 +234,13 @@ goog.ui.PlainTextSpellChecker.prototype.check = function() {
 goog.ui.PlainTextSpellChecker.prototype.finishCheck_ = function() {
   // Show correction UI.
   this.positionOverlay_();
+<<<<<<< HEAD
   goog.style.showElement(this.getElement(), false);
   goog.style.showElement(this.overlay_, true);
+=======
+  goog.style.setElementShown(this.getElement(), false);
+  goog.style.setElementShown(this.overlay_, true);
+>>>>>>> newgitrepo
 
   var eh = this.eventHandler_;
   eh.listen(this.overlay_, goog.events.EventType.CLICK, this.onWordClick_);
@@ -244,7 +264,11 @@ goog.ui.PlainTextSpellChecker.prototype.finishCheck_ = function() {
  * @private
  */
 goog.ui.PlainTextSpellChecker.prototype.preChargeDictionary_ = function(text) {
+<<<<<<< HEAD
   this.eventHandler_.listen(this.handler_,
+=======
+  this.eventHandler_.listen(this.spellCheck,
+>>>>>>> newgitrepo
       goog.spell.SpellCheck.EventType.READY, this.onDictionaryCharged_, true);
 
   this.populateDictionary(text, this.dictionaryPreScanSize_);
@@ -259,7 +283,11 @@ goog.ui.PlainTextSpellChecker.prototype.preChargeDictionary_ = function(text) {
  */
 goog.ui.PlainTextSpellChecker.prototype.onDictionaryCharged_ = function(e) {
   e.stopPropagation();
+<<<<<<< HEAD
   this.eventHandler_.unlisten(this.handler_,
+=======
+  this.eventHandler_.unlisten(this.spellCheck,
+>>>>>>> newgitrepo
       goog.spell.SpellCheck.EventType.READY, this.onDictionaryCharged_, true);
   this.checkAsync_(this.getElement().value);
 };
@@ -384,8 +412,13 @@ goog.ui.PlainTextSpellChecker.prototype.continueAsync_ = function() {
  * @override
  */
 goog.ui.PlainTextSpellChecker.prototype.processWord = function(node, word,
+<<<<<<< HEAD
                                                                 status) {
   node.appendChild(this.createWordElement_(word, status));
+=======
+    status) {
+  node.appendChild(this.createWordElement(word, status));
+>>>>>>> newgitrepo
 };
 
 
@@ -420,8 +453,13 @@ goog.ui.PlainTextSpellChecker.prototype.resume = function() {
 
   goog.ui.PlainTextSpellChecker.superClass_.resume.call(this);
 
+<<<<<<< HEAD
   goog.style.showElement(this.overlay_, false);
   goog.style.showElement(this.getElement(), true);
+=======
+  goog.style.setElementShown(this.overlay_, false);
+  goog.style.setElementShown(this.getElement(), true);
+>>>>>>> newgitrepo
   this.getElement().readOnly = false;
 
   if (wasVisible) {
@@ -486,8 +524,13 @@ goog.ui.PlainTextSpellChecker.prototype.onWindowResize_ = function(event) {
 
   if (size.width != this.winSize_.width ||
       size.height != this.winSize_.height) {
+<<<<<<< HEAD
     goog.style.showElement(this.overlay_, false);
     goog.style.showElement(this.getElement(), true);
+=======
+    goog.style.setElementShown(this.overlay_, false);
+    goog.style.setElementShown(this.getElement(), true);
+>>>>>>> newgitrepo
 
     // IE requires a slight delay, allowing the resize operation to take effect.
     if (goog.userAgent.IE) {
@@ -507,9 +550,15 @@ goog.ui.PlainTextSpellChecker.prototype.onWindowResize_ = function(event) {
  * @private
  */
 goog.ui.PlainTextSpellChecker.prototype.resizeOverlay_ = function() {
+<<<<<<< HEAD
    this.positionOverlay_();
    goog.style.showElement(this.getElement(), false);
    goog.style.showElement(this.overlay_, true);
+=======
+  this.positionOverlay_();
+  goog.style.setElementShown(this.getElement(), false);
+  goog.style.setElementShown(this.overlay_, true);
+>>>>>>> newgitrepo
 };
 
 

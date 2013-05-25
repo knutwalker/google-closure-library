@@ -118,9 +118,15 @@ See the COPYING file for details.
     testCase.waitForAsync('getText');
     var result = xhr.get('testdata/xhr_test_text.data');
     goog.result.waitOnSuccess(result, function(content) {
+<<<<<<< HEAD
         assertEquals('Just some data.', content);
         testCase.continueTesting();
       });
+=======
+      assertEquals('Just some data.', content);
+      testCase.continueTesting();
+    });
+>>>>>>> newgitrepo
     goog.result.waitOnError(result, fail);
   }
 
@@ -130,9 +136,15 @@ See the COPYING file for details.
     testCase.waitForAsync('getTextWithJson');
     var result = xhr.get('testdata/xhr_test_json.data');
     goog.result.waitOnSuccess(result, function(content) {
+<<<<<<< HEAD
         assertEquals('while(1);\n{"stat":"ok","count":12345}\n', content);
         testCase.continueTesting();
       });
+=======
+      assertEquals('while(1);\n{"stat":"ok","count":12345}\n', content);
+      testCase.continueTesting();
+    });
+>>>>>>> newgitrepo
     goog.result.waitOnError(result, fail);
   }
 
@@ -142,10 +154,17 @@ See the COPYING file for details.
     testCase.waitForAsync('postText');
     var result = xhr.post('testdata/xhr_test_text.data', 'post-data');
     goog.result.waitOnSuccess(result, function(content) {
+<<<<<<< HEAD
         // No good way to test post-data gets transported.
         assertEquals('Just some data.', content);
         testCase.continueTesting();
       });
+=======
+      // No good way to test post-data gets transported.
+      assertEquals('Just some data.', content);
+      testCase.continueTesting();
+    });
+>>>>>>> newgitrepo
     goog.result.waitOnError(result, fail);
   }
 
@@ -167,9 +186,15 @@ See the COPYING file for details.
 
     var result = xhr.get('testdata/xhr_test_text.data');
     var chainedResult = goog.result.chain(result, function(result) {
+<<<<<<< HEAD
           return xhr.getJson(
               'testdata/xhr_test_json.data', {xssiPrefix: 'while(1);\n'});
         });
+=======
+      return xhr.getJson(
+          'testdata/xhr_test_json.data', {xssiPrefix: 'while(1);\n'});
+    });
+>>>>>>> newgitrepo
 
     // Data that comes through to callbacks should be from the 2nd request.
     goog.result.waitOnSuccess(chainedResult, function(json) {
@@ -215,6 +240,7 @@ See the COPYING file for details.
     testCase.waitForAsync('badUrl');
     var result = xhr.getJson('unknown-file.dat');
     goog.result.waitOnSuccess(result, fail);
+<<<<<<< HEAD
     goog.result.waitOnError(result, function(result) {
         var err = result.getError();
         assertTrue('Error should be an HTTP error',
@@ -223,12 +249,22 @@ See the COPYING file for details.
         assertNotNull(err.xhr);
         testCase.continueTesting();
       });
+=======
+    goog.result.waitOnError(result, function(err, result) {
+      assertTrue('Error should be an HTTP error',
+          err instanceof xhr.HttpError);
+      assertEquals(404, err.status);
+      assertNotNull(err.xhr);
+      testCase.continueTesting();
+    });
+>>>>>>> newgitrepo
   }
 
   function testBadOriginTriggersOnErrorHandler() {
     testCase.waitForAsync('badOrigin');
     var result = xhr.get('http://www.google.com');
     goog.result.waitOnSuccess(result, fail);
+<<<<<<< HEAD
     goog.result.waitOnError(result, function(result) {
         var err = result.getError();
         // In IE this will be a goog.labs.net.xhr.Error since it is thrown
@@ -238,6 +274,16 @@ See the COPYING file for details.
         assertNotNull(err.xhr);
         testCase.continueTesting();
       });
+=======
+    goog.result.waitOnError(result, function(err, result) {
+      // In IE this will be a goog.labs.net.xhr.Error since it is thrown
+      //  when calling xhr.open(), other browsers will raise an HttpError.
+      assertTrue('Error should be an xhr error',
+          err instanceof xhr.Error);
+      assertNotNull(err.xhr);
+      testCase.continueTesting();
+    });
+>>>>>>> newgitrepo
   }
 
   function testAbortRequest() {
@@ -246,9 +292,15 @@ See the COPYING file for details.
     var err;
     var result = xhr.send('GET', 'test-url', null);
     goog.result.waitOnSuccess(result, fail);
+<<<<<<< HEAD
     goog.result.waitOnError(result, function(result) {
           err = result.getError();
         });
+=======
+    goog.result.waitOnError(result, function(error, result) {
+      err = error;
+    });
+>>>>>>> newgitrepo
     result.cancel();
     assertTrue(err instanceof goog.result.Result.CancelError);
   }
@@ -262,9 +314,15 @@ See the COPYING file for details.
     var called = false;
     var result = xhr.send('GET', 'test-url', null);
     goog.result.waitOnSuccess(result, function(xhr) {
+<<<<<<< HEAD
         called = true;
         assertEquals('Objects should be equal', xhr, stubXhr);
       });
+=======
+      called = true;
+      assertEquals('Objects should be equal', xhr, stubXhr);
+    });
+>>>>>>> newgitrepo
     goog.result.waitOnError(result, fail);
 
     assertTrue('XHR should have been sent', stubXhr.sent);
@@ -330,9 +388,15 @@ See the COPYING file for details.
     var err;
     var result = xhr.send('POST', 'test-url', null);
     goog.result.waitOnSuccess(result, fail);
+<<<<<<< HEAD
     goog.result.waitOnError(result, function(result) {
         err = result.getError();
       });
+=======
+    goog.result.waitOnError(result, function(error, result) {
+      err = error;
+    });
+>>>>>>> newgitrepo
 
     stubXhr.load(500);
 
@@ -365,7 +429,11 @@ See the COPYING file for details.
     var err;
     var result = xhr.send('POST', 'test-url', null, {timeoutMs: 50});
     goog.result.waitOnSuccess(result, fail);
+<<<<<<< HEAD
     goog.result.waitOnError(result, function(res) { err = res.getError(); });
+=======
+    goog.result.waitOnError(result, function(error) { err = error; });
+>>>>>>> newgitrepo
     assertTrue(mockClock.getTimeoutsMade() > 0);
     mockClock.tick(50);
     assertTrue('XHR should have been sent', stubXhr.sent);
@@ -390,9 +458,15 @@ See the COPYING file for details.
     var err;
     var result = xhr.send('GET', 'test-url', null, {timeoutMs: 50});
     goog.result.waitOnSuccess(result, fail);
+<<<<<<< HEAD
     goog.result.waitOnError(result, function(result) {
         err = result.getError();
       });
+=======
+    goog.result.waitOnError(result, function(error) {
+      err = error;
+    });
+>>>>>>> newgitrepo
     result.cancel();
     stubXhr.load(0);  // Call load anyway, shoudn't make a difference.
     mockClock.tick(100);  // Timeout should never be called.
@@ -407,8 +481,13 @@ See the COPYING file for details.
     var responseData;
     var result = xhr.getJson('test-url');
     goog.result.waitOnSuccess(result, function(data) {
+<<<<<<< HEAD
         responseData = data;
       });
+=======
+      responseData = data;
+    });
+>>>>>>> newgitrepo
     goog.result.waitOnError(result, fail);
 
     stubXhr.responseText = '{"a": 1, "b": 2}';
@@ -422,8 +501,13 @@ See the COPYING file for details.
     var responseData;
     var result = xhr.getJson('test-url', {xssiPrefix: 'while(1);\n'});
     goog.result.waitOnSuccess(result, function(data) {
+<<<<<<< HEAD
         responseData = data;
       });
+=======
+      responseData = data;
+    });
+>>>>>>> newgitrepo
     goog.result.waitOnError(result, fail);
 
     stubXhr.responseText = 'while(1);\n{"a": 1, "b": 2}';
@@ -440,8 +524,13 @@ See the COPYING file for details.
     var err;
     var result = xhr.send('POST', 'file://test-url', null);
     goog.result.waitOnSuccess(result, fail);
+<<<<<<< HEAD
     goog.result.waitOnError(result, function(result) {
       err = result.getError();
+=======
+    goog.result.waitOnError(result, function(error) {
+      err = error;
+>>>>>>> newgitrepo
     });
 
     stubXhr.load(0);

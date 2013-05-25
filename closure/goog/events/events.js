@@ -55,6 +55,7 @@
 
 goog.provide('goog.events');
 goog.provide('goog.events.Key');
+<<<<<<< HEAD
 
 goog.require('goog.array');
 goog.require('goog.debug.entryPointRegistry');
@@ -67,6 +68,19 @@ goog.require('goog.events.Listenable');
 goog.require('goog.events.Listener');
 goog.require('goog.object');
 goog.require('goog.userAgent');
+=======
+goog.provide('goog.events.ListenableType');
+
+goog.require('goog.array');
+goog.require('goog.asserts');
+/** @suppress {extraRequire} */
+goog.require('goog.debug.entryPointRegistry');
+goog.require('goog.events.BrowserEvent');
+goog.require('goog.events.BrowserFeature');
+goog.require('goog.events.Listenable');
+goog.require('goog.events.Listener');
+goog.require('goog.object');
+>>>>>>> newgitrepo
 
 
 /**
@@ -76,15 +90,23 @@ goog.events.Key;
 
 
 /**
+<<<<<<< HEAD
  * @typedef {EventTarget|goog.events.Listenable|goog.events.EventTarget}
+=======
+ * @typedef {EventTarget|goog.events.Listenable}
+>>>>>>> newgitrepo
  */
 goog.events.ListenableType;
 
 
 /**
  * Container for storing event listeners and their proxies
+<<<<<<< HEAD
  * @private
  * @type {Object.<goog.events.ListenableKey>}
+=======
+ * @private {!Object.<goog.events.ListenableKey>}
+>>>>>>> newgitrepo
  */
 goog.events.listeners_ = {};
 
@@ -134,7 +156,11 @@ goog.events.keySeparator_ = '_';
 
 /**
  * Adds an event listener for a specific event on a DOM Node or an
+<<<<<<< HEAD
  * object that has implemented {@link goog.events.EventTarget}. A
+=======
+ * object that has implemented {@link goog.events.Listenable}. A
+>>>>>>> newgitrepo
  * listener can only be added once to an object and if it is added
  * again the key for the listener is returned. Note that if the
  * existing listener is a one-off listener (registered via
@@ -160,6 +186,7 @@ goog.events.listen = function(src, type, listener, opt_capt, opt_handler) {
   }
 
   var listenableKey;
+<<<<<<< HEAD
   if (goog.events.Listenable.USE_LISTENABLE_INTERFACE &&
       goog.events.Listenable.isImplementedBy(src)) {
     listenableKey = src.listen(
@@ -174,12 +201,29 @@ goog.events.listen = function(src, type, listener, opt_capt, opt_handler) {
   var key = listenableKey.key;
   goog.events.listeners_[key] = listenableKey;
   return key;
+=======
+  listener = goog.events.wrapListener_(listener);
+  if (goog.events.Listenable.isImplementedBy(src)) {
+    listenableKey = src.listen(
+        /** @type {string} */ (type), listener, opt_capt, opt_handler);
+  } else {
+    listenableKey = goog.events.listen_(
+        /** @type {EventTarget} */ (src),
+        type, listener, /* callOnce */ false, opt_capt, opt_handler);
+  }
+
+  return listenableKey;
+>>>>>>> newgitrepo
 };
 
 
 /**
  * Adds an event listener for a specific event on a DOM Node or an object that
+<<<<<<< HEAD
  * has implemented {@link goog.events.EventTarget}. A listener can only be
+=======
+ * has implemented {@link goog.events.Listenable}. A listener can only be
+>>>>>>> newgitrepo
  * added once to an object and if it is added again the key for the listener
  * is returned.
  *
@@ -187,11 +231,17 @@ goog.events.listen = function(src, type, listener, opt_capt, opt_handler) {
  * if any. On the other hand a normal listener will change existing
  * one-off listener to become a normal listener.
  *
+<<<<<<< HEAD
  * @param {EventTarget|goog.events.EventTarget} src The node to listen to
  *     events on.
  * @param {?string} type Event type or array of event types.
  * @param {Function|Object} listener Callback method, or an object with a
  *     handleEvent function.
+=======
+ * @param {EventTarget} src The node to listen to events on.
+ * @param {?string} type Event type or array of event types.
+ * @param {!Function} listener Callback function.
+>>>>>>> newgitrepo
  * @param {boolean} callOnce Whether the listener is a one-off
  *     listener or otherwise.
  * @param {boolean=} opt_capt Whether to fire in capture phase (defaults to
@@ -265,8 +315,13 @@ goog.events.listen_ = function(
   }
 
   var proxy = goog.events.getProxy();
+<<<<<<< HEAD
   listenerObj = new goog.events.Listener();
   listenerObj.init(listener, proxy, src, type, capture, opt_handler);
+=======
+  listenerObj = new goog.events.Listener(
+      listener, proxy, src, type, capture, opt_handler);
+>>>>>>> newgitrepo
   listenerObj.callOnce = callOnce;
 
   proxy.src = src;
@@ -281,9 +336,13 @@ goog.events.listen_ = function(
 
   // Attach the proxy through the browser's API
   if (src.addEventListener) {
+<<<<<<< HEAD
     if (src == goog.global || !src.customEvent_) {
       src.addEventListener(type, proxy, capture);
     }
+=======
+    src.addEventListener(type, proxy, capture);
+>>>>>>> newgitrepo
   } else {
     // The else above used to be else if (src.attachEvent) and then there was
     // another else statement that threw an exception warning the developer
@@ -293,6 +352,11 @@ goog.events.listen_ = function(
     src.attachEvent(goog.events.getOnString_(type), proxy);
   }
 
+<<<<<<< HEAD
+=======
+  var key = listenerObj.key;
+  goog.events.listeners_[key] = listenerObj;
+>>>>>>> newgitrepo
   return listenerObj;
 };
 
@@ -324,7 +388,11 @@ goog.events.getProxy = function() {
 
 /**
  * Adds an event listener for a specific event on a DomNode or an object that
+<<<<<<< HEAD
  * has implemented {@link goog.events.EventTarget}. After the event has fired
+=======
+ * has implemented {@link goog.events.Listenable}. After the event has fired
+>>>>>>> newgitrepo
  * the event listener is removed from the target.
  *
  * If an existing listener already exists, listenOnce will do
@@ -351,6 +419,7 @@ goog.events.listenOnce = function(src, type, listener, opt_capt, opt_handler) {
   }
 
   var listenableKey;
+<<<<<<< HEAD
   if (goog.events.Listenable.USE_LISTENABLE_INTERFACE &&
       goog.events.Listenable.isImplementedBy(src)) {
     listenableKey = src.listenOnce(
@@ -365,16 +434,36 @@ goog.events.listenOnce = function(src, type, listener, opt_capt, opt_handler) {
   var key = listenableKey.key;
   goog.events.listeners_[key] = listenableKey;
   return key;
+=======
+  listener = goog.events.wrapListener_(listener);
+  if (goog.events.Listenable.isImplementedBy(src)) {
+    listenableKey = src.listenOnce(
+        /** @type {string} */ (type), listener, opt_capt, opt_handler);
+  } else {
+    listenableKey = goog.events.listen_(
+        /** @type {EventTarget} */ (src),
+        type, listener, /* callOnce */ true, opt_capt, opt_handler);
+  }
+
+  return listenableKey;
+>>>>>>> newgitrepo
 };
 
 
 /**
  * Adds an event listener with a specific event wrapper on a DOM Node or an
+<<<<<<< HEAD
  * object that has implemented {@link goog.events.EventTarget}. A listener can
  * only be added once to an object.
  *
  * @param {EventTarget|goog.events.EventTarget} src The node to listen to
  *     events on.
+=======
+ * object that has implemented {@link goog.events.Listenable}. A listener can
+ * only be added once to an object.
+ *
+ * @param {goog.events.ListenableType} src The target to listen to events on.
+>>>>>>> newgitrepo
  * @param {goog.events.EventWrapper} wrapper Event wrapper to use.
  * @param {Function|Object} listener Callback method, or an object with a
  *     handleEvent function.
@@ -410,11 +499,18 @@ goog.events.unlisten = function(src, type, listener, opt_capt, opt_handler) {
     return null;
   }
 
+<<<<<<< HEAD
   if (goog.events.Listenable.USE_LISTENABLE_INTERFACE &&
       goog.events.Listenable.isImplementedBy(src)) {
     return src.unlisten(
         /** @type {string} */ (type),
         goog.events.wrapListener_(listener), opt_capt, opt_handler);
+=======
+  listener = goog.events.wrapListener_(listener);
+  if (goog.events.Listenable.isImplementedBy(src)) {
+    return src.unlisten(
+        /** @type {string} */ (type), listener, opt_capt, opt_handler);
+>>>>>>> newgitrepo
   }
 
   var capture = !!opt_capt;
@@ -428,7 +524,11 @@ goog.events.unlisten = function(src, type, listener, opt_capt, opt_handler) {
     if (listenerArray[i].listener == listener &&
         listenerArray[i].capture == capture &&
         listenerArray[i].handler == opt_handler) {
+<<<<<<< HEAD
       return goog.events.unlistenByKey(listenerArray[i].key);
+=======
+      return goog.events.unlistenByKey(listenerArray[i]);
+>>>>>>> newgitrepo
     }
   }
 
@@ -445,9 +545,19 @@ goog.events.unlisten = function(src, type, listener, opt_capt, opt_handler) {
  * @return {boolean} indicating whether the listener was there to remove.
  */
 goog.events.unlistenByKey = function(key) {
+<<<<<<< HEAD
   // TODO(user): When we flip goog.events.Key to be ListenableKey,
   // we need to change this.
   var listener = goog.events.listeners_[key];
+=======
+  // TODO(user): Remove this check when tests that rely on this
+  // are fixed.
+  if (goog.isNumber(key)) {
+    return false;
+  }
+
+  var listener = /** @type {goog.events.ListenableKey} */ (key);
+>>>>>>> newgitrepo
   if (!listener) {
     return false;
   }
@@ -456,8 +566,12 @@ goog.events.unlistenByKey = function(key) {
   }
 
   var src = listener.src;
+<<<<<<< HEAD
   if (goog.events.Listenable.USE_LISTENABLE_INTERFACE &&
       goog.events.Listenable.isImplementedBy(src)) {
+=======
+  if (goog.events.Listenable.isImplementedBy(src)) {
+>>>>>>> newgitrepo
     return src.unlistenByKey(listener);
   }
 
@@ -466,6 +580,7 @@ goog.events.unlistenByKey = function(key) {
   var capture = listener.capture;
 
   if (src.removeEventListener) {
+<<<<<<< HEAD
     // EventTarget calls unlisten so we need to ensure that the source is not
     // an event target to prevent re-entry.
     // TODO(arv): What is this goog.global for? Why would anyone listen to
@@ -474,6 +589,9 @@ goog.events.unlistenByKey = function(key) {
     if (src == goog.global || !src.customEvent_) {
       src.removeEventListener(type, proxy, capture);
     }
+=======
+    src.removeEventListener(type, proxy, capture);
+>>>>>>> newgitrepo
   } else if (src.detachEvent) {
     src.detachEvent(goog.events.getOnString_(type), proxy);
   }
@@ -494,7 +612,11 @@ goog.events.unlistenByKey = function(key) {
     }
   }
 
+<<<<<<< HEAD
   listener.removed = true;
+=======
+  listener.markAsRemoved();
+>>>>>>> newgitrepo
 
   // There are some esoteric situations where the hash code of an object
   // can change, and we won't be able to find the listenerArray anymore.
@@ -509,7 +631,11 @@ goog.events.unlistenByKey = function(key) {
     goog.events.cleanUp_(type, capture, srcUid, listenerArray);
   }
 
+<<<<<<< HEAD
   delete goog.events.listeners_[key];
+=======
+  delete goog.events.listeners_[listener.key];
+>>>>>>> newgitrepo
 
   return true;
 };
@@ -518,8 +644,13 @@ goog.events.unlistenByKey = function(key) {
 /**
  * Removes an event listener which was added with listenWithWrapper().
  *
+<<<<<<< HEAD
  * @param {EventTarget|goog.events.EventTarget} src The target to stop
  *     listening to events on.
+=======
+ * @param {goog.events.ListenableType} src The target to stop listening to
+ *     events on.
+>>>>>>> newgitrepo
  * @param {goog.events.EventWrapper} wrapper Event wrapper to use.
  * @param {Function|Object} listener The listener function to remove.
  * @param {boolean=} opt_capt In DOM-compliant browsers, this determines
@@ -575,8 +706,11 @@ goog.events.cleanUp_ = function(type, capture, srcUid, listenerArray) {
            oldIndex < listenerArray.length;
            oldIndex++) {
         if (listenerArray[oldIndex].removed) {
+<<<<<<< HEAD
           var proxy = listenerArray[oldIndex].proxy;
           proxy.src = null;
+=======
+>>>>>>> newgitrepo
           continue;
         }
         if (oldIndex != newIndex) {
@@ -609,6 +743,7 @@ goog.events.cleanUp_ = function(type, capture, srcUid, listenerArray) {
 
 
 /**
+<<<<<<< HEAD
  * Removes all listeners from an object, if no object is specified it will
  * remove all listeners that have been registered.  You can also optionally
  * remove listeners of a particular type or capture phase.
@@ -617,6 +752,14 @@ goog.events.cleanUp_ = function(type, capture, srcUid, listenerArray) {
  * goog.events.Listenable and listeners registered via add(Once)Listener.
  *
  * @param {Object=} opt_obj Object to remove listeners from.
+=======
+ * Removes all listeners from an object. You can also optionally
+ * remove listeners of a particular type.
+ *
+ * @param {Object=} opt_obj Object to remove listeners from. Not
+ *     specifying opt_obj is now DEPRECATED (it used to remove all
+ *     registered listeners).
+>>>>>>> newgitrepo
  * @param {string=} opt_type Type of event to, default is all types.
  * @return {number} Number of listeners removed.
  */
@@ -627,8 +770,12 @@ goog.events.removeAll = function(opt_obj, opt_type) {
   var noType = opt_type == null;
 
   if (!noObj) {
+<<<<<<< HEAD
     if (goog.events.Listenable.USE_LISTENABLE_INTERFACE &&
         opt_obj && goog.events.Listenable.isImplementedBy(opt_obj)) {
+=======
+    if (opt_obj && goog.events.Listenable.isImplementedBy(opt_obj)) {
+>>>>>>> newgitrepo
       return opt_obj.removeAllListeners(opt_type);
     }
 
@@ -638,14 +785,23 @@ goog.events.removeAll = function(opt_obj, opt_type) {
       for (var i = sourcesArray.length - 1; i >= 0; i--) {
         var listener = sourcesArray[i];
         if (noType || opt_type == listener.type) {
+<<<<<<< HEAD
           goog.events.unlistenByKey(listener.key);
+=======
+          goog.events.unlistenByKey(listener);
+>>>>>>> newgitrepo
           count++;
         }
       }
     }
   } else {
+<<<<<<< HEAD
     goog.object.forEach(goog.events.listeners_, function(listener, key) {
       goog.events.unlistenByKey(key);
+=======
+    goog.object.forEach(goog.events.listeners_, function(listener) {
+      goog.events.unlistenByKey(listener);
+>>>>>>> newgitrepo
       count++;
     });
   }
@@ -655,6 +811,30 @@ goog.events.removeAll = function(opt_obj, opt_type) {
 
 
 /**
+<<<<<<< HEAD
+=======
+ * Removes all native listeners registered via goog.events. Native
+ * listeners are listeners on native browser objects (such as DOM
+ * elements). In particular, goog.events.Listenable and
+ * goog.events.EventTarget listeners will NOT be removed.
+ * @return {number} Number of listeners removed.
+ */
+goog.events.removeAllNativeListeners = function() {
+  var count = 0;
+  goog.object.forEach(goog.events.listeners_, function(listener) {
+    var src = listener.src;
+    // Only remove the listener if it is not on custom event target.
+    if (!goog.events.Listenable.isImplementedBy(src)) {
+      goog.events.unlistenByKey(listener);
+      count++;
+    }
+  });
+  return count;
+};
+
+
+/**
+>>>>>>> newgitrepo
  * Gets the listeners for a given object, type and capture phase.
  *
  * @param {Object} obj Object to get listeners for.
@@ -663,8 +843,12 @@ goog.events.removeAll = function(opt_obj, opt_type) {
  * @return {Array.<goog.events.Listener>} Array of listener objects.
  */
 goog.events.getListeners = function(obj, type, capture) {
+<<<<<<< HEAD
   if (goog.events.Listenable.USE_LISTENABLE_INTERFACE &&
       goog.events.Listenable.isImplementedBy(obj)) {
+=======
+  if (goog.events.Listenable.isImplementedBy(obj)) {
+>>>>>>> newgitrepo
     return obj.getListeners(type, capture);
   } else {
     return goog.events.getListeners_(obj, type, capture) || [];
@@ -703,7 +887,11 @@ goog.events.getListeners_ = function(obj, type, capture) {
  * Gets the goog.events.Listener for the event or null if no such listener is
  * in use.
  *
+<<<<<<< HEAD
  * @param {EventTarget|goog.events.EventTarget} src The node from which to get
+=======
+ * @param {goog.events.ListenableType} src The target from which to get
+>>>>>>> newgitrepo
  *     listeners.
  * @param {?string} type The name of the event without the 'on' prefix.
  * @param {Function|Object} listener The listener function to get.
@@ -716,11 +904,18 @@ goog.events.getListeners_ = function(obj, type, capture) {
 goog.events.getListener = function(src, type, listener, opt_capt, opt_handler) {
   var capture = !!opt_capt;
 
+<<<<<<< HEAD
   if (goog.events.Listenable.USE_LISTENABLE_INTERFACE &&
       goog.events.Listenable.isImplementedBy(src)) {
     return src.getListener(
         /** @type {string} */ (type),
         goog.events.wrapListener_(listener), capture, opt_handler);
+=======
+  listener = goog.events.wrapListener_(listener);
+  if (goog.events.Listenable.isImplementedBy(src)) {
+    return src.getListener(
+        /** @type {string} */ (type), listener, capture, opt_handler);
+>>>>>>> newgitrepo
   }
 
   var listenerArray = goog.events.getListeners_(src, type, capture);
@@ -747,7 +942,11 @@ goog.events.getListener = function(src, type, listener, opt_capt, opt_handler) {
  * specified signature. If either the type or capture parameters are
  * unspecified, the function will match on the remaining criteria.
  *
+<<<<<<< HEAD
  * @param {EventTarget|goog.events.EventTarget} obj Target to get listeners for.
+=======
+ * @param {goog.events.ListenableType} obj Target to get listeners for.
+>>>>>>> newgitrepo
  * @param {string=} opt_type Event type.
  * @param {boolean=} opt_capture Whether to check for capture or bubble-phase
  *     listeners.
@@ -755,8 +954,12 @@ goog.events.getListener = function(src, type, listener, opt_capt, opt_handler) {
  *     the requested type and/or capture phase.
  */
 goog.events.hasListener = function(obj, opt_type, opt_capture) {
+<<<<<<< HEAD
   if (goog.events.Listenable.USE_LISTENABLE_INTERFACE &&
       goog.events.Listenable.isImplementedBy(obj)) {
+=======
+  if (goog.events.Listenable.isImplementedBy(obj)) {
+>>>>>>> newgitrepo
     return obj.hasListener(opt_type, opt_capture);
   }
 
@@ -833,8 +1036,12 @@ goog.events.getOnString_ = function(type) {
  * @return {boolean} True if all listeners returned true else false.
  */
 goog.events.fireListeners = function(obj, type, capture, eventObject) {
+<<<<<<< HEAD
   if (goog.events.Listenable.USE_LISTENABLE_INTERFACE &&
       goog.events.Listenable.isImplementedBy(obj)) {
+=======
+  if (goog.events.Listenable.isImplementedBy(obj)) {
+>>>>>>> newgitrepo
     return obj.fireListeners(type, capture, eventObject);
   }
 
@@ -912,10 +1119,20 @@ goog.events.fireListeners_ = function(map, obj, type, capture, eventObject) {
  * @return {boolean} Result of listener.
  */
 goog.events.fireListener = function(listener, eventObject) {
+<<<<<<< HEAD
   if (listener.callOnce) {
     goog.events.unlistenByKey(listener.key);
   }
   return listener.handleEvent(eventObject);
+=======
+  var listenerFn = listener.listener;
+  var listenerHandler = listener.handler || listener.src;
+
+  if (listener.callOnce) {
+    goog.events.unlistenByKey(listener);
+  }
+  return listenerFn.call(listenerHandler, eventObject);
+>>>>>>> newgitrepo
 };
 
 
@@ -937,8 +1154,12 @@ goog.events.getTotalListenerCount = function() {
  * function will return false.  If one of the capture listeners calls
  * stopPropagation, then the bubble listeners won't fire.
  *
+<<<<<<< HEAD
  * @param {goog.events.Listenable|goog.events.EventTarget} src The
  *     event target.
+=======
+ * @param {goog.events.Listenable} src The event target.
+>>>>>>> newgitrepo
  * @param {goog.events.EventLike} e Event object.
  * @return {boolean} If anyone called preventDefault on the event object (or
  *     if any of the handlers returns false) this will also return false.
@@ -946,6 +1167,7 @@ goog.events.getTotalListenerCount = function() {
  *     true.
  */
 goog.events.dispatchEvent = function(src, e) {
+<<<<<<< HEAD
   if (goog.events.Listenable.USE_LISTENABLE_INTERFACE) {
     return src.dispatchEvent(e);
   }
@@ -1027,6 +1249,13 @@ goog.events.dispatchEvent = function(src, e) {
   }
 
   return Boolean(rv);
+=======
+  goog.asserts.assert(
+      goog.events.Listenable.isImplementedBy(src),
+      'Can not use goog.events.dispatchEvent with ' +
+      'non-goog.events.Listenable instance.');
+  return src.dispatchEvent(e);
+>>>>>>> newgitrepo
 };
 
 
@@ -1052,7 +1281,12 @@ goog.events.protectBrowserEventEntryPoint = function(errorHandler) {
  *     native event handlers.
  * @return {boolean} Result of the event handler.
  * @this {goog.events.EventTarget|Object} The object or Element that
+<<<<<<< HEAD
  *     fired the event.
+=======
+ *     fired the event. TODO(user): Figure out why the type is
+ *     so weird?
+>>>>>>> newgitrepo
  * @private
  */
 goog.events.handleBrowserEvent_ = function(listener, opt_evt) {
@@ -1212,6 +1446,10 @@ goog.events.uniqueIdCounter_ = 0;
  *
  * @param {string} identifier The identifier.
  * @return {string} A unique identifier.
+<<<<<<< HEAD
+=======
+ * @idGenerator
+>>>>>>> newgitrepo
  */
 goog.events.getUniqueId = function(identifier) {
   return identifier + '_' + goog.events.uniqueIdCounter_++;
@@ -1238,10 +1476,20 @@ goog.events.LISTENER_WRAPPER_PROP_ = '__closure_events_fn_' +
  * @private
  */
 goog.events.wrapListener_ = function(listener) {
+<<<<<<< HEAD
+=======
+  goog.asserts.assert(listener, 'Listener can not be null.');
+
+>>>>>>> newgitrepo
   if (goog.isFunction(listener)) {
     return listener;
   }
 
+<<<<<<< HEAD
+=======
+  goog.asserts.assert(
+      listener.handleEvent, 'An object listener must have handleEvent method.');
+>>>>>>> newgitrepo
   return listener[goog.events.LISTENER_WRAPPER_PROP_] ||
       (listener[goog.events.LISTENER_WRAPPER_PROP_] = function(e) {
         return listener.handleEvent(e);

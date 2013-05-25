@@ -60,7 +60,11 @@ goog.memoize = function(f, opt_serializer) {
 /**
  * @define {boolean} Flag to disable memoization in unit tests.
  */
+<<<<<<< HEAD
 goog.memoize.ENABLE_MEMOIZE = true;
+=======
+goog.define('goog.memoize.ENABLE_MEMOIZE', true);
+>>>>>>> newgitrepo
 
 
 /**

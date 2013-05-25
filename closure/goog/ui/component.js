@@ -26,8 +26,14 @@ goog.provide('goog.ui.Component.EventType');
 goog.provide('goog.ui.Component.State');
 
 goog.require('goog.array');
+<<<<<<< HEAD
 goog.require('goog.array.ArrayLike');
 goog.require('goog.dom');
+=======
+goog.require('goog.asserts');
+goog.require('goog.dom');
+goog.require('goog.dom.NodeType');
+>>>>>>> newgitrepo
 goog.require('goog.events.EventHandler');
 goog.require('goog.events.EventTarget');
 goog.require('goog.object');
@@ -54,6 +60,18 @@ goog.inherits(goog.ui.Component, goog.events.EventTarget);
 
 
 /**
+<<<<<<< HEAD
+=======
+ * @define {boolean} Whether to support calling decorate with an element that is
+ *     not yet in the document. If true, we check if the element is in the
+ *     document, and avoid calling enterDocument if it isn't. If false, we
+ *     maintain legacy behavior (always call enterDocument from decorate).
+ */
+goog.define('goog.ui.Component.ALLOW_DETACHED_DECORATION', false);
+
+
+/**
+>>>>>>> newgitrepo
  * Generator for unique IDs.
  * @type {goog.ui.IdGenerator}
  * @private
@@ -496,8 +514,14 @@ goog.ui.Component.prototype.getElementStrict = function() {
  * does not actually change which element is rendered, only the element that is
  * associated with this UI component.
  *
+<<<<<<< HEAD
  * @param {Element} element Root element for the component.
  * @protected
+=======
+ * This should only be used by subclasses and its associated renderers.
+ *
+ * @param {Element} element Root element for the component.
+>>>>>>> newgitrepo
  */
 goog.ui.Component.prototype.setElementInternal = function(element) {
   this.element_ = element;
@@ -697,7 +721,16 @@ goog.ui.Component.prototype.render_ = function(opt_parentElement,
 
 
 /**
+<<<<<<< HEAD
  * Decorates the element for the UI component.
+=======
+ * Decorates the element for the UI component. If the element is in the
+ * document, the enterDocument method will be called.
+ *
+ * If goog.ui.Component.ALLOW_DETACHED_DECORATION is false, the caller must
+ * pass an element that is in the document.
+ *
+>>>>>>> newgitrepo
  * @param {Element} element Element to decorate.
  */
 goog.ui.Component.prototype.decorate = function(element) {
@@ -707,14 +740,28 @@ goog.ui.Component.prototype.decorate = function(element) {
     this.wasDecorated_ = true;
 
     // Set the DOM helper of the component to match the decorated element.
+<<<<<<< HEAD
     if (!this.dom_ ||
         this.dom_.getDocument() != goog.dom.getOwnerDocument(element)) {
+=======
+    var doc = goog.dom.getOwnerDocument(element);
+    if (!this.dom_ || this.dom_.getDocument() != doc) {
+>>>>>>> newgitrepo
       this.dom_ = goog.dom.getDomHelper(element);
     }
 
     // Call specific component decorate logic.
     this.decorateInternal(element);
+<<<<<<< HEAD
     this.enterDocument();
+=======
+
+    // If supporting detached decoration, check that element is in doc.
+    if (!goog.ui.Component.ALLOW_DETACHED_DECORATION ||
+        goog.dom.contains(doc, element)) {
+      this.enterDocument();
+    }
+>>>>>>> newgitrepo
   } else {
     throw Error(goog.ui.Component.Error.DECORATE_INVALID);
   }
@@ -764,6 +811,12 @@ goog.ui.Component.prototype.enterDocument = function() {
   this.inDocument_ = true;
 
   // Propagate enterDocument to child components that have a DOM, if any.
+<<<<<<< HEAD
+=======
+  // If a child was decorated before entering the document (permitted when
+  // goog.ui.Component.ALLOW_DETACHED_DECORATION is true), its enterDocument
+  // will be called here.
+>>>>>>> newgitrepo
   this.forEachChild(function(child) {
     if (!child.isInDocument() && child.getElement()) {
       child.enterDocument();
@@ -949,6 +1002,7 @@ goog.ui.Component.prototype.addChild = function(child, opt_render) {
  * Clients of this API may call {@code addChild} and {@code addChildAt} with
  * {@code opt_render} set to true.  If {@code opt_render} is true, calling these
  * methods will automatically render the child component's element into the
+<<<<<<< HEAD
  * parent component's element.  However, {@code parent.addChild(child, true)}
  * will throw an error if:
  *  <ul>
@@ -957,6 +1011,15 @@ goog.ui.Component.prototype.addChild = function(child, opt_render) {
  *    <li>the child component is already in the document, regardless of the
  *        parent's DOM state.
  *  </ul>
+=======
+ * parent component's element. If the parent does not yet have an element, then
+ * {@code createDom} will automatically be invoked on the parent before
+ * rendering the child.
+ *
+ * Invoking {@code parent.addChild(child, true)} will throw an error if the
+ * child component is already in the document, regardless of the parent's DOM
+ * state.
+>>>>>>> newgitrepo
  *
  * If {@code opt_render} is true and the parent component is not already
  * in the document, {@code enterDocument} will not be called on this component

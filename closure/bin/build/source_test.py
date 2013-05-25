@@ -68,6 +68,14 @@ class SourceTestCase(unittest.TestCase):
     self.assertEqual(set(['goog.events.EventType']),
                      test_source.requires)
 
+<<<<<<< HEAD
+=======
+  def testHasProvideGoog(self):
+    self.assertTrue(source.Source._HasProvideGoogFlag(_TEST_BASE_SOURCE))
+    self.assertTrue(source.Source._HasProvideGoogFlag(_TEST_BAD_BASE_SOURCE))
+    self.assertFalse(source.Source._HasProvideGoogFlag(_TEST_COMMENT_SOURCE))
+
+>>>>>>> newgitrepo
 
 _TEST_SOURCE = """// Fake copyright notice
 
@@ -107,6 +115,7 @@ function bar() {
 """
 
 _TEST_BASE_SOURCE = """
+<<<<<<< HEAD
 var goog = goog || {}; // Identifies this file as the Closure base.
 """
 
@@ -114,6 +123,23 @@ _TEST_BAD_BASE_SOURCE = """
 goog.provide('goog');
 
 var goog = goog || {}; // Identifies this file as the Closure base.
+=======
+/**
+ * @fileoverview The base file.
+ * @provideGoog
+ */
+
+var goog = goog || {};
+"""
+
+_TEST_BAD_BASE_SOURCE = """
+/**
+ * @fileoverview The base file.
+ * @provideGoog
+ */
+
+goog.provide('goog');
+>>>>>>> newgitrepo
 """
 
 

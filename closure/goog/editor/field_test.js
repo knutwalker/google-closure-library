@@ -22,6 +22,7 @@
  * @author gboyer@google.com (Garrett Boyer)
  */
 
+<<<<<<< HEAD
 goog.provide('goog.editor.field_test');
 
 goog.require('goog.dom.Range');
@@ -29,15 +30,34 @@ goog.require('goog.editor.Field');
 goog.require('goog.editor.Plugin');
 goog.require('goog.editor.Command');
 goog.require('goog.events');
+=======
+/** @suppress {extraProvide} */
+goog.provide('goog.editor.field_test');
+
+goog.require('goog.dom');
+goog.require('goog.dom.Range');
+goog.require('goog.editor.BrowserFeature');
+goog.require('goog.editor.Field');
+goog.require('goog.editor.Plugin');
+goog.require('goog.editor.range');
+goog.require('goog.events');
+goog.require('goog.events.BrowserEvent');
+>>>>>>> newgitrepo
 goog.require('goog.events.KeyCodes');
 goog.require('goog.functions');
 goog.require('goog.testing.LooseMock');
 goog.require('goog.testing.MockClock');
 goog.require('goog.testing.dom');
 goog.require('goog.testing.events');
+<<<<<<< HEAD
 goog.require('goog.testing.recordFunction');
 goog.require('goog.userAgent');
 goog.require('goog.userAgent.product');
+=======
+goog.require('goog.testing.events.Event');
+goog.require('goog.testing.recordFunction');
+goog.require('goog.userAgent');
+>>>>>>> newgitrepo
 goog.setTestOnly('Tests for goog.editor.*Field');
 
 
@@ -61,7 +81,11 @@ function tearDown() {
   // it is lame. It manifests its lameness by throwing an exception.
   // Kudos to XT for helping me to figure this out.
   try {
+<<<<<<< HEAD
     goog.events.removeAll();
+=======
+    goog.events.removeAllNativeListeners();
+>>>>>>> newgitrepo
   } catch (e) {}
 }
 
@@ -206,9 +230,16 @@ function testDisposed_PluginAutoDispose() {
 
 var STRING_KEY = String.fromCharCode(goog.events.KeyCodes.A).toLowerCase();
 
+<<<<<<< HEAD
 /**
  * @return {goog.events.Event} Returns an event for a keyboard shortcut
  * for the letter 'a'
+=======
+
+/**
+ * @return {goog.events.Event} Returns an event for a keyboard shortcut
+ * for the letter 'a'.
+>>>>>>> newgitrepo
  */
 function getBrowserEvent() {
   var e = new goog.events.BrowserEvent();
@@ -550,7 +581,11 @@ function testPluginExecCommand() {
   plugin.execCommand = function(command, arg) {
     passedCommand = command;
     passedArg = arg;
+<<<<<<< HEAD
   }
+=======
+  };
+>>>>>>> newgitrepo
 
   var editableField = new FieldConstructor('testField');
   editableField.registerPlugin(plugin);
@@ -840,7 +875,11 @@ function testSelectionChangeOnMouseUp() {
   assertEquals('Second selection change should fire immediately', 2,
       selectionChanges.getCallCount());
   assertEquals('Plugin should have handled second selection change immediately',
+<<<<<<< HEAD
        2,  plugin.handleSelectionChange.getCallCount());
+=======
+      2, plugin.handleSelectionChange.getCallCount());
+>>>>>>> newgitrepo
   var args = plugin.handleSelectionChange.getLastCall().getArguments();
   assertTrue('Plugin should not have received data from extra firing',
       args.length == 0 ||
@@ -999,7 +1038,12 @@ function doTestPlaceCursorAtStart(opt_html, opt_parentId) {
   var startNode = opt_parentId ?
       editableField.getEditableDomHelper().getElement(opt_parentId).firstChild :
       textNode ? textNode : editableField.getElement();
+<<<<<<< HEAD
   if (goog.userAgent.WEBKIT && !goog.userAgent.isVersion('528')) {
+=======
+  if (goog.userAgent.WEBKIT &&
+      !goog.userAgent.isVersionOrHigher('528')) {
+>>>>>>> newgitrepo
     // Safari 3 seems to normalize the selection to the shallowest endpoint (in
     // this case the editable element) in all cases tested below. This is OK
     // because when you start typing it magically inserts the text at the
@@ -1078,7 +1122,11 @@ function testPlaceCursorAtStartNonImportantTextNode() {
  *     is expected to be placed. If omitted, will expect cursor to be placed in
  *     the first child of the field element (or, if the field has no content, in
  *     the field element itself).
+<<<<<<< HEAD
  * @param {number=} The offset to expect for the end position.
+=======
+ * @param {number=} opt_offset The offset to expect for the end position.
+>>>>>>> newgitrepo
  */
 function doTestPlaceCursorAtEnd(opt_html, opt_parentId, opt_offset) {
   var editableField = new FieldConstructor('testField', document);
@@ -1249,3 +1297,27 @@ function testNoHandleWindowLevelMouseUp() {
   goog.testing.events.fireMouseUpEvent(otherElement);
   assertFalse(selectionHasFired);
 }
+<<<<<<< HEAD
+=======
+
+function testIsGeneratingKey() {
+  var regularKeyEvent = new goog.events.BrowserEvent();
+  regularKeyEvent.charCode = goog.events.KeyCodes.A;
+
+  var ctrlKeyEvent = new goog.events.BrowserEvent();
+  ctrlKeyEvent.ctrlKey = true;
+  ctrlKeyEvent.metaKey = true;
+  ctrlKeyEvent.charCode = goog.events.KeyCodes.A;
+
+  var imeKeyEvent = new goog.events.BrowserEvent();
+  imeKeyEvent.keyCode = 229; // indicates from an IME - see KEYS_CAUSING_CHANGES
+
+  assertTrue(goog.editor.Field.isGeneratingKey_(regularKeyEvent, true));
+  assertFalse(goog.editor.Field.isGeneratingKey_(ctrlKeyEvent, true));
+  if (goog.userAgent.WINDOWS && !goog.userAgent.GECKO) {
+    assertTrue(goog.editor.Field.isGeneratingKey_(imeKeyEvent, false));
+  } else {
+    assertFalse(goog.editor.Field.isGeneratingKey_(imeKeyEvent, false));
+  }
+}
+>>>>>>> newgitrepo

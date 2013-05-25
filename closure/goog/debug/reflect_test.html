@@ -78,7 +78,11 @@ function testGoogProvidedTypes() {
 }
 
 function testUnregisteredTypes() {
+<<<<<<< HEAD
   var oldIE = goog.userAgent.IE && !goog.userAgent.isVersion(8);
+=======
+  var oldIE = goog.userAgent.IE && !goog.userAgent.isVersionOrHigher(8);
+>>>>>>> newgitrepo
   assertEquals(oldIE ? 'ActiveXObject' : 'HTMLDocument', typeOf(document));
 
   var expectedTypeOfBody = oldIE ? 'ActiveXObject' : 'HTMLBodyElement';

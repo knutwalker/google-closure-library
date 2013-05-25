@@ -271,7 +271,11 @@ goog.net.XhrManager.prototype.handleAvailableXhr_ = function(id, xhrIo) {
     xhrIo.setResponseType(request.getResponseType());
 
     // Add a reference to the XhrIo object to the request.
+<<<<<<< HEAD
     request.xhrIo = request.xhrLite = xhrIo;
+=======
+    request.xhrIo = xhrIo;
+>>>>>>> newgitrepo
 
     // Notify the listeners.
     this.dispatchEvent(new goog.net.XhrManager.Event(
@@ -521,12 +525,15 @@ goog.net.XhrManager.Event = function(type, target, id, xhrIo) {
    * @type {goog.net.XhrIo}
    */
   this.xhrIo = xhrIo;
+<<<<<<< HEAD
 
   /**
    * The xhrLite field aliases xhrIo for backwards compatibility.
    * @type {goog.net.XhrLite}
    */
   this.xhrLite = /** @type {goog.net.XhrLite} */ (xhrIo);
+=======
+>>>>>>> newgitrepo
 };
 goog.inherits(goog.net.XhrManager.Event, goog.events.Event);
 

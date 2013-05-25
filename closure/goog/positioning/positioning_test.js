@@ -18,6 +18,7 @@
  * @author eae@google.com (Emil A Eklund)
  */
 
+<<<<<<< HEAD
 
 goog.provide('goog.positioningTest');
 
@@ -26,6 +27,21 @@ goog.require('goog.math.Box');
 goog.require('goog.math.Coordinate');
 goog.require('goog.math.Rect');
 goog.require('goog.positioning');
+=======
+/** @suppress {extraProvide} */
+goog.provide('goog.positioningTest');
+
+goog.require('goog.dom');
+goog.require('goog.dom.DomHelper');
+goog.require('goog.math.Box');
+goog.require('goog.math.Coordinate');
+goog.require('goog.math.Rect');
+goog.require('goog.math.Size');
+goog.require('goog.positioning');
+goog.require('goog.positioning.Corner');
+goog.require('goog.positioning.Overflow');
+goog.require('goog.positioning.OverflowStatus');
+>>>>>>> newgitrepo
 goog.require('goog.style');
 goog.require('goog.testing.ExpectedFailures');
 goog.require('goog.testing.jsunit');
@@ -66,13 +82,21 @@ function tearDown() {
   testArea.innerHTML = '';
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * This is used to round pixel values on FF3 Mac.
  */
 function assertRoundedEquals(a, b, c) {
   function round(x) {
     return goog.userAgent.GECKO && (goog.userAgent.MAC || goog.userAgent.X11) &&
+<<<<<<< HEAD
         goog.userAgent.isVersion('1.9') ? Math.round(x) : x;
+=======
+        goog.userAgent.isVersionOrHigher('1.9') ? Math.round(x) : x;
+>>>>>>> newgitrepo
   }
   if (arguments.length == 3) {
     assertRoughlyEquals(a, round(b), round(c), ALLOWED_OFFSET);
@@ -267,7 +291,11 @@ function testPositionAtAnchorWithMargin() {
 
 
 function testPositionAtAnchorRightToLeft() {
+<<<<<<< HEAD
   if (goog.userAgent.IE && goog.userAgent.isVersion('6')) {
+=======
+  if (goog.userAgent.IE && goog.userAgent.isVersionOrHigher('6')) {
+>>>>>>> newgitrepo
     // These tests fails with IE6.
     // TODO(user): Investigate the reason.
     return;
@@ -305,7 +333,11 @@ function testPositionAtAnchorRightToLeft() {
 }
 
 function testPositionAtAnchorRightToLeftWithScroll() {
+<<<<<<< HEAD
   if (goog.userAgent.IE && goog.userAgent.isVersion('6')) {
+=======
+  if (goog.userAgent.IE && goog.userAgent.isVersionOrHigher('6')) {
+>>>>>>> newgitrepo
     // These tests fails with IE6.
     // TODO(user): Investigate the reason.
     return;
@@ -358,9 +390,16 @@ function testPositionAtAnchorBodyViewport() {
   assertEquals('Left edge of popup should line up with left edge of anchor.',
                anchorRect.left,
                popupRect.left);
+<<<<<<< HEAD
   assertEquals('Popup should have the same y position as the anchor.',
                anchorRect.top,
                popupRect.top);
+=======
+  assertRoughlyEquals('Popup should have the same y position as the anchor.',
+                      anchorRect.top,
+                      popupRect.top,
+                      1);
+>>>>>>> newgitrepo
 
   // Anchor top start to bottom right.
   goog.positioning.positionAtAnchor(anchor, corner.BOTTOM_RIGHT,
@@ -370,9 +409,16 @@ function testPositionAtAnchorBodyViewport() {
   assertEquals('Right edge of popup should line up with right edge of anchor.',
                anchorRect.left + anchorRect.width,
                popupRect.left + popupRect.width);
+<<<<<<< HEAD
   assertEquals('Popup should be positioned just below the anchor.',
                anchorRect.top + anchorRect.height,
                popupRect.top);
+=======
+  assertRoughlyEquals('Popup should be positioned just below the anchor.',
+                      anchorRect.top + anchorRect.height,
+                      popupRect.top,
+                      1);
+>>>>>>> newgitrepo
 
   // Anchor top right to top left.
   goog.positioning.positionAtAnchor(anchor, corner.TOP_LEFT,
@@ -382,9 +428,16 @@ function testPositionAtAnchorBodyViewport() {
   assertEquals('Right edge of popup should line up with left edge of anchor.',
                anchorRect.left,
                popupRect.left + popupRect.width);
+<<<<<<< HEAD
   assertEquals('Popup should have the same y position as the anchor.',
                anchorRect.top,
                popupRect.top);
+=======
+  assertRoughlyEquals('Popup should have the same y position as the anchor.',
+                      anchorRect.top,
+                      popupRect.top,
+                      1);
+>>>>>>> newgitrepo
 }
 
 function testPositionAtAnchorSpecificViewport() {
@@ -407,9 +460,16 @@ function testPositionAtAnchorSpecificViewport() {
   assertEquals('Right edge of popup should line up with left edge of anchor.',
                anchorRect.left,
                popupRect.left + popupRect.width);
+<<<<<<< HEAD
   assertEquals('Popup should have the same y position as the anchor.',
                anchorRect.top,
                popupRect.top);
+=======
+  assertRoughlyEquals('Popup should have the same y position as the anchor.',
+                      anchorRect.top,
+                      popupRect.top,
+                      1);
+>>>>>>> newgitrepo
 
   // position again within box1.
   var box = document.getElementById('box1');
@@ -439,9 +499,16 @@ function testPositionAtAnchorSpecificViewport() {
   assertRoughlyEquals(
       'Left edge of popup should line up with left edge of viewport.',
       viewport.left, popupRect.left, EPSILON);
+<<<<<<< HEAD
   assertEquals('Popup should have the same y position as the anchor.',
                anchorRect.top,
                popupRect.top);
+=======
+  assertRoughlyEquals('Popup should have the same y position as the anchor.',
+                      anchorRect.top,
+                      popupRect.top,
+                      1);
+>>>>>>> newgitrepo
 }
 
 function testPositionAtAnchorOutsideViewport() {
@@ -620,6 +687,12 @@ function testAdjustForViewportResizeHeight() {
                f(pos, size, viewport, overflow));
   assertEquals('Height should be resized to 50.',
                50, size.height);
+<<<<<<< HEAD
+=======
+  assertTrue('Output box is within viewport',
+             viewport.contains(new goog.math.Box(pos.y, pos.x + size.width,
+                                                 pos.y + size.height, pos.x)));
+>>>>>>> newgitrepo
 
   var pos = newCoord(0, 0);
   var size = newSize(50, 250);
@@ -628,6 +701,12 @@ function testAdjustForViewportResizeHeight() {
                f(pos, size, viewport, overflow));
   assertEquals('Height should be resized to 200.',
                200, size.height);
+<<<<<<< HEAD
+=======
+  assertTrue('Output box is within viewport',
+             viewport.contains(new goog.math.Box(pos.y, pos.x + size.width,
+                                                 pos.y + size.height, pos.x)));
+>>>>>>> newgitrepo
 
   var pos = newCoord(0, -50);
   var size = newSize(50, 240);
@@ -636,12 +715,56 @@ function testAdjustForViewportResizeHeight() {
                f(pos, size, viewport, overflow));
   assertEquals('Height should be resized to 190.',
                190, size.height);
+<<<<<<< HEAD
+=======
+  assertTrue('Output box is within viewport',
+             viewport.contains(new goog.math.Box(pos.y, pos.x + size.width,
+                                                 pos.y + size.height, pos.x)));
+>>>>>>> newgitrepo
 
   pos = newCoord(150, 150);
   size = newSize(50, 50);
   assertEquals('No Viewport overflow.',
                goog.positioning.OverflowStatus.NONE,
                f(pos, size, viewport, overflow));
+<<<<<<< HEAD
+=======
+  assertTrue('Output box is within viewport',
+             viewport.contains(new goog.math.Box(pos.y, pos.x + size.width,
+                                                 pos.y + size.height, pos.x)));
+
+  var offsetViewport = new goog.math.Box(100, 200, 300, 0);
+  var pos = newCoord(0, 50);
+  var size = newSize(50, 240);
+  assertEquals('Viewport height should be resized.',
+               goog.positioning.OverflowStatus.HEIGHT_ADJUSTED,
+               f(pos, size, offsetViewport, overflow));
+  assertEquals('Height should be resized to 190.',
+               190, size.height);
+  assertTrue('Output box is within viewport',
+             offsetViewport.contains(new goog.math.Box(pos.y,
+                                                       pos.x + size.width,
+                                                       pos.y + size.height,
+                                                       pos.x)));
+}
+
+
+function testPositionAtAnchorWithResizeHeight() {
+  var anchor = document.getElementById('anchor9');
+  var popup = document.getElementById('popup9');
+  var box = document.getElementById('box9');
+  var viewport = goog.style.getBounds(box);
+
+  var status = goog.positioning.positionAtAnchor(
+      anchor, corner.TOP_START, popup, corner.TOP_START,
+      new goog.math.Coordinate(0, -20), null,
+      goog.positioning.Overflow.RESIZE_HEIGHT, null,
+      viewport.toBox());
+  assertEquals('Status should be HEIGHT_ADJUSTED.',
+               goog.positioning.OverflowStatus.HEIGHT_ADJUSTED, status);
+  assertTrue('Popup is within viewport',
+             viewport.contains(goog.style.getBounds(popup)));
+>>>>>>> newgitrepo
 }
 
 
@@ -972,48 +1095,89 @@ function testPositionAtAnchorWithOverflowScrollOffsetParent() {
   goog.positioning.positionAtAnchor(
       anchor, corner.TOP_LEFT, popup, corner.TOP_RIGHT, null, null,
       overflow.ADJUST_X | overflow.ADJUST_Y);
+<<<<<<< HEAD
   assertObjectEquals(
       new goog.math.Coordinate(
           testAreaOffset.x + 200 - 75 - scrollbarWidth,
           testAreaOffset.y + 100 - 50 - scrollbarWidth),
       goog.style.getPageOffset(popup));
+=======
+  assertObjectRoughlyEquals(
+      new goog.math.Coordinate(
+          testAreaOffset.x + 200 - 75 - scrollbarWidth,
+          testAreaOffset.y + 100 - 50 - scrollbarWidth),
+      goog.style.getPageOffset(popup),
+      1);
+>>>>>>> newgitrepo
 
   goog.style.setPosition(overflowDiv, 400 /* left */, 0 /* top */);
   goog.positioning.positionAtAnchor(
       anchor, corner.TOP_RIGHT, popup, corner.TOP_LEFT, null, null,
       overflow.ADJUST_X | overflow.ADJUST_Y);
+<<<<<<< HEAD
   assertObjectEquals(
       new goog.math.Coordinate(
           testAreaOffset.x + 400, testAreaOffset.y + 100 - 50 - scrollbarWidth),
       goog.style.getPageOffset(popup));
+=======
+  assertObjectRoughlyEquals(
+      new goog.math.Coordinate(
+          testAreaOffset.x + 400, testAreaOffset.y + 100 - 50 - scrollbarWidth),
+      goog.style.getPageOffset(popup),
+      1);
+>>>>>>> newgitrepo
 
   goog.style.setPosition(overflowDiv, 0 /* left */, 400 /* top */);
   goog.positioning.positionAtAnchor(
       anchor, corner.BOTTOM_LEFT, popup, corner.BOTTOM_RIGHT, null, null,
       overflow.ADJUST_X | overflow.ADJUST_Y);
+<<<<<<< HEAD
   assertObjectEquals(
       new goog.math.Coordinate(
           testAreaOffset.x + 200 - 75 - scrollbarWidth, testAreaOffset.y + 400),
       goog.style.getPageOffset(popup));
+=======
+  assertObjectRoughlyEquals(
+      new goog.math.Coordinate(
+          testAreaOffset.x + 200 - 75 - scrollbarWidth, testAreaOffset.y + 400),
+      goog.style.getPageOffset(popup),
+      1);
+>>>>>>> newgitrepo
 
   goog.style.setPosition(overflowDiv, 400 /* left */, 400 /* top */);
   goog.positioning.positionAtAnchor(
       anchor, corner.BOTTOM_RIGHT, popup, corner.BOTTOM_LEFT, null, null,
       overflow.ADJUST_X | overflow.ADJUST_Y);
+<<<<<<< HEAD
   assertObjectEquals(
       new goog.math.Coordinate(
           testAreaOffset.x + 400, testAreaOffset.y + 400),
       goog.style.getPageOffset(popup));
+=======
+  assertObjectRoughlyEquals(
+      new goog.math.Coordinate(
+          testAreaOffset.x + 400, testAreaOffset.y + 400),
+      goog.style.getPageOffset(popup),
+      1);
+>>>>>>> newgitrepo
 
   // No overflow.
   goog.style.setPosition(overflowDiv, 300 - 50 /* left */, 300 /* top */);
   goog.positioning.positionAtAnchor(
       anchor, corner.TOP_LEFT, popup, corner.TOP_RIGHT, null, null,
       overflow.ADJUST_X | overflow.ADJUST_Y);
+<<<<<<< HEAD
   assertObjectEquals(
       new goog.math.Coordinate(
           testAreaOffset.x + 300 - 50, testAreaOffset.y + 300),
       goog.style.getPageOffset(popup));
+=======
+  assertObjectRoughlyEquals(
+      new goog.math.Coordinate(
+          testAreaOffset.x + 300 - 50, testAreaOffset.y + 300),
+      goog.style.getPageOffset(popup),
+      1);
+>>>>>>> newgitrepo
 }
 
 function testPositionAtAnchorWithOverflowHiddenParent() {
@@ -1040,47 +1204,87 @@ function testPositionAtAnchorWithOverflowHiddenParent() {
   goog.positioning.positionAtAnchor(
       anchor, corner.TOP_LEFT, popup, corner.TOP_RIGHT, null, null,
       overflow.ADJUST_X | overflow.ADJUST_Y);
+<<<<<<< HEAD
   assertObjectEquals(
       new goog.math.Coordinate(
           testAreaOffset.x + 200 - 75, testAreaOffset.y + 100 - 50),
       goog.style.getPageOffset(popup));
+=======
+  assertObjectRoughlyEquals(
+      new goog.math.Coordinate(
+          testAreaOffset.x + 200 - 75, testAreaOffset.y + 100 - 50),
+      goog.style.getPageOffset(popup),
+      1);
+>>>>>>> newgitrepo
 
   goog.style.setPosition(overflowDiv, 400 /* left */, 0 /* top */);
   goog.positioning.positionAtAnchor(
       anchor, corner.TOP_RIGHT, popup, corner.TOP_LEFT, null, null,
       overflow.ADJUST_X | overflow.ADJUST_Y);
+<<<<<<< HEAD
   assertObjectEquals(
       new goog.math.Coordinate(
           testAreaOffset.x + 400, testAreaOffset.y + 100 - 50),
       goog.style.getPageOffset(popup));
+=======
+  assertObjectRoughlyEquals(
+      new goog.math.Coordinate(
+          testAreaOffset.x + 400, testAreaOffset.y + 100 - 50),
+      goog.style.getPageOffset(popup),
+      1);
+>>>>>>> newgitrepo
 
   goog.style.setPosition(overflowDiv, 0 /* left */, 400 /* top */);
   goog.positioning.positionAtAnchor(
       anchor, corner.BOTTOM_LEFT, popup, corner.BOTTOM_RIGHT, null, null,
       overflow.ADJUST_X | overflow.ADJUST_Y);
+<<<<<<< HEAD
   assertObjectEquals(
       new goog.math.Coordinate(
           testAreaOffset.x + 200 - 75, testAreaOffset.y + 400),
       goog.style.getPageOffset(popup));
+=======
+  assertObjectRoughlyEquals(
+      new goog.math.Coordinate(
+          testAreaOffset.x + 200 - 75, testAreaOffset.y + 400),
+      goog.style.getPageOffset(popup),
+      1);
+>>>>>>> newgitrepo
 
   goog.style.setPosition(overflowDiv, 400 /* left */, 400 /* top */);
   goog.positioning.positionAtAnchor(
       anchor, corner.BOTTOM_RIGHT, popup, corner.BOTTOM_LEFT, null, null,
       overflow.ADJUST_X | overflow.ADJUST_Y);
+<<<<<<< HEAD
   assertObjectEquals(
       new goog.math.Coordinate(
           testAreaOffset.x + 400, testAreaOffset.y + 400),
       goog.style.getPageOffset(popup));
+=======
+  assertObjectRoughlyEquals(
+      new goog.math.Coordinate(
+          testAreaOffset.x + 400, testAreaOffset.y + 400),
+      goog.style.getPageOffset(popup),
+      1);
+>>>>>>> newgitrepo
 
   // No overflow.
   goog.style.setPosition(overflowDiv, 300 - 50 /* left */, 300 /* top */);
   goog.positioning.positionAtAnchor(
       anchor, corner.TOP_LEFT, popup, corner.TOP_RIGHT, null, null,
       overflow.ADJUST_X | overflow.ADJUST_Y);
+<<<<<<< HEAD
   assertObjectEquals(
       new goog.math.Coordinate(
           testAreaOffset.x + 300 - 50, testAreaOffset.y + 300),
       goog.style.getPageOffset(popup));
+=======
+  assertObjectRoughlyEquals(
+      new goog.math.Coordinate(
+          testAreaOffset.x + 300 - 50, testAreaOffset.y + 300),
+      goog.style.getPageOffset(popup),
+      1);
+>>>>>>> newgitrepo
 }
 
 function createPopupDiv(width, height) {
@@ -1098,3 +1302,9 @@ function newCoord(x, y) {
 function newSize(w, h) {
   return new goog.math.Size(w, h);
 }
+<<<<<<< HEAD
+=======
+
+function newBox(coord, size) {
+}
+>>>>>>> newgitrepo

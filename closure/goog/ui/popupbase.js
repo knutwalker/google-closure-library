@@ -379,6 +379,22 @@ goog.ui.PopupBase.prototype.getLastHideTime = function() {
 
 
 /**
+<<<<<<< HEAD
+=======
+ * Returns the event handler for the popup. All event listeners belonging to
+ * this handler are removed when the tooltip is hidden. Therefore,
+ * the recommended usage of this handler is to listen on events in
+ * {@link #onShow_}.
+ * @return {goog.events.EventHandler} Event handler for this popup.
+ * @protected
+ */
+goog.ui.PopupBase.prototype.getHandler = function() {
+  return this.handler_;
+};
+
+
+/**
+>>>>>>> newgitrepo
  * Helper to throw exception if the popup is showing.
  * @private
  */
@@ -631,7 +647,11 @@ goog.ui.PopupBase.prototype.continueHidingPopup_ = function(opt_target) {
  */
 goog.ui.PopupBase.prototype.showPopupElement = function() {
   this.element_.style.visibility = 'visible';
+<<<<<<< HEAD
   goog.style.showElement(this.element_, true);
+=======
+  goog.style.setElementShown(this.element_, true);
+>>>>>>> newgitrepo
 };
 
 
@@ -641,7 +661,11 @@ goog.ui.PopupBase.prototype.showPopupElement = function() {
  */
 goog.ui.PopupBase.prototype.hidePopupElement_ = function() {
   this.element_.style.visibility = 'hidden';
+<<<<<<< HEAD
   goog.style.showElement(this.element_, false);
+=======
+  goog.style.setElementShown(this.element_, false);
+>>>>>>> newgitrepo
 };
 
 

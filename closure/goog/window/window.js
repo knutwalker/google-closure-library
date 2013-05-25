@@ -133,6 +133,7 @@ goog.window.open = function(linkRef, opt_options, opt_parentWin) {
         }
       }
       newWin.opener = null;
+<<<<<<< HEAD
       if (goog.userAgent.WEBKIT) {
         // In some versions of Chrome (tested on 15), using meta refresh won't
         // put the new page in a new process, but setting location.href does. If
@@ -145,6 +146,12 @@ goog.window.open = function(linkRef, opt_options, opt_parentWin) {
                               href + '">');
         newWin.document.close();
       }
+=======
+      href = goog.string.htmlEscape(href);
+      newWin.document.write('<META HTTP-EQUIV="refresh" content="0; url=' +
+                            href + '">');
+      newWin.document.close();
+>>>>>>> newgitrepo
     }
   } else {
     newWin = parentWin.open(href, target, optionString);

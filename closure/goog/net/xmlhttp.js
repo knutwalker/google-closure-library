@@ -40,7 +40,11 @@ goog.net.XmlHttp = function() {
  * @define {boolean} Whether to assume XMLHttpRequest exists. Setting this to
  *     true strips the ActiveX probing code.
  */
+<<<<<<< HEAD
 goog.net.XmlHttp.ASSUME_NATIVE_XHR = false;
+=======
+goog.define('goog.net.XmlHttp.ASSUME_NATIVE_XHR', false);
+>>>>>>> newgitrepo
 
 
 /**

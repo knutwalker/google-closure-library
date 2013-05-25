@@ -28,13 +28,19 @@ goog.provide('goog.dom.browserrange.IeRange');
 goog.require('goog.array');
 goog.require('goog.debug.Logger');
 goog.require('goog.dom');
+<<<<<<< HEAD
 goog.require('goog.dom.NodeIterator');
+=======
+>>>>>>> newgitrepo
 goog.require('goog.dom.NodeType');
 goog.require('goog.dom.RangeEndpoint');
 goog.require('goog.dom.TagName');
 goog.require('goog.dom.browserrange.AbstractRange');
+<<<<<<< HEAD
 goog.require('goog.iter');
 goog.require('goog.iter.StopIteration');
+=======
+>>>>>>> newgitrepo
 goog.require('goog.string');
 
 
@@ -436,7 +442,11 @@ goog.dom.browserrange.IeRange.prototype.findDeepestContainer_ = function(node) {
       var inChildRange = isNativeInRangeErratic ?
           (this.compareBrowserRangeEndpoints(childRange, start, start) >= 0 &&
               this.compareBrowserRangeEndpoints(childRange, start, end) <= 0) :
+<<<<<<< HEAD
            this.range_.inRange(childRange);
+=======
+          this.range_.inRange(childRange);
+>>>>>>> newgitrepo
       if (inChildRange) {
         return this.findDeepestContainer_(child);
       }

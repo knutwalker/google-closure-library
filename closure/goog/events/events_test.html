@@ -9,7 +9,11 @@ See the COPYING file for details.
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Closure Unit Tests - goog.events</title>
+<<<<<<< HEAD
   <script src="../base.js"></script>
+=======
+<script src="../base.js"></script>
+>>>>>>> newgitrepo
 <script>
   goog.require('goog.debug.EntryPointMonitor');
   goog.require('goog.debug.ErrorHandler');
@@ -28,14 +32,28 @@ See the COPYING file for details.
 <script>
   var originalHandleBrowserEvent = goog.events.handleBrowserEvent_;
   var propertyReplacer;
+<<<<<<< HEAD
 
   function setUp() {
+=======
+  var et1, et2, et3;
+
+  function setUp() {
+    et1 = new goog.events.EventTarget();
+    et2 = new goog.events.EventTarget();
+    et3 = new goog.events.EventTarget();
+>>>>>>> newgitrepo
     propertyReplacer = new goog.testing.PropertyReplacer();
   }
 
   function tearDown() {
     goog.events.handleBrowserEvent_ = originalHandleBrowserEvent;
+<<<<<<< HEAD
     goog.events.removeAll();
+=======
+    goog.disposeAll(et1, et2, et3);
+    goog.events.removeAllNativeListeners();
+>>>>>>> newgitrepo
     propertyReplacer.reset();
   }
 
@@ -80,7 +98,10 @@ See the COPYING file for details.
   }
 
   function testSelfRemove() {
+<<<<<<< HEAD
     var et1 = new goog.events.EventTarget();
+=======
+>>>>>>> newgitrepo
     var callback = function() {
       // This listener removes itself during event dispatching, so it
       // is marked as 'removed' but not actually removed until after event
@@ -114,6 +135,7 @@ See the COPYING file for details.
   }
 
   function testHasListenerWithEventTarget() {
+<<<<<<< HEAD
     var et = new goog.events.EventTarget();
     assertFalse(goog.events.hasListener(et));
 
@@ -135,6 +157,25 @@ See the COPYING file for details.
     var et1 = new goog.events.EventTarget();
     var et2 = new goog.events.EventTarget();
 
+=======
+    assertFalse(goog.events.hasListener(et1));
+
+    function callback() {};
+    goog.events.listen(et1, 'test', callback, true);
+    assertTrue(goog.events.hasListener(et1));
+    assertTrue(goog.events.hasListener(et1, 'test'));
+    assertTrue(goog.events.hasListener(et1, 'test', true));
+    assertTrue(goog.events.hasListener(et1, undefined, true));
+
+    assertFalse(goog.events.hasListener(et1, 'click'));
+    assertFalse(goog.events.hasListener(et1, 'test', false));
+
+    goog.events.unlisten(et1, 'test', callback, true);
+    assertFalse(goog.events.hasListener(et1));
+  }
+
+  function testHasListenerWithMultipleTargets() {
+>>>>>>> newgitrepo
     function callback() {};
 
     goog.events.listen(et1, 'test1', callback, true);
@@ -153,10 +194,13 @@ See the COPYING file for details.
   }
 
   function testBubbleSingle() {
+<<<<<<< HEAD
     var et1 = new goog.events.EventTarget();
     var et2 = new goog.events.EventTarget();
     var et3 = new goog.events.EventTarget();
 
+=======
+>>>>>>> newgitrepo
     et1.setParentEventTarget(et2);
     et2.setParentEventTarget(et3);
 
@@ -176,6 +220,7 @@ See the COPYING file for details.
     goog.events.removeAll(et3);
   }
 
+<<<<<<< HEAD
   function testBubbleShortCircuit() {
     // Short-circuit no longer works with listenable.
     if (goog.events.Listenable.USE_LISTENABLE_INTERFACE) {
@@ -211,6 +256,9 @@ See the COPYING file for details.
     var et2 = new goog.events.EventTarget();
     var et3 = new goog.events.EventTarget();
 
+=======
+  function testCaptureSingle() {
+>>>>>>> newgitrepo
     et1.setParentEventTarget(et2);
     et2.setParentEventTarget(et3);
 
@@ -231,10 +279,13 @@ See the COPYING file for details.
   }
 
   function testCaptureAndBubble() {
+<<<<<<< HEAD
     var et1 = new goog.events.EventTarget();
     var et2 = new goog.events.EventTarget();
     var et3 = new goog.events.EventTarget();
 
+=======
+>>>>>>> newgitrepo
     et1.setParentEventTarget(et2);
     et2.setParentEventTarget(et3);
 
@@ -283,8 +334,11 @@ See the COPYING file for details.
   }
 
   function testCapturingRemovesBubblingListener() {
+<<<<<<< HEAD
     var et1 = new goog.events.EventTarget();
 
+=======
+>>>>>>> newgitrepo
     var bubbleCount = 0;
     function callbackBubble() {
       bubbleCount++;
@@ -396,6 +450,7 @@ See the COPYING file for details.
 
   // Fixes bug http://b/6434926
   function testListenOnceHandlerDispatchCausingInfiniteLoop() {
+<<<<<<< HEAD
     var target = new goog.events.EventTarget();
 
     var handleFoo = goog.testing.recordFunction(function() {
@@ -405,6 +460,15 @@ See the COPYING file for details.
     goog.events.listenOnce(target, 'foo', handleFoo);
 
     target.dispatchEvent('foo');
+=======
+    var handleFoo = goog.testing.recordFunction(function() {
+      et1.dispatchEvent('foo');
+    });
+
+    goog.events.listenOnce(et1, 'foo', handleFoo);
+
+    et1.dispatchEvent('foo');
+>>>>>>> newgitrepo
 
     assertEquals('Handler should be called only once.',
                  1, handleFoo.getCallCount());
@@ -418,7 +482,11 @@ See the COPYING file for details.
     var div = document.createElement('div');
     var key = goog.events.listen(
         div, goog.events.EventType.CLICK, goog.nullFunction);
+<<<<<<< HEAD
     var listenerStack = goog.events.listeners_[key].creationStack;
+=======
+    var listenerStack = key.creationStack;
+>>>>>>> newgitrepo
 
     // Check that the name of this test function occurs in the stack trace.
     assertContains('testCreationStack', listenerStack);
@@ -430,6 +498,7 @@ See the COPYING file for details.
    * We just want to make sure we don't throw an exception.
    */
   function testUidDisappearanceJsTargets() {
+<<<<<<< HEAD
     var target = new goog.events.EventTarget();
     var listener = goog.testing.recordFunction();
     goog.events.listenOnce(target, 'foo', listener, false);
@@ -441,6 +510,14 @@ See the COPYING file for details.
     } else {
       assertEquals(0, listener.getCallCount());
     }
+=======
+    var listener = goog.testing.recordFunction();
+    goog.events.listenOnce(et1, 'foo', listener, false);
+
+    goog.removeUid(et1);
+    et1.dispatchEvent('foo');
+    assertEquals(1, listener.getCallCount());
+>>>>>>> newgitrepo
   }
 
   /**
@@ -531,7 +608,11 @@ See the COPYING file for details.
     goog.events.listenOnce(div, 'click', listener);
     goog.events.listen(div, 'click', listener);
 
+<<<<<<< HEAD
     goog.events.removeAll();
+=======
+    goog.events.removeAllNativeListeners();
+>>>>>>> newgitrepo
 
     dispatchClick(document.body);
     dispatchClick(div);
@@ -549,8 +630,13 @@ See the COPYING file for details.
   function runEventPropogationWithReentrantDispatch(useCapture) {
     var eventType = 'test-event-type';
 
+<<<<<<< HEAD
     var child = new goog.events.EventTarget();
     var parent = new goog.events.EventTarget();
+=======
+    var child = et1;
+    var parent = et2;
+>>>>>>> newgitrepo
     child.setParentEventTarget(parent);
 
     var firstTarget = useCapture ? parent : child;
@@ -586,8 +672,13 @@ See the COPYING file for details.
   function runEventPropogationWhenListenerRemoved(useCapture) {
     var eventType = 'test-event-type';
 
+<<<<<<< HEAD
     var child = new goog.events.EventTarget();
     var parent = new goog.events.EventTarget();
+=======
+    var child = et1;
+    var parent = et2;
+>>>>>>> newgitrepo
     child.setParentEventTarget(parent);
 
     var firstTarget = useCapture ? parent : child;
@@ -614,8 +705,13 @@ See the COPYING file for details.
   function runEventPropogationWhenListenerAdded(useCapture) {
     var eventType = 'test-event-type';
 
+<<<<<<< HEAD
     var child = new goog.events.EventTarget();
     var parent = new goog.events.EventTarget();
+=======
+    var child = et1;
+    var parent = et2;
+>>>>>>> newgitrepo
     child.setParentEventTarget(parent);
 
     var firstTarget = useCapture ? parent : child;
@@ -643,8 +739,13 @@ See the COPYING file for details.
   function runEventPropogationWhenListenerAddedAndRemoved(useCapture) {
     var eventType = 'test-event-type';
 
+<<<<<<< HEAD
     var child = new goog.events.EventTarget();
     var parent = new goog.events.EventTarget();
+=======
+    var child = et1;
+    var parent = et2;
+>>>>>>> newgitrepo
     child.setParentEventTarget(parent);
 
     var firstTarget = useCapture ? parent : child;
@@ -661,6 +762,53 @@ See the COPYING file for details.
     assertEquals(1, secondListener.getCallCount());
   }
 
+<<<<<<< HEAD
+=======
+  function testAssertWhenUsedWithUninitializedCustomEventTarget() {
+    var SubClass = function() { /* does not call superclass ctor */ };
+    goog.inherits(SubClass, goog.events.EventTarget);
+
+    var instance = new SubClass();
+
+    var e;
+    e = assertThrows(function() {
+      goog.events.listen(instance, 'test1', function() {});
+    });
+    assertTrue(e instanceof goog.asserts.AssertionError);
+    e = assertThrows(function() {
+      goog.events.dispatchEvent(instance, 'test1');
+    });
+    assertTrue(e instanceof goog.asserts.AssertionError);
+    e = assertThrows(function() {
+      instance.dispatchEvent('test1');
+    });
+    assertTrue(e instanceof goog.asserts.AssertionError);
+  }
+
+  function testAssertWhenDispatchEventIsUsedWithNonCustomEventTarget() {
+    var obj = {};
+    e = assertThrows(function() {
+      goog.events.dispatchEvent(obj, 'test1');
+    });
+    assertTrue(e instanceof goog.asserts.AssertionError);
+  }
+
+  function testRemoveAllNativeListeners() {
+    var handler = goog.testing.recordFunction();
+
+    var bodyEl = document.body;
+    var div = document.createElement('div');
+    var et = new goog.events.EventTarget();
+    goog.events.listen(bodyEl, goog.events.EventType.CLICK, handler);
+    goog.events.listen(div, goog.events.EventType.CLICK, handler);
+    goog.events.listen(et, 'test', handler);
+
+    goog.events.removeAllNativeListeners();
+    assertFalse(goog.events.hasListener(bodyEl));
+    assertFalse(goog.events.hasListener(div));
+    assertTrue(goog.events.hasListener(et));
+  }
+>>>>>>> newgitrepo
 </script>
 </body>
 </html>

@@ -62,7 +62,10 @@ goog.provide('goog.ui.DrilldownRow');
 
 goog.require('goog.dom');
 goog.require('goog.dom.classes');
+<<<<<<< HEAD
 goog.require('goog.events');
+=======
+>>>>>>> newgitrepo
 goog.require('goog.ui.Component');
 
 
@@ -81,11 +84,20 @@ goog.require('goog.ui.Component');
  *   decorator: Function that accepts one DrilldownRow argument, and
  *     should customize and style the row.  The default is to call
  *     goog.ui.DrilldownRow.decorator.
+<<<<<<< HEAD
  * @constructor
  * @extends {goog.ui.Component}
  */
 goog.ui.DrilldownRow = function(opt_properties) {
   goog.ui.Component.call(this);
+=======
+ * @param {goog.dom.DomHelper=} opt_domHelper Optional DOM helper.
+ * @constructor
+ * @extends {goog.ui.Component}
+ */
+goog.ui.DrilldownRow = function(opt_properties, opt_domHelper) {
+  goog.ui.Component.call(this, opt_domHelper);
+>>>>>>> newgitrepo
   var properties = opt_properties || {};
 
   // Initialize instance variables.
@@ -217,6 +229,7 @@ goog.ui.DrilldownRow.prototype.removeChild = function(child) {
 };
 
 
+<<<<<<< HEAD
 /** @override */
 goog.ui.DrilldownRow.prototype.disposeInternal = function() {
   delete this.html_;
@@ -225,6 +238,8 @@ goog.ui.DrilldownRow.prototype.disposeInternal = function() {
 };
 
 
+=======
+>>>>>>> newgitrepo
 /**
  * Rendering of DrilldownRow's is on need, do not call this directly
  * from application code.

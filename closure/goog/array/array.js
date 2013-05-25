@@ -39,7 +39,11 @@ goog.require('goog.asserts');
  * Setting goog.TRUSTED_SITE to false will automatically set
  * NATIVE_ARRAY_PROTOTYPES to false.
  */
+<<<<<<< HEAD
 goog.NATIVE_ARRAY_PROTOTYPES = goog.TRUSTED_SITE;
+=======
+goog.define('goog.NATIVE_ARRAY_PROTOTYPES', goog.TRUSTED_SITE);
+>>>>>>> newgitrepo
 
 
 /**
@@ -1258,6 +1262,7 @@ goog.array.binaryRemove = function(array, value, opt_compareFn) {
 /**
  * Splits an array into disjoint buckets according to a splitting function.
  * @param {Array.<T>} array The array.
+<<<<<<< HEAD
  * @param {function(T,number,Array.<T>):?} sorter Function to call for every
  *     element.  This
  *     takes 3 arguments (the element, the index and the array) and must
@@ -1269,11 +1274,29 @@ goog.array.binaryRemove = function(array, value, opt_compareFn) {
  * @template T
  */
 goog.array.bucket = function(array, sorter) {
+=======
+ * @param {function(this:S, T,number,Array.<T>):?} sorter Function to call for
+ *     every element.  This takes 3 arguments (the element, the index and the
+ *     array) and must return a valid object key (a string, number, etc), or
+ *     undefined, if that object should not be placed in a bucket.
+ * @param {S=} opt_obj The object to be used as the value of 'this' within
+ *     sorter.
+ * @return {!Object} An object, with keys being all of the unique return values
+ *     of sorter, and values being arrays containing the items for
+ *     which the splitter returned that key.
+ * @template T,S
+ */
+goog.array.bucket = function(array, sorter, opt_obj) {
+>>>>>>> newgitrepo
   var buckets = {};
 
   for (var i = 0; i < array.length; i++) {
     var value = array[i];
+<<<<<<< HEAD
     var key = sorter(value, i, array);
+=======
+    var key = sorter.call(opt_obj, value, i, array);
+>>>>>>> newgitrepo
     if (goog.isDef(key)) {
       // Push the value to the right bucket, creating it if necessary.
       var bucket = buckets[key] || (buckets[key] = []);
@@ -1296,7 +1319,11 @@ goog.array.bucket = function(array, sorter) {
  *     key for the element in the new object. If the function returns the same
  *     key for more than one element, the value for that key is
  *     implementation-defined.
+<<<<<<< HEAD
  * @param {S=} opt_obj  The object to be used as the value of 'this'
+=======
+ * @param {S=} opt_obj The object to be used as the value of 'this'
+>>>>>>> newgitrepo
  *     within keyFunc.
  * @return {!Object.<T>} The new object.
  * @template T,S

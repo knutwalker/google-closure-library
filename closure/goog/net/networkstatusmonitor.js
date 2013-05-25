@@ -19,12 +19,17 @@
 
 goog.provide('goog.net.NetworkStatusMonitor');
 
+<<<<<<< HEAD
 goog.require('goog.events.EventTarget');
+=======
+goog.require('goog.events.Listenable');
+>>>>>>> newgitrepo
 
 
 
 /**
  * Base class for network status information providers.
+<<<<<<< HEAD
  * @constructor
  * @extends {goog.events.EventTarget}
  */
@@ -32,6 +37,12 @@ goog.net.NetworkStatusMonitor = function() {
   goog.base(this);
 };
 goog.inherits(goog.net.NetworkStatusMonitor, goog.events.EventTarget);
+=======
+ * @interface
+ * @extends {goog.events.Listenable}
+ */
+goog.net.NetworkStatusMonitor = function() {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -47,4 +58,8 @@ goog.net.NetworkStatusMonitor.EventType = {
 /**
  * @return {boolean} Whether the system is online or otherwise.
  */
+<<<<<<< HEAD
 goog.net.NetworkStatusMonitor.prototype.isOnline = goog.abstractMethod;
+=======
+goog.net.NetworkStatusMonitor.prototype.isOnline;
+>>>>>>> newgitrepo

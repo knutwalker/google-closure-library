@@ -58,7 +58,11 @@ goog.crypt.BlobHasher = function(hashFn, opt_blockSize) {
   this.hashFn_ = hashFn;
 
   /**
+<<<<<<< HEAD
    * The blob being processed.
+=======
+   * The blob being processed or null if no blob is being processed.
+>>>>>>> newgitrepo
    * @type {Blob}
    * @private
    */
@@ -79,6 +83,16 @@ goog.crypt.BlobHasher = function(hashFn, opt_blockSize) {
   this.bytesProcessed_ = 0;
 
   /**
+<<<<<<< HEAD
+=======
+   * The number of bytes to hash or Infinity for no limit.
+   * @type {number}
+   * @private
+   */
+  this.hashingLimit_ = Infinity;
+
+  /**
+>>>>>>> newgitrepo
    * Processing block size.
    * @type {number}
    * @private
@@ -86,7 +100,11 @@ goog.crypt.BlobHasher = function(hashFn, opt_blockSize) {
   this.blockSize_ = opt_blockSize || 5000000;
 
   /**
+<<<<<<< HEAD
    * File reader object.
+=======
+   * File reader object. Will be null if no chunk is currently being read.
+>>>>>>> newgitrepo
    * @type {FileReader}
    * @private
    */
@@ -109,6 +127,10 @@ goog.inherits(goog.crypt.BlobHasher, goog.events.EventTarget);
 goog.crypt.BlobHasher.EventType = {
   STARTED: 'started',
   PROGRESS: 'progress',
+<<<<<<< HEAD
+=======
+  THROTTLED: 'throttled',
+>>>>>>> newgitrepo
   COMPLETE: 'complete',
   ABORT: 'abort',
   ERROR: 'error'
@@ -132,12 +154,49 @@ goog.crypt.BlobHasher.prototype.hash = function(blob) {
 
 
 /**
+<<<<<<< HEAD
  * Abort hash computation.
  */
 goog.crypt.BlobHasher.prototype.abort = function() {
   if (this.fileReader_ &&
       this.fileReader_.readyState != this.fileReader_.DONE) {
     this.fileReader_.abort();
+=======
+ * Sets the maximum number of bytes to hash or Infinity for no limit. Can be
+ * called before hash() to throttle the hash computation. The hash computation
+ * can then be continued by repeatedly calling setHashingLimit() with greater
+ * byte offsets. This is useful if you don't need the hash until some time in
+ * the future, for example when uploading a file and you don't need the hash
+ * until the transfer is complete.
+ * @param {number} byteOffset The byte offset to compute the hash up to.
+ *     Should be a non-negative integer or Infinity for no limit. Negative
+ *     values are not allowed.
+ */
+goog.crypt.BlobHasher.prototype.setHashingLimit = function(byteOffset) {
+  goog.asserts.assert(byteOffset >= 0, 'Hashing limit must be non-negative.');
+  this.hashingLimit_ = byteOffset;
+
+  // Resume processing if a blob is currently being hashed, but no block read
+  // is currently in progress.
+  if (this.blob_ && !this.fileReader_) {
+    this.processNextBlock_();
+  }
+};
+
+
+/**
+ * Abort hash computation.
+ */
+goog.crypt.BlobHasher.prototype.abort = function() {
+  if (this.fileReader_) {
+    this.fileReader_.abort();
+    this.fileReader_ = null;
+  }
+
+  if (this.blob_) {
+    this.blob_ = null;
+    this.dispatchEvent(goog.crypt.BlobHasher.EventType.ABORT);
+>>>>>>> newgitrepo
   }
 };
 
@@ -164,13 +223,27 @@ goog.crypt.BlobHasher.prototype.getHash = function() {
  * @private
  */
 goog.crypt.BlobHasher.prototype.processNextBlock_ = function() {
+<<<<<<< HEAD
   goog.asserts.assert(this.blob_, 'The blob has disappeared during processing');
   if (this.bytesProcessed_ < this.blob_.size) {
+=======
+  goog.asserts.assert(this.blob_, 'A hash computation must be in progress.');
+
+  if (this.bytesProcessed_ < this.blob_.size) {
+
+    if (this.hashingLimit_ <= this.bytesProcessed_) {
+      // Throttle limit reached. Wait until we are allowed to hash more bytes.
+      this.dispatchEvent(goog.crypt.BlobHasher.EventType.THROTTLED);
+      return;
+    }
+
+>>>>>>> newgitrepo
     // We have to reset the FileReader every time, otherwise it fails on
     // Chrome, including the latest Chrome 12 beta.
     // http://code.google.com/p/chromium/issues/detail?id=82346
     this.fileReader_ = new FileReader();
     this.fileReader_.onload = goog.bind(this.onLoad_, this);
+<<<<<<< HEAD
     this.fileReader_.onabort = goog.bind(this.dispatchEvent, this,
                                          goog.crypt.BlobHasher.EventType.ABORT);
     this.fileReader_.onerror = goog.bind(this.dispatchEvent, this,
@@ -178,11 +251,21 @@ goog.crypt.BlobHasher.prototype.processNextBlock_ = function() {
 
     var size = Math.min(this.blob_.size - this.bytesProcessed_,
                         this.blockSize_);
+=======
+    this.fileReader_.onerror = goog.bind(this.onError_, this);
+
+    var endOffset = Math.min(this.hashingLimit_, this.blob_.size);
+    var size = Math.min(endOffset - this.bytesProcessed_, this.blockSize_);
+>>>>>>> newgitrepo
     var chunk = goog.fs.sliceBlob(this.blob_, this.bytesProcessed_,
                                   this.bytesProcessed_ + size);
     if (!chunk || chunk.size != size) {
       this.logger_.severe('Failed slicing the blob');
+<<<<<<< HEAD
       this.dispatchEvent(goog.crypt.BlobHasher.EventType.ERROR);
+=======
+      this.onError_();
+>>>>>>> newgitrepo
       return;
     }
 
@@ -192,10 +275,18 @@ goog.crypt.BlobHasher.prototype.processNextBlock_ = function() {
       this.fileReader_.readAsBinaryString(chunk);
     } else {
       this.logger_.severe('Failed calling the chunk reader');
+<<<<<<< HEAD
       this.dispatchEvent(goog.crypt.BlobHasher.EventType.ERROR);
     }
   } else {
     this.hashVal_ = this.hashFn_.digest();
+=======
+      this.onError_();
+    }
+  } else {
+    this.hashVal_ = this.hashFn_.digest();
+    this.blob_ = null;
+>>>>>>> newgitrepo
     this.dispatchEvent(goog.crypt.BlobHasher.EventType.COMPLETE);
   }
 };
@@ -218,12 +309,36 @@ goog.crypt.BlobHasher.prototype.onLoad_ = function() {
   }
   if (!array) {
     this.logger_.severe('Failed reading the chunk');
+<<<<<<< HEAD
     this.dispatchEvent(goog.crypt.BlobHasher.EventType.ERROR);
     return;
   }
   this.hashFn_.update(array);
   this.bytesProcessed_ += array.length;
+=======
+    this.onError_();
+    return;
+  }
+
+  this.hashFn_.update(array);
+  this.bytesProcessed_ += array.length;
+  this.fileReader_ = null;
+>>>>>>> newgitrepo
   this.dispatchEvent(goog.crypt.BlobHasher.EventType.PROGRESS);
 
   this.processNextBlock_();
 };
+<<<<<<< HEAD
+=======
+
+
+/**
+ * Handles error.
+ * @private
+ */
+goog.crypt.BlobHasher.prototype.onError_ = function() {
+  this.fileReader_ = null;
+  this.blob_ = null;
+  this.dispatchEvent(goog.crypt.BlobHasher.EventType.ERROR);
+};
+>>>>>>> newgitrepo

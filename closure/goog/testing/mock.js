@@ -171,7 +171,11 @@ goog.testing.Mock = function(objectToMock, opt_mockStaticMethods,
   if (opt_createProxy && !opt_mockStaticMethods &&
       goog.isFunction(objectToMock)) {
     /** @constructor */
+<<<<<<< HEAD
     var tempCtor = function () {};
+=======
+    var tempCtor = function() {};
+>>>>>>> newgitrepo
     goog.inherits(tempCtor, objectToMock);
     this.$proxy = new tempCtor();
   } else if (opt_createProxy && opt_mockStaticMethods &&

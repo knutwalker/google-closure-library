@@ -16,6 +16,10 @@
  * @fileoverview Unit tests for goog.string.
  */
 
+<<<<<<< HEAD
+=======
+/** @suppress {extraProvide} */
+>>>>>>> newgitrepo
 goog.provide('goog.stringTest');
 
 goog.require('goog.functions');
@@ -191,7 +195,11 @@ function testStripNewLines() {
 function testCanonicalizeNewlines() {
   assertEquals('Should replace all types of new line with \\n',
                goog.string.canonicalizeNewlines(
+<<<<<<< HEAD
                     'some\nlines\rthat\r\nare\n\nsplit'),
+=======
+      'some\nlines\rthat\r\nare\n\nsplit'),
+>>>>>>> newgitrepo
                'some\nlines\nthat\nare\n\nsplit');
 }
 
@@ -293,6 +301,31 @@ function testCaseInsensitiveEndsWith() {
               goog.string.caseInsensitiveEndsWith('ABCD', 'abcde'));
 }
 
+<<<<<<< HEAD
+=======
+// === tests for goog.string.caseInsensitiveEquals ===
+function testCaseInsensitiveEquals() {
+
+  function assertCaseInsensitiveEquals(str1, str2) {
+    assertTrue(goog.string.caseInsensitiveEquals(str1, str2));
+  }
+
+  function assertCaseInsensitiveNotEquals(str1, str2) {
+    assertFalse(goog.string.caseInsensitiveEquals(str1, str2));
+  }
+
+  assertCaseInsensitiveEquals('abc', 'abc');
+  assertCaseInsensitiveEquals('abc', 'abC');
+  assertCaseInsensitiveEquals('d,e,F,G', 'd,e,F,G');
+  assertCaseInsensitiveEquals('ABCD EFGH 1234', 'abcd efgh 1234');
+  assertCaseInsensitiveEquals('FooBarBaz', 'fOObARbAZ');
+
+  assertCaseInsensitiveNotEquals('ABCD EFGH', 'abcd efg');
+  assertCaseInsensitiveNotEquals('ABC DEFGH', 'ABCD EFGH');
+  assertCaseInsensitiveNotEquals('FooBarBaz', 'fOObARbAZ ');
+}
+
+>>>>>>> newgitrepo
 
 // === tests for goog.string.subs ===
 function testSubs() {
@@ -616,7 +649,11 @@ function testTruncateMiddle() {
       goog.string.truncateMiddle(html, 14));
   assertEquals('Should not clip html char',
       'true &amp;&amp;...= false',
+<<<<<<< HEAD
        goog.string.truncateMiddle(html, 14, true));
+=======
+      goog.string.truncateMiddle(html, 14, true));
+>>>>>>> newgitrepo
 
   assertEquals('ab...xyz', goog.string.truncateMiddle(str, 5, null, 3));
   assertEquals('abcdefg...xyz', goog.string.truncateMiddle(str, 10, null, 3));
@@ -628,7 +665,11 @@ function testTruncateMiddle() {
       goog.string.truncateMiddle(html, 14, null, 3));
   assertEquals('Should not clip html char',
       'true &amp;&amp; fal...lse',
+<<<<<<< HEAD
        goog.string.truncateMiddle(html, 14, true, 3));
+=======
+      goog.string.truncateMiddle(html, 14, true, 3));
+>>>>>>> newgitrepo
 }
 
 
@@ -887,6 +928,10 @@ function assertHashcodeEquals(expectedHashCode, str) {
       expectedHashCode, goog.string.hashCode(str));
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Verify we get random-ish looking values for hash of Strings.
  */
@@ -1025,8 +1070,13 @@ function testParseInt() {
   assertTrue(isNaN(goog.string.parseInt(' ')));
   assertTrue(isNaN(goog.string.parseInt('a')));
   assertTrue(isNaN(goog.string.parseInt('FFAA')));
+<<<<<<< HEAD
   assertEquals(1, goog.string.parseInt(1))
   assertEquals(1234567890123456, goog.string.parseInt(1234567890123456))
+=======
+  assertEquals(1, goog.string.parseInt(1));
+  assertEquals(1234567890123456, goog.string.parseInt(1234567890123456));
+>>>>>>> newgitrepo
   assertEquals(2, goog.string.parseInt(' 2.3'));
   assertEquals(16, goog.string.parseInt('0x10'));
   assertEquals(11, goog.string.parseInt('11'));
@@ -1073,3 +1123,36 @@ function testParseInt() {
   assertEquals(-243, goog.string.parseInt('   -0xF3    '));
   assertTrue(isNaN(goog.string.parseInt(' - 0x32 ')));
 }
+<<<<<<< HEAD
+=======
+
+function testIsLowerCamelCase() {
+  assertTrue(goog.string.isLowerCamelCase('foo'));
+  assertTrue(goog.string.isLowerCamelCase('fooBar'));
+  assertTrue(goog.string.isLowerCamelCase('fooBarBaz'));
+  assertTrue(goog.string.isLowerCamelCase('innerHTML'));
+
+  assertFalse(goog.string.isLowerCamelCase(''));
+  assertFalse(goog.string.isLowerCamelCase('a3a'));
+  assertFalse(goog.string.isLowerCamelCase('goog.dom'));
+  assertFalse(goog.string.isLowerCamelCase('Foo'));
+  assertFalse(goog.string.isLowerCamelCase('FooBar'));
+  assertFalse(goog.string.isLowerCamelCase('ABCBBD'));
+}
+
+function testIsUpperCamelCase() {
+  assertFalse(goog.string.isUpperCamelCase(''));
+  assertFalse(goog.string.isUpperCamelCase('foo'));
+  assertFalse(goog.string.isUpperCamelCase('fooBar'));
+  assertFalse(goog.string.isUpperCamelCase('fooBarBaz'));
+  assertFalse(goog.string.isUpperCamelCase('innerHTML'));
+  assertFalse(goog.string.isUpperCamelCase('a3a'));
+  assertFalse(goog.string.isUpperCamelCase('goog.dom'));
+  assertFalse(goog.string.isUpperCamelCase('Boyz2Men'));
+
+  assertTrue(goog.string.isUpperCamelCase('ABCBBD'));
+  assertTrue(goog.string.isUpperCamelCase('Foo'));
+  assertTrue(goog.string.isUpperCamelCase('FooBar'));
+  assertTrue(goog.string.isUpperCamelCase('FooBarBaz'));
+}
+>>>>>>> newgitrepo

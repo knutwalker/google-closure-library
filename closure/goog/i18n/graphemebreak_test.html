@@ -57,7 +57,11 @@ See the COPYING file for details.
   }
   
   function testBreakThaiPrependExtended() {
+<<<<<<< HEAD
     assertFalse(goog.i18n.GraphemeBreak.hasGraphemeBreak(0x0E40, 0x0E01, true));
+=======
+    assertTrue(goog.i18n.GraphemeBreak.hasGraphemeBreak(0x0E40, 0x0E01, true));
+>>>>>>> newgitrepo
   }
   
   function testBreakDevaSpacingMarkLegacy() {
@@ -67,6 +71,17 @@ See the COPYING file for details.
   function testBreakDevaSpacingMarkExtended() {
     assertFalse(goog.i18n.GraphemeBreak.hasGraphemeBreak(0x0915, 0x093E, true));
   }
+<<<<<<< HEAD
+=======
+
+  function testBreakDevaViramaSpace() {
+    assertTrue(goog.i18n.GraphemeBreak.hasGraphemeBreak(0x094D, 0x0020));
+  }
+
+  function testBreakDevaViramaConsonant() {
+    assertFalse(goog.i18n.GraphemeBreak.hasGraphemeBreak(0x094D, 0x0915));
+  }
+>>>>>>> newgitrepo
 </script>
 </body>
 </html>

@@ -20,6 +20,10 @@
 goog.provide('goog.string.Stringifier');
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * An interface for serializing objects into strings.
  * @interface

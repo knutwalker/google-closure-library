@@ -42,6 +42,7 @@ goog.require('goog.ui.ZippyEvent');
  *     string id.
  * @param {boolean=} opt_expanded Initial expanded/visibility state. Defaults to
  *     false.
+<<<<<<< HEAD
  * @constructor
  * @extends {goog.ui.Zippy}
  */
@@ -49,6 +50,18 @@ goog.ui.AnimatedZippy = function(header, content, opt_expanded) {
   // Create wrapper element and move content into it.
   var elWrapper = goog.dom.createDom('div', {'style': 'overflow:hidden'});
   var elContent = goog.dom.getElement(content);
+=======
+ * @param {goog.dom.DomHelper=} opt_domHelper An optional DOM helper.
+ * @constructor
+ * @extends {goog.ui.Zippy}
+ */
+goog.ui.AnimatedZippy = function(header, content, opt_expanded, opt_domHelper) {
+  var domHelper = opt_domHelper || goog.dom.getDomHelper();
+
+  // Create wrapper element and move content into it.
+  var elWrapper = domHelper.createDom('div', {'style': 'overflow:hidden'});
+  var elContent = domHelper.getElement(content);
+>>>>>>> newgitrepo
   elContent.parentNode.replaceChild(elWrapper, elContent);
   elWrapper.appendChild(elContent);
 
@@ -67,7 +80,12 @@ goog.ui.AnimatedZippy = function(header, content, opt_expanded) {
   this.anim_ = null;
 
   // Call constructor of super class.
+<<<<<<< HEAD
   goog.ui.Zippy.call(this, header, elContent, opt_expanded);
+=======
+  goog.ui.Zippy.call(this, header, elContent, opt_expanded,
+      undefined, domHelper);
+>>>>>>> newgitrepo
 
   // Set initial state.
   // NOTE: Set the class names as well otherwise animated zippys

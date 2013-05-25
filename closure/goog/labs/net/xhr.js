@@ -179,7 +179,11 @@ _.send = function(method, url, data, opt_options) {
   // again.  Thus the slight ugliness here.  If results were pushed into
   // makeRequest, this could become a lot cleaner but we want an option for
   // people not to include goog.result.Result.
+<<<<<<< HEAD
   goog.result.waitOnError(result, function(result) {
+=======
+  goog.result.waitOnError(result, function(error, result) {
+>>>>>>> newgitrepo
     if (result.isCanceled()) {
       xhr.abort();
       xhr.onreadystatechange = goog.nullFunction;

@@ -38,7 +38,11 @@ var COMPILED = false;
  *
  * @const
  */
+<<<<<<< HEAD
 var goog = goog || {}; // Identifies this file as the Closure base.
+=======
+var goog = goog || {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -48,6 +52,91 @@ goog.global = this;
 
 
 /**
+<<<<<<< HEAD
+=======
+ * A hook for overriding the define values in uncompiled mode.
+ *
+ * In uncompiled mode, {@code CLOSURE_DEFINES} may be defined before loading
+ * base.js.  If a key is defined in {@code CLOSURE_DEFINES}, {@code goog.define}
+ * will use the value instead of the default value.  This allows flags to be
+ * overwritten without compilation (this is normally accomplished with the
+ * compiler's "define" flag).
+ *
+ * Example:
+ * <pre>
+ *   var CLOSURE_DEFINES = {'goog.DEBUG', false};
+ * </pre>
+ *
+ * @type {Object.<string, (string|number|boolean)>|undefined}
+ */
+goog.global.CLOSURE_DEFINES;
+
+
+/**
+ * Builds an object structure for the provided namespace path,
+ * ensuring that names that already exist are not overwritten. For
+ * example:
+ * "a.b.c" -> a = {};a.b={};a.b.c={};
+ * Used by goog.provide and goog.exportSymbol.
+ * @param {string} name name of the object that this file defines.
+ * @param {*=} opt_object the object to expose at the end of the path.
+ * @param {Object=} opt_objectToExportTo The object to add the path to; default
+ *     is |goog.global|.
+ * @private
+ */
+goog.exportPath_ = function(name, opt_object, opt_objectToExportTo) {
+  var parts = name.split('.');
+  var cur = opt_objectToExportTo || goog.global;
+
+  // Internet Explorer exhibits strange behavior when throwing errors from
+  // methods externed in this manner.  See the testExportSymbolExceptions in
+  // base_test.html for an example.
+  if (!(parts[0] in cur) && cur.execScript) {
+    cur.execScript('var ' + parts[0]);
+  }
+
+  // Certain browsers cannot parse code in the form for((a in b); c;);
+  // This pattern is produced by the JSCompiler when it collapses the
+  // statement above into the conditional loop below. To prevent this from
+  // happening, use a for-loop and reserve the init logic as below.
+
+  // Parentheses added to eliminate strict JS warning in Firefox.
+  for (var part; parts.length && (part = parts.shift());) {
+    if (!parts.length && opt_object !== undefined) {
+      // last part and we have an object; use it
+      cur[part] = opt_object;
+    } else if (cur[part]) {
+      cur = cur[part];
+    } else {
+      cur = cur[part] = {};
+    }
+  }
+};
+
+
+/**
+ * Defines a named value. In uncompiled mode, the value is retreived from
+ * CLOSURE_DEFINES if the object is defined and has the property specified,
+ * and otherwise used the defined defaultValue. When compiled, the default
+ * can be overridden using compiler command-line options.
+ *
+ * @param {string} name The distinguished name to provide.
+ * @param {string|number|boolean} defaultValue
+ */
+goog.define = function(name, defaultValue) {
+  var value = defaultValue;
+  if (!COMPILED) {
+    if (goog.global.CLOSURE_DEFINES && Object.prototype.hasOwnProperty.call(
+        goog.global.CLOSURE_DEFINES, name)) {
+      value = goog.global.CLOSURE_DEFINES[name];
+    }
+  }
+  goog.exportPath_(name, value);
+};
+
+
+/**
+>>>>>>> newgitrepo
  * @define {boolean} DEBUG is provided as a convenience so that debugging code
  * that should not be included in a production js_binary can be easily stripped
  * by specifying --define goog.DEBUG=false to the JSCompiler. For example, most
@@ -77,7 +166,11 @@ goog.DEBUG = true;
  * this rule: the Hebrew language. For legacy reasons the old code (iw) should
  * be used instead of the new code (he), see http://wiki/Main/IIISynonyms.
  */
+<<<<<<< HEAD
 goog.LOCALE = 'en';  // default to en
+=======
+goog.define('goog.LOCALE', 'en');  // default to en
+>>>>>>> newgitrepo
 
 
 /**
@@ -91,7 +184,11 @@ goog.LOCALE = 'en';  // default to en
  * relying on non-standard implementations, specify
  * "--define goog.TRUSTED_SITE=false" to the JSCompiler.
  */
+<<<<<<< HEAD
 goog.TRUSTED_SITE = true;
+=======
+goog.define('goog.TRUSTED_SITE', true);
+>>>>>>> newgitrepo
 
 
 /**
@@ -131,6 +228,14 @@ goog.provide = function(name) {
 /**
  * Marks that the current file should only be used for testing, and never for
  * live code in production.
+<<<<<<< HEAD
+=======
+ *
+ * In the case of unit tests, the message may optionally be an exact
+ * namespace for the test (e.g. 'goog.stringTest'). The linter will then
+ * ignore the extra provide (if not explicitly defined in the code).
+ *
+>>>>>>> newgitrepo
  * @param {string=} opt_message Optional message to add to the error that's
  *     raised when used in production code.
  */
@@ -169,6 +274,7 @@ if (!COMPILED) {
 
 
 /**
+<<<<<<< HEAD
  * Builds an object structure for the provided namespace path,
  * ensuring that names that already exist are not overwritten. For
  * example:
@@ -211,6 +317,8 @@ goog.exportPath_ = function(name, opt_object, opt_objectToExportTo) {
 
 
 /**
+=======
+>>>>>>> newgitrepo
  * Returns an object based on its fully qualified external name.  If you are
  * using a compilation pass that renames property names beware that using this
  * function will not find renamed properties.
@@ -259,7 +367,11 @@ goog.globalize = function(obj, opt_global) {
  *                         this file requires.
  */
 goog.addDependency = function(relPath, provides, requires) {
+<<<<<<< HEAD
   if (!COMPILED) {
+=======
+  if (goog.DEPENDENCIES_ENABLED) {
+>>>>>>> newgitrepo
     var provide, require;
     var path = relPath.replace(/\\/g, '/');
     var deps = goog.dependencies_;
@@ -310,7 +422,11 @@ goog.addDependency = function(relPath, provides, requires) {
  * provided (and depend on the fact that some outside tool correctly ordered
  * the script).
  */
+<<<<<<< HEAD
 goog.ENABLE_DEBUG_LOADER = true;
+=======
+goog.define('goog.ENABLE_DEBUG_LOADER', true);
+>>>>>>> newgitrepo
 
 
 /**
@@ -462,7 +578,18 @@ goog.addSingletonGetter = function(ctor) {
 goog.instantiatedSingletons_ = [];
 
 
+<<<<<<< HEAD
 if (!COMPILED && goog.ENABLE_DEBUG_LOADER) {
+=======
+/**
+ * True if goog.dependencies_ is available.
+ * @const {boolean}
+ */
+goog.DEPENDENCIES_ENABLED = !COMPILED && goog.ENABLE_DEBUG_LOADER;
+
+
+if (goog.DEPENDENCIES_ENABLED) {
+>>>>>>> newgitrepo
   /**
    * Object used to keep track of urls that have already been added. This
    * record allows the prevention of circular dependencies.
@@ -1074,13 +1201,22 @@ goog.bindJs_ = function(fn, selfObj, var_args) {
  * <pre>var barMethBound = bind(myFunction, myObj, 'arg1', 'arg2');
  * barMethBound('arg3', 'arg4');</pre>
  *
+<<<<<<< HEAD
  * @param {Function} fn A function to partially apply.
  * @param {Object|undefined} selfObj Specifies the object which |this| should
+=======
+ * @param {?function(this:T, ...)} fn A function to partially apply.
+ * @param {T} selfObj Specifies the object which |this| should
+>>>>>>> newgitrepo
  *     point to when the function is run.
  * @param {...*} var_args Additional arguments that are partially
  *     applied to the function.
  * @return {!Function} A partially-applied form of the function bind() was
  *     invoked as a method of.
+<<<<<<< HEAD
+=======
+ * @template T
+>>>>>>> newgitrepo
  * @suppress {deprecated} See above.
  */
 goog.bind = function(fn, selfObj, var_args) {
@@ -1501,6 +1637,18 @@ goog.inherits = function(childCtor, parentCtor) {
  */
 goog.base = function(me, opt_methodName, var_args) {
   var caller = arguments.callee.caller;
+<<<<<<< HEAD
+=======
+
+  if (goog.DEBUG) {
+    if (!caller) {
+      throw Error('arguments.caller not defined.  goog.base() expects not ' +
+                  'to be running in strict mode. See ' +
+                  'http://www.ecma-international.org/ecma-262/5.1/#sec-C');
+    }
+  }
+
+>>>>>>> newgitrepo
   if (caller.superClass_) {
     // This is a constructor. Call the superclass constructor.
     return caller.superClass_.constructor.apply(

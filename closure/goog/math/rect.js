@@ -16,7 +16,10 @@
  * @fileoverview A utility class for representing rectangles.
  */
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> newgitrepo
 goog.provide('goog.math.Rect');
 
 goog.require('goog.math.Box');
@@ -34,6 +37,7 @@ goog.require('goog.math.Size');
  * @constructor
  */
 goog.math.Rect = function(x, y, w, h) {
+<<<<<<< HEAD
   /**
    * Left
    * @type {number}
@@ -56,13 +60,29 @@ goog.math.Rect = function(x, y, w, h) {
    * Height
    * @type {number}
    */
+=======
+  /** @type {number} */
+  this.left = x;
+
+  /** @type {number} */
+  this.top = y;
+
+  /** @type {number} */
+  this.width = w;
+
+  /** @type {number} */
+>>>>>>> newgitrepo
   this.height = h;
 };
 
 
 /**
+<<<<<<< HEAD
  * Returns a new copy of the rectangle.
  * @return {!goog.math.Rect} A clone of this Rectangle.
+=======
+ * @return {!goog.math.Rect} A new copy of this Rectangle.
+>>>>>>> newgitrepo
  */
 goog.math.Rect.prototype.clone = function() {
   return new goog.math.Rect(this.left, this.top, this.width, this.height);
@@ -334,7 +354,35 @@ goog.math.Rect.prototype.contains = function(another) {
 
 
 /**
+<<<<<<< HEAD
  * Returns the size of this rectangle.
+=======
+ * @param {!goog.math.Coordinate} point A coordinate.
+ * @return {number} The squared distance between the point and the closest
+ *     point inside the rectangle. Returns 0 if the point is inside the
+ *     rectangle.
+ */
+goog.math.Rect.prototype.squaredDistance = function(point) {
+  var dx = point.x < this.left ?
+      this.left - point.x : Math.max(point.x - (this.left + this.width), 0);
+  var dy = point.y < this.top ?
+      this.top - point.y : Math.max(point.y - (this.top + this.height), 0);
+  return dx * dx + dy * dy;
+};
+
+
+/**
+ * @param {!goog.math.Coordinate} point A coordinate.
+ * @return {number} The distance between the point and the closest point
+ *     inside the rectangle. Returns 0 if the point is inside the rectangle.
+ */
+goog.math.Rect.prototype.distance = function(point) {
+  return Math.sqrt(this.squaredDistance(point));
+};
+
+
+/**
+>>>>>>> newgitrepo
  * @return {!goog.math.Size} The size of this rectangle.
  */
 goog.math.Rect.prototype.getSize = function() {
@@ -343,6 +391,38 @@ goog.math.Rect.prototype.getSize = function() {
 
 
 /**
+<<<<<<< HEAD
+=======
+ * @return {!goog.math.Coordinate} A new coordinate for the top-left corner of
+ *     the rectangle.
+ */
+goog.math.Rect.prototype.getTopLeft = function() {
+  return new goog.math.Coordinate(this.left, this.top);
+};
+
+
+/**
+ * @return {!goog.math.Coordinate} A new coordinate for the center of the
+ *     rectangle.
+ */
+goog.math.Rect.prototype.getCenter = function() {
+  return new goog.math.Coordinate(
+      this.left + this.width / 2, this.top + this.height / 2);
+};
+
+
+/**
+ * @return {!goog.math.Coordinate} A new coordinate for the bottom-right corner
+ *     of the rectangle.
+ */
+goog.math.Rect.prototype.getBottomRight = function() {
+  return new goog.math.Coordinate(
+      this.left + this.width, this.top + this.height);
+};
+
+
+/**
+>>>>>>> newgitrepo
  * Rounds the fields to the next larger integer values.
  * @return {!goog.math.Rect} This rectangle with ceil'd fields.
  */

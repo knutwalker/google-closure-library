@@ -15,14 +15,25 @@ See the COPYING file for details.
 <title>Closure Unit Tests for MenuButtonRenderer</title>
 <script src="../base.js"></script>
 <script>
+<<<<<<< HEAD
+=======
+  goog.require('goog.a11y.aria');
+  goog.require('goog.a11y.aria.Role');
+  goog.require('goog.a11y.aria.State');
+>>>>>>> newgitrepo
   goog.require('goog.dom');
   goog.require('goog.dom.classes');
   goog.require('goog.events');
   goog.require('goog.events.Event');
   goog.require('goog.testing.events');
   goog.require('goog.testing.jsunit');
+<<<<<<< HEAD
   goog.require('goog.ui.MenuButton');
   goog.require('goog.testing.ui.rendererasserts');
+=======
+  goog.require('goog.testing.ui.rendererasserts');
+  goog.require('goog.ui.MenuButton');
+>>>>>>> newgitrepo
 </script>
 </head>
 <body>
@@ -64,10 +75,18 @@ function testRendererWithTextContent() {
   renderedButton = new goog.ui.MenuButton('Foo');
   renderOnParent(renderedButton);
   checkButtonCaption(renderedButton);
+<<<<<<< HEAD
+=======
+  checkAriaState(renderedButton);
+>>>>>>> newgitrepo
 
   decoratedButton = new goog.ui.MenuButton();
   decorateDemoButton(decoratedButton);
   checkButtonCaption(decoratedButton);
+<<<<<<< HEAD
+=======
+  checkAriaState(decoratedButton);
+>>>>>>> newgitrepo
 
   assertButtonsEqual();
 }
@@ -109,7 +128,11 @@ function testSetContent() {
 
 function assertButtonsEqual() {
   assertHTMLEquals(
+<<<<<<< HEAD
       "Rendered button and decorated button produced different HTML!",
+=======
+      'Rendered button and decorated button produced different HTML!',
+>>>>>>> newgitrepo
       renderedButton.getElement().innerHTML,
       decoratedButton.getElement().innerHTML);
 }
@@ -148,6 +171,22 @@ function checkButtonCaption(button) {
   assert(hasInlineBlock(contentElement.parentNode));
 }
 
+<<<<<<< HEAD
+=======
+/**
+ * Verify that the menu button has the correct ARIA attributes
+ * @param {goog.ui.Button} button A button.
+ */
+function checkAriaState(button) {
+  assertEquals('menu buttons should not have default aria-expanded state', '',
+  goog.a11y.aria.getState(button.getElement(), goog.a11y.aria.State.EXPANDED));
+  button.setOpen(true);
+  assertEquals('menu buttons should not have aria-expanded state after ' +
+    'opening', '',
+  goog.a11y.aria.getState(button.getElement(), goog.a11y.aria.State.EXPANDED));
+}
+
+>>>>>>> newgitrepo
 function hasInlineBlock(el) {
   return goog.dom.classes.has(el, 'goog-inline-block');
 }

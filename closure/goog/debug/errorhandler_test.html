@@ -14,8 +14,16 @@ See the COPYING file for details.
 <!-- These paths should be relative to the test -->
 <script src="../base.js"></script>
 <script>
+<<<<<<< HEAD
   goog.require('goog.debug.ErrorHandler');
   goog.require('goog.testing.jsunit');
+=======
+  goog.require('goog.debug.Error');
+  goog.require('goog.debug.ErrorHandler');
+  goog.require('goog.testing.MockControl');
+  goog.require('goog.testing.jsunit');
+  goog.require('goog.testing.mockmatchers.SaveArgument');
+>>>>>>> newgitrepo
   goog.require('goog.userAgent');
 </script>
 </head>
@@ -29,6 +37,10 @@ See the COPYING file for details.
   var fakeWin = {};
 
   var errorHandler;
+<<<<<<< HEAD
+=======
+  var mockControl;
+>>>>>>> newgitrepo
 
   function badTimer() {
     arguments.callee.called = true;
@@ -36,6 +48,10 @@ See the COPYING file for details.
   }
 
   function setUp() {
+<<<<<<< HEAD
+=======
+    mockControl = new goog.testing.MockControl();
+>>>>>>> newgitrepo
     // On IE, globalEval happens async. So make it synchronous.
     goog.globalEval = function(str) {
       eval(str);
@@ -77,6 +93,10 @@ See the COPYING file for details.
   }
 
   function tearDown() {
+<<<<<<< HEAD
+=======
+    mockControl.$tearDown();
+>>>>>>> newgitrepo
     goog.dispose(errorHandler);
     errorHandler = null;
 
@@ -183,6 +203,67 @@ See the COPYING file for details.
     }
   }
 
+<<<<<<< HEAD
+=======
+  function testGetProtectedFunction() {
+    var fn = function() {
+      throw new Error('Foo');
+    };
+    var protectedFn = errorHandler.getProtectedFunction(fn);
+    var e = assertThrows(protectedFn);
+    assertTrue(e instanceof goog.debug.ErrorHandler.ProtectedFunctionError);
+    assertEquals('Foo', e.cause.message);
+  }
+
+  function testGetProtectedFunction_withoutWrappedErrors() {
+    var shouldCallErrorLog = !!Error.captureStackTrace
+    if (shouldCallErrorLog) {
+      mockControl.createMethodMock(goog.global.console,
+          'error');
+    }
+    errorHandler.setWrapErrors(false);
+    var fn = function() {
+      var e = new Error('Foo');
+      e.stack = 'STACK';
+      throw e;
+    };
+    var protectedFn = errorHandler.getProtectedFunction(fn);
+    if (shouldCallErrorLog) {
+      goog.global.console.error('Foo', 'STACK');
+    }
+    mockControl.$replayAll();
+    var e = assertThrows(protectedFn);
+    mockControl.$verifyAll();
+    assertTrue(e instanceof Error);
+    assertEquals('Foo', e.message);
+    assertEquals(e.stack, 'STACK');
+  }
+
+  function testGetProtectedFunction_withoutWrappedErrorsWithMessagePrefix() {
+    errorHandler.setWrapErrors(false);
+    errorHandler.setPrefixErrorMessages(true);
+    var fn = function() {
+      throw new Error('Foo');
+    };
+    var protectedFn = errorHandler.getProtectedFunction(fn);
+    var e = assertThrows(protectedFn);
+    assertTrue(e instanceof Error);
+    assertEquals(
+        goog.debug.ErrorHandler.ProtectedFunctionError.MESSAGE_PREFIX +
+            'Foo', e.message);
+
+    var stringError = function() {
+      throw 'String';
+    };
+    protectedFn = errorHandler.getProtectedFunction(stringError);
+    e = assertThrows(protectedFn);
+    assertEquals('string', typeof e);
+    assertEquals(
+        goog.debug.ErrorHandler.ProtectedFunctionError.MESSAGE_PREFIX +
+            'String', e);
+  }
+
+>>>>>>> newgitrepo
   function assertSetTimeoutError(caught) {
     assertMethodCalledHelper('setTimeout', caught);
   }

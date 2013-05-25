@@ -214,7 +214,11 @@ goog.ui.ControlRenderer.prototype.enableClassName = function(control,
   if (element) {
     // For IE6, we need to enable any combined classes involving this class
     // as well.
+<<<<<<< HEAD
     if (goog.userAgent.IE && !goog.userAgent.isVersion('7')) {
+=======
+    if (goog.userAgent.IE && !goog.userAgent.isVersionOrHigher('7')) {
+>>>>>>> newgitrepo
       var combinedClasses = this.getAppliedCombinedClassNames_(
           goog.dom.classes.get(element), className);
       combinedClasses.push(className);
@@ -261,7 +265,10 @@ goog.ui.ControlRenderer.prototype.canDecorate = function(element) {
  * @param {goog.ui.Control} control Control instance to decorate the element.
  * @param {Element} element Element to decorate.
  * @return {Element} Decorated element.
+<<<<<<< HEAD
  * @suppress {visibility} setContentInternal and setStateInternal
+=======
+>>>>>>> newgitrepo
  */
 goog.ui.ControlRenderer.prototype.decorate = function(control, element) {
   // Set the control's ID to the decorated element's DOM ID, if any.
@@ -320,7 +327,11 @@ goog.ui.ControlRenderer.prototype.decorate = function(control, element) {
 
   // For IE6, rewrite all classes on the decorated element if any combined
   // classes apply.
+<<<<<<< HEAD
   if (goog.userAgent.IE && !goog.userAgent.isVersion('7')) {
+=======
+  if (goog.userAgent.IE && !goog.userAgent.isVersionOrHigher('7')) {
+>>>>>>> newgitrepo
     var combinedClasses = this.getAppliedCombinedClassNames_(
         classNames);
     if (combinedClasses.length > 0) {
@@ -506,7 +517,11 @@ goog.ui.ControlRenderer.prototype.setFocusable = function(control, focusable) {
 goog.ui.ControlRenderer.prototype.setVisible = function(element, visible) {
   // The base class implementation is trivial; subclasses should override as
   // needed.  It should be possible to do animated reveals, for example.
+<<<<<<< HEAD
   goog.style.showElement(element, visible);
+=======
+  goog.style.setElementShown(element, visible);
+>>>>>>> newgitrepo
   if (element) {
     goog.a11y.aria.setState(element, goog.a11y.aria.State.HIDDEN, !visible);
   }
@@ -706,7 +721,11 @@ goog.ui.ControlRenderer.prototype.getClassNames = function(control) {
   }
 
   // Add composite classes for IE6 support
+<<<<<<< HEAD
   if (goog.userAgent.IE && !goog.userAgent.isVersion('7')) {
+=======
+  if (goog.userAgent.IE && !goog.userAgent.isVersionOrHigher('7')) {
+>>>>>>> newgitrepo
     classNames.push.apply(classNames,
         this.getAppliedCombinedClassNames_(classNames));
   }

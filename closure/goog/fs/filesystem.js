@@ -19,13 +19,17 @@
 
 goog.provide('goog.fs.FileSystem');
 
+<<<<<<< HEAD
 goog.require('goog.fs.DirectoryEntry');
 
+=======
+>>>>>>> newgitrepo
 
 
 /**
  * A local filesystem.
  *
+<<<<<<< HEAD
  * This shouldn't be instantiated directly. Instead, it should be accessed via
  * {@link goog.fs.getTemporary} or {@link goog.fs.getPersistent}.
  *
@@ -41,19 +45,32 @@ goog.fs.FileSystem = function(fs) {
    */
   this.fs_ = fs;
 };
+=======
+ * @interface
+ */
+goog.fs.FileSystem = function() {};
+>>>>>>> newgitrepo
 
 
 /**
  * @return {string} The name of the filesystem.
  */
+<<<<<<< HEAD
 goog.fs.FileSystem.prototype.getName = function() {
   return this.fs_.name;
 };
+=======
+goog.fs.FileSystem.prototype.getName = function() {};
+>>>>>>> newgitrepo
 
 
 /**
  * @return {!goog.fs.DirectoryEntry} The root directory of the filesystem.
  */
+<<<<<<< HEAD
 goog.fs.FileSystem.prototype.getRoot = function() {
   return new goog.fs.DirectoryEntry(this, this.fs_.root);
 };
+=======
+goog.fs.FileSystem.prototype.getRoot = function() {};
+>>>>>>> newgitrepo

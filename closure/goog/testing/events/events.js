@@ -35,14 +35,25 @@
 goog.provide('goog.testing.events');
 goog.provide('goog.testing.events.Event');
 
+<<<<<<< HEAD
 goog.require('goog.events');
 goog.require('goog.events.BrowserEvent');
 goog.require('goog.events.BrowserEvent.MouseButton');
+=======
+goog.require('goog.Disposable');
+goog.require('goog.asserts');
+goog.require('goog.dom.NodeType');
+goog.require('goog.events');
+goog.require('goog.events.BrowserEvent');
+>>>>>>> newgitrepo
 goog.require('goog.events.BrowserFeature');
 goog.require('goog.events.EventTarget');
 goog.require('goog.events.EventType');
 goog.require('goog.events.KeyCodes');
+<<<<<<< HEAD
 goog.require('goog.events.Listenable');
+=======
+>>>>>>> newgitrepo
 goog.require('goog.object');
 goog.require('goog.style');
 goog.require('goog.userAgent');
@@ -106,6 +117,24 @@ goog.testing.events.Event.prototype.preventDefault = function() {
 
 
 /**
+<<<<<<< HEAD
+=======
+ * Asserts an event target exists.  This will fail if target is not defined.
+ *
+ * TODO(nnaze): Gradually add this to the methods in this file, and eventually
+ *     update the method signatures to not take nullables.  See http://b/8961907
+ *
+ * @param {EventTarget} target A target to assert.
+ * @return {!EventTarget} The target, guaranteed to exist.
+ * @private
+ */
+goog.testing.events.assertEventTarget_ = function(target) {
+  return goog.asserts.assert(target, 'Target should not be defined.');
+};
+
+
+/**
+>>>>>>> newgitrepo
  * A static helper function that sets the mouse position to the event.
  * @param {Event} event A simulated native event.
  * @param {goog.math.Coordinate=} opt_coords Mouse position. Defaults to event's
@@ -148,7 +177,11 @@ goog.testing.events.fireClickSequence =
     function(target, opt_button, opt_coords, opt_eventProperties) {
   // Fire mousedown, mouseup, and click. Then return the bitwise AND of the 3.
   return !!(goog.testing.events.fireMouseDownEvent(
+<<<<<<< HEAD
                 target, opt_button, opt_coords, opt_eventProperties) &
+=======
+      target, opt_button, opt_coords, opt_eventProperties) &
+>>>>>>> newgitrepo
             goog.testing.events.fireMouseUpEvent(
                 target, opt_button, opt_coords, opt_eventProperties) &
             goog.testing.events.fireClickEvent(
@@ -173,7 +206,11 @@ goog.testing.events.fireDoubleClickSequence = function(
   // Then return the bitwise AND of the 7.
   var btn = goog.events.BrowserEvent.MouseButton.LEFT;
   return !!(goog.testing.events.fireMouseDownEvent(
+<<<<<<< HEAD
                 target, btn, opt_coords, opt_eventProperties) &
+=======
+      target, btn, opt_coords, opt_eventProperties) &
+>>>>>>> newgitrepo
             goog.testing.events.fireMouseUpEvent(
                 target, btn, opt_coords, opt_eventProperties) &
             goog.testing.events.fireClickEvent(
@@ -249,8 +286,13 @@ goog.testing.events.fireNonAsciiKeySequence = function(
     result = goog.testing.events.fireBrowserEvent(keydown);
   }
   if (goog.events.KeyCodes.firesKeyPressEvent(
+<<<<<<< HEAD
           keyCode, undefined, keydown.shiftKey, keydown.ctrlKey,
           keydown.altKey) &&
+=======
+      keyCode, undefined, keydown.shiftKey, keydown.ctrlKey,
+      keydown.altKey) &&
+>>>>>>> newgitrepo
       !(goog.userAgent.IE && !result)) {
     result &= goog.testing.events.fireBrowserEvent(keypress);
   }
@@ -488,7 +530,11 @@ goog.testing.events.fireContextMenuSequence = function(target, opt_coords) {
   if (goog.userAgent.WINDOWS) {
     // All browsers are consistent on Windows.
     result &= goog.testing.events.fireMouseUpEvent(target,
+<<<<<<< HEAD
                   button, opt_coords) &
+=======
+        button, opt_coords) &
+>>>>>>> newgitrepo
               goog.testing.events.fireContextMenuEvent(target, opt_coords);
   } else {
     result &= goog.testing.events.fireContextMenuEvent(target, opt_coords);
@@ -654,7 +700,11 @@ goog.testing.events.fireTouchSequence = function(
   // TODO: Support multi-touch events with array of coordinates.
   // Fire touchstart, touchmove, touchend then return the bitwise AND of the 3.
   return !!(goog.testing.events.fireTouchStartEvent(
+<<<<<<< HEAD
                 target, opt_coords, opt_eventProperties) &
+=======
+      target, opt_coords, opt_eventProperties) &
+>>>>>>> newgitrepo
             goog.testing.events.fireTouchEndEvent(
                 target, opt_coords, opt_eventProperties));
 };
@@ -670,6 +720,7 @@ goog.testing.events.fireTouchSequence = function(
 goog.testing.events.mixinListenable = function(obj) {
   var listenable = new goog.events.EventTarget();
 
+<<<<<<< HEAD
   if (goog.events.Listenable.USE_LISTENABLE_INTERFACE) {
     listenable.setTargetForTesting(obj);
 
@@ -688,5 +739,21 @@ goog.testing.events.mixinListenable = function(obj) {
     }
   } else {
     goog.mixin(obj, listenable);
+=======
+  listenable.setTargetForTesting(obj);
+
+  var listenablePrototype = goog.events.EventTarget.prototype;
+  var disposablePrototype = goog.Disposable.prototype;
+  for (var key in listenablePrototype) {
+    if (listenablePrototype.hasOwnProperty(key) ||
+        disposablePrototype.hasOwnProperty(key)) {
+      var member = listenablePrototype[key];
+      if (goog.isFunction(member)) {
+        obj[key] = goog.bind(member, listenable);
+      } else {
+        obj[key] = member;
+      }
+    }
+>>>>>>> newgitrepo
   }
 };

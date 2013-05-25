@@ -26,6 +26,10 @@ goog.require('proto2.TestAllTypes');
 goog.setTestOnly('package_test.pb');
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Message TestPackageTypes.
  * @constructor

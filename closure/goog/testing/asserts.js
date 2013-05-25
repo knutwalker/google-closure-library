@@ -544,6 +544,7 @@ goog.testing.asserts.findDifferences = function(expected, actual,
   // To avoid infinite recursion when the two parameters are self-referential
   // along the same path of properties, keep track of the object pairs already
   // seen in this call subtree, and abort when a cycle is detected.
+<<<<<<< HEAD
   // TODO(gboyer,user): The algorithm still does not terminate in cases
   // with exponential recursion, e.g. a binary tree with leaf->root links.
   // Investigate ways to solve this without significant performance loss
@@ -560,6 +561,22 @@ goog.testing.asserts.findDifferences = function(expected, actual,
       // Use === to avoid cases like ['x'] == 'x', which is true.
       var match1 = seen1[mid] === var1;
       var match2 = seen2[mid] === var2;
+=======
+  function innerAssert(var1, var2, path) {
+    // This is used for testing, so we can afford to be slow (but more
+    // accurate). So we just check whether var1 is in seen1. If we
+    // found var1 in index i, we simply need to check whether var2 is
+    // in seen2[i]. If it is, we do not recurse to check var1/var2. If
+    // it isn't, we know that the structures of the two objects must be
+    // different.
+    //
+    // This is based on the fact that values at index i in seen1 and
+    // seen2 will be checked for equality eventually (when
+    // innerAssert_(seen1[i], seen2[i], path) finishes).
+    for (var i = 0; i < seen1.length; ++i) {
+      var match1 = seen1[i] === var1;
+      var match2 = seen2[i] === var2;
+>>>>>>> newgitrepo
       if (match1 || match2) {
         if (!match1 || !match2) {
           // Asymmetric cycles, so the objects have different structure.
@@ -568,6 +585,10 @@ goog.testing.asserts.findDifferences = function(expected, actual,
         return;
       }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
     seen1.push(var1);
     seen2.push(var2);
     innerAssert_(var1, var2, path);
@@ -824,9 +845,15 @@ var assertArrayEquals = function(a, b, opt_c) {
  * @param {string|Object} a Failure message (3 arguments)
  *     or object #1 (2 arguments).
  * @param {Object} b Object #1 (2 arguments) or object #2 (3 arguments).
+<<<<<<< HEAD
  * @param {Object=} c Object #2 (3 arguments).
  */
 var assertElementsEquals = function(a, b, c) {
+=======
+ * @param {Object=} opt_c Object #2 (3 arguments).
+ */
+var assertElementsEquals = function(a, b, opt_c) {
+>>>>>>> newgitrepo
   _validateArguments(2, arguments);
 
   var v1 = nonCommentArg(1, 2, arguments);
@@ -1184,6 +1211,10 @@ goog.testing.asserts.isArrayIndexProp_ = function(prop) {
  * @param {string} comment A summary for the exception.
  * @param {?string=} opt_message A description of the exception.
  * @constructor
+<<<<<<< HEAD
+=======
+ * @extends {Error}
+>>>>>>> newgitrepo
  */
 goog.testing.JsUnitException = function(comment, opt_message) {
   this.isJsUnitException = true;
@@ -1194,7 +1225,19 @@ goog.testing.JsUnitException = function(comment, opt_message) {
   // These fields are for compatibility with jsUnitTestManager.
   this.comment = comment || null;
   this.jsUnitMessage = opt_message || '';
+<<<<<<< HEAD
 };
+=======
+
+  // Ensure there is a stack trace.
+  if (Error.captureStackTrace) {
+    Error.captureStackTrace(this, goog.testing.JsUnitException);
+  } else {
+    this.stack = new Error().stack || '';
+  }
+};
+goog.inherits(goog.testing.JsUnitException, Error);
+>>>>>>> newgitrepo
 
 
 /** @override */

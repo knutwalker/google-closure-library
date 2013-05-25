@@ -350,6 +350,27 @@ function testAppendParams() {
 }
 
 
+<<<<<<< HEAD
+=======
+function testValuelessParam() {
+  assertEquals('http://foo.com?q',
+      utils.appendParam('http://foo.com', 'q'));
+  assertEquals('http://foo.com?q',
+      utils.appendParam('http://foo.com', 'q', null /* opt_value */));
+  assertEquals('http://foo.com?q#preserve',
+      utils.appendParam('http://foo.com#preserve', 'q'));
+  assertEquals('should tolerate a lone question mark',
+      'http://foo.com?q',
+      utils.appendParam('http://foo.com?', 'q'));
+  assertEquals('http://foo.com?q=1&r',
+      utils.appendParam('http://foo.com?q=1', 'r'));
+  assertEquals('http://foo.com?q=1&r=2&s#preserve',
+      utils.appendParam('http://foo.com?q=1&r=2#preserve', 's'));
+  assertTrue(utils.hasParam('http://foo.com?q=1&r=2&s#preserve', 's'));
+}
+
+
+>>>>>>> newgitrepo
 function testAppendParamsAsArray() {
   assertEquals('http://foo.com?q=1&r=2&s=3&s=4#preserve',
       utils.appendParams('http://foo.com#preserve',
@@ -406,6 +427,7 @@ function testMultiParamSkipsNullParams() {
 }
 
 
+<<<<<<< HEAD
 function testAppendSingleParamDoesAppendNullParams() {
   // For the single-param function, exactly 1 parameter will always be appended.
   assertEquals('appendParam does not skip null params', 'foo.com?a=null',
@@ -413,6 +435,8 @@ function testAppendSingleParamDoesAppendNullParams() {
 }
 
 
+=======
+>>>>>>> newgitrepo
 function testRemoveParam() {
   assertEquals('remove middle', 'http://foo.com?q=1&s=3',
       utils.removeParam('http://foo.com?q=1&r=2&s=3', 'r'));

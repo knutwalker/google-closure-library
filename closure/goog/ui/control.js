@@ -27,17 +27,26 @@ goog.provide('goog.ui.Control');
 
 goog.require('goog.array');
 goog.require('goog.dom');
+<<<<<<< HEAD
 goog.require('goog.events.BrowserEvent.MouseButton');
+=======
+goog.require('goog.events.BrowserEvent');
+>>>>>>> newgitrepo
 goog.require('goog.events.Event');
 goog.require('goog.events.EventType');
 goog.require('goog.events.KeyCodes');
 goog.require('goog.events.KeyHandler');
+<<<<<<< HEAD
 goog.require('goog.events.KeyHandler.EventType');
 goog.require('goog.string');
 goog.require('goog.ui.Component');
 goog.require('goog.ui.Component.Error');
 goog.require('goog.ui.Component.EventType');
 goog.require('goog.ui.Component.State');
+=======
+goog.require('goog.string');
+goog.require('goog.ui.Component');
+>>>>>>> newgitrepo
 goog.require('goog.ui.ControlContent');
 goog.require('goog.ui.ControlRenderer');
 goog.require('goog.ui.decorate');
@@ -377,8 +386,13 @@ goog.ui.Control.prototype.addClassName = function(className) {
  *     element.
  */
 goog.ui.Control.prototype.removeClassName = function(className) {
+<<<<<<< HEAD
   if (className && this.extraClassNames_) {
     goog.array.remove(this.extraClassNames_, className);
+=======
+  if (className && this.extraClassNames_ &&
+      goog.array.remove(this.extraClassNames_, className)) {
+>>>>>>> newgitrepo
     if (this.extraClassNames_.length == 0) {
       this.extraClassNames_ = null;
     }
@@ -662,11 +676,20 @@ goog.ui.Control.prototype.setContent = function(content) {
 /**
  * Sets the component's content to the given text caption, element, or array
  * of nodes.  Unlike {@link #setContent}, doesn't modify the component's DOM.
+<<<<<<< HEAD
  * Called by renderers during element decoration.  Considered protected; should
  * only be used within this package and by subclasses.
  * @param {goog.ui.ControlContent} content Text caption or DOM structure
  *     to set as the component's contents.
  * @protected
+=======
+ * Called by renderers during element decoration.
+ *
+ * This should only be used by subclasses and its associated renderers.
+ *
+ * @param {goog.ui.ControlContent} content Text caption or DOM structure
+ *     to set as the component's contents.
+>>>>>>> newgitrepo
  */
 goog.ui.Control.prototype.setContentInternal = function(content) {
   this.content_ = content;
@@ -1014,8 +1037,15 @@ goog.ui.Control.prototype.setState = function(state, enable) {
  * update the component's styling, and doesn't reject unsupported states.
  * Called by renderers during element decoration.  Considered protected;
  * should only be used within this package and by subclasses.
+<<<<<<< HEAD
  * @param {number} state Bit mask representing component state.
  * @protected
+=======
+ *
+ * This should only be used by subclasses and its associated renderers.
+ *
+ * @param {number} state Bit mask representing component state.
+>>>>>>> newgitrepo
  */
 goog.ui.Control.prototype.setStateInternal = function(state) {
   this.state_ = state;

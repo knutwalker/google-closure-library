@@ -328,10 +328,17 @@ goog.ui.SubMenu.prototype.handleKeyEvent = function(e) {
  * Listens to the sub menus items and ensures that this menu item is selected
  * while dismissing the others.  This handles the case when the user mouses
  * over other items on their way to the sub menu.
+<<<<<<< HEAD
  * @param {goog.events.Event} e Highlight event to handle.
  * @private
  */
 goog.ui.SubMenu.prototype.onChildHighlight_ = function(e) {
+=======
+ * @param {goog.events.Event} e Enter event to handle.
+ * @private
+ */
+goog.ui.SubMenu.prototype.onChildEnter_ = function(e) {
+>>>>>>> newgitrepo
   if (this.subMenu_.getParent() == this) {
     this.clearTimers();
     this.getParentEventTarget().setHighlighted(this);
@@ -437,8 +444,13 @@ goog.ui.SubMenu.prototype.setSubMenuVisible_ = function(visible) {
 goog.ui.SubMenu.prototype.setMenuListenersEnabled_ = function(menu, attach) {
   var handler = this.getHandler();
   var method = attach ? handler.listen : handler.unlisten;
+<<<<<<< HEAD
   method.call(handler, menu, goog.ui.Component.EventType.HIGHLIGHT,
       this.onChildHighlight_);
+=======
+  method.call(handler, menu, goog.ui.Component.EventType.ENTER,
+      this.onChildEnter_);
+>>>>>>> newgitrepo
 };
 
 
@@ -490,7 +502,11 @@ goog.ui.SubMenu.prototype.positionSubMenu = function() {
   var el = subMenu.getElement();
   if (!subMenu.isVisible()) {
     el.style.visibility = 'hidden';
+<<<<<<< HEAD
     goog.style.showElement(el, true);
+=======
+    goog.style.setElementShown(el, true);
+>>>>>>> newgitrepo
   }
 
   position.reposition(
@@ -498,7 +514,11 @@ goog.ui.SubMenu.prototype.positionSubMenu = function() {
       goog.positioning.Corner.TOP_START : goog.positioning.Corner.TOP_END);
 
   if (!subMenu.isVisible()) {
+<<<<<<< HEAD
     goog.style.showElement(el, false);
+=======
+    goog.style.setElementShown(el, false);
+>>>>>>> newgitrepo
     el.style.visibility = 'visible';
   }
 };

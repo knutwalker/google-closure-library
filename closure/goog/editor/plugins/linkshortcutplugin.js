@@ -44,7 +44,11 @@ goog.editor.plugins.LinkShortcutPlugin.prototype.getTrogClassId = function() {
 
 
 /**
+<<<<<<< HEAD
  * @inheritDoc
+=======
+ * @override
+>>>>>>> newgitrepo
  */
 goog.editor.plugins.LinkShortcutPlugin.prototype.handleKeyboardShortcut =
     function(e, key, isModifierPressed) {

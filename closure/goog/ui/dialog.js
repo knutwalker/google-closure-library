@@ -562,13 +562,21 @@ goog.ui.Dialog.prototype.createDom = function() {
   if (this.content_) {
     this.contentEl_.innerHTML = this.content_;
   }
+<<<<<<< HEAD
   goog.style.showElement(this.titleCloseEl_, this.hasTitleCloseButton_);
+=======
+  goog.style.setElementShown(this.titleCloseEl_, this.hasTitleCloseButton_);
+>>>>>>> newgitrepo
 
   // Render the buttons.
   if (this.buttons_) {
     this.buttons_.attachToElement(this.buttonEl_);
   }
+<<<<<<< HEAD
   goog.style.showElement(this.buttonEl_, !!this.buttons_);
+=======
+  goog.style.setElementShown(this.buttonEl_, !!this.buttons_);
+>>>>>>> newgitrepo
   this.setBackgroundElementOpacity(this.backgroundElementOpacity_);
 };
 
@@ -635,7 +643,11 @@ goog.ui.Dialog.prototype.decorateInternal = function(element) {
     this.titleCloseEl_ = this.getDomHelper().createDom('span', titleCloseClass);
     this.titleEl_.appendChild(this.titleCloseEl_);
   }
+<<<<<<< HEAD
   goog.style.showElement(this.titleCloseEl_, this.hasTitleCloseButton_);
+=======
+  goog.style.setElementShown(this.titleCloseEl_, this.hasTitleCloseButton_);
+>>>>>>> newgitrepo
 
   // Decorate or create the button container element.
   var buttonsClass = goog.getCssName(this.class_, 'buttons');
@@ -653,7 +665,11 @@ goog.ui.Dialog.prototype.decorateInternal = function(element) {
     if (this.buttons_) {
       this.buttons_.attachToElement(this.buttonEl_);
     }
+<<<<<<< HEAD
     goog.style.showElement(this.buttonEl_, !!this.buttons_);
+=======
+    goog.style.setElementShown(this.buttonEl_, !!this.buttons_);
+>>>>>>> newgitrepo
   }
   this.setBackgroundElementOpacity(this.backgroundElementOpacity_);
 };
@@ -862,7 +878,11 @@ goog.ui.Dialog.prototype.getHasTitleCloseButton = function() {
 goog.ui.Dialog.prototype.setHasTitleCloseButton = function(b) {
   this.hasTitleCloseButton_ = b;
   if (this.titleCloseEl_) {
+<<<<<<< HEAD
     goog.style.showElement(this.titleCloseEl_, this.hasTitleCloseButton_);
+=======
+    goog.style.setElementShown(this.titleCloseEl_, this.hasTitleCloseButton_);
+>>>>>>> newgitrepo
   }
 };
 
@@ -923,7 +943,11 @@ goog.ui.Dialog.prototype.setButtonSet = function(buttons) {
     } else {
       this.buttonEl_.innerHTML = '';
     }
+<<<<<<< HEAD
     goog.style.showElement(this.buttonEl_, !!this.buttons_);
+=======
+    goog.style.setElementShown(this.buttonEl_, !!this.buttons_);
+>>>>>>> newgitrepo
   }
 };
 
@@ -1017,9 +1041,15 @@ goog.ui.Dialog.prototype.onKey_ = function(e) {
     // Only handle ENTER in keypress events, in case the action opens a
     // popup window.
     var key;
+<<<<<<< HEAD
     if (target.tagName == 'BUTTON') {
       // If focus was on a button, it must have been enabled, so we can fire
       // that button's handler.
+=======
+    if (target.tagName == 'BUTTON' && !target.disabled) {
+      // If the target is a button and it's enabled, we can fire that button's
+      // handler.
+>>>>>>> newgitrepo
       key = target.name;
     } else if (buttonSet) {
       // Try to fire the default button's handler (if one exists), but only if

@@ -26,8 +26,13 @@ goog.require('goog.dom');
 goog.require('goog.events.EventHandler');
 goog.require('goog.events.EventType');
 goog.require('goog.graphics.AbstractGraphics');
+<<<<<<< HEAD
 goog.require('goog.graphics.Font');
 goog.require('goog.graphics.LinearGradient');
+=======
+goog.require('goog.graphics.LinearGradient');
+goog.require('goog.graphics.Path');
+>>>>>>> newgitrepo
 goog.require('goog.graphics.SolidFill');
 goog.require('goog.graphics.Stroke');
 goog.require('goog.graphics.SvgEllipseElement');
@@ -36,6 +41,10 @@ goog.require('goog.graphics.SvgImageElement');
 goog.require('goog.graphics.SvgPathElement');
 goog.require('goog.graphics.SvgRectElement');
 goog.require('goog.graphics.SvgTextElement');
+<<<<<<< HEAD
+=======
+goog.require('goog.math');
+>>>>>>> newgitrepo
 goog.require('goog.math.Size');
 goog.require('goog.style');
 goog.require('goog.userAgent');
@@ -56,6 +65,12 @@ goog.require('goog.userAgent');
  *     document we want to render in.
  * @constructor
  * @extends {goog.graphics.AbstractGraphics}
+<<<<<<< HEAD
+=======
+ * @deprecated goog.graphics is deprecated. It existed to abstract over browser
+ *     differences before the canvas tag was widely supported.  See
+ *     http://en.wikipedia.org/wiki/Canvas_element for details.
+>>>>>>> newgitrepo
  */
 goog.graphics.SvgGraphics = function(width, height,
                                      opt_coordWidth, opt_coordHeight,
@@ -82,7 +97,11 @@ goog.graphics.SvgGraphics = function(width, height,
    * @private
    */
   this.useManualViewbox_ = goog.userAgent.WEBKIT &&
+<<<<<<< HEAD
                            !goog.userAgent.isVersion(526);
+=======
+                           !goog.userAgent.isVersionOrHigher(526);
+>>>>>>> newgitrepo
 
   /**
    * Event handler.
@@ -651,6 +670,10 @@ goog.graphics.SvgGraphics.prototype.drawPath = function(
  *
  * @param {goog.graphics.Path} path The logical path.
  * @return {string} The SVG path representation.
+<<<<<<< HEAD
+=======
+ * @suppress {deprecated} goog.graphics is deprecated.
+>>>>>>> newgitrepo
  */
 goog.graphics.SvgGraphics.getSvgPath = function(path) {
   var list = [];
@@ -752,6 +775,10 @@ goog.graphics.SvgGraphics.prototype.getDef = function(defKey) {
   return defKey in this.defs_ ? this.defs_[defKey] : null;
 };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * Removes a definition of an elemnt from the global definitions.
  * @param {string} defKey This is a key that should be unique in a way that
@@ -759,7 +786,11 @@ goog.graphics.SvgGraphics.prototype.getDef = function(defKey) {
  */
 goog.graphics.SvgGraphics.prototype.removeDef = function(defKey) {
   var id = this.getDef(defKey);
+<<<<<<< HEAD
   if (id)  {
+=======
+  if (id) {
+>>>>>>> newgitrepo
     var element = this.dom_.getElement(id);
     this.defsElement_.removeChild(element);
     delete this.defs_[defKey];

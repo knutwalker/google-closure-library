@@ -18,6 +18,10 @@
 
 goog.provide('goog.proto2.Serializer');
 
+<<<<<<< HEAD
+=======
+goog.require('goog.object');
+>>>>>>> newgitrepo
 goog.require('goog.proto2.Descriptor');
 goog.require('goog.proto2.FieldDescriptor');
 goog.require('goog.proto2.Message');
@@ -118,6 +122,25 @@ goog.proto2.Serializer.prototype.getDeserializedValue = function(field, value) {
     return this.deserialize(field.getFieldMessageType(), value);
   }
 
+<<<<<<< HEAD
+=======
+  // Decode enum values.
+  if (field.getFieldType() == goog.proto2.FieldDescriptor.FieldType.ENUM) {
+    // If it's a string, get enum value by name.
+    if (goog.isString(value)) {
+      // enumType is a regular Javascript enum as defined in field's metadata.
+      var enumType = field.getNativeType();
+      if (goog.object.containsKey(enumType, value)) {
+        return enumType[value];
+      }
+      // Return unknown values as is for backward compatibility.
+      return value;
+    }
+    // Return value as is for backward compatibility.
+    return value;
+  }
+
+>>>>>>> newgitrepo
   // Return the raw value if the field does not allow the JSON input to be
   // converted.
   if (!field.deserializationConversionPermitted()) {
@@ -132,12 +155,20 @@ goog.proto2.Serializer.prototype.getDeserializedValue = function(field, value) {
   var nativeType = field.getNativeType();
   if (nativeType === String) {
     // JSON numbers can be converted to strings.
+<<<<<<< HEAD
     if (typeof value === 'number') {
+=======
+    if (goog.isNumber(value)) {
+>>>>>>> newgitrepo
       return String(value);
     }
   } else if (nativeType === Number) {
     // JSON strings are sometimes used for large integer numeric values.
+<<<<<<< HEAD
     if (typeof value === 'string') {
+=======
+    if (goog.isString(value)) {
+>>>>>>> newgitrepo
       // Validate the string.  If the string is not an integral number, we would
       // rather have an assertion or error in the caller than a mysterious NaN
       // value.

@@ -15,6 +15,12 @@ See the COPYING file for details.
   goog.require('goog.i18n.NumberFormat');
   goog.require('goog.i18n.NumberFormatSymbols');
   goog.require('goog.i18n.NumberFormatSymbols_fr');
+<<<<<<< HEAD
+=======
+  goog.require('goog.i18n.CompactNumberFormatSymbols');
+  goog.require('goog.i18n.CompactNumberFormatSymbols_fr');
+  goog.require('goog.i18n.CompactNumberFormatSymbols_de');
+>>>>>>> newgitrepo
   goog.require('goog.testing.ExpectedFailures');
   goog.require('goog.testing.jsunit');
   goog.require('goog.userAgent');
@@ -26,7 +32,16 @@ See the COPYING file for details.
 <script>
 
 var expectedFailures = new goog.testing.ExpectedFailures();
+<<<<<<< HEAD
 goog.i18n.NumberFormatSymbols = goog.i18n.NumberFormatSymbols_en;
+=======
+
+function setUp() {
+  // Always switch back to English on startup.
+  goog.i18n.NumberFormatSymbols = goog.i18n.NumberFormatSymbols_en;
+  goog.i18n.CompactNumberFormatSymbols = goog.i18n.CompactNumberFormatSymbols_en;
+}
+>>>>>>> newgitrepo
 
 function tearDown() {
   expectedFailures.handleTearDown();
@@ -617,7 +632,10 @@ function testLocaleSwitch() {
   fmt = new goog.i18n.NumberFormat('\u00a4#,##0.00;(\u00a4#,##0.00)', 'SEK');
   str = fmt.format(-1234.56);
   assertEquals('(kr1\u00a0234,56)', str);
+<<<<<<< HEAD
   goog.i18n.NumberFormatSymbols = goog.i18n.NumberFormatSymbols_en;
+=======
+>>>>>>> newgitrepo
 }
 
 function testFrenchParse() {
@@ -650,13 +668,19 @@ function testFrenchParse() {
   fmt = new goog.i18n.NumberFormat('#,##0.00');
   value = fmt.parse('8 123\u00a0456,99');
   assertEquals(8123456.99, value);
+<<<<<<< HEAD
   goog.i18n.NumberFormatSymbols = goog.i18n.NumberFormatSymbols_en;
+=======
+>>>>>>> newgitrepo
 }
 
 
 function testFailParseShouldThrow() {
+<<<<<<< HEAD
   goog.i18n.NumberFormatSymbols = goog.i18n.NumberFormatSymbols_en;
 
+=======
+>>>>>>> newgitrepo
   var fmt = new goog.i18n.NumberFormat('0.0000');
   var value = fmt.parse('x');
   assertNaN(value);
@@ -697,6 +721,149 @@ function testEnforceAscii() {
   }
 }
 
+<<<<<<< HEAD
+=======
+function testSignificantDigitsEqualToMax() {
+  var fmt = new goog.i18n.NumberFormat(goog.i18n.NumberFormat.Format.DECIMAL);
+  fmt.setMinimumFractionDigits(0);
+  fmt.setMaximumFractionDigits(2);
+
+  fmt.setSignificantDigits(2);
+  assertEquals('123',  fmt.format(123.4));
+  assertEquals('12',   fmt.format(12.34));
+  assertEquals('1.2',  fmt.format(1.234));
+  assertEquals('0.12', fmt.format(0.1234));
+}
+
+function testSignificantDigitsLessThanMax() {
+  var fmt = new goog.i18n.NumberFormat(goog.i18n.NumberFormat.Format.DECIMAL);
+  fmt.setMinimumFractionDigits(0);
+  fmt.setMaximumFractionDigits(4);
+  fmt.setSignificantDigits(1);
+
+  assertEquals('123', fmt.format(123.4));
+  assertEquals('12',  fmt.format(12.34));
+  assertEquals('1',   fmt.format(1.234));
+  assertEquals('0.1', fmt.format(0.1234));
+}
+
+function testSignificantDigitsMoreThanMax() {
+  // Max fractional digits should be absolute
+  var fmt = new goog.i18n.NumberFormat(goog.i18n.NumberFormat.Format.DECIMAL);
+  fmt.setMinimumFractionDigits(0);
+  fmt.setMaximumFractionDigits(2);
+  fmt.setSignificantDigits(3);
+
+  assertEquals('123',  fmt.format(123.4));
+  assertEquals('12.3', fmt.format(12.34));
+  assertEquals('1.23', fmt.format(1.234));
+  assertEquals('0.12', fmt.format(0.1234));
+}
+
+function testSimpleCompactFrench() {
+  // Switch to French.
+  goog.i18n.NumberFormatSymbols = goog.i18n.NumberFormatSymbols_fr;
+  goog.i18n.CompactNumberFormatSymbols = goog.i18n.CompactNumberFormatSymbols_fr;
+
+  var fmt = new goog.i18n.NumberFormat(
+      goog.i18n.NumberFormat.Format.COMPACT_SHORT);
+
+  var str = fmt.format(123400000);
+  assertEquals('123\u00A0M', str);
+}
+
+function testSimpleCompactGerman() {
+  // Switch to German.
+  goog.i18n.NumberFormatSymbols = goog.i18n.NumberFormatSymbols_de;
+  goog.i18n.CompactNumberFormatSymbols = goog.i18n.CompactNumberFormatSymbols_de;
+
+  var fmt = new goog.i18n.NumberFormat(
+      goog.i18n.NumberFormat.Format.COMPACT_SHORT);
+
+  // The german short compact decimal has a simple '0' for 1000's, which is
+  // supposed to be interpreted as 'leave the number as-is'.
+  // (The number itself will still be formatted with the '.', but no rounding)
+  var str = fmt.format(1234);
+  assertEquals('1.234', str);
+}
+
+function testSimpleCompact1() {
+  var fmt = new goog.i18n.NumberFormat(
+      goog.i18n.NumberFormat.Format.COMPACT_SHORT);
+
+  var str = fmt.format(1234);
+  assertEquals('1.2K', str);
+}
+
+function testSimpleCompact2() {
+  var fmt = new goog.i18n.NumberFormat(
+      goog.i18n.NumberFormat.Format.COMPACT_SHORT);
+
+  var str = fmt.format(12345);
+  assertEquals('12K', str);
+}
+
+function testRoundingCompact() {
+  var fmt = new goog.i18n.NumberFormat(
+      goog.i18n.NumberFormat.Format.COMPACT_SHORT);
+
+  var str = fmt.format(999999);
+  assertEquals('1M', str); //as opposed to 1000k
+}
+
+function testRoundingCompactNegative() {
+  var fmt = new goog.i18n.NumberFormat(
+      goog.i18n.NumberFormat.Format.COMPACT_SHORT);
+
+  var str = fmt.format(-999999);
+  assertEquals('-1M', str);
+}
+
+function testCompactSmall() {
+  var fmt = new goog.i18n.NumberFormat(
+      goog.i18n.NumberFormat.Format.COMPACT_SHORT);
+
+  var str = fmt.format(0.1234);
+  assertEquals('0.12', str);
+}
+
+function testCompactLong() {
+  var fmt = new goog.i18n.NumberFormat(
+      goog.i18n.NumberFormat.Format.COMPACT_LONG);
+
+  var str = fmt.format(12345);
+  assertEquals('12 thousand', str);
+}
+
+function testCompactWithoutSignificant() {
+  var fmt = new goog.i18n.NumberFormat(
+      goog.i18n.NumberFormat.Format.COMPACT_SHORT);
+  fmt.setSignificantDigits(0);
+  fmt.setMinimumFractionDigits(2);
+  fmt.setMaximumFractionDigits(2);
+
+  assertEquals('1.23K', fmt.format(1234));
+  assertEquals('1.00K', fmt.format(1000));
+  assertEquals('123.46K', fmt.format(123456.7));
+  assertEquals('999.99K', fmt.format(999994));
+  assertEquals('1.00M', fmt.format(999995));
+}
+
+function testCompactWithoutSignificant2() {
+  var fmt = new goog.i18n.NumberFormat(
+      goog.i18n.NumberFormat.Format.COMPACT_SHORT);
+  fmt.setSignificantDigits(0);
+  fmt.setMinimumFractionDigits(0);
+  fmt.setMaximumFractionDigits(2);
+
+  assertEquals('1.23K', fmt.format(1234));
+  assertEquals('1K', fmt.format(1000));
+  assertEquals('123.46K', fmt.format(123456.7));
+  assertEquals('999.99K', fmt.format(999994));
+  assertEquals('1M', fmt.format(999995));
+}
+
+>>>>>>> newgitrepo
 </script>
 </body>
 </html>

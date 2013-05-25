@@ -24,6 +24,10 @@ goog.provide('goog.ui.Palette');
 
 goog.require('goog.array');
 goog.require('goog.dom');
+<<<<<<< HEAD
+=======
+goog.require('goog.events');
+>>>>>>> newgitrepo
 goog.require('goog.events.EventType');
 goog.require('goog.events.KeyCodes');
 goog.require('goog.math.Size');
@@ -58,6 +62,17 @@ goog.ui.Palette = function(items, opt_renderer, opt_domHelper) {
       opt_renderer || goog.ui.PaletteRenderer.getInstance(), opt_domHelper);
   this.setAutoStates(goog.ui.Component.State.CHECKED |
       goog.ui.Component.State.SELECTED | goog.ui.Component.State.OPENED, false);
+<<<<<<< HEAD
+=======
+
+  /**
+   * A fake component for dispatching events on palette cell changes.
+   * @type {!goog.ui.Palette.CurrentCell_}
+   * @private
+   */
+  this.currentCellControl_ = new goog.ui.Palette.CurrentCell_();
+  this.currentCellControl_.setParentEventTarget(this);
+>>>>>>> newgitrepo
 };
 goog.inherits(goog.ui.Palette, goog.ui.Control);
 
@@ -109,6 +124,11 @@ goog.ui.Palette.prototype.disposeInternal = function() {
   }
 
   this.size_ = null;
+<<<<<<< HEAD
+=======
+
+  this.currentCellControl_.dispose();
+>>>>>>> newgitrepo
 };
 
 
@@ -210,7 +230,11 @@ goog.ui.Palette.prototype.handleMouseOut = function(e) {
   }
 
   if (item == this.getHighlightedItem()) {
+<<<<<<< HEAD
     this.getRenderer().highlightCell(this, item, false);
+=======
+    this.setHighlightedItem(null);
+>>>>>>> newgitrepo
   }
 };
 
@@ -409,6 +433,18 @@ goog.ui.Palette.prototype.getHighlightedItem = function() {
 
 
 /**
+<<<<<<< HEAD
+=======
+ * @return {Element} The highlighted cell.
+ * @private
+ */
+goog.ui.Palette.prototype.getHighlightedCellElement_ = function() {
+  return this.getRenderer().getCellForItem(this.getHighlightedItem());
+};
+
+
+/**
+>>>>>>> newgitrepo
  * Highlights the item at the given 0-based index, or removes the highlight
  * if the argument is -1 or out of range.  Any previously-highlighted item
  * will be un-highlighted.
@@ -494,7 +530,17 @@ goog.ui.Palette.prototype.highlightIndex_ = function(index, highlight) {
   if (this.getElement()) {
     var items = this.getContent();
     if (items && index >= 0 && index < items.length) {
+<<<<<<< HEAD
       this.getRenderer().highlightCell(this, items[index], highlight);
+=======
+      var cellEl = this.getHighlightedCellElement_();
+      if (this.currentCellControl_.getElement() != cellEl) {
+        this.currentCellControl_.setElementInternal(cellEl);
+      }
+      if (this.currentCellControl_.tryHighlight(highlight)) {
+        this.getRenderer().highlightCell(this, items[index], highlight);
+      }
+>>>>>>> newgitrepo
     }
   }
 };
@@ -546,3 +592,30 @@ goog.ui.Palette.prototype.adjustSize_ = function() {
     this.size_ = new goog.math.Size(0, 0);
   }
 };
+<<<<<<< HEAD
+=======
+
+
+
+/**
+ * A component to represent the currently highlighted cell.
+ * @constructor
+ * @extends {goog.ui.Control}
+ * @private
+ */
+goog.ui.Palette.CurrentCell_ = function() {
+  goog.base(this, null);
+  this.setDispatchTransitionEvents(goog.ui.Component.State.HOVER, true);
+};
+goog.inherits(goog.ui.Palette.CurrentCell_, goog.ui.Control);
+
+
+/**
+ * @param {boolean} highlight Whether to highlight or unhighlight the component.
+ * @return {boolean} Whether it was successful.
+ */
+goog.ui.Palette.CurrentCell_.prototype.tryHighlight = function(highlight) {
+  this.setHighlighted(highlight);
+  return this.isHighlighted() == highlight;
+};
+>>>>>>> newgitrepo

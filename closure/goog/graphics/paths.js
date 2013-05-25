@@ -33,6 +33,12 @@ goog.require('goog.math.Coordinate');
  *     a radius as well.
  * @param {number} n The number of vertices.
  * @return {!goog.graphics.Path} The path.
+<<<<<<< HEAD
+=======
+ * @deprecated goog.graphics is deprecated. It existed to abstract over browser
+ *     differences before the canvas tag was widely supported.  See
+ *     http://en.wikipedia.org/wiki/Canvas_element for details.
+>>>>>>> newgitrepo
  */
 goog.graphics.paths.createRegularNGon = function(center, vertex, n) {
   var path = new goog.graphics.Path();
@@ -59,6 +65,12 @@ goog.graphics.paths.createRegularNGon = function(center, vertex, n) {
  * @param {?number} bHead The size of the arrow head at point B.
  *     0 omits the head.
  * @return {!goog.graphics.Path} The path.
+<<<<<<< HEAD
+=======
+ * @deprecated goog.graphics is deprecated. It existed to abstract over browser
+ *     differences before the canvas tag was widely supported.  See
+ *     http://en.wikipedia.org/wiki/Canvas_element for details.
+>>>>>>> newgitrepo
  */
 goog.graphics.paths.createArrow = function(a, b, aHead, bHead) {
   var path = new goog.graphics.Path();

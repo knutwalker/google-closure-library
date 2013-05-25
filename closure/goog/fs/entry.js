@@ -20,12 +20,16 @@
  * the mock counterparts in goog.testing.fs.
  *
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> newgitrepo
 goog.provide('goog.fs.DirectoryEntry');
 goog.provide('goog.fs.DirectoryEntry.Behavior');
 goog.provide('goog.fs.Entry');
 goog.provide('goog.fs.FileEntry');
 
+<<<<<<< HEAD
 goog.require('goog.array');
 goog.require('goog.async.Deferred');
 goog.require('goog.fs.Error');
@@ -59,46 +63,75 @@ goog.fs.Entry = function(fs, entry) {
    */
   this.entry_ = entry;
 };
+=======
+
+
+/**
+ * The interface for entries in the filesystem.
+ * @interface
+ */
+goog.fs.Entry = function() {};
+>>>>>>> newgitrepo
 
 
 /**
  * @return {boolean} Whether or not this entry is a file.
  */
+<<<<<<< HEAD
 goog.fs.Entry.prototype.isFile = function() {
   return this.entry_.isFile;
 };
+=======
+goog.fs.Entry.prototype.isFile = function() {};
+>>>>>>> newgitrepo
 
 
 /**
  * @return {boolean} Whether or not this entry is a directory.
  */
+<<<<<<< HEAD
 goog.fs.Entry.prototype.isDirectory = function() {
   return this.entry_.isDirectory;
 };
+=======
+goog.fs.Entry.prototype.isDirectory = function() {};
+>>>>>>> newgitrepo
 
 
 /**
  * @return {string} The name of this entry.
  */
+<<<<<<< HEAD
 goog.fs.Entry.prototype.getName = function() {
   return this.entry_.name;
 };
+=======
+goog.fs.Entry.prototype.getName = function() {};
+>>>>>>> newgitrepo
 
 
 /**
  * @return {string} The full path to this entry.
  */
+<<<<<<< HEAD
 goog.fs.Entry.prototype.getFullPath = function() {
   return this.entry_.fullPath;
 };
+=======
+goog.fs.Entry.prototype.getFullPath = function() {};
+>>>>>>> newgitrepo
 
 
 /**
  * @return {!goog.fs.FileSystem} The filesystem backing this entry.
  */
+<<<<<<< HEAD
 goog.fs.Entry.prototype.getFileSystem = function() {
   return this.fs_;
 };
+=======
+goog.fs.Entry.prototype.getFileSystem = function() {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -107,11 +140,15 @@ goog.fs.Entry.prototype.getFileSystem = function() {
  * @return {!goog.async.Deferred} The deferred Date for this entry. If an error
  *     occurs, the errback is called with a {@link goog.fs.Error}.
  */
+<<<<<<< HEAD
 goog.fs.Entry.prototype.getLastModified = function() {
   return this.getMetadata().addCallback(function(metadata) {
     return metadata.modificationTime;
   });
 };
+=======
+goog.fs.Entry.prototype.getLastModified = function() {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -120,6 +157,7 @@ goog.fs.Entry.prototype.getLastModified = function() {
  * @return {!goog.async.Deferred} The deferred Metadata for this entry. If an
  *     error occurs, the errback is called with a {@link goog.fs.Error}.
  */
+<<<<<<< HEAD
 goog.fs.Entry.prototype.getMetadata = function() {
   var d = new goog.async.Deferred();
 
@@ -131,6 +169,9 @@ goog.fs.Entry.prototype.getMetadata = function() {
       }, this));
   return d;
 };
+=======
+goog.fs.Entry.prototype.getMetadata = function() {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -143,6 +184,7 @@ goog.fs.Entry.prototype.getMetadata = function() {
  *     {@link goog.fs.DirectoryEntry} for the new entry. If an error occurs, the
  *     errback is called with a {@link goog.fs.Error}.
  */
+<<<<<<< HEAD
 goog.fs.Entry.prototype.moveTo = function(parent, opt_newName) {
   var d = new goog.async.Deferred();
   this.entry_.moveTo(
@@ -156,6 +198,9 @@ goog.fs.Entry.prototype.moveTo = function(parent, opt_newName) {
       }, this));
   return d;
 };
+=======
+goog.fs.Entry.prototype.moveTo = function(parent, opt_newName) {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -168,6 +213,7 @@ goog.fs.Entry.prototype.moveTo = function(parent, opt_newName) {
  *     {@link goog.fs.DirectoryEntry} for the new entry. If an error occurs, the
  *     errback is called with a {@link goog.fs.Error}.
  */
+<<<<<<< HEAD
 goog.fs.Entry.prototype.copyTo = function(parent, opt_newName) {
   var d = new goog.async.Deferred();
   this.entry_.copyTo(
@@ -181,6 +227,9 @@ goog.fs.Entry.prototype.copyTo = function(parent, opt_newName) {
       }, this));
   return d;
 };
+=======
+goog.fs.Entry.prototype.copyTo = function(parent, opt_newName) {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -190,12 +239,16 @@ goog.fs.Entry.prototype.copyTo = function(parent, opt_newName) {
  * @return {!goog.fs.Entry} The appropriate subclass wrapper.
  * @protected
  */
+<<<<<<< HEAD
 goog.fs.Entry.prototype.wrapEntry = function(entry) {
   return entry.isFile ?
       new goog.fs.FileEntry(this.fs_, /** @type {!FileEntry} */ (entry)) :
       new goog.fs.DirectoryEntry(
           this.fs_, /** @type {!DirectoryEntry} */ (entry));
 };
+=======
+goog.fs.Entry.prototype.wrapEntry = function(entry) {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -204,9 +257,13 @@ goog.fs.Entry.prototype.wrapEntry = function(entry) {
  * @param {string=} opt_mimeType The MIME type that will be served for the URL.
  * @return {string} The URL.
  */
+<<<<<<< HEAD
 goog.fs.Entry.prototype.toUrl = function(opt_mimeType) {
   return this.entry_.toURL(opt_mimeType);
 };
+=======
+goog.fs.Entry.prototype.toUrl = function(opt_mimeType) {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -216,7 +273,11 @@ goog.fs.Entry.prototype.toUrl = function(opt_mimeType) {
  * @param {string=} opt_mimeType The MIME type that will be served for the URI.
  * @return {string} The URI.
  */
+<<<<<<< HEAD
 goog.fs.Entry.prototype.toUri = goog.fs.Entry.prototype.toUrl;
+=======
+goog.fs.Entry.prototype.toUri = function(opt_mimeType) {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -226,6 +287,7 @@ goog.fs.Entry.prototype.toUri = goog.fs.Entry.prototype.toUrl;
  *     the callback is called with true. If an error occurs, the errback is
  *     called a {@link goog.fs.Error}.
  */
+<<<<<<< HEAD
 goog.fs.Entry.prototype.remove = function() {
   var d = new goog.async.Deferred();
   this.entry_.remove(
@@ -236,6 +298,9 @@ goog.fs.Entry.prototype.remove = function() {
       }, this));
   return d;
 };
+=======
+goog.fs.Entry.prototype.remove = function() {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -244,6 +309,7 @@ goog.fs.Entry.prototype.remove = function() {
  * @return {!goog.async.Deferred} The deferred {@link goog.fs.DirectoryEntry}.
  *     If an error occurs, the errback is called with a {@link goog.fs.Error}.
  */
+<<<<<<< HEAD
 goog.fs.Entry.prototype.getParent = function() {
   var d = new goog.async.Deferred();
   this.entry_.getParent(
@@ -256,12 +322,16 @@ goog.fs.Entry.prototype.getParent = function() {
       }, this));
   return d;
 };
+=======
+goog.fs.Entry.prototype.getParent = function() {};
+>>>>>>> newgitrepo
 
 
 
 /**
  * A directory in a local FileSystem.
  *
+<<<<<<< HEAD
  * This should not be instantiated directly. Instead, it should be accessed via
  * {@link goog.fs.FileSystem#getRoot} or
  * {@link goog.fs.DirectoryEntry#getDirectoryEntry}.
@@ -283,6 +353,12 @@ goog.fs.DirectoryEntry = function(fs, dir) {
   this.dir_ = dir;
 };
 goog.inherits(goog.fs.DirectoryEntry, goog.fs.Entry);
+=======
+ * @interface
+ * @extends {goog.fs.Entry}
+ */
+goog.fs.DirectoryEntry = function() {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -314,6 +390,7 @@ goog.fs.DirectoryEntry.Behavior = {
  * @return {!goog.async.Deferred} The deferred {@link goog.fs.FileEntry}. If an
  *     error occurs, the errback is called with a {@link goog.fs.Error}.
  */
+<<<<<<< HEAD
 goog.fs.DirectoryEntry.prototype.getFile = function(path, opt_behavior) {
   var d = new goog.async.Deferred();
   this.dir_.getFile(
@@ -327,6 +404,9 @@ goog.fs.DirectoryEntry.prototype.getFile = function(path, opt_behavior) {
       }, this));
   return d;
 };
+=======
+goog.fs.DirectoryEntry.prototype.getFile = function(path, opt_behavior) {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -338,6 +418,7 @@ goog.fs.DirectoryEntry.prototype.getFile = function(path, opt_behavior) {
  * @return {!goog.async.Deferred} The deferred {@link goog.fs.DirectoryEntry}.
  *     If an error occurs, the errback is called a {@link goog.fs.Error}.
  */
+<<<<<<< HEAD
 goog.fs.DirectoryEntry.prototype.getDirectory = function(path, opt_behavior) {
   var d = new goog.async.Deferred();
   this.dir_.getDirectory(
@@ -351,6 +432,9 @@ goog.fs.DirectoryEntry.prototype.getDirectory = function(path, opt_behavior) {
       }, this));
   return d;
 };
+=======
+goog.fs.DirectoryEntry.prototype.getDirectory = function(path, opt_behavior) {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -364,6 +448,7 @@ goog.fs.DirectoryEntry.prototype.getDirectory = function(path, opt_behavior) {
  *     the requested path. If an error occurs, the errback is called with a
  *     {@link goog.fs.Error}.
  */
+<<<<<<< HEAD
 goog.fs.DirectoryEntry.prototype.createPath = function(path) {
   // If the path begins at the root, reinvoke createPath on the root directory.
   if (goog.string.startsWith(path, '/')) {
@@ -397,6 +482,9 @@ goog.fs.DirectoryEntry.prototype.createPath = function(path) {
 
   return getNextDirectory(this);
 };
+=======
+goog.fs.DirectoryEntry.prototype.createPath = function(path) {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -406,6 +494,7 @@ goog.fs.DirectoryEntry.prototype.createPath = function(path) {
  *     results. If an error occurs, the errback is called with a
  *     {@link goog.fs.Error}.
  */
+<<<<<<< HEAD
 goog.fs.DirectoryEntry.prototype.listDirectory = function() {
   var d = new goog.async.Deferred();
   var reader = this.dir_.createReader();
@@ -430,6 +519,9 @@ goog.fs.DirectoryEntry.prototype.listDirectory = function() {
   reader.readEntries(successCallback, errorCallback);
   return d;
 };
+=======
+goog.fs.DirectoryEntry.prototype.listDirectory = function() {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -439,6 +531,7 @@ goog.fs.DirectoryEntry.prototype.listDirectory = function() {
  *     the callback is called with true. If an error occurs, the errback is
  *     called a {@link goog.fs.Error}.
  */
+<<<<<<< HEAD
 goog.fs.DirectoryEntry.prototype.removeRecursively = function() {
   var d = new goog.async.Deferred();
   this.dir_.removeRecursively(
@@ -469,12 +562,16 @@ goog.fs.DirectoryEntry.prototype.getOptions_ = function(opt_behavior) {
     return {};
   }
 };
+=======
+goog.fs.DirectoryEntry.prototype.removeRecursively = function() {};
+>>>>>>> newgitrepo
 
 
 
 /**
  * A file in a local filesystem.
  *
+<<<<<<< HEAD
  * This should not be instantiated directly. Instead, it should be accessed via
  * {@link goog.fs.DirectoryEntry#getDirectoryEntry}.
  *
@@ -495,6 +592,12 @@ goog.fs.FileEntry = function(fs, file) {
   this.file_ = file;
 };
 goog.inherits(goog.fs.FileEntry, goog.fs.Entry);
+=======
+ * @interface
+ * @extends {goog.fs.Entry}
+ */
+goog.fs.FileEntry = function() {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -503,6 +606,7 @@ goog.inherits(goog.fs.FileEntry, goog.fs.Entry);
  * @return {!goog.async.Deferred} The deferred {@link goog.fs.FileWriter}. If an
  *     error occurs, the errback is called with a {@link goog.fs.Error}.
  */
+<<<<<<< HEAD
 goog.fs.FileEntry.prototype.createWriter = function() {
   var d = new goog.async.Deferred();
   this.file_.createWriter(
@@ -513,6 +617,9 @@ goog.fs.FileEntry.prototype.createWriter = function() {
       }, this));
   return d;
 };
+=======
+goog.fs.FileEntry.prototype.createWriter = function() {};
+>>>>>>> newgitrepo
 
 
 /**
@@ -521,6 +628,7 @@ goog.fs.FileEntry.prototype.createWriter = function() {
  * @return {!goog.async.Deferred} The deferred File. If an error occurs, the
  *     errback is called with a {@link goog.fs.Error}.
  */
+<<<<<<< HEAD
 goog.fs.FileEntry.prototype.file = function() {
   var d = new goog.async.Deferred();
   this.file_.file(
@@ -531,3 +639,6 @@ goog.fs.FileEntry.prototype.file = function() {
       }, this));
   return d;
 };
+=======
+goog.fs.FileEntry.prototype.file = function() {};
+>>>>>>> newgitrepo

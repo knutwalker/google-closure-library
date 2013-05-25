@@ -24,6 +24,10 @@ goog.require('goog.async.Delay');
 goog.require('goog.object');
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newgitrepo
 /**
  * An interface for programatically animated objects. I.e. rendered in
  * javascript frame by frame.
@@ -166,8 +170,13 @@ goog.fx.anim.requestAnimationFrame_ = function() {
       // time in ms, as returned from goog.now().
       goog.fx.anim.animationDelay_ = new goog.async.AnimationDelay(
           function(now) {
+<<<<<<< HEAD
         goog.fx.anim.cycleAnimations_(now);
       }, goog.fx.anim.animationWindow_);
+=======
+            goog.fx.anim.cycleAnimations_(now);
+          }, goog.fx.anim.animationWindow_);
+>>>>>>> newgitrepo
     } else {
       goog.fx.anim.animationDelay_ = new goog.async.Delay(function() {
         goog.fx.anim.cycleAnimations_(goog.now());
